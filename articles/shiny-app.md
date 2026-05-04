@@ -5,6 +5,7 @@
 ## Launching the app
 
 ``` r
+
 library(hexmakR)
 hexmakr_app()
 ```

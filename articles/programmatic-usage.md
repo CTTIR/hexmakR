@@ -5,6 +5,7 @@
 ## All parameters
 
 ``` r
+
 library(hexmakR)
 
 hex_sticker(
@@ -37,6 +38,7 @@ The function returns a **ggplot object**, so you can chain additional
 ggplot2 layers:
 
 ``` r
+
 library(ggplot2)
 
 hex_sticker("mypackage") +
@@ -49,6 +51,7 @@ hex_sticker("mypackage") +
 Generate stickers for an entire list of packages:
 
 ``` r
+
 packages <- list(
   list(name = "pkgA", icon = "atom",     theme = "stats"),
   list(name = "pkgB", icon = "dna",      theme = "genomics"),
@@ -74,6 +77,7 @@ Once placed there, both usethis and pkgdown will automatically pick it
 up.
 
 ``` r
+
 # Inside your package directory:
 hex_sticker(
   name     = "mypackage",
@@ -105,6 +109,7 @@ navbar:
 ## Saving to PNG and SVG
 
 ``` r
+
 s <- hex_sticker("mypackage", theme = "tidy")
 
 # PNG (transparent background)
@@ -117,6 +122,7 @@ save_hex_svg(s, "logo.svg", width = 2)
 ## All available themes
 
 ``` r
+
 themes <- hexmakr_themes()
 for (nm in names(themes)) {
   cat(nm, "—", themes[[nm]]$label, "\n")
@@ -126,6 +132,7 @@ for (nm in names(themes)) {
 ## All available icons
 
 ``` r
+
 icons <- hexmakr_icons()
 for (cat_name in names(icons)) {
   icon_names <- names(icons[[cat_name]])

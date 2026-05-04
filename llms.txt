@@ -48,6 +48,7 @@ and then fine-tune programmatically — with either package.
 ## Installation
 
 ``` r
+
 # CRAN
 install.packages("hexmakR")
 
@@ -59,6 +60,7 @@ pak::pak("r-heller/hexmakR")
 ## Quick Start
 
 ``` r
+
 library(hexmakR)
 
 # Three lines to a sticker
@@ -69,6 +71,7 @@ hex_sticker("mypackage", icon = "dna", theme = "genomics",
 ## Shiny App
 
 ``` r
+
 hexmakr_app()
 ```
 
@@ -119,15 +122,15 @@ Each theme has both `dark` and `light` variants.
 
 ## Available Icons
 
-| Category  | Count | Icons                                                                    |
-|-----------|-------|--------------------------------------------------------------------------|
-| `science` | 5     | atom, flask, microscope, molecule, magnet                                |
-| `biology` | 6     | dna, cell, brain, leaf, bacteria, tree                                   |
-| `stats`   | 8     | bar_chart, scatter, line_chart, bell_curve, pie, sigma, boxplot, network |
-| `medical` | 6     | stethoscope, heart, pulse, pill, cross, syringe                          |
-| `tech`    | 6     | terminal, brackets, gear, database, hash, rlogo                          |
-| `shapes`  | 7     | star, shield, diamond, hexagon, infinity, arrow_up, circle               |
-| `fun`     | 8     | rocket, lightning, fire, sparkle, crown, coffee, music, gamepad          |
+| Category | Count | Icons |
+|----|----|----|
+| `science` | 5 | atom, flask, microscope, molecule, magnet |
+| `biology` | 6 | dna, cell, brain, leaf, bacteria, tree |
+| `stats` | 8 | bar_chart, scatter, line_chart, bell_curve, pie, sigma, boxplot, network |
+| `medical` | 6 | stethoscope, heart, pulse, pill, cross, syringe |
+| `tech` | 6 | terminal, brackets, gear, database, hash, rlogo |
+| `shapes` | 7 | star, shield, diamond, hexagon, infinity, arrow_up, circle |
+| `fun` | 8 | rocket, lightning, fire, sparkle, crown, coffee, music, gamepad |
 
 ## Vignettes
 

@@ -7,12 +7,14 @@
 Install hexmakR from CRAN:
 
 ``` r
+
 install.packages("hexmakR")
 ```
 
 Or install the development version from GitHub:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("r-heller/hexmakR")
 ```
@@ -20,6 +22,7 @@ pak::pak("r-heller/hexmakR")
 ## Your first hex sticker in 3 lines
 
 ``` r
+
 library(hexmakR)
 
 hex_sticker("mypackage", icon = "atom", theme = "stats")
@@ -33,6 +36,7 @@ That’s it. The default settings produce a dark-themed sticker with the
 Pass `filename` to write a transparent PNG directly:
 
 ``` r
+
 hex_sticker(
   "mypackage",
   icon     = "dna",
@@ -48,12 +52,14 @@ pkgdown site.
 ## Exploring themes
 
 ``` r
+
 names(hexmakr_themes())
 ```
 
 Preview a theme interactively:
 
 ``` r
+
 hexmakr_preview_theme("genomics", mode = "dark")
 hexmakr_preview_theme("genomics", mode = "light")
 ```
@@ -61,6 +67,7 @@ hexmakr_preview_theme("genomics", mode = "light")
 ## Exploring icons
 
 ``` r
+
 # All categories
 names(hexmakr_icons())
 
@@ -73,6 +80,7 @@ hexmakr_icons("biology")
 Override any theme color individually:
 
 ``` r
+
 hex_sticker(
   "mypackage",
   theme        = "stats",
@@ -88,6 +96,7 @@ hex_sticker(
 ## Choosing a font
 
 ``` r
+
 hex_sticker(
   "mypackage",
   font_family = "serif",
