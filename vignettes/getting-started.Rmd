@@ -1,0 +1,127 @@
+---
+title: "Getting Started with hexmakR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with hexmakR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 3,
+  fig.height = 3.46,  # 3 / (sqrt(3)/2) for correct hex ratio
+  eval = FALSE
+)
+```
+
+```{r logo, echo=FALSE, eval=TRUE, out.extra='style="float:right; margin-left:1em;"'}
+logo <- system.file("logo", "logo.svg", package = "hexmakR")
+if (nzchar(logo)) knitr::include_graphics(logo)
+```
+
+## Installation
+
+Install hexmakR from CRAN:
+
+```{r install-cran}
+install.packages("hexmakR")
+```
+
+Or install the development version from GitHub:
+
+```{r install-github}
+# install.packages("pak")
+pak::pak("r-heller/hexmakR")
+```
+
+## Your first hex sticker in 3 lines
+
+```{r first-sticker}
+library(hexmakR)
+
+hex_sticker("mypackage", icon = "atom", theme = "stats")
+```
+
+That's it. The default settings produce a dark-themed sticker with the
+`stats` color palette and an atom icon.
+
+## Saving to a file
+
+Pass `filename` to write a transparent PNG directly:
+
+```{r save-sticker}
+hex_sticker(
+  "mypackage",
+  icon     = "dna",
+  theme    = "genomics",
+  filename = "man/figures/logo.png"
+)
+```
+
+The file will have the correct hexb.in aspect ratio (width / height = √3 / 2)
+and a transparent background, ready for use in your README or pkgdown site.
+
+## Exploring themes
+
+```{r list-themes}
+names(hexmakr_themes())
+```
+
+Preview a theme interactively:
+
+```{r preview-theme}
+hexmakr_preview_theme("genomics", mode = "dark")
+hexmakr_preview_theme("genomics", mode = "light")
+```
+
+## Exploring icons
+
+```{r list-icons}
+# All categories
+names(hexmakr_icons())
+
+# Icons in a specific category
+hexmakr_icons("biology")
+```
+
+## Customizing colors
+
+Override any theme color individually:
+
+```{r custom-colors}
+hex_sticker(
+  "mypackage",
+  theme        = "stats",
+  mode         = "dark",
+  bg           = "#0D1117",
+  accent       = "#58A6FF",
+  text_color   = "#FFFFFF",
+  border_color = "#58A6FF",
+  sub_color    = "#8B949E"
+)
+```
+
+## Choosing a font
+
+```{r font}
+hex_sticker(
+  "mypackage",
+  font_family = "serif",
+  font_bold   = TRUE,
+  font_italic = TRUE,
+  font_size   = 14
+)
+```
+
+Available font shorthands: `"mono"`, `"courier"`, `"consolas"`,
+`"source_code"`, `"fira_code"`, `"serif"`, `"times"`, `"palatino"`,
+`"sans"`, `"helvetica"`, `"roboto"`, `"open_sans"`, `"lato"`.
+
+## Next steps
+
+- For full parameter reference: `vignette("programmatic-usage")`
+- To use the interactive designer: `vignette("shiny-app")` or just run
+  `hexmakr_app()`

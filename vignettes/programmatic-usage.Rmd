@@ -1,0 +1,151 @@
+---
+title: "Programmatic Usage"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Programmatic Usage}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+```{r logo, echo=FALSE, eval=TRUE, out.extra='style="float:right; margin-left:1em;"'}
+logo <- system.file("logo", "logo.svg", package = "hexmakR")
+if (nzchar(logo)) knitr::include_graphics(logo)
+```
+
+## All parameters
+
+```{r all-params}
+library(hexmakR)
+
+hex_sticker(
+  name         = "mypackage",   # Package name (required)
+  subtitle     = "subtitle",    # Shown below name
+  url          = "r-pkg.org",   # Shown at bottom
+  icon         = "atom",        # Built-in icon name
+  icon_image   = NULL,          # Path to custom PNG/JPG (overrides icon)
+  icon_size    = 1.0,           # Size multiplier (0.3 – 2.5)
+  theme        = "stats",       # Theme name
+  mode         = "dark",        # "dark" or "light"
+  bg           = NULL,          # Override background (#RRGGBB)
+  accent       = NULL,          # Override accent color
+  text_color   = NULL,          # Override text color
+  border_color = NULL,          # Override border color
+  sub_color    = NULL,          # Override subtitle/URL color
+  font_family  = "mono",        # Font shorthand or system font name
+  font_bold    = TRUE,
+  font_italic  = FALSE,
+  font_size    = 12,            # Base font size in pt
+  border_width = 2,             # Border width in mm
+  inner_border = TRUE,          # Draw inner accent ring
+  filename     = NULL,          # Auto-save if provided
+  width        = 600,           # Export width in pixels
+  dpi          = 300
+)
+```
+
+The function returns a **ggplot object**, so you can chain additional ggplot2
+layers:
+
+```{r ggplot-chain}
+library(ggplot2)
+
+hex_sticker("mypackage") +
+  annotate("text", x = 0.5, y = 0.05,
+           label = "v0.1.0", color = "#64748B", size = 2.5)
+```
+
+## Batch generation
+
+Generate stickers for an entire list of packages:
+
+```{r batch}
+packages <- list(
+  list(name = "pkgA", icon = "atom",     theme = "stats"),
+  list(name = "pkgB", icon = "dna",      theme = "genomics"),
+  list(name = "pkgC", icon = "bar_chart", theme = "viz")
+)
+
+output_dir <- tempdir()
+
+for (pkg in packages) {
+  hex_sticker(
+    name     = pkg$name,
+    icon     = pkg$icon,
+    theme    = pkg$theme,
+    filename = file.path(output_dir, paste0(pkg$name, ".png"))
+  )
+}
+```
+
+## Integration with usethis / pkgdown
+
+The conventional location for a package logo is `man/figures/logo.png`.
+Once placed there, both usethis and pkgdown will automatically pick it up.
+
+```{r usethis-workflow}
+# Inside your package directory:
+hex_sticker(
+  name     = "mypackage",
+  subtitle = "Does something great",
+  url      = "github.com/you/mypackage",
+  icon     = "gear",
+  theme    = "tech",
+  filename = "man/figures/logo.png"
+)
+```
+
+Then add to your README.md:
+
+```markdown
+<img src="man/figures/logo.png" align="right" height="139" />
+```
+
+And to your `_pkgdown.yml`:
+
+```yaml
+template:
+  bootstrap: 5
+navbar:
+  title:
+    image: man/figures/logo.png
+    href: index.html
+```
+
+## Saving to PNG and SVG
+
+```{r export}
+s <- hex_sticker("mypackage", theme = "tidy")
+
+# PNG (transparent background)
+save_hex(s, "logo.png", width = 600, dpi = 300)
+
+# SVG (requires svglite)
+save_hex_svg(s, "logo.svg", width = 2)
+```
+
+## All available themes
+
+```{r all-themes}
+themes <- hexmakr_themes()
+for (nm in names(themes)) {
+  cat(nm, "—", themes[[nm]]$label, "\n")
+}
+```
+
+## All available icons
+
+```{r all-icons}
+icons <- hexmakr_icons()
+for (cat_name in names(icons)) {
+  icon_names <- names(icons[[cat_name]])
+  cat(cat_name, "(", length(icon_names), "):", paste(icon_names, collapse = ", "), "\n")
+}
+```

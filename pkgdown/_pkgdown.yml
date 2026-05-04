@@ -1,0 +1,69 @@
+url: https://r-heller.github.io/hexmakR/
+
+template:
+  bootstrap: 5
+
+navbar:
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Getting Started"
+      href: articles/getting-started.html
+    - text: "Vignettes"
+      href: articles/index.html
+    - text: "Functions"
+      href: reference/index.html
+    - text: "News"
+      href: news/index.html
+  right:
+    - icon: fa-github
+      href: https://github.com/r-heller/hexmakR
+      aria-label: "GitHub"
+
+home:
+  links:
+    - text: "Browse source code"
+      href: https://github.com/r-heller/hexmakR
+    - text: "Report a bug"
+      href: https://github.com/r-heller/hexmakR/issues
+
+articles:
+  - title: "Getting Started"
+    desc: >
+      Start here to learn how to create hex stickers with hexmakR, from
+      a minimal one-liner to customized programmatic designs.
+    contents:
+      - getting-started
+  - title: "Advanced Usage"
+    desc: >
+      Deep dives into the programmatic API and the interactive Shiny
+      designer for users who want full control.
+    contents:
+      - programmatic-usage
+      - shiny-app
+
+reference:
+  - title: "Create Stickers"
+    desc: >
+      The core functions for building hex stickers. `hex_sticker()`
+      returns a ggplot object; `hexmakr_app()` opens the interactive
+      Shiny designer.
+    contents:
+      - hex_sticker
+      - hexmakr_app
+
+  - title: "Themes & Icons"
+    desc: >
+      Explore the 19 built-in color themes and 46 built-in icons. Each
+      theme provides coordinated `dark` and `light` color palettes.
+    contents:
+      - hexmakr_themes
+      - hexmakr_icons
+      - hexmakr_preview_theme
+
+  - title: "Export"
+    desc: >
+      Save hex stickers to PNG (transparent background) or SVG.
+    contents:
+      - save_hex
+      - save_hex_svg

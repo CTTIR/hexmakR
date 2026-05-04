@@ -1,0 +1,41 @@
+Package: hexmakR
+Title: Interactive Hex Sticker Generator for R Packages
+Version: 0.1.0
+Authors@R:
+    person("Raban", "Heller", , "raban.heller@uni-ulm.de", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-8006-9742"))
+Description: Create publication-ready hexagon stickers for R packages
+    interactively via a Shiny app or programmatically via R functions.
+    Complements the 'hexSticker' package (which embeds R plots into
+    stickers) by providing an interactive visual designer with 19 curated
+    color themes (dark and light variants), 46 built-in scientific and
+    technical icons, custom image upload support, font selection, and
+    export to transparent PNG. Designed for the R package ecosystem with
+    presets for CRAN, Bioconductor, Tidyverse, and domain-specific
+    color palettes.
+License: MIT + file LICENSE
+URL: https://r-heller.github.io/hexmakR/,
+    https://github.com/r-heller/hexmakR
+BugReports: https://github.com/r-heller/hexmakR/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends:
+    R (>= 4.1.0)
+Imports:
+    ggplot2 (>= 3.4.0),
+    grid,
+    grDevices,
+    shiny (>= 1.7.0),
+    png,
+    utils
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    pkgdown,
+    svglite,
+    jpeg
+Config/testthat/edition: 3
+Config/Needs/website: pkgdown
+VignetteBuilder: knitr
