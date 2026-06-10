@@ -32,12 +32,12 @@ List available themes
 
 ## See also
 
-[`hex_sticker()`](https://r-heller.github.io/hexmakR/reference/hex_sticker.md),
-[`hexmakr_preview_theme()`](https://r-heller.github.io/hexmakR/reference/hexmakr_preview_theme.md)
+[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md),
+[`hexmakr_preview_theme()`](https://cttir.github.io/hexmakR/reference/hexmakr_preview_theme.md)
 
 Other themes:
-[`hexmakr_icons()`](https://r-heller.github.io/hexmakR/reference/hexmakr_icons.md),
-[`hexmakr_preview_theme()`](https://r-heller.github.io/hexmakR/reference/hexmakr_preview_theme.md)
+[`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md),
+[`hexmakr_preview_theme()`](https://cttir.github.io/hexmakR/reference/hexmakr_preview_theme.md)
 
 ## Examples
 

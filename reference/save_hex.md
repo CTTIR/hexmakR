@@ -15,7 +15,7 @@ save_hex(sticker, filename, width = 600, dpi = 300)
 - sticker:
 
   A ggplot object returned by
-  [`hex_sticker()`](https://r-heller.github.io/hexmakR/reference/hex_sticker.md).
+  [`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md).
 
 - filename:
 
@@ -39,12 +39,12 @@ Save a hex sticker to a PNG file
 
 ## See also
 
-[`hex_sticker()`](https://r-heller.github.io/hexmakR/reference/hex_sticker.md)
+[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
 
 Other stickers:
-[`hex_sticker()`](https://r-heller.github.io/hexmakR/reference/hex_sticker.md),
-[`hexmakr_app()`](https://r-heller.github.io/hexmakR/reference/hexmakr_app.md),
-[`save_hex_svg()`](https://r-heller.github.io/hexmakR/reference/save_hex_svg.md)
+[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md),
+[`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md),
+[`save_hex_svg()`](https://cttir.github.io/hexmakR/reference/save_hex_svg.md)
 
 ## Examples
 

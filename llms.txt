@@ -54,7 +54,7 @@ install.packages("hexmakR")
 
 # Development version
 # install.packages("pak")
-pak::pak("r-heller/hexmakR")
+pak::pak("cttir/hexmakR")
 ```
 
 ## Quick Start
@@ -135,17 +135,16 @@ Each theme has both `dark` and `light` variants.
 ## Vignettes
 
 - [Getting
-  Started](https://r-heller.github.io/hexmakR/articles/getting-started.html)
+  Started](https://cttir.github.io/hexmakR/articles/getting-started.html)
 - [Programmatic
-  Usage](https://r-heller.github.io/hexmakR/articles/programmatic-usage.html)
-- [Shiny
-  App](https://r-heller.github.io/hexmakR/articles/shiny-app.html)
+  Usage](https://cttir.github.io/hexmakR/articles/programmatic-usage.html)
+- [Shiny App](https://cttir.github.io/hexmakR/articles/shiny-app.html)
 
 ## Contributing
 
 Contributions are welcome! Please open an issue first to discuss major
 changes at
-[github.com/r-heller/hexmakR/issues](https://github.com/r-heller/hexmakR/issues).
+[github.com/cttir/hexmakR/issues](https://github.com/cttir/hexmakR/issues).
 
 ## Code of Conduct
 
@@ -161,19 +160,37 @@ hexmakR was inspired by the pioneering work of the
 are grateful to Guangchuang Yu and all contributors for establishing hex
 stickers as a staple of R package identity.
 
+## Use of LLM tools
+
+Portions of this package were prepared with assistance from large
+language model tooling for narrowly defined, non-authorial tasks:
+copyediting, prose smoothing, Markdown/LaTeX formatting, scaffolding of
+boilerplate files (CI configs, build scripts), code refactoring. The
+tools used were [Chat
+AI](https://kisski.gwdg.de/leistungen/2-02-llm-service/), the LLM
+service of KISSKI (GWDG), and a self-hosted **Mistral Small (24B,
+Apache-2.0)** run locally via [Ollama](https://ollama.com/) and the
+`ollamar` R package — local inference only, with no data sent to third
+parties for the self-hosted model.
+
+All scientific claims, methodological choices, analyses,
+interpretations, and conclusions are the author’s own. No LLM-generated
+text was incorporated without review and revision, and every reference
+was verified against its DOI, arXiv ID, or ISBN.
+
 # Package index
 
 ## Create Stickers
 
 The core functions for building hex stickers.
-[`hex_sticker()`](https://r-heller.github.io/hexmakR/reference/hex_sticker.md)
+[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
 returns a ggplot object;
-[`hexmakr_app()`](https://r-heller.github.io/hexmakR/reference/hexmakr_app.md)
+[`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md)
 opens the interactive Shiny designer.
 
-- [`hex_sticker()`](https://r-heller.github.io/hexmakR/reference/hex_sticker.md)
+- [`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
   : Create a Hex Sticker
-- [`hexmakr_app()`](https://r-heller.github.io/hexmakR/reference/hexmakr_app.md)
+- [`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md)
   : Launch Interactive Hex Sticker Designer
 
 ## Themes & Icons
@@ -181,20 +198,20 @@ opens the interactive Shiny designer.
 Explore the 19 built-in color themes and 46 built-in icons. Each theme
 provides coordinated `dark` and `light` color palettes.
 
-- [`hexmakr_themes()`](https://r-heller.github.io/hexmakR/reference/hexmakr_themes.md)
+- [`hexmakr_themes()`](https://cttir.github.io/hexmakR/reference/hexmakr_themes.md)
   : List Available Themes
-- [`hexmakr_icons()`](https://r-heller.github.io/hexmakR/reference/hexmakr_icons.md)
+- [`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md)
   : List Available Icons
-- [`hexmakr_preview_theme()`](https://r-heller.github.io/hexmakR/reference/hexmakr_preview_theme.md)
+- [`hexmakr_preview_theme()`](https://cttir.github.io/hexmakR/reference/hexmakr_preview_theme.md)
   : Preview a Color Theme
 
 ## Export
 
 Save hex stickers to PNG (transparent background) or SVG.
 
-- [`save_hex()`](https://r-heller.github.io/hexmakR/reference/save_hex.md)
+- [`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md)
   : Save a Hex Sticker
-- [`save_hex_svg()`](https://r-heller.github.io/hexmakR/reference/save_hex_svg.md)
+- [`save_hex_svg()`](https://cttir.github.io/hexmakR/reference/save_hex_svg.md)
   : Save a Hex Sticker as SVG
 
 # Articles
@@ -205,7 +222,7 @@ Start here to learn how to create hex stickers with hexmakR, from a
 minimal one-liner to customized programmatic designs.
 
 - [Getting Started with
-  hexmakR](https://r-heller.github.io/hexmakR/articles/getting-started.md):
+  hexmakR](https://cttir.github.io/hexmakR/articles/getting-started.md):
 
 ### Advanced Usage
 
@@ -213,6 +230,6 @@ Deep dives into the programmatic API and the interactive Shiny designer
 for users who want full control.
 
 - [Programmatic
-  Usage](https://r-heller.github.io/hexmakR/articles/programmatic-usage.md):
+  Usage](https://cttir.github.io/hexmakR/articles/programmatic-usage.md):
 - [Interactive Shiny
-  App](https://r-heller.github.io/hexmakR/articles/shiny-app.md):
+  App](https://cttir.github.io/hexmakR/articles/shiny-app.md):

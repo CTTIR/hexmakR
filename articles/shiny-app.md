@@ -87,5 +87,5 @@ directory and add it to your README:
 ```
 
 See
-[`vignette("programmatic-usage")`](https://r-heller.github.io/hexmakR/articles/programmatic-usage.md)
+[`vignette("programmatic-usage")`](https://cttir.github.io/hexmakR/articles/programmatic-usage.md)
 for details on integrating the sticker with usethis and pkgdown.

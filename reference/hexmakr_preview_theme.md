@@ -28,12 +28,12 @@ Preview a theme
 
 ## See also
 
-[`hexmakr_themes()`](https://r-heller.github.io/hexmakR/reference/hexmakr_themes.md),
-[`hex_sticker()`](https://r-heller.github.io/hexmakR/reference/hex_sticker.md)
+[`hexmakr_themes()`](https://cttir.github.io/hexmakR/reference/hexmakr_themes.md),
+[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
 
 Other themes:
-[`hexmakr_icons()`](https://r-heller.github.io/hexmakR/reference/hexmakr_icons.md),
-[`hexmakr_themes()`](https://r-heller.github.io/hexmakR/reference/hexmakr_themes.md)
+[`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md),
+[`hexmakr_themes()`](https://cttir.github.io/hexmakR/reference/hexmakr_themes.md)
 
 ## Examples
 

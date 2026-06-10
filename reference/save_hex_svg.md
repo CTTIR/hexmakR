@@ -13,7 +13,7 @@ save_hex_svg(sticker, filename, width = 2)
 - sticker:
 
   A ggplot object returned by
-  [`hex_sticker()`](https://r-heller.github.io/hexmakR/reference/hex_sticker.md).
+  [`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md).
 
 - filename:
 
@@ -33,13 +33,13 @@ Save a hex sticker to an SVG file
 
 ## See also
 
-[`save_hex()`](https://r-heller.github.io/hexmakR/reference/save_hex.md),
-[`hex_sticker()`](https://r-heller.github.io/hexmakR/reference/hex_sticker.md)
+[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md),
+[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
 
 Other stickers:
-[`hex_sticker()`](https://r-heller.github.io/hexmakR/reference/hex_sticker.md),
-[`hexmakr_app()`](https://r-heller.github.io/hexmakR/reference/hexmakr_app.md),
-[`save_hex()`](https://r-heller.github.io/hexmakR/reference/save_hex.md)
+[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md),
+[`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md),
+[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md)
 
 ## Examples
 

@@ -3,7 +3,7 @@
 Generates a publication-ready hexagon sticker for an R package. Returns
 a ggplot object that can be printed, further customised with `+`, or
 saved with
-[`save_hex()`](https://r-heller.github.io/hexmakR/reference/save_hex.md).
+[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md).
 
 ## Usage
 
@@ -52,7 +52,7 @@ hex_sticker(
 - icon:
 
   Character or `NULL`. Name of a built-in icon. See
-  [`hexmakr_icons()`](https://r-heller.github.io/hexmakR/reference/hexmakr_icons.md)
+  [`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md)
   for valid values. Ignored if `icon_image` is provided.
 
 - icon_image:
@@ -123,7 +123,7 @@ hex_sticker(
 
   Character or `NULL`. If provided, save the sticker as a transparent
   PNG at this path using
-  [`save_hex()`](https://r-heller.github.io/hexmakR/reference/save_hex.md).
+  [`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md).
 
 - width:
 
@@ -144,15 +144,15 @@ Create a hex sticker
 
 ## See also
 
-[`hexmakr_themes()`](https://r-heller.github.io/hexmakR/reference/hexmakr_themes.md),
-[`hexmakr_icons()`](https://r-heller.github.io/hexmakR/reference/hexmakr_icons.md),
-[`save_hex()`](https://r-heller.github.io/hexmakR/reference/save_hex.md),
-[`hexmakr_app()`](https://r-heller.github.io/hexmakR/reference/hexmakr_app.md)
+[`hexmakr_themes()`](https://cttir.github.io/hexmakR/reference/hexmakr_themes.md),
+[`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md),
+[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md),
+[`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md)
 
 Other stickers:
-[`hexmakr_app()`](https://r-heller.github.io/hexmakR/reference/hexmakr_app.md),
-[`save_hex()`](https://r-heller.github.io/hexmakR/reference/save_hex.md),
-[`save_hex_svg()`](https://r-heller.github.io/hexmakR/reference/save_hex_svg.md)
+[`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md),
+[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md),
+[`save_hex_svg()`](https://cttir.github.io/hexmakR/reference/save_hex_svg.md)
 
 ## Examples
 
