@@ -13,3 +13,4 @@
 ^\.Rhistory$
 ^codecov\.yml$
 ^\.lintr$
+^_pkgdown\.yml$
