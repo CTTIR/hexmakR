@@ -1,8 +1,21 @@
-url: https://r-heller.github.io/hexmakR/
+url: https://cttir.github.io/hexmakR/
 
 template:
   bootstrap: 5
-
+  light-switch: true
+  theme: gruvbox-light
+  theme-dark: gruvbox-dark
+  bslib:
+    # Hugo Coder colour theme — light mode
+    bg: "#fafafa"
+    fg: "#212121"
+    primary: "#1565c0"
+    navbar-light-bg: "#fafafa"
+    # Hugo Coder colour theme — dark mode (Bootstrap 5 light-switch)
+    navbar-dark-bg: "#212121"
+    base_font: {google: "Inter"}
+    heading_font: {google: "Inter"}
+    code_font: {google: "JetBrains Mono"}
 navbar:
   left:
     - text: "Home"
@@ -17,15 +30,15 @@ navbar:
       href: news/index.html
   right:
     - icon: fa-github
-      href: https://github.com/r-heller/hexmakR
+      href: https://github.com/cttir/hexmakR
       aria-label: "GitHub"
 
 home:
   links:
     - text: "Browse source code"
-      href: https://github.com/r-heller/hexmakR
+      href: https://github.com/cttir/hexmakR
     - text: "Report a bug"
-      href: https://github.com/r-heller/hexmakR/issues
+      href: https://github.com/cttir/hexmakR/issues
 
 articles:
   - title: "Getting Started"

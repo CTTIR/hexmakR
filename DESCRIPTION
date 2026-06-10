@@ -14,9 +14,9 @@ Description: Create publication-ready hexagon stickers for R packages
     presets for CRAN, Bioconductor, Tidyverse, and domain-specific
     color palettes.
 License: MIT + file LICENSE
-URL: https://r-heller.github.io/hexmakR/,
-    https://github.com/r-heller/hexmakR
-BugReports: https://github.com/r-heller/hexmakR/issues
+URL: https://cttir.github.io/hexmakR/,
+    https://github.com/cttir/hexmakR
+BugReports: https://github.com/cttir/hexmakR/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3

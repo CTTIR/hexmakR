@@ -4,9 +4,9 @@
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/hexmakR)](https://CRAN.R-project.org/package=hexmakR)
-[![R-CMD-check](https://github.com/r-heller/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-heller/hexmakR/actions/workflows/R-CMD-check.yaml)
-[![pkgdown](https://github.com/r-heller/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://r-heller.github.io/hexmakR/)
-[![Codecov test coverage](https://codecov.io/gh/r-heller/hexmakR/graph/badge.svg)](https://app.codecov.io/gh/r-heller/hexmakR)
+[![R-CMD-check](https://github.com/cttir/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cttir/hexmakR/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/cttir/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://cttir.github.io/hexmakR/)
+[![Codecov test coverage](https://codecov.io/gh/cttir/hexmakR/graph/badge.svg)](https://app.codecov.io/gh/cttir/hexmakR)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
@@ -60,7 +60,7 @@ install.packages("hexmakR")
 
 # Development version
 # install.packages("pak")
-pak::pak("r-heller/hexmakR")
+pak::pak("cttir/hexmakR")
 ```
 
 ## Quick Start
@@ -138,14 +138,14 @@ Each theme has both `dark` and `light` variants.
 
 ## Vignettes
 
-- [Getting Started](https://r-heller.github.io/hexmakR/articles/getting-started.html)
-- [Programmatic Usage](https://r-heller.github.io/hexmakR/articles/programmatic-usage.html)
-- [Shiny App](https://r-heller.github.io/hexmakR/articles/shiny-app.html)
+- [Getting Started](https://cttir.github.io/hexmakR/articles/getting-started.html)
+- [Programmatic Usage](https://cttir.github.io/hexmakR/articles/programmatic-usage.html)
+- [Shiny App](https://cttir.github.io/hexmakR/articles/shiny-app.html)
 
 ## Contributing
 
 Contributions are welcome! Please open an issue first to discuss major
-changes at [github.com/r-heller/hexmakR/issues](https://github.com/r-heller/hexmakR/issues).
+changes at [github.com/cttir/hexmakR/issues](https://github.com/cttir/hexmakR/issues).
 
 ## Code of Conduct
 
@@ -159,3 +159,16 @@ hexmakR was inspired by the pioneering work of the
 [`hexSticker`](https://github.com/GuangchuangYu/hexSticker) package. We are
 grateful to Guangchuang Yu and all contributors for establishing hex stickers
 as a staple of R package identity.
+
+## Use of LLM tools
+
+Portions of this package were prepared with assistance from large language model tooling for
+narrowly defined, non-authorial tasks: copyediting, prose smoothing, Markdown/LaTeX formatting,
+scaffolding of boilerplate files (CI configs, build scripts), code refactoring. The tools used were [Chat AI](https://kisski.gwdg.de/leistungen/2-02-llm-service/),
+the LLM service of KISSKI (GWDG), and a self-hosted **Mistral Small (24B, Apache-2.0)** run locally via
+[Ollama](https://ollama.com/) and the `ollamar` R package — local inference only, with no data sent to
+third parties for the self-hosted model.
+
+All scientific claims, methodological choices, analyses, interpretations, and conclusions are the
+author's own. No LLM-generated text was incorporated without review and revision, and every reference
+was verified against its DOI, arXiv ID, or ISBN.
