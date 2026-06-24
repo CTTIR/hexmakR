@@ -65,3 +65,30 @@ test_that("category counts are correct", {
                  label = paste(cat_name, "count"))
   }
 })
+
+test_that("ALL 46 icon draw functions render without error", {
+  # Call each icon_* drawing function by name through the namespace so the
+  # body of every function is exercised (and counted for coverage).
+  ns <- asNamespace("hexmakR")
+  draw_fns <- grep("^icon_", ls(ns, all.names = TRUE), value = TRUE)
+  expect_equal(length(draw_fns), 46L)
+
+  grDevices::pdf(file = NULL)
+  on.exit(grDevices::dev.off(), add = TRUE)
+  for (fn_name in draw_fns) {
+    fn <- get(fn_name, envir = ns)
+    expect_no_error(
+      fn(0.5, 0.5, 0.5, "#3366CC"),
+      message = paste(fn_name, "draw failed")
+    )
+  }
+})
+
+test_that(".lookup_icon() returns a draw function for a valid name", {
+  fn <- hexmakR:::.lookup_icon("dna")
+  expect_true(is.function(fn))
+})
+
+test_that(".lookup_icon() errors informatively for an unknown icon", {
+  expect_error(hexmakR:::.lookup_icon("not_a_real_icon"), "Unknown icon")
+})

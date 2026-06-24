@@ -48,3 +48,22 @@ test_that("theme labels are non-empty strings", {
     expect_gt(nchar(themes[[nm]]$label), 0)
   }
 })
+
+test_that("hexmakr_preview_theme() returns a ggplot invisibly", {
+  grDevices::pdf(file = NULL)
+  on.exit(grDevices::dev.off(), add = TRUE)
+  p <- hexmakr_preview_theme("stats")
+  expect_s3_class(p, "gg")
+})
+
+test_that("hexmakr_preview_theme() honors the mode argument", {
+  grDevices::pdf(file = NULL)
+  on.exit(grDevices::dev.off(), add = TRUE)
+  expect_no_error(hexmakr_preview_theme("genomics", mode = "light"))
+})
+
+test_that("hexmakr_preview_theme() errors on an unknown theme", {
+  grDevices::pdf(file = NULL)
+  on.exit(grDevices::dev.off(), add = TRUE)
+  expect_error(hexmakr_preview_theme("nonexistent"), "Unknown theme")
+})

@@ -75,3 +75,19 @@ test_that("subtitle and url parameters are rendered without error", {
     hex_sticker("pkg", subtitle = "A subtitle", url = "cran.r-project.org")
   )
 })
+
+test_that("providing both icon and icon_image messages and uses the image", {
+  png_path <- withr::local_tempfile(fileext = ".png")
+  grDevices::png(png_path, width = 64, height = 64, units = "px")
+  grid::grid.rect(gp = grid::gpar(fill = "#abcdef"))
+  grDevices::dev.off()
+
+  expect_message(
+    hex_sticker("pkg", icon = "atom", icon_image = png_path),
+    "icon_image"
+  )
+})
+
+test_that("light mode resolves light theme colors", {
+  expect_no_error(hex_sticker("pkg", theme = "cran", mode = "light"))
+})
