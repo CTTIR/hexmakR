@@ -11,9 +11,12 @@ Source:
 [`inst/CITATION`](https://github.com/cttir/hexmakR/blob/main/inst/CITATION)
 
 Heller R (2026). *hexmakR: Interactive Hex Sticker Generator for R
-Packages*. R package version 0.1.0, <https://github.com/cttir/hexmakR>.
+Packages*.
+[doi:10.5281/zenodo.21889938](https://doi.org/10.5281/zenodo.21889938).
+R package version 0.1.0, <https://github.com/cttir/hexmakR>.
 
     @Manual{,
+      doi = {10.5281/zenodo.21889938},
       title = {hexmakR: Interactive Hex Sticker Generator for R Packages},
       author = {R. Heller},
       year = {2026},
