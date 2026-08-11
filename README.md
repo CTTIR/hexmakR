@@ -2,6 +2,8 @@
 
 # hexmakR
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21889938.svg)](https://doi.org/10.5281/zenodo.21889938)
+
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://cttir.github.io/hexmakR/)
@@ -174,3 +176,11 @@ third parties for the self-hosted model.
 All scientific claims, methodological choices, analyses, interpretations, and conclusions are the
 author's own. No LLM-generated text was incorporated without review and revision, and every reference
 was verified against its DOI, arXiv ID, or ISBN.
+
+## Citation
+
+If you use this software, please cite it as:
+
+> Heller, R. (2026). *hexmakR: Interactive hex sticker generator for R packages* (Version 0.1.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21889938
+
+DOI: [10.5281/zenodo.21889938](https://doi.org/10.5281/zenodo.21889938)
