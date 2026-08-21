@@ -1,0 +1,17 @@
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+name: lint
+
+permissions: read-all
+
+jobs:
+  lint:
+    uses: CTTIR/.github/.github/workflows/lint.yaml@feat/org-infrastructure
+    # hexmakR measured 0 house-linter findings on 2026-08-21, so it can block
+    # from day one rather than waiting for a cleanup.
+    with:
+      blocking: true
