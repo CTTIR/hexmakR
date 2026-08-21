@@ -15,3 +15,5 @@ jobs:
     # from day one rather than waiting for a cleanup.
     with:
       blocking: true
+      # Must match the workflow ref above; see config-ref in the shared workflow.
+      config-ref: feat/org-infrastructure
