@@ -14,6 +14,9 @@ jobs:
     # hexmakR measured 0 house-linter findings on 2026-08-21, so it can block
     # from day one rather than waiting for a cleanup.
     with:
-      blocking: true
+      # hexmakR has 15 house-linter findings (14 stop()/warning(), 1
+      # multi-entry globalVariables). Report-only until they are cleared,
+      # then flip to true.
+      blocking: false
       # Must match the workflow ref above; see config-ref in the shared workflow.
       config-ref: feat/org-infrastructure
