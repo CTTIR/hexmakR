@@ -2,8 +2,7 @@
 
 Generates a publication-ready hexagon sticker for an R package. Returns
 a ggplot object that can be printed, further customised with `+`, or
-saved with
-[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md).
+saved with [`save_hex()`](save_hex.md).
 
 ## Usage
 
@@ -52,8 +51,8 @@ hex_sticker(
 - icon:
 
   Character or `NULL`. Name of a built-in icon. See
-  [`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md)
-  for valid values. Ignored if `icon_image` is provided.
+  [`hexmakr_icons()`](hexmakr_icons.md) for valid values. Ignored if
+  `icon_image` is provided.
 
 - icon_image:
 
@@ -122,8 +121,7 @@ hex_sticker(
 - filename:
 
   Character or `NULL`. If provided, save the sticker as a transparent
-  PNG at this path using
-  [`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md).
+  PNG at this path using [`save_hex()`](save_hex.md).
 
 - width:
 
@@ -144,15 +142,12 @@ Create a hex sticker
 
 ## See also
 
-[`hexmakr_themes()`](https://cttir.github.io/hexmakR/reference/hexmakr_themes.md),
-[`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md),
-[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md),
-[`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md)
+[`hexmakr_themes()`](hexmakr_themes.md),
+[`hexmakr_icons()`](hexmakr_icons.md), [`save_hex()`](save_hex.md),
+[`hexmakr_app()`](hexmakr_app.md)
 
-Other stickers:
-[`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md),
-[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md),
-[`save_hex_svg()`](https://cttir.github.io/hexmakR/reference/save_hex_svg.md)
+Other stickers: [`hexmakr_app()`](hexmakr_app.md),
+[`save_hex()`](save_hex.md), [`save_hex_svg()`](save_hex_svg.md)
 
 ## Examples
 

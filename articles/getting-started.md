@@ -17,7 +17,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 ![](../../../_temp/Library/hexmakR/logo/logo.svg)
 
-### Installation
+## Installation
 
 Install hexmakR from CRAN:
 
@@ -34,7 +34,7 @@ Or install the development version from GitHub:
 pak::pak("cttir/hexmakR")
 ```
 
-### Your first hex sticker in 3 lines
+## Your first hex sticker in 3 lines
 
 ``` r
 
@@ -46,7 +46,7 @@ hex_sticker("mypackage", icon = "atom", theme = "stats")
 That’s it. The default settings produce a dark-themed sticker with the
 `stats` color palette and an atom icon.
 
-### Saving to a file
+## Saving to a file
 
 Pass `filename` to write a transparent PNG directly:
 
@@ -64,7 +64,7 @@ The file will have the correct hexb.in aspect ratio (width / height = √3
 / 2) and a transparent background, ready for use in your README or
 pkgdown site.
 
-### Exploring themes
+## Exploring themes
 
 ``` r
 
@@ -79,7 +79,7 @@ hexmakr_preview_theme("genomics", mode = "dark")
 hexmakr_preview_theme("genomics", mode = "light")
 ```
 
-### Exploring icons
+## Exploring icons
 
 ``` r
 
@@ -90,7 +90,7 @@ names(hexmakr_icons())
 hexmakr_icons("biology")
 ```
 
-### Customizing colors
+## Customizing colors
 
 Override any theme color individually:
 
@@ -108,7 +108,7 @@ hex_sticker(
 )
 ```
 
-### Choosing a font
+## Choosing a font
 
 ``` r
 
@@ -125,29 +125,10 @@ Available font shorthands: `"mono"`, `"courier"`, `"consolas"`,
 `"source_code"`, `"fira_code"`, `"serif"`, `"times"`, `"palatino"`,
 `"sans"`, `"helvetica"`, `"roboto"`, `"open_sans"`, `"lato"`.
 
-### Next steps
+## Next steps
 
 - For full parameter reference:
-  [`vignette("programmatic-usage")`](https://cttir.github.io/hexmakR/articles/programmatic-usage.md)
+  [`vignette("programmatic-usage")`](../articles/programmatic-usage.md)
 - To use the interactive designer:
-  [`vignette("shiny-app")`](https://cttir.github.io/hexmakR/articles/shiny-app.md)
-  or just run
-  [`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md)
-
-## Use of LLM tools
-
-Portions of this package were prepared with assistance from large
-language model tooling for narrowly defined, non-authorial tasks:
-copyediting, prose smoothing, Markdown/LaTeX formatting, scaffolding of
-boilerplate files (CI configs, build scripts), code refactoring. The
-tools used were [Chat
-AI](https://kisski.gwdg.de/leistungen/2-02-llm-service/), the LLM
-service of KISSKI (GWDG), and a self-hosted **Mistral Small (24B,
-Apache-2.0)** run locally via [Ollama](https://ollama.com/) and the
-`ollamar` R package — local inference only, with no data sent to third
-parties for the self-hosted model.
-
-All scientific claims, methodological choices, analyses,
-interpretations, and conclusions are the author’s own. No LLM-generated
-text was incorporated without review and revision, and every reference
-was verified against its DOI, arXiv ID, or ISBN.
+  [`vignette("shiny-app")`](../articles/shiny-app.md) or just run
+  [`hexmakr_app()`](../reference/hexmakr_app.md)

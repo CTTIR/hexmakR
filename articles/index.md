@@ -1,19 +1,7 @@
 # Articles
 
-### Getting Started
+### Guides
 
-Start here to learn how to create hex stickers with hexmakR, from a
-minimal one-liner to customized programmatic designs.
-
-- [Getting Started with
-  hexmakR](https://cttir.github.io/hexmakR/articles/getting-started.md):
-
-### Advanced Usage
-
-Deep dives into the programmatic API and the interactive Shiny designer
-for users who want full control.
-
-- [Programmatic
-  Usage](https://cttir.github.io/hexmakR/articles/programmatic-usage.md):
-- [Interactive Shiny
-  App](https://cttir.github.io/hexmakR/articles/shiny-app.md):
+- [Getting Started with hexmakR](getting-started.md):
+- [Programmatic Usage](programmatic-usage.md):
+- [Interactive Shiny App](shiny-app.md):

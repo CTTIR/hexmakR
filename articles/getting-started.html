@@ -37,15 +37,30 @@
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-<li class="active nav-item"><a class="nav-link" href="../articles/getting-started.html">Getting Started</a></li>
-<li class="nav-item"><a class="nav-link" href="../articles/index.html">Vignettes</a></li>
-<li class="nav-item"><a class="nav-link" href="../reference/index.html">Functions</a></li>
-<li class="nav-item"><a class="nav-link" href="../news/index.html">News</a></li>
-      </ul>
+      <ul class="navbar-nav me-auto"></ul>
 <ul class="navbar-nav">
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/cttir/hexmakR" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started with hexmakR</a></li>
+    <li><a class="dropdown-item" href="../articles/programmatic-usage.html">Programmatic Usage</a></li>
+    <li><a class="dropdown-item" href="../articles/shiny-app.html">Interactive Shiny App</a></li>
+  </ul>
+</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/cttir/hexmakR/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul>
+</li>
       </ul>
 </div>
 
@@ -68,11 +83,11 @@
     
     
 <!-- badges: start -->
-<p><a href="https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://cttir.github.io/hexmakR/"><img src="https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a> <a href="https://CRAN.R-project.org/package=hexmakR" class="external-link"><img src="https://www.r-pkg.org/badges/version/hexmakR" alt="CRAN status"></a> <a href="https://app.codecov.io/gh/CTTIR/hexmakR?branch=main" class="external-link"><img src="https://codecov.io/gh/CTTIR/hexmakR/branch/main/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://cran.r-project.org/package=hexmakR" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/hexmakR" alt="CRAN downloads"></a> <a href="https://cran.r-project.org/package=hexmakR" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/hexmakR" alt="CRAN downloads total"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="License: MIT"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <!-- badges: end --></p>
+<p><a href="https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://cttir.github.io/hexmakR/" class="external-link"><img src="https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a> <a href="https://CRAN.R-project.org/package=hexmakR" class="external-link"><img src="https://www.r-pkg.org/badges/version/hexmakR" alt="CRAN status"></a> <a href="https://app.codecov.io/gh/CTTIR/hexmakR?branch=main" class="external-link"><img src="https://codecov.io/gh/CTTIR/hexmakR/branch/main/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://cran.r-project.org/package=hexmakR" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/hexmakR" alt="CRAN downloads"></a> <a href="https://cran.r-project.org/package=hexmakR" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/hexmakR" alt="CRAN downloads total"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="License: MIT"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <!-- badges: end --></p>
 <p><img src="../../../_temp/Library/hexmakR/logo/logo.svg" class="r-plt" alt="" style="float:right; margin-left:1em;"></p>
-<div class="section level3">
-<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h3>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>Install hexmakR from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"hexmakR"</span><span class="op">)</span></span></code></pre></div>
@@ -81,19 +96,19 @@
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"cttir/hexmakR"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="your-first-hex-sticker-in-3-lines">Your first hex sticker in 3 lines<a class="anchor" aria-label="anchor" href="#your-first-hex-sticker-in-3-lines"></a>
-</h3>
+<div class="section level2">
+<h2 id="your-first-hex-sticker-in-3-lines">Your first hex sticker in 3 lines<a class="anchor" aria-label="anchor" href="#your-first-hex-sticker-in-3-lines"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cttir.github.io/hexmakR/">hexmakR</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cttir.github.io/hexmakR/" class="external-link">hexmakR</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/hex_sticker.html">hex_sticker</a></span><span class="op">(</span><span class="st">"mypackage"</span>, icon <span class="op">=</span> <span class="st">"atom"</span>, theme <span class="op">=</span> <span class="st">"stats"</span><span class="op">)</span></span></code></pre></div>
 <p>That’s it. The default settings produce a dark-themed sticker with
 the <code>stats</code> color palette and an atom icon.</p>
 </div>
-<div class="section level3">
-<h3 id="saving-to-a-file">Saving to a file<a class="anchor" aria-label="anchor" href="#saving-to-a-file"></a>
-</h3>
+<div class="section level2">
+<h2 id="saving-to-a-file">Saving to a file<a class="anchor" aria-label="anchor" href="#saving-to-a-file"></a>
+</h2>
 <p>Pass <code>filename</code> to write a transparent PNG directly:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hex_sticker.html">hex_sticker</a></span><span class="op">(</span></span>
@@ -106,9 +121,9 @@ the <code>stats</code> color palette and an atom icon.</p>
 √3 / 2) and a transparent background, ready for use in your README or
 pkgdown site.</p>
 </div>
-<div class="section level3">
-<h3 id="exploring-themes">Exploring themes<a class="anchor" aria-label="anchor" href="#exploring-themes"></a>
-</h3>
+<div class="section level2">
+<h2 id="exploring-themes">Exploring themes<a class="anchor" aria-label="anchor" href="#exploring-themes"></a>
+</h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/hexmakr_themes.html">hexmakr_themes</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Preview a theme interactively:</p>
@@ -116,9 +131,9 @@ pkgdown site.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hexmakr_preview_theme.html">hexmakr_preview_theme</a></span><span class="op">(</span><span class="st">"genomics"</span>, mode <span class="op">=</span> <span class="st">"dark"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/hexmakr_preview_theme.html">hexmakr_preview_theme</a></span><span class="op">(</span><span class="st">"genomics"</span>, mode <span class="op">=</span> <span class="st">"light"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="exploring-icons">Exploring icons<a class="anchor" aria-label="anchor" href="#exploring-icons"></a>
-</h3>
+<div class="section level2">
+<h2 id="exploring-icons">Exploring icons<a class="anchor" aria-label="anchor" href="#exploring-icons"></a>
+</h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># All categories</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/hexmakr_icons.html">hexmakr_icons</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
@@ -126,9 +141,9 @@ pkgdown site.</p>
 <span><span class="co"># Icons in a specific category</span></span>
 <span><span class="fu"><a href="../reference/hexmakr_icons.html">hexmakr_icons</a></span><span class="op">(</span><span class="st">"biology"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="customizing-colors">Customizing colors<a class="anchor" aria-label="anchor" href="#customizing-colors"></a>
-</h3>
+<div class="section level2">
+<h2 id="customizing-colors">Customizing colors<a class="anchor" aria-label="anchor" href="#customizing-colors"></a>
+</h2>
 <p>Override any theme color individually:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hex_sticker.html">hex_sticker</a></span><span class="op">(</span></span>
@@ -142,9 +157,9 @@ pkgdown site.</p>
 <span>  sub_color    <span class="op">=</span> <span class="st">"#8B949E"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="choosing-a-font">Choosing a font<a class="anchor" aria-label="anchor" href="#choosing-a-font"></a>
-</h3>
+<div class="section level2">
+<h2 id="choosing-a-font">Choosing a font<a class="anchor" aria-label="anchor" href="#choosing-a-font"></a>
+</h2>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hex_sticker.html">hex_sticker</a></span><span class="op">(</span></span>
 <span>  <span class="st">"mypackage"</span>,</span>
@@ -160,9 +175,9 @@ pkgdown site.</p>
 <code>"sans"</code>, <code>"helvetica"</code>, <code>"roboto"</code>,
 <code>"open_sans"</code>, <code>"lato"</code>.</p>
 </div>
-<div class="section level3">
-<h3 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
-</h3>
+<div class="section level2">
+<h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
+</h2>
 <ul>
 <li>For full parameter reference:
 <code><a href="../articles/programmatic-usage.html">vignette("programmatic-usage")</a></code>
@@ -171,23 +186,6 @@ pkgdown site.</p>
 or just run <code><a href="../reference/hexmakr_app.html">hexmakr_app()</a></code>
 </li>
 </ul>
-</div>
-<div class="section level2">
-<h2 id="use-of-llm-tools">Use of LLM tools<a class="anchor" aria-label="anchor" href="#use-of-llm-tools"></a>
-</h2>
-<p>Portions of this package were prepared with assistance from large
-language model tooling for narrowly defined, non-authorial tasks:
-copyediting, prose smoothing, Markdown/LaTeX formatting, scaffolding of
-boilerplate files (CI configs, build scripts), code refactoring. The
-tools used were <a href="https://kisski.gwdg.de/leistungen/2-02-llm-service/" class="external-link">Chat AI</a>,
-the LLM service of KISSKI (GWDG), and a self-hosted <strong>Mistral
-Small (24B, Apache-2.0)</strong> run locally via <a href="https://ollama.com/" class="external-link">Ollama</a> and the <code>ollamar</code> R
-package — local inference only, with no data sent to third parties for
-the self-hosted model.</p>
-<p>All scientific claims, methodological choices, analyses,
-interpretations, and conclusions are the author’s own. No LLM-generated
-text was incorporated without review and revision, and every reference
-was verified against its DOI, arXiv ID, or ISBN.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

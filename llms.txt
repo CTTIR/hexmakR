@@ -162,24 +162,6 @@ hexmakR was inspired by the pioneering work of the
 are grateful to Guangchuang Yu and all contributors for establishing hex
 stickers as a staple of R package identity.
 
-## Use of LLM tools
-
-Portions of this package were prepared with assistance from large
-language model tooling for narrowly defined, non-authorial tasks:
-copyediting, prose smoothing, Markdown/LaTeX formatting, scaffolding of
-boilerplate files (CI configs, build scripts), code refactoring. The
-tools used were [Chat
-AI](https://kisski.gwdg.de/leistungen/2-02-llm-service/), the LLM
-service of KISSKI (GWDG), and a self-hosted **Mistral Small (24B,
-Apache-2.0)** run locally via [Ollama](https://ollama.com/) and the
-`ollamar` R package — local inference only, with no data sent to third
-parties for the self-hosted model.
-
-All scientific claims, methodological choices, analyses,
-interpretations, and conclusions are the author’s own. No LLM-generated
-text was incorporated without review and revision, and every reference
-was verified against its DOI, arXiv ID, or ISBN.
-
 ## Citation
 
 If you use this software, please cite it as:
@@ -192,56 +174,28 @@ DOI: [10.5281/zenodo.21889938](https://doi.org/10.5281/zenodo.21889938)
 
 # Package index
 
-## Create Stickers
+## Create and export
 
-The core functions for building hex stickers.
-[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
-returns a ggplot object;
-[`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md)
-opens the interactive Shiny designer.
+- [`hex_sticker()`](hex_sticker.md) : Create a Hex Sticker
+- [`save_hex()`](save_hex.md) : Save a Hex Sticker
+- [`save_hex_svg()`](save_hex_svg.md) : Save a Hex Sticker as SVG
 
-- [`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
-  : Create a Hex Sticker
-- [`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md)
-  : Launch Interactive Hex Sticker Designer
+## Themes and icons
 
-## Themes & Icons
+- [`hexmakr_icons()`](hexmakr_icons.md) : List Available Icons
+- [`hexmakr_themes()`](hexmakr_themes.md) : List Available Themes
+- [`hexmakr_preview_theme()`](hexmakr_preview_theme.md) : Preview a
+  Color Theme
 
-Explore the 19 built-in color themes and 46 built-in icons. Each theme
-provides coordinated `dark` and `light` color palettes.
+## Interactive application
 
-- [`hexmakr_themes()`](https://cttir.github.io/hexmakR/reference/hexmakr_themes.md)
-  : List Available Themes
-- [`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md)
-  : List Available Icons
-- [`hexmakr_preview_theme()`](https://cttir.github.io/hexmakR/reference/hexmakr_preview_theme.md)
-  : Preview a Color Theme
-
-## Export
-
-Save hex stickers to PNG (transparent background) or SVG.
-
-- [`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md)
-  : Save a Hex Sticker
-- [`save_hex_svg()`](https://cttir.github.io/hexmakR/reference/save_hex_svg.md)
-  : Save a Hex Sticker as SVG
+- [`hexmakr_app()`](hexmakr_app.md) : Launch Interactive Hex Sticker
+  Designer
 
 # Articles
 
-### Getting Started
+### Guides
 
-Start here to learn how to create hex stickers with hexmakR, from a
-minimal one-liner to customized programmatic designs.
-
-- [Getting Started with
-  hexmakR](https://cttir.github.io/hexmakR/articles/getting-started.md):
-
-### Advanced Usage
-
-Deep dives into the programmatic API and the interactive Shiny designer
-for users who want full control.
-
-- [Programmatic
-  Usage](https://cttir.github.io/hexmakR/articles/programmatic-usage.md):
-- [Interactive Shiny
-  App](https://cttir.github.io/hexmakR/articles/shiny-app.md):
+- [Getting Started with hexmakR](getting-started.md):
+- [Programmatic Usage](programmatic-usage.md):
+- [Interactive Shiny App](shiny-app.md):

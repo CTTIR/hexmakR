@@ -28,11 +28,10 @@ List available icons
 
 ## See also
 
-[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
+[`hex_sticker()`](hex_sticker.md)
 
-Other themes:
-[`hexmakr_preview_theme()`](https://cttir.github.io/hexmakR/reference/hexmakr_preview_theme.md),
-[`hexmakr_themes()`](https://cttir.github.io/hexmakR/reference/hexmakr_themes.md)
+Other themes: [`hexmakr_preview_theme()`](hexmakr_preview_theme.md),
+[`hexmakr_themes()`](hexmakr_themes.md)
 
 ## Examples
 
@@ -66,7 +65,7 @@ hexmakr_icons("science")
 #>             lwd = size * 4, lty = 1))
 #>     }
 #> }
-#> <bytecode: 0x55939d5ef790>
+#> <bytecode: 0x5602f992a618>
 #> <environment: namespace:hexmakR>
 #> 
 #> 
@@ -90,7 +89,7 @@ hexmakr_icons("science")
 #>         0.2, height = size * 0.04, gp = grid::gpar(fill = color, 
 #>         col = color))
 #> }
-#> <bytecode: 0x55939d5f0808>
+#> <bytecode: 0x5602f992f4c0>
 #> <environment: namespace:hexmakR>
 #> 
 #> 
@@ -116,7 +115,7 @@ hexmakr_icons("science")
 #>         0.05, height = size * 0.12, gp = grid::gpar(fill = color, 
 #>         col = color))
 #> }
-#> <bytecode: 0x55939d5f7e20>
+#> <bytecode: 0x5602f9932ca8>
 #> <environment: namespace:hexmakR>
 #> 
 #> 
@@ -142,7 +141,7 @@ hexmakr_icons("science")
 #>             col = color))
 #>     }
 #> }
-#> <bytecode: 0x55939d5f91a8>
+#> <bytecode: 0x5602f9934030>
 #> <environment: namespace:hexmakR>
 #> 
 #> 
@@ -171,7 +170,7 @@ hexmakr_icons("science")
 #>         width = (r_out - r_in), height = size * 0.12, gp = grid::gpar(fill = color, 
 #>             col = color))
 #> }
-#> <bytecode: 0x55939d5fa4c0>
+#> <bytecode: 0x5602f9939178>
 #> <environment: namespace:hexmakR>
 #> 
 #> 
