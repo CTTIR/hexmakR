@@ -15,7 +15,7 @@ MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.or
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
-![](../../../_temp/Library/hexmakR/logo/logo.svg)
+![](figures/logo.svg)
 
 ## All parameters
 
