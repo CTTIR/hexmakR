@@ -1,0 +1,26 @@
+template:
+  package: themakR
+development:
+  mode: auto
+destination: site
+reference:
+  - title: Create and export
+    contents:
+      - hex_sticker
+      - save_hex
+      - save_hex_svg
+  - title: Themes and icons
+    contents:
+      - hexmakr_icons
+      - hexmakr_themes
+      - hexmakr_preview_theme
+  - title: Interactive application
+    contents:
+      - hexmakr_app
+articles:
+  - title: Guides
+    navbar: ~
+    contents:
+      - getting-started
+      - programmatic-usage
+      - shiny-app
