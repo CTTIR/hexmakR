@@ -1,4 +1,6 @@
 ---
+resource_files:
+  - figures/logo.svg
 title: "Programmatic Usage"
 output: rmarkdown::html_vignette
 vignette: >
@@ -27,8 +29,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r logo, echo=FALSE, eval=TRUE, out.extra='style="float:right; margin-left:1em;"'}
-logo <- system.file("logo", "logo.svg", package = "hexmakR")
-if (nzchar(logo)) knitr::include_graphics(logo)
+knitr::include_graphics("figures/logo.svg")
 ```
 
 ## All parameters
