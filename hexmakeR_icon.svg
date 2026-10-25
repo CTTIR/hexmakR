@@ -1,74 +1,14 @@
-<svg width="500" height="580" viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1a1035"/>
-      <stop offset="100%" stop-color="#0d0920"/>
-    </linearGradient>
-    <linearGradient id="hex-glow" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#7F77DD" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#534AB7" stop-opacity="0.08"/>
-    </linearGradient>
-    <clipPath id="hex-clip">
-      <polygon points="250,30 455,145 455,375 250,490 45,375 45,145"/>
-    </clipPath>
-  </defs>
-
-  <!-- Main hex shape -->
-  <polygon points="250,30 455,145 455,375 250,490 45,375 45,145"
-    fill="url(#bg-grad)" stroke="none"/>
-  <polygon points="250,30 455,145 455,375 250,490 45,375 45,145"
-    fill="url(#hex-glow)" stroke="none"/>
-
-  <!-- Hex border -->
-  <polygon points="250,30 455,145 455,375 250,490 45,375 45,145"
-    fill="none" stroke="#7F77DD" stroke-width="12" stroke-linejoin="round"/>
-  <polygon points="250,44 441,153 441,367 250,476 59,367 59,153"
-    fill="none" stroke="#534AB7" stroke-width="1.5" stroke-linejoin="round" stroke-opacity="0.6"/>
-
-  <g clip-path="url(#hex-clip)">
-    <!-- Mini hex stickers -->
-    <polygon points="110,120 138,105 166,120 166,150 138,165 110,150"
-      fill="#3C3489" stroke="#7F77DD" stroke-width="1.5"/>
-    <text font-family="monospace" font-size="11" fill="#CECBF6" text-anchor="middle" x="138" y="138">gg</text>
-
-    <polygon points="355,100 383,85 411,100 411,130 383,145 355,130"
-      fill="#085041" stroke="#1D9E75" stroke-width="1.5"/>
-    <text font-family="monospace" font-size="11" fill="#9FE1CB" text-anchor="middle" x="383" y="118">dt</text>
-
-    <polygon points="80,290 108,275 136,290 136,320 108,335 80,320"
-      fill="#3C3489" stroke="#7F77DD" stroke-width="1.5"/>
-    <text font-family="monospace" font-size="11" fill="#CECBF6" text-anchor="middle" x="108" y="308">sf</text>
-
-    <polygon points="370,305 398,290 426,305 426,335 398,350 370,335"
-      fill="#712B13" stroke="#D85A30" stroke-width="1.5"/>
-    <text font-family="monospace" font-size="11" fill="#F5C4B3" text-anchor="middle" x="398" y="323">tm</text>
-
-    <polygon points="200,370 228,355 256,370 256,400 228,415 200,400"
-      fill="#085041" stroke="#1D9E75" stroke-width="1.5"/>
-    <text font-family="monospace" font-size="10" fill="#9FE1CB" text-anchor="middle" x="228" y="388">lm</text>
-
-    <!-- Guide lines -->
-    <line x1="148" y1="230" x2="355" y2="230" stroke="#EF9F27" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
-    <line x1="148" y1="260" x2="355" y2="260" stroke="#EF9F27" stroke-width="1" stroke-dasharray="4 3" opacity="0.35"/>
-
-    <!-- Central hex outline being constructed -->
-    <polygon points="250,170 310,205 310,275 250,310 190,275 190,205"
-      fill="none" stroke="#EF9F27" stroke-width="2" stroke-linejoin="round" stroke-dasharray="8 4" opacity="0.85"/>
-
-    <!-- Pencil tool -->
-    <g transform="translate(305,168) rotate(-38)">
-      <rect x="-5" y="-24" width="10" height="30" rx="2" fill="#FAC775"/>
-      <polygon points="-5,6 5,6 0,18" fill="#F0994A"/>
-      <rect x="-5" y="-28" width="10" height="6" rx="1" fill="#B4B2A9"/>
-      <rect x="-4" y="-7" width="8" height="2" fill="#D85A30" opacity="0.5"/>
-    </g>
-
-    <!-- R letter -->
-    <text font-family="Georgia, serif" font-weight="700" font-size="52"
-      fill="#7F77DD" text-anchor="middle" x="250" y="258" opacity="0.9">R</text>
-  </g>
-
-  <!-- Package name -->
-  <text font-family="monospace" font-weight="700" font-size="28"
-    fill="#EEEDFE" text-anchor="middle" x="250" y="545" letter-spacing="1">hexmakR</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="432" height="498" viewBox="0 0 432 498">
+<path fill-rule="nonzero" fill="rgb(100%, 100%, 100%)" fill-opacity="1" d="M 216 4.980469 L 427.679688 126.988281 L 427.679688 371.011719 L 216 493.019531 L 4.320312 371.011719 L 4.320312 126.988281 Z M 216 4.980469 "/>
+<path fill-rule="nonzero" fill="rgb(71.372549%, 78.039216%, 83.137255%)" fill-opacity="1" d="M 216 10.957031 L 422.496094 129.976562 L 422.496094 368.023438 L 216 487.042969 L 9.503906 368.023438 L 9.503906 129.976562 Z M 216 10.957031 "/>
+<path fill-rule="nonzero" fill="rgb(13.72549%, 19.215686%, 25.490196%)" fill-opacity="1" d="M 216 14.941406 L 419.039062 131.96875 L 419.039062 366.03125 L 216 483.058594 L 12.960938 366.03125 L 12.960938 131.96875 Z M 216 14.941406 "/>
+<path fill-rule="nonzero" fill="rgb(1.176471%, 3.921569%, 7.058824%)" fill-opacity="0.25098" d="M 194.453125 138.101562 L 97.929688 193.734375 L 97.929688 305.007812 L 194.453125 360.640625 L 290.976562 305.007812 L 290.976562 193.734375 Z M 194.453125 138.101562 "/>
+<path fill-rule="nonzero" fill="rgb(65.490196%, 73.72549%, 79.607843%)" fill-opacity="1" d="M 189.992188 130.3125 L 93.46875 185.945312 L 93.46875 297.21875 L 189.992188 352.851562 L 286.515625 297.21875 L 286.515625 185.945312 Z M 189.992188 130.3125 "/>
+<path fill-rule="nonzero" fill="rgb(86.666667%, 89.803922%, 92.156863%)" fill-opacity="1" d="M 189.992188 154.421875 L 114.382812 198 L 114.382812 285.164062 L 189.992188 328.742188 L 265.605469 285.164062 L 265.605469 198 Z M 189.992188 154.421875 "/>
+<path fill-rule="nonzero" fill="rgb(95.686275%, 97.254902%, 98.823529%)" fill-opacity="1" d="M 189.992188 180.382812 L 136.90625 210.984375 L 136.90625 272.179688 L 189.992188 302.78125 L 243.082031 272.179688 L 243.082031 210.984375 Z M 189.992188 180.382812 "/>
+<path fill-rule="nonzero" fill="rgb(1.176471%, 3.921569%, 7.058824%)" fill-opacity="0.25098" d="M 231.605469 338.386719 L 272.472656 356.933594 L 357.921875 175.191406 L 317.054688 152.9375 Z M 231.605469 338.386719 "/>
+<path fill-rule="nonzero" fill="rgb(65.490196%, 73.72549%, 79.607843%)" fill-opacity="1" d="M 227.144531 330.597656 L 268.011719 349.144531 L 353.460938 167.402344 L 312.59375 145.148438 Z M 227.144531 330.597656 "/>
+<path fill-rule="nonzero" fill="rgb(95.686275%, 97.254902%, 98.823529%)" fill-opacity="1" d="M 227.144531 330.597656 L 268.011719 349.144531 L 212.285156 378.816406 Z M 227.144531 330.597656 "/>
+<path fill-rule="nonzero" fill="rgb(95.686275%, 97.254902%, 98.823529%)" fill-opacity="1" d="M 312.59375 145.148438 L 353.460938 167.402344 L 364.609375 141.4375 L 323.742188 119.183594 Z M 312.59375 145.148438 "/>
 </svg>

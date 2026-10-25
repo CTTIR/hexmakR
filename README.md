@@ -1,4 +1,4 @@
-<img src="man/figures/logo.svg" align="right" height="139" alt="hexmakR logo" />
+<img src="man/figures/logo.svg" align="right" width="120" height="139" alt="hexmakR logo" />
 
 # hexmakR
 
@@ -189,3 +189,8 @@ must be reviewed and revised before inclusion, and references must be verified
 against their DOI, arXiv ID or ISBN.
 
 Local software setup: vLLM with Python/PyTorch, plus R and RStudio.
+
+## Package branding
+
+The package uses the CTTIR Material Atlas v3.1 identity. Editable R geometry,
+fonts, and a reproduction command are in [tools/branding](https://github.com/CTTIR/hexmakR/tree/main/tools/branding).
