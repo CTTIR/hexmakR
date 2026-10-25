@@ -1,4 +1,4 @@
-<picture class="cttir-readme-logo"><source class="cttir-logo-dark-source" media="(prefers-color-scheme: dark)" srcset="man/figures/logo-with-name-dark.svg" /><img src="man/figures/logo-with-name.svg" align="right" alt="hexmakR logo" width="120" height="155" /></picture>
+<picture class="cttir-readme-logo"><source class="cttir-logo-dark-source" media="(prefers-color-scheme: dark)" srcset="man/figures/logo-with-name-dark.svg" /><img src="man/figures/logo-with-name.svg" align="right" alt="hexmakR logo" width="120" height="139" /></picture>
 
 # hexmakR
 
@@ -192,5 +192,5 @@ Local software setup: vLLM with Python/PyTorch, plus R and RStudio.
 
 ## Package branding
 
-The package uses the CTTIR Coder Edition v4.1 v3.1 identity. Editable R geometry,
+The package uses the CTTIR Coder Edition v5 v3.1 identity. Editable R geometry,
 fonts, and a reproduction command are in [tools/branding](https://github.com/CTTIR/hexmakR/tree/main/tools/branding).
