@@ -1,6 +1,6 @@
 # hexmakR
 
-![hexmakR logo](reference/figures/logo.svg)
+![hexmakR logo](reference/figures/logo-with-name.svg)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21889938.svg)](https://doi.org/10.5281/zenodo.21889938)
 
@@ -193,7 +193,7 @@ Local software setup: vLLM with Python/PyTorch, plus R and RStudio.
 
 ## Package branding
 
-The package uses the CTTIR Material Atlas v3.1 identity. Editable R
+The package uses the CTTIR Coder Edition v5 v3.1 identity. Editable R
 geometry, fonts, and a reproduction command are in
 [tools/branding](https://github.com/CTTIR/hexmakR/tree/main/tools/branding).
 
