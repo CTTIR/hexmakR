@@ -191,6 +191,12 @@ must be verified against their DOI, arXiv ID or ISBN.
 
 Local software setup: vLLM with Python/PyTorch, plus R and RStudio.
 
+## Package branding
+
+The package uses the CTTIR Material Atlas v3.1 identity. Editable R
+geometry, fonts, and a reproduction command are in
+[tools/branding](https://github.com/CTTIR/hexmakR/tree/main/tools/branding).
+
 # Package index
 
 ## Create and export
