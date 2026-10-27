@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Interactive Hex Sticker Generator for R Packages • hexmakR</title>
+<title>Editable Hex Stickers and Project Logos • hexmakR</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -17,9 +17,9 @@
 <link href="deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Interactive Hex Sticker Generator for R Packages">
-<meta name="description" content="Create publication-ready hexagon stickers for R packages interactively via a Shiny app or programmatically via R functions. Complements the hexSticker package (which embeds R plots into stickers) by providing an interactive visual designer with 19 curated color themes (dark and light variants), 46 built-in scientific and technical icons, custom image upload support, font selection, and export to transparent PNG. Designed for the R package ecosystem with presets for CRAN, Bioconductor, Tidyverse, and domain-specific color palettes.">
-<meta property="og:description" content="Create publication-ready hexagon stickers for R packages interactively via a Shiny app or programmatically via R functions. Complements the hexSticker package (which embeds R plots into stickers) by providing an interactive visual designer with 19 curated color themes (dark and light variants), 46 built-in scientific and technical icons, custom image upload support, font selection, and export to transparent PNG. Designed for the R package ecosystem with presets for CRAN, Bioconductor, Tidyverse, and domain-specific color palettes.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Editable Hex Stickers and Project Logos">
+<meta name="description" content="Create publication-ready hexagon stickers for R packages interactively via a Shiny app or programmatically via R functions. Complements the hexSticker package (which embeds R plots into stickers) by providing an interactive visual designer with 19 curated color themes (dark and light variants), 46 built-in scientific and technical icons, custom image upload support, font selection, and export to transparent PNG. Designed for the R package ecosystem with presets for CRAN, Bioconductor, Tidyverse, and domain-specific color palettes. Includes the CTTIR v5 library of 45 native R vector identities, editable shapes, reproducible JSON projects, and transparent PNG, SVG and PDF export with package names inside the hexagon. Project logos also support pentagonal and square frames.">
+<meta property="og:description" content="Create publication-ready hexagon stickers for R packages interactively via a Shiny app or programmatically via R functions. Complements the hexSticker package (which embeds R plots into stickers) by providing an interactive visual designer with 19 curated color themes (dark and light variants), 46 built-in scientific and technical icons, custom image upload support, font selection, and export to transparent PNG. Designed for the R package ecosystem with presets for CRAN, Bioconductor, Tidyverse, and domain-specific color palettes. Includes the CTTIR v5 library of 45 native R vector identities, editable shapes, reproducible JSON projects, and transparent PNG, SVG and PDF export with package names inside the hexagon. Project logos also support pentagonal and square frames.">
 <meta property="og:image" content="/logo.svg">
 <meta name="theme-color" content="#1565c0">
 </head>
@@ -31,7 +31,7 @@
 
     <a class="navbar-brand me-2" href="index.html"><img src="logo.svg" alt="" class="themakr-navbar-logo" data-cttir-dark-src="reference/figures/logo-dark.svg">hexmakR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,8 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/getting-started.html">Getting Started with hexmakR</a></li>
+<li><a class="dropdown-item" href="articles/cttir-library.html">CTTIR v5 and project logos</a></li>
+    <li><a class="dropdown-item" href="articles/getting-started.html">Getting Started with hexmakR</a></li>
     <li><a class="dropdown-item" href="articles/programmatic-usage.html">Programmatic Usage</a></li>
     <li><a class="dropdown-item" href="articles/shiny-app.html">Interactive Shiny App</a></li>
   </ul>
@@ -82,7 +83,20 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>hexmakR is an interactive hex sticker generator for R packages. Design publication-ready hexagon stickers visually through a Shiny app or programmatically via R functions. Comes with 19 curated color themes (dark + light), 46 built-in scientific and technical icons, custom image support, font selection, and transparent PNG export.</p>
+<p>hexmakR creates editable logos for R packages and projects. The default v5 workspace includes <strong>45 CTTIR identities</strong>, <strong>1,035 original SVG/PNG/PDF assets</strong>, and native R vector artwork. Package names stay <strong>inside the hex</strong>, with the scientific motif above, a family-coloured border and a transparent exterior. Project logos also support <strong>pentagonal and square frames</strong>.</p>
+<p>The manual editor supports palette and layout changes, individual vector shapes, point coordinates, undo/reset, JSON project save/load, and PNG/SVG/PDF exports. The original designer with 46 generic icons and 19 themes remains available. All 46 icons also work in the new project-logo editor.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cttir.github.io/hexmakR/" class="external-link">hexmakR</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span><span class="op">)</span>                          <span class="co"># v5 library and project-logo editor</span></span>
+<span><span class="fu"><a href="reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"phenoscapR"</span><span class="op">)</span>     <span class="co"># open a specific identity</span></span>
+<span><span class="fu"><a href="reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span>workspace <span class="op">=</span> <span class="st">"classic"</span><span class="op">)</span>      <span class="co"># original generic sticker designer</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="fu"><a href="reference/hex_design.html">hex_design</a></span><span class="op">(</span><span class="st">"phenoscapR"</span><span class="op">)</span>, <span class="st">"phenoscapR.svg"</span><span class="op">)</span></span>
+<span><span class="va">project</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/logo_design.html">logo_design</a></span><span class="op">(</span><span class="st">"My project"</span>, motif <span class="op">=</span> <span class="st">"phenoscapR"</span>, shape <span class="op">=</span> <span class="st">"pentagon"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="va">project</span>, <span class="st">"project.png"</span><span class="op">)</span></span>
+<span><span class="va">logo</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/logo_design.html">logo_design</a></span><span class="op">(</span><span class="st">"Study"</span>, shape <span class="op">=</span> <span class="st">"square"</span>, icon <span class="op">=</span> <span class="st">"microscope"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="va">logo</span>, <span class="st">"study.pdf"</span><span class="op">)</span></span></code></pre></div>
+<p>See the <a href="plans/2026-10-27-v5-update.html">detailed update plan</a> and <a href="https://cttir.github.io/hexmakR/articles/cttir-library.html" class="external-link">v5 library guide</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="standing-on-the-shoulders-of-hexsticker">Standing on the shoulders of <code>hexSticker</code>
@@ -108,18 +122,15 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># CRAN</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"hexmakR"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Development version</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Development version</span></span>
 <span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"cttir/hexmakR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cttir.github.io/hexmakR/" class="external-link">hexmakR</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Three lines to a sticker</span></span>
@@ -129,12 +140,12 @@
 <div class="section level2">
 <h2 id="shiny-app">Shiny App<a class="anchor" aria-label="anchor" href="#shiny-app"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>The Shiny designer opens in your browser with live preview. Adjust text, pick an icon, choose a theme, and hit <strong>Export PNG</strong> when you’re happy.</p>
+<p>The Shiny designer opens in your browser with live preview. Adjust text, select a frame and artwork, and export PNG, SVG or PDF. Use <strong>Apply design</strong> to apply composition settings and <strong>Apply shape edit</strong> for a selected layer. <strong>Save project</strong> preserves editable settings; <strong>R recipe</strong> reproduces the design.</p>
 </div>
 <div class="section level2">
-<h2 id="feature-comparison">Feature Comparison<a class="anchor" aria-label="anchor" href="#feature-comparison"></a>
+<h2 id="classic-designer-comparison">Classic designer comparison<a class="anchor" aria-label="anchor" href="#classic-designer-comparison"></a>
 </h2>
 <table class="table">
 <thead><tr>
@@ -194,9 +205,9 @@
 <td>✅</td>
 </tr>
 <tr>
-<td>CRAN available</td>
-<td>✅</td>
-<td>✅</td>
+<td>Installation</td>
+<td>CRAN</td>
+<td>GitHub development version</td>
 </tr>
 </tbody>
 </table>

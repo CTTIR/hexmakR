@@ -6,11 +6,36 @@
 
 ## Overview
 
-hexmakR is an interactive hex sticker generator for R packages. Design
-publication-ready hexagon stickers visually through a Shiny app or
-programmatically via R functions. Comes with 19 curated color themes
-(dark + light), 46 built-in scientific and technical icons, custom image
-support, font selection, and transparent PNG export.
+hexmakR creates editable logos for R packages and projects. The default
+v5 workspace includes **45 CTTIR identities**, **1,035 original
+SVG/PNG/PDF assets**, and native R vector artwork. Package names stay
+**inside the hex**, with the scientific motif above, a family-coloured
+border and a transparent exterior. Project logos also support
+**pentagonal and square frames**.
+
+The manual editor supports palette and layout changes, individual vector
+shapes, point coordinates, undo/reset, JSON project save/load, and
+PNG/SVG/PDF exports. The original designer with 46 generic icons and 19
+themes remains available. All 46 icons also work in the new project-logo
+editor.
+
+``` r
+
+library(hexmakR)
+hexmakr_app()                          # v5 library and project-logo editor
+hexmakr_app(package = "phenoscapR")     # open a specific identity
+hexmakr_app(workspace = "classic")      # original generic sticker designer
+
+hex_export(hex_design("phenoscapR"), "phenoscapR.svg")
+project <- logo_design("My project", motif = "phenoscapR", shape = "pentagon")
+hex_export(project, "project.png")
+logo <- logo_design("Study", shape = "square", icon = "microscope")
+hex_export(logo, "study.pdf")
+```
+
+See the [detailed update plan](plans/2026-10-27-v5-update.md) and [v5
+library
+guide](https://cttir.github.io/hexmakR/articles/cttir-library.html).
 
 ## Standing on the shoulders of `hexSticker`
 
@@ -51,9 +76,6 @@ and then fine-tune programmatically — with either package.
 
 ``` r
 
-# CRAN
-install.packages("hexmakR")
-
 # Development version
 # install.packages("pak")
 pak::pak("cttir/hexmakR")
@@ -78,23 +100,26 @@ hexmakr_app()
 ```
 
 The Shiny designer opens in your browser with live preview. Adjust text,
-pick an icon, choose a theme, and hit **Export PNG** when you’re happy.
+select a frame and artwork, and export PNG, SVG or PDF. Use **Apply
+design** to apply composition settings and **Apply shape edit** for a
+selected layer. **Save project** preserves editable settings; **R
+recipe** reproduces the design.
 
-## Feature Comparison
+## Classic designer comparison
 
-| Feature                              | hexSticker | hexmakR |
-|--------------------------------------|------------|---------|
-| Embed R plots (base/lattice/ggplot2) | ✅         | —       |
-| Interactive Shiny designer           | —          | ✅      |
-| Built-in icon library (46 icons)     | —          | ✅      |
-| Curated theme presets (19 themes)    | —          | ✅      |
-| Dark/light mode toggle               | —          | ✅      |
-| Custom image upload                  | ✅         | ✅      |
-| Font selection UI                    | —          | ✅      |
-| Google Fonts support                 | ✅         | —       |
-| Programmatic API                     | ✅         | ✅      |
-| Returns ggplot object                | ✅         | ✅      |
-| CRAN available                       | ✅         | ✅      |
+| Feature                              | hexSticker | hexmakR                    |
+|--------------------------------------|------------|----------------------------|
+| Embed R plots (base/lattice/ggplot2) | ✅         | —                          |
+| Interactive Shiny designer           | —          | ✅                         |
+| Built-in icon library (46 icons)     | —          | ✅                         |
+| Curated theme presets (19 themes)    | —          | ✅                         |
+| Dark/light mode toggle               | —          | ✅                         |
+| Custom image upload                  | ✅         | ✅                         |
+| Font selection UI                    | —          | ✅                         |
+| Google Fonts support                 | ✅         | —                          |
+| Programmatic API                     | ✅         | ✅                         |
+| Returns ggplot object                | ✅         | ✅                         |
+| Installation                         | CRAN       | GitHub development version |
 
 ## Available Themes
 
@@ -199,6 +224,25 @@ geometry, fonts, and a reproduction command are in
 
 # Package index
 
+## CTTIR library and project logos
+
+- [`hex_catalog()`](hex_catalog.md) : Browse the CTTIR v5 identities
+- [`hex_asset()`](hex_asset.md) : Locate an original approved v5 asset
+- [`hex_design()`](hex_design.md) : Create an editable CTTIR v5 design
+- [`logo_design()`](logo_design.md) : Create a project logo in three
+  frame shapes
+- [`hex_palette()`](hex_palette.md) : Inspect a design's palette roles
+- [`hex_grob()`](hex_grob.md) : Render a design to native grid geometry
+- [`hex_layers()`](hex_layers.md) : Inspect editable vector layers
+- [`hex_edit_layer()`](hex_edit_layer.md) : Edit one vector layer
+- [`hex_export()`](hex_export.md) : Export an editable v5 design
+- [`hex_save_design()`](hex_save_design.md)
+  [`hex_read_design()`](hex_save_design.md) : Save and load a v5 editing
+  project
+- [`hex_recipe()`](hex_recipe.md) : Write a reproducible R recipe
+- [`hex_render_catalog()`](hex_render_catalog.md) : Regenerate the v5
+  catalogue
+
 ## Create and export
 
 - [`hex_sticker()`](hex_sticker.md) : Create a Hex Sticker
@@ -221,6 +265,7 @@ geometry, fonts, and a reproduction command are in
 
 ### Guides
 
+- [CTTIR v5 and project logos](cttir-library.md):
 - [Getting Started with hexmakR](getting-started.md):
 - [Programmatic Usage](programmatic-usage.md):
 - [Interactive Shiny App](shiny-app.md):

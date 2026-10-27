@@ -22,7 +22,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 ``` r
 
 library(hexmakR)
-hexmakr_app()
+hexmakr_app(workspace = "classic")
 ```
 
 This opens the hexmakR Shiny designer in your default browser (or the

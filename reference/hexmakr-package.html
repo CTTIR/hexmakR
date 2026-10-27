@@ -5,9 +5,15 @@ Shiny app or programmatically via R functions.
 Comes with 19 curated color themes (dark + light variants), 46
 built-in scientific and technical icons across 7 categories, custom image
 upload support, 13 font options, and transparent PNG export.
+The v5 workspace adds 45 native R vector identities, individual shape edits,
+JSON projects, PNG/SVG/PDF exports and hexagonal, pentagonal or square logos.
 Main functions
 
 
+hex_design() –editable CTTIR v5 design.
+logo_design() –project logos in three frame shapes.
+hex_export() –vector and raster export.
+hex_catalog() –all 45 registered identities.
 hex_sticker() –programmatic hex sticker creation; returns a ggplot
 object.
 hexmakr_app() –launch the interactive Shiny designer.
@@ -24,9 +30,15 @@ Shiny app or programmatically via R functions.
 Comes with 19 curated color themes (dark + light variants), 46
 built-in scientific and technical icons across 7 categories, custom image
 upload support, 13 font options, and transparent PNG export.
+The v5 workspace adds 45 native R vector identities, individual shape edits,
+JSON projects, PNG/SVG/PDF exports and hexagonal, pentagonal or square logos.
 Main functions
 
 
+hex_design() –editable CTTIR v5 design.
+logo_design() –project logos in three frame shapes.
+hex_export() –vector and raster export.
+hex_catalog() –all 45 registered identities.
 hex_sticker() –programmatic hex sticker creation; returns a ggplot
 object.
 hexmakr_app() –launch the interactive Shiny designer.
@@ -45,7 +57,7 @@ save_hex_svg() –save a sticker to SVG (requires svglite).
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../logo.svg" alt="" class="themakr-navbar-logo" data-cttir-dark-src="../reference/figures/logo-dark.svg">hexmakR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +70,8 @@ save_hex_svg() –save a sticker to SVG (requires svglite).
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started with hexmakR</a></li>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/cttir-library.html">CTTIR v5 and project logos</a></li>
+    <li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started with hexmakR</a></li>
     <li><a class="dropdown-item" href="../articles/programmatic-usage.html">Programmatic Usage</a></li>
     <li><a class="dropdown-item" href="../articles/shiny-app.html">Interactive Shiny App</a></li>
   </ul></li>
@@ -88,10 +101,16 @@ save_hex_svg() –save a sticker to SVG (requires svglite).
 Shiny app or programmatically via R functions.</p>
 <p>Comes with <strong>19 curated color themes</strong> (dark + light variants), <strong>46
 built-in scientific and technical icons</strong> across 7 categories, custom image
-upload support, 13 font options, and transparent PNG export.</p><div class="section">
+upload support, 13 font options, and transparent PNG export.</p>
+<p>The v5 workspace adds 45 native R vector identities, individual shape edits,
+JSON projects, PNG/SVG/PDF exports and hexagonal, pentagonal or square logos.</p><div class="section">
 <h3 id="main-functions">Main functions<a class="anchor" aria-label="anchor" href="#main-functions"></a></h3>
 
-<ul><li><p><code><a href="hex_sticker.html">hex_sticker()</a></code> –programmatic hex sticker creation; returns a ggplot
+<ul><li><p><code><a href="hex_design.html">hex_design()</a></code> –editable CTTIR v5 design.</p></li>
+<li><p><code><a href="logo_design.html">logo_design()</a></code> –project logos in three frame shapes.</p></li>
+<li><p><code><a href="hex_export.html">hex_export()</a></code> –vector and raster export.</p></li>
+<li><p><code><a href="hex_catalog.html">hex_catalog()</a></code> –all 45 registered identities.</p></li>
+<li><p><code><a href="hex_sticker.html">hex_sticker()</a></code> –programmatic hex sticker creation; returns a ggplot
 object.</p></li>
 <li><p><code><a href="hexmakr_app.html">hexmakr_app()</a></code> –launch the interactive Shiny designer.</p></li>
 <li><p><code><a href="hexmakr_themes.html">hexmakr_themes()</a></code> –list all 19 built-in themes.</p></li>
@@ -105,15 +124,16 @@ object.</p></li>
 
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>Useful links:</p><ul><li><p><a href="https://r-heller.github.io/hexmakR/" class="external-link">https://r-heller.github.io/hexmakR/</a></p></li>
-<li><p><a href="https://github.com/r-heller/hexmakR" class="external-link">https://github.com/r-heller/hexmakR</a></p></li>
-<li><p>Report bugs at <a href="https://github.com/r-heller/hexmakR/issues" class="external-link">https://github.com/r-heller/hexmakR/issues</a></p></li>
+    <div class="dont-index"><p>Useful links:</p><ul><li><p><a href="https://cttir.github.io/hexmakR/" class="external-link">https://cttir.github.io/hexmakR/</a></p></li>
+<li><p><a href="https://github.com/cttir/hexmakR" class="external-link">https://github.com/cttir/hexmakR</a></p></li>
+<li><p>Report bugs at <a href="https://github.com/cttir/hexmakR/issues" class="external-link">https://github.com/cttir/hexmakR/issues</a></p></li>
 </ul></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
-    <p><strong>Maintainer</strong>: Raban Heller <a href="mailto:raban.heller@uni-ulm.de">raban.heller@uni-ulm.de</a> (<a href="https://orcid.org/0000-0001-8006-9742" class="external-link">ORCID</a>)</p>
-    </div>
+    <p><strong>Maintainer</strong>: R. Heller <a href="mailto:raban.heller@uni-ulm.de">raban.heller@uni-ulm.de</a> (<a href="https://orcid.org/0000-0001-8006-9742" class="external-link">ORCID</a>)</p>
+<p>Authors:</p><ul><li><p>R. Heller <a href="mailto:raban.heller@uni-ulm.de">raban.heller@uni-ulm.de</a> (<a href="https://orcid.org/0000-0001-8006-9742" class="external-link">ORCID</a>)</p></li>
+</ul></div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

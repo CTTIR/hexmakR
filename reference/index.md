@@ -1,5 +1,24 @@
 # Package index
 
+## CTTIR library and project logos
+
+- [`hex_catalog()`](hex_catalog.md) : Browse the CTTIR v5 identities
+- [`hex_asset()`](hex_asset.md) : Locate an original approved v5 asset
+- [`hex_design()`](hex_design.md) : Create an editable CTTIR v5 design
+- [`logo_design()`](logo_design.md) : Create a project logo in three
+  frame shapes
+- [`hex_palette()`](hex_palette.md) : Inspect a design's palette roles
+- [`hex_grob()`](hex_grob.md) : Render a design to native grid geometry
+- [`hex_layers()`](hex_layers.md) : Inspect editable vector layers
+- [`hex_edit_layer()`](hex_edit_layer.md) : Edit one vector layer
+- [`hex_export()`](hex_export.md) : Export an editable v5 design
+- [`hex_save_design()`](hex_save_design.md)
+  [`hex_read_design()`](hex_save_design.md) : Save and load a v5 editing
+  project
+- [`hex_recipe()`](hex_recipe.md) : Write a reproducible R recipe
+- [`hex_render_catalog()`](hex_render_catalog.md) : Regenerate the v5
+  catalogue
+
 ## Create and export
 
 - [`hex_sticker()`](hex_sticker.md) : Create a Hex Sticker
