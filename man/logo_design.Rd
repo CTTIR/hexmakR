@@ -6,7 +6,7 @@
 \usage{
 logo_design(
   name,
-  motif = "hexmakR",
+  motif = NULL,
   shape = c("hex", "pentagon", "square"),
   icon = NULL,
   ...
@@ -15,7 +15,8 @@ logo_design(
 \arguments{
 \item{name}{Project name shown inside the frame.}
 
-\item{motif}{CTTIR identity supplying the motif and default palette.}
+\item{motif}{Optional CTTIR archive identity supplying a motif and palette.
+\code{NULL} starts a fresh composition without archive artwork.}
 
 \item{shape}{\code{hex}, \code{pentagon} or \code{square}.}
 
@@ -27,11 +28,14 @@ logo_design(
 An editable \code{hex_design} object.
 }
 \description{
-Reuse a CTTIR scientific motif or a generic icon for a project, with its
-name inside a hexagonal, pentagonal or square frame. The same editing,
-project and export functions work with all shapes.
+Start a fresh project with its name inside a hexagonal, pentagonal or
+square frame. Add individual parts with \code{\link[=hex_add_part]{hex_add_part()}}, optionally reuse
+archive artwork with \code{\link[=hex_reuse_part]{hex_reuse_part()}}, or choose a generic icon. The same
+editing, project and export functions work with every frame shape.
 }
 \examples{
-logo_design("My project", motif = "phenoscapR", shape = "pentagon")
+project <- logo_design("New project", shape = "pentagon")
+project <- hex_add_part(project, "circle")
+project <- hex_reuse_part(project, "phenoscapR")
 logo_design("Study", shape = "square", icon = "microscope")
 }

@@ -11,8 +11,9 @@ hex_edit_layer(design, layer, ..., reset = FALSE)
 
 \item{layer}{A stable layer ID from \code{\link[=hex_layers]{hex_layers()}}.}
 
-\item{...}{Edits: \code{fill}, \code{col}, \code{lwd}, \code{alpha}, \code{dx}, \code{dy}, \code{scale}, \code{visible},
-or explicit numeric \code{x}/\code{y} coordinates in the layer's local viewport.}
+\item{...}{Edits: \code{fill}, \code{col}, \code{lwd}, \code{alpha}, \code{dx}, \code{dy}, \code{scale}, \code{angle}, \code{visible},
+or explicit numeric \code{x}/\code{y} coordinates in the layer's local viewport.
+\code{angle} rotates a part around its centre in degrees, from -180 to 180.}
 
 \item{reset}{Remove earlier edits to this layer before applying new values.}
 }

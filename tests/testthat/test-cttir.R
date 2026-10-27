@@ -117,7 +117,8 @@ test_that("editor applies edits, undo, reset and safe project loading", {
   server <- hexmakR:::.cttir_editor_server
   formals(server)$package <- "phenoscapR"
   shiny::testServer(server, {
-    session$setInputs(identity = "phenoscapR", mode = "dark", layout = "lockup", label = "phenoscapR",
+    session$setInputs(identity = "phenoscapR", archive_load = 1)
+    session$setInputs(mode = "dark", layout = "lockup", label = "phenoscapR",
       role = "face", layer = "layer_0005", highlight = FALSE)
     session$setInputs(fill = "red", stroke = "", dx = .05, dy = 0, scale = 1,
       lwd = 1, alpha = 1, visible = TRUE, coords_x = "", coords_y = "", apply_layer = 1)

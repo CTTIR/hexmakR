@@ -1,6 +1,6 @@
 Package: hexmakR
 Title: Editable Hex Stickers and Project Logos
-Version: 0.2.0
+Version: 0.3.0
 Authors@R:
     person("R.", "Heller", , "raban.heller@uni-ulm.de", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8006-9742"))
@@ -30,6 +30,8 @@ Imports:
     grDevices,
     shiny (>= 1.7.0),
     png,
+    jpeg,
+    xml2,
     utils,
     tools,
     stats,
@@ -41,7 +43,6 @@ Suggests:
     rmarkdown,
     pkgdown,
     svglite,
-    jpeg,
     covr,
     withr
 Config/testthat/edition: 3

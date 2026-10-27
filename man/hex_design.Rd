@@ -17,7 +17,8 @@ hex_design(
   label_size = 32,
   border_width = 5.5,
   shape = c("hex", "pentagon", "square"),
-  icon = NULL
+  icon = NULL,
+  archive = !missing(package)
 )
 }
 \arguments{
@@ -46,13 +47,17 @@ Use \code{\link[=hex_palette]{hex_palette()}} to see available roles.}
 \item{shape}{Frame shape: \code{hex}, \code{pentagon}, or \code{square}.}
 
 \item{icon}{Optional generic icon key from \code{\link[=hexmakr_icons]{hexmakr_icons()}}, replacing the CTTIR motif.}
+
+\item{archive}{Include the package's archive motif. By default this is true
+only when \code{package} is supplied explicitly.}
 }
 \value{
 A serialisable \code{hex_design} object.
 }
 \description{
-Defaults to the approved named composition: artwork above the package name,
-inside a tinted hex with an opaque family border and transparent exterior.
+A call without a package starts a fresh composition with a frame and name.
+Supplying a package explicitly loads its editable archive motif. Archive
+artwork can also be reused one part at a time with \code{\link[=hex_reuse_part]{hex_reuse_part()}}.
 All geometry is drawn in R. Name glyphs use the bundled JetBrains Mono font.
 }
 \examples{

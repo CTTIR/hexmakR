@@ -14,6 +14,13 @@ reference:
       - hex_grob
       - hex_layers
       - hex_edit_layer
+      - hex_move_layer
+      - hex_add_part
+      - hex_import_art
+      - hex_reuse_part
+      - hex_duplicate_part
+      - hex_label_layer
+      - hex_groups
       - hex_export
       - hex_save_design
       - hex_recipe

@@ -19,6 +19,6 @@ hex_read_design(path)
 \code{hex_read_design()} returns a validated design.
 }
 \description{
-JSON projects store declarative settings and layer edits; loading never
-evaluates R code. Files larger than 2 MB and unknown fields are rejected.
+JSON projects store declarative settings, additional parts and layer edits; loading never
+evaluates R code. Files larger than 20 MiB and unknown fields are rejected.
 }

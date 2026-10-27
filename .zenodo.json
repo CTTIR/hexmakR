@@ -1,7 +1,7 @@
 {
   "upload_type": "software",
   "title": "hexmakR: Interactive hex sticker generator for R packages",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "publication_date": "2026-08-11",
   "description": "<p>hexmakR creates publication-ready hexagonal stickers for R packages, either interactively through a graphical designer or programmatically through R functions. It complements existing sticker tools, which embed plots into a hex outline, by offering a visual design environment with curated colour themes in light and dark variants, a library of built-in scientific and technical icons, custom image upload, font selection, and export to transparent PNG. Presets are provided for common ecosystems such as CRAN, Bioconductor and the tidyverse, together with domain-specific palettes. It is aimed at package developers who want a consistent visual identity without using external graphics software.</p>",
   "creators": [

@@ -1,4 +1,4 @@
-<picture class="cttir-readme-logo"><source class="cttir-logo-dark-source" media="(prefers-color-scheme: dark)" srcset="man/figures/logo-with-name-dark.svg" /><img src="man/figures/logo-with-name.svg" align="right" alt="hexmakR logo" width="120" height="139" /></picture>
+<picture class="cttir-readme-logo"><source class="cttir-logo-dark-source" media="(prefers-color-scheme: dark)" srcset="man/figures/logo-with-name-dark.png" /><img src="man/figures/logo-with-name.png" align="right" alt="hexmakR logo" width="120" height="139" /></picture>
 
 # hexmakR
 
@@ -17,28 +17,42 @@
 
 ## Overview
 
-hexmakR creates editable logos for R packages and projects. The default v5
-workspace includes **45 CTTIR identities**, **1,035 original SVG/PNG/PDF assets**,
-and native R vector artwork. Package names stay **inside the hex**, with the
-scientific motif above, a family-coloured border and a transparent exterior.
-Project logos also support **pentagonal and square frames**.
+hexmakR creates editable logos for R packages and projects. The default
+Designer starts a **new logo with your name and a blank frame**. Choose a
+hexagon, pentagon or square, then add shapes, uploaded artwork or a generic icon and edit each
+part. Names stay **inside the frame** and the exterior is transparent.
 
-The manual editor supports palette and layout changes, individual vector
-shapes, point coordinates, undo/reset, JSON project save/load, and PNG/SVG/PDF
-exports. The original designer with 46 generic icons and 19 themes remains
-available. All 46 icons also work in the new project-logo editor.
+The secondary **CTTIR Gallery** contains 45 identities and 1,035 original
+SVG/PNG/PDF assets. Browse for inspiration, import one selected part or an
+entire motif into your current logo, or explicitly start from a whole archived
+design. Browsing the archive does not replace your work.
+
+Click a visible part to select it, then drag it to a new position. Short item
+names and Frame/Icon/Name groups help organise the composition; custom groups
+can be renamed, regrouped and moved together. The editor supports individual
+fills, outlines, positions, sizes, rotation, opacity, visibility and point
+coordinates, plus duplicate/remove, undo/reset, JSON
+projects and PNG/SVG/PDF export. All 46 generic icons are available. The
+classic designer retains its 19 themes, custom image uploads and font controls.
 
 ```r
 library(hexmakR)
-hexmakr_app()                          # v5 library and project-logo editor
-hexmakr_app(package = "phenoscapR")     # open a specific identity
+hexmakr_app()                          # fresh logo; optional CTTIR Gallery tab
+hexmakr_app(package = "phenoscapR")     # preselect archive, keep fresh logo
 hexmakr_app(workspace = "classic")      # original generic sticker designer
 
-hex_export(hex_design("phenoscapR"), "phenoscapR.svg")
-project <- logo_design("My project", motif = "phenoscapR", shape = "pentagon")
+project <- logo_design("My project", shape = "pentagon")
+project <- hex_add_part(project, "circle", x = .5, y = .6, r = .15)
+project <- hex_edit_layer(project, "part_0001", fill = "#45B59A")
 hex_export(project, "project.png")
-logo <- logo_design("Study", shape = "square", icon = "microscope")
-hex_export(logo, "study.pdf")
+
+# Reuse archive artwork while keeping the new name, frame and existing parts.
+project <- hex_reuse_part(project, "phenoscapR")
+hex_save_design(project, "project.json")
+hex_export(project, "project.svg")
+
+# An explicit identity still opens that complete editable archive design.
+hex_export(hex_design("phenoscapR"), "phenoscapR.svg")
 ```
 
 See the [detailed update plan](plans/2026-10-27-v5-update.md) and
@@ -90,10 +104,16 @@ pak::pak("cttir/hexmakR")
 ```r
 library(hexmakR)
 
-# Three lines to a sticker
-hex_sticker("mypackage", icon = "dna", theme = "genomics",
-            filename = "man/figures/logo.png")
+logo <- logo_design("My package")
+logo <- hex_add_part(logo, "polygon",
+                     x = c(.35, .65, .5), y = c(.45, .45, .75))
+hex_layers(logo)
+hex_export(logo, "my-package.svg")
 ```
+
+`logo_design()` starts with a frame and name, with no archived motif.
+Pass `motif = "phenoscapR"` or another identity only when that artwork is
+wanted. Use `shape = "pentagon"` or `shape = "square"` for project logos.
 
 ## Shiny App
 
@@ -101,10 +121,37 @@ hex_sticker("mypackage", icon = "dna", theme = "genomics",
 hexmakr_app()
 ```
 
-The Shiny designer opens in your browser with live preview. Adjust text,
-select a frame and artwork, and export PNG, SVG or PDF. Use **Apply design**
-to apply composition settings and **Apply shape edit** for a selected layer.
-**Save project** preserves editable settings; **R recipe** reproduces the design.
+Enter your name and choose a frame, then select **Apply logo settings**.
+**Add part** creates a circle, rectangle, line or triangle. Select a part,
+change its properties or points, and choose **Apply part edit**. **Duplicate
+part** and **Remove part** act on the selection. The CTTIR Gallery tab offers
+**Add selected part to my logo**, **Add artwork to my logo**, and the separate
+**Start from whole design** action.
+
+**Undo** restores the previous edit. **Reset to starting design** restores the
+current session baseline: the new logo, the explicitly loaded archive design,
+or the opened JSON project. **New logo** starts fresh and can also be undone.
+Downloads use the applied design; pending form changes must be applied first.
+**Save project** preserves editable parts and **R recipe** reproduces them.
+
+Use **Add an image or vector drawing** for PNG/JPEG figures or SVG artwork.
+PNG/JPEG remains one movable, scalable and rotatable image with editable
+opacity. Supported SVG shapes become individual vector parts. Both are
+embedded in the project, so reopening needs no original upload file.
+
+```r
+project <- hex_import_art(logo_design("My project"), "figure.svg")
+project <- hex_label_layer(project, "part_0001", "Central cell")
+project <- hex_edit_layer(project, "part_0001", angle = 25, alpha = .8)
+hex_groups(project)
+```
+
+Uploads are limited to 10 MiB; projects to 20 MiB. SVG supports solid-colour
+paths/shapes, transforms and local references. Curves become bounded vector
+polylines, and SVG/PDF exports keep that vector geometry. Outline text and
+flatten gradients, masks, filters or intersecting clips before uploading;
+unsupported features produce an explanatory error. Raster content stays raster
+inside SVG/PDF exports. The application title is the text **hexmakR**.
 
 ## Classic designer comparison
 
@@ -146,7 +193,7 @@ to apply composition settings and **Apply shape edit** for a selected layer.
 | `viridis` | Viridis |
 | `plasma` | Plasma |
 
-Each theme has both `dark` and `light` variants.
+Each classic theme has both `dark` and `light` variants.
 
 ## Available Icons
 
@@ -162,6 +209,7 @@ Each theme has both `dark` and `light` variants.
 
 ## Vignettes
 
+- [Creating and reusing parts](https://cttir.github.io/hexmakR/articles/cttir-library.html)
 - [Getting Started](https://cttir.github.io/hexmakR/articles/getting-started.html)
 - [Programmatic Usage](https://cttir.github.io/hexmakR/articles/programmatic-usage.html)
 - [Shiny App](https://cttir.github.io/hexmakR/articles/shiny-app.html)

@@ -1,0 +1,217 @@
+test_that("preview coordinates use the rendered image and reject letterbox misses", {
+  point <- .cttir_preview_point(list(coords_img = list(x = 199.75, y = 599.25),
+    x = 999, y = 999), 800, 800)
+  expect_equal(point, list(x = .25, y = .25))
+  expect_equal(.cttir_preview_point(list(coords_css = list(x = 99.875, y = 299.625),
+    img_css_ratio = list(x = 2, y = 2)), 800, 800), point)
+  expect_equal(.cttir_preview_point(list(x = 199.75, y = 599.25), 800, 800), point)
+  expect_equal(.cttir_preview_point(list(x = .25, y = .25, normalized = TRUE), 800, 800), point)
+  expect_null(.cttir_preview_point(list(coords_img = list(x = -1, y = 200)), 800, 800))
+  expect_null(.cttir_preview_point(list(coords_img = list(x = 801, y = 200)), 800, 800))
+  expect_null(.cttir_preview_point(list(x = NA_real_, y = 20), 800, 800))
+  expect_null(.cttir_preview_point(list(x = .2), 800, 800))
+  expect_null(.cttir_preview_point(list(x = 1.2, y = .2, normalized = TRUE), 800, 800))
+  map <- .cttir_preview_coordmap(800, 920, "preview-7")
+  expect_equal(map$panels[[1]]$panel_vars$render_id, "preview-7")
+  expect_equal(map$panels[[1]]$range$bottom, 919)
+})
+
+test_that("click selection is topmost and leaves the base preview and history unchanged", {
+  shiny::testServer(.cttir_editor_server, {
+    d <- hex_add_part(logo_design("", shape = "square", layout = "motif"), "circle", y = .5)
+    d <- hex_add_part(d, "rectangle", y = .5, width = .16, height = .16)
+    commit(d, start = TRUE)
+    session$flushReact()
+    ids <- names(d$parts)
+    before <- current(); undo_count <- length(history())
+    revision <- preview_revision(); image <- output$preview
+    session$setInputs(layer = ids[[1]])
+    session$setInputs(preview_click = list(x = .5, y = .5, normalized = TRUE,
+      render_id = revision))
+    expect_identical(selection(), ids[[2]])
+    expect_true(show_selection())
+    expect_identical(current(), before)
+    expect_length(history(), undo_count)
+    expect_identical(preview_revision(), revision)
+    expect_identical(output$preview, image)
+    expect_match(output$selection_overlay$html, "<svg", fixed = TRUE)
+    session$setInputs(preview_click = list(coords_img = list(x = -20, y = 400)))
+    expect_identical(selection(), ids[[2]])
+    session$setInputs(preview_click = list(x = .05, y = .05, normalized = TRUE))
+    expect_identical(selection(), ids[[2]])
+    session$setInputs(preview_click = list(x = .5, y = .5, normalized = TRUE,
+      render_id = "obsolete"))
+    expect_identical(selection(), ids[[2]])
+    commit(hex_edit_layer(current(), ids[[2]], visible = FALSE))
+    session$flushReact()
+    session$setInputs(preview_click = list(x = .5, y = .5, normalized = TRUE))
+    expect_identical(selection(), ids[[1]])
+    session$setInputs(fill = "#FF0000", apply_layer = 1)
+    expect_equal(current()$layers[[ids[[1]]]]$fill, "#FF0000")
+    expect_false(current()$layers[[ids[[2]]]]$visible)
+    expect_null(error())
+  })
+})
+
+test_that("drag moves a selected part once and preserves geometry rotation and undo", {
+  shiny::testServer(.cttir_editor_server, {
+    d <- hex_add_part(logo_design("", shape = "square", layout = "motif"), "polygon")
+    id <- names(d$parts)[[1]]
+    d <- hex_edit_layer(d, id, scale = 1.2, angle = 25,
+      x = c(.35, .5, .65), y = c(.35, .65, .35))
+    commit(d, start = TRUE); session$flushReact()
+    before <- current(); count <- length(history())
+    session$setInputs(mouse_target = "part", preview_drag = list(
+      start = list(x = .5, y = .45, normalized = TRUE),
+      end = list(x = .6, y = .5, normalized = TRUE), render_id = preview_revision()))
+    expect_null(error())
+    expect_equal(current()$layers[[id]]$dx, .1)
+    expect_equal(current()$layers[[id]]$dy, .05)
+    expect_equal(current()$layers[[id]]$angle, 25)
+    expect_equal(current()$layers[[id]]$scale, 1.2)
+    expect_identical(current()$layers[[id]]$x, before$layers[[id]]$x)
+    expect_identical(current()$layers[[id]]$y, before$layers[[id]]$y)
+    expect_length(history(), count + 1L)
+    session$setInputs(undo = 1)
+    expect_identical(current(), before)
+    session$setInputs(preview_drag = list(
+      start = list(x = .01, y = .01, normalized = TRUE),
+      end = list(x = .2, y = .2, normalized = TRUE)))
+    expect_identical(current(), before)
+    expect_length(history(), count)
+  })
+})
+
+test_that("named groups move together and survive applying logo settings", {
+  shiny::testServer(.cttir_editor_server, {
+    d <- hex_add_part(logo_design("Groups", shape = "square"), "circle", x = .35, y = .5, r = .08)
+    d <- hex_add_part(d, "rectangle", x = .65, y = .5, width = .12, height = .12)
+    commit(d, start = TRUE); session$flushReact()
+    ids <- names(d$parts)
+    session$setInputs(layer = ids[[1]], part_label = "Sun", rename_part = 1)
+    expect_equal(hex_layers(current())$name[match(ids[[1]], hex_layers(current())$id)], "Sun")
+    session$setInputs(group_members = ids, group_label = "Project icon", create_group = 1)
+    group_id <- group_selection()
+    expect_match(group_id, "^group_")
+    expect_equal(hex_groups(current())[[group_id]]$members, ids)
+    session$setInputs(group = group_id, group_label = "My icon", rename_group = 1)
+    expect_equal(hex_groups(current())[[group_id]]$label, "My icon")
+    before <- current(); count <- length(history())
+    session$setInputs(mouse_target = "group", preview_drag = list(
+      start = list(x = .35, y = .5, normalized = TRUE),
+      end = list(x = .45, y = .55, normalized = TRUE), render_id = preview_revision()))
+    expect_null(error())
+    expect_equal(unname(vapply(ids, function(id) current()$layers[[id]]$dx, numeric(1))), c(.1, .1))
+    expect_equal(unname(vapply(ids, function(id) current()$layers[[id]]$dy, numeric(1))), c(.05, .05))
+    expect_length(history(), count + 1L)
+    session$setInputs(undo = 1)
+    expect_identical(current(), before)
+    session$setInputs(label = "Renamed project", shape = "pentagon", generic_icon = "keep", apply_design = 1)
+    expect_equal(current()$labels[[ids[[1]]]], "Sun")
+    expect_equal(hex_groups(current())[[group_id]]$members, ids)
+    session$setInputs(group = group_id, group_dx = -.1, group_dy = .05, move_group = 1)
+    expect_equal(current()$layers[[ids[[1]]]]$dx, -.1)
+    expect_equal(current()$layers[[ids[[2]]]]$dy, .05)
+    session$setInputs(group_members = ids[[1]], ungroup_parts = 1)
+    expect_false(ids[[1]] %in% hex_groups(current())[[group_id]]$members)
+    expect_equal(hex_groups(current())[[group_id]]$members, ids[[2]])
+    session$setInputs(group_members = ids, group_label = "Together", update_group = 1)
+    expect_equal(hex_groups(current())[[group_id]]$members, ids)
+    expect_null(error())
+  })
+})
+
+test_that("art uploads add editable parts without replacing work or gallery selection", {
+  bitmap <- tempfile(); vector <- tempfile()
+  on.exit(unlink(c(bitmap, vector)), add = TRUE)
+  png::writePNG(array(1, c(4, 4, 4)), bitmap)
+  writeLines('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="10" y="20" width="25" height="30" fill="#008877"/><circle cx="70" cy="50" r="15" fill="#FF3300"/></svg>', vector)
+  shiny::testServer(.cttir_editor_server, {
+    session$setInputs(identity = "phenoscapR", part_type = "line", add_part = 1)
+    before <- current()
+    session$setInputs(art_upload = data.frame(name = "figure.png", datapath = bitmap))
+    expect_length(current()$parts, length(before$parts) + 1L)
+    expect_identical(current()$label, before$label)
+    expect_identical(current()$parts[names(before$parts)], before$parts)
+    expect_identical(input$identity, "phenoscapR")
+    image_id <- selection()
+    expect_match(image_id, "^part_")
+    session$setInputs(angle = 30, alpha = .5, scale = .8, apply_layer = 1)
+    expect_equal(current()$layers[[image_id]]$angle, 30)
+    expect_equal(current()$layers[[image_id]]$alpha, .5)
+    before_vector <- current()
+    session$setInputs(art_upload = data.frame(name = "vectors.svg", datapath = vector))
+    expect_length(current()$parts, length(before_vector$parts) + 2L)
+    expect_false(selection() %in% names(before_vector$parts))
+    expect_null(error())
+    session$setInputs(undo = 1)
+    expect_identical(current(), before_vector)
+    session$setInputs(art_upload = data.frame(name = "script.html", datapath = vector))
+    expect_match(error(), "PNG, JPEG or SVG")
+    expect_identical(current(), before_vector)
+  })
+  large <- tempfile(); on.exit(unlink(large), add = TRUE)
+  con <- file(large, "wb"); seek(con, 10 * 1024^2); writeBin(as.raw(0), con); close(con)
+  expect_error(.cttir_uploaded_art(logo_design("Test"), data.frame(name = "large.png", datapath = large)), "10 MiB")
+})
+
+
+test_that("native metadata follows roles when layout changes and artwork is replaced", {
+  shiny::testServer(.cttir_editor_server, {
+    d <- hex_add_part(hex_design("phenoscapR"), "circle")
+    parts <- hex_layers(d)
+    frame <- parts$id[parts$role == "frame"][[1]]
+    motif <- parts$id[parts$role == "motif"][[1]]
+    added <- names(d$parts)[[1]]
+    d <- hex_label_layer(d, frame, "Border")
+    d <- hex_label_layer(d, motif, "Cell")
+    d <- hex_label_layer(d, added, "New dot")
+    d <- hex_group_layers(d, c(motif, added), "Package icon")
+    group <- tail(names(hex_groups(d)), 1)
+    commit(d, start = TRUE); session$flushReact()
+    session$setInputs(layout = "motif", generic_icon = "keep", apply_design = 1)
+    expect_null(error())
+    after <- hex_layers(current())
+    new_motif <- after$id[after$role == "motif"][[1]]
+    expect_equal(new_motif, "layer_0001")
+    expect_equal(current()$labels[[new_motif]], "Cell")
+    expect_false("Border" %in% unlist(current()$labels))
+    expect_equal(hex_groups(current())[[group]]$members, c(new_motif, added))
+    session$setInputs(label = "Changed name", mode = "light", apply_design = 2)
+    expect_equal(current()$labels[[new_motif]], "Cell")
+    expect_equal(hex_groups(current())[[group]]$members, c(new_motif, added))
+    icon <- names(.icons[[1]])[[1]]
+    session$setInputs(generic_icon = icon, apply_design = 3)
+    expect_null(error())
+    expect_false("Cell" %in% unlist(current()$labels))
+    expect_equal(current()$labels[[added]], "New dot")
+    expect_equal(hex_groups(current())[[group]]$members, added)
+    expect_false("frame" %in% names(hex_groups(current())))
+  })
+})
+
+
+test_that("part controls preserve source opacity through colour edits and hiding", {
+  updates <- new.env(parent = emptyenv())
+  original <- shiny::updateSliderInput
+  local_mocked_bindings(updateSliderInput = function(session, inputId, ..., value = NULL) {
+    if (identical(inputId, "alpha")) updates$alpha <- value
+    original(session, inputId, ..., value = value)
+  }, .package = "shiny")
+  shiny::testServer(.cttir_editor_server, {
+    d <- hex_add_part(logo_design("Opacity"), "circle", alpha = .4)
+    id <- names(d$parts)[[1]]
+    commit(d, selected = id, start = TRUE); session$flushReact()
+    expect_equal(updates$alpha, .4)
+    session$setInputs(alpha = updates$alpha, fill = "#FFBB00", apply_layer = 1)
+    expect_equal(current()$layers[[id]]$alpha, .4)
+    expect_equal(.layer_leaf(hex_grob(current())$children[[id]])$gp$alpha, .4)
+    hidden <- hex_edit_layer(d, id, visible = FALSE)
+    commit(hidden, selected = id); session$flushReact()
+    expect_equal(updates$alpha, .4)
+    expect_equal(.layer_leaf(hex_grob(current())$children[[id]])$gp$alpha, 0)
+    session$setInputs(alpha = updates$alpha, visible = TRUE, apply_layer = 2)
+    expect_equal(.layer_leaf(hex_grob(current())$children[[id]])$gp$alpha, .4)
+    expect_null(error())
+  })
+})

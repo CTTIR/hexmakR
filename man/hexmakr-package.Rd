@@ -15,12 +15,22 @@ Comes with \strong{19 curated color themes} (dark + light variants), \strong{46
 built-in scientific and technical icons} across 7 categories, custom image
 upload support, 13 font options, and transparent PNG export.
 
-The v5 workspace adds 45 native R vector identities, individual shape edits,
-JSON projects, PNG/SVG/PDF exports and hexagonal, pentagonal or square logos.
+The default Designer starts a fresh logo. Add, duplicate, remove and edit
+individual parts; optionally reuse components from 45 archived vector
+identities. JSON projects, R recipes and PNG/SVG/PDF exports retain edits
+across hexagonal, pentagonal or square logos.
+Import portable PNG/JPEG figures or supported SVG components, select and
+drag items, rotate individual parts, and organise named groups.
 \subsection{Main functions}{
 \itemize{
-\item \code{\link[=hex_design]{hex_design()}} --editable CTTIR v5 design.
-\item \code{\link[=logo_design]{logo_design()}} --project logos in three frame shapes.
+\item \code{\link[=logo_design]{logo_design()}} --fresh project logos in three frame shapes.
+\item \code{\link[=hex_add_part]{hex_add_part()}} --add editable geometric parts.
+\item \code{\link[=hex_import_art]{hex_import_art()}} --import embedded figures or editable vector components.
+\item \code{\link[=hex_groups]{hex_groups()}} --organise named groups of items.
+\item \code{\link[=hex_label_layer]{hex_label_layer()}} --give an item a short label.
+\item \code{\link[=hex_reuse_part]{hex_reuse_part()}} --reuse selected archive artwork.
+\item \code{\link[=hex_edit_layer]{hex_edit_layer()}} --edit individual part properties and points.
+\item \code{\link[=hex_design]{hex_design()}} --fresh or explicitly selected archive design.
 \item \code{\link[=hex_export]{hex_export()}} --vector and raster export.
 \item \code{\link[=hex_catalog]{hex_catalog()}} --all 45 registered identities.
 \item \code{\link[=hex_sticker]{hex_sticker()}} --programmatic hex sticker creation; returns a ggplot

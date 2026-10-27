@@ -1,5 +1,6 @@
 ---
 resource_files:
+  - figures/logo-dark.svg
   - figures/logo.svg
 title: "Programmatic Usage"
 output: rmarkdown::html_vignette
@@ -8,6 +9,27 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+<!-- cttir-vignette-logo: start -->
+<style>
+.cttir-vignette-logo { float: right; width: 120px; max-width: 30%; margin: 0 0 1rem 1.5rem; }
+.cttir-vignette-logo img { width: 100%; height: auto; border: 0; background: transparent; box-shadow: none; }
+.cttir-vignette-logo .cttir-vignette-logo-light { display: block; }
+.cttir-vignette-logo .cttir-vignette-logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .cttir-vignette-logo .cttir-vignette-logo-light { display: none; }
+  .cttir-vignette-logo .cttir-vignette-logo-dark { display: block; }
+}
+[data-bs-theme="light"] .cttir-vignette-logo .cttir-vignette-logo-light { display: block; }
+[data-bs-theme="light"] .cttir-vignette-logo .cttir-vignette-logo-dark { display: none; }
+[data-bs-theme="dark"] .cttir-vignette-logo .cttir-vignette-logo-light { display: none; }
+[data-bs-theme="dark"] .cttir-vignette-logo .cttir-vignette-logo-dark { display: block; }
+</style>
+<div class="cttir-vignette-logo">
+  <img class="cttir-vignette-logo-light" src="figures/logo.svg" alt="hexmakR logo" width="120" height="139" />
+  <img class="cttir-vignette-logo-dark" src="figures/logo-dark.svg" alt="hexmakR logo" width="120" height="139" />
+</div>
+<!-- cttir-vignette-logo: end -->
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml)
@@ -28,11 +50,39 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r logo, echo=FALSE, eval=TRUE, out.extra='style="float:right; margin-left:1em;"'}
-knitr::include_graphics("figures/logo.svg")
+
+## Editable logo projects
+
+The current project API starts from a fresh name and frame:
+
+```{r editable-project}
+library(hexmakR)
+design <- logo_design("My project", shape = "square")
+design <- hex_add_part(design, "rectangle", x = .5, y = .6,
+                       width = .3, height = .2)
+design <- hex_edit_layer(design, "part_0001", fill = "#45B59A")
+design <- hex_reuse_part(design, "phenoscapR")
+hex_export(design, "my-project.svg")
+hex_save_design(design, "my-project.json")
 ```
 
-## All parameters
+Use `hex_layers()` to inspect IDs, roles and geometry. `hex_duplicate_part()`
+retains an edited part's current appearance; `hex_remove_part()` deletes an
+added part or hides native geometry. JSON projects and generated R recipes
+retain these edits. See `vignette("cttir-library")` for complete examples.
+
+`hex_import_art(design, "figure.png")` embeds a PNG/JPEG figure as one part;
+`hex_import_art(design, "drawing.svg")` imports supported shapes as separate
+vector parts. SVG curves become vector polylines. Source files are no longer
+needed after import. Use `angle` in `hex_edit_layer()` for rotation,
+`hex_label_layer()` for short labels, and `hex_groups()`/`hex_group_layers()`
+to organise items. Projects preserve these settings and have a 20 MiB limit;
+uploads have a 10 MiB limit. See `?hex_import_art` for SVG feature limits.
+
+The functions below remain the classic ggplot-based API, including custom
+PNG/JPEG images, theme presets and font selection.
+
+## Classic sticker parameters
 
 ```{r all-params}
 library(hexmakR)

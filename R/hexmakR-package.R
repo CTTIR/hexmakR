@@ -10,13 +10,23 @@
 #' built-in scientific and technical icons** across 7 categories, custom image
 #' upload support, 13 font options, and transparent PNG export.
 #'
-#' The v5 workspace adds 45 native R vector identities, individual shape edits,
-#' JSON projects, PNG/SVG/PDF exports and hexagonal, pentagonal or square logos.
+#' The default Designer starts a fresh logo. Add, duplicate, remove and edit
+#' individual parts; optionally reuse components from 45 archived vector
+#' identities. JSON projects, R recipes and PNG/SVG/PDF exports retain edits
+#' across hexagonal, pentagonal or square logos.
+#' Import portable PNG/JPEG figures or supported SVG components, select and
+#' drag items, rotate individual parts, and organise named groups.
 #'
 #' ## Main functions
 #'
-#' * [hex_design()] --editable CTTIR v5 design.
-#' * [logo_design()] --project logos in three frame shapes.
+#' * [logo_design()] --fresh project logos in three frame shapes.
+#' * [hex_add_part()] --add editable geometric parts.
+#' * [hex_import_art()] --import embedded figures or editable vector components.
+#' * [hex_groups()] --organise named groups of items.
+#' * [hex_label_layer()] --give an item a short label.
+#' * [hex_reuse_part()] --reuse selected archive artwork.
+#' * [hex_edit_layer()] --edit individual part properties and points.
+#' * [hex_design()] --fresh or explicitly selected archive design.
 #' * [hex_export()] --vector and raster export.
 #' * [hex_catalog()] --all 45 registered identities.
 #'
@@ -28,6 +38,7 @@
 #' * [save_hex()] --save a sticker to a transparent PNG.
 #' * [save_hex_svg()] --save a sticker to SVG (requires svglite).
 #'
+#' @rdname hexmakr-package
 #' @keywords internal
 "_PACKAGE"
 

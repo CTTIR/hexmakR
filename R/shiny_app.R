@@ -2,12 +2,15 @@
 #'
 #' @title Launch Interactive Hex Sticker Designer
 #' @description Opens an interactive Shiny app for designing hex stickers
-#'   visually. The default v5 workspace offers 45 CTTIR identities, hexagonal,
-#'   pentagonal and square frames, individual vector-layer editing, portable
-#'   projects, and PNG/SVG/PDF export. The classic designer remains available.
+#'   visually. The default workspace starts a new editable logo with a hexagonal,
+#'   pentagonal or square frame. Add, duplicate, remove and edit individual parts;
+#'   optionally reuse artwork from the secondary CTTIR Gallery. Portable projects,
+#'   R recipes and PNG/SVG/PDF export preserve the current design. The classic
+#'   designer remains available.
 #'
-#' @param workspace Use the CTTIR `v5` editor (default) or the `classic` designer.
-#' @param package Initial v5 identity.
+#' @param workspace Use the new-logo `v5` editor (default) or `classic` designer.
+#' @param package Initially selected CTTIR Gallery identity. The editable logo still
+#'   starts as a new project until a gallery action is chosen.
 #' @param ... Additional arguments passed to [shiny::runApp()].
 #'
 #' @return Does not return; runs the Shiny app.
@@ -23,6 +26,10 @@
 hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...) {
   workspace <- match.arg(workspace)
   app <- if (workspace == "v5") .build_shiny_app(package) else .build_classic_app()
+  if (workspace == "v5") {
+    previous <- options(shiny.maxRequestSize = 20 * 1024^2)
+    on.exit(options(previous), add = TRUE)
+  }
   shiny::runApp(app, ...)
 }
 
@@ -75,7 +82,7 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
       shiny::column(5,
         shiny::div(
           class = "hexmakr-preview-panel",
-          shiny::HTML(.shiny_logo_svg()),
+          shiny::h1("hexmakR", style = "color:#F1F5F9;font-size:28px;margin:0;"),
           shiny::tags$p("Interactive Hex Sticker Designer",
                         style = "color:#94A3B8; font-size:13px; margin-top:8px; margin-bottom:16px;"),
           shiny::plotOutput("hex_preview", width = "100%", height = "340px"),
@@ -227,8 +234,7 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
     svg_text <- paste(readLines(logo_path, warn = FALSE), collapse = "\n")
     # Wrap in a div to control sizing
     paste0('<div role="img" aria-label="hexmakR logo" style="display:inline-block; width:80px; height:93px;">',
-           gsub('width="500" height="580"',
-                'width="80" height="93" style="max-width:80px;"',
+           sub('<svg ', '<svg style="width:80px;height:93px;max-width:100%;" ',
                 svg_text),
            '</div>')
   } else {

@@ -7,9 +7,10 @@
 hexmakr_app(workspace = c("v5", "classic"), package = "hexmakR", ...)
 }
 \arguments{
-\item{workspace}{Use the CTTIR \code{v5} editor (default) or the \code{classic} designer.}
+\item{workspace}{Use the new-logo \code{v5} editor (default) or \code{classic} designer.}
 
-\item{package}{Initial v5 identity.}
+\item{package}{Initially selected CTTIR Gallery identity. The editable logo still
+starts as a new project until a gallery action is chosen.}
 
 \item{...}{Additional arguments passed to \code{\link[shiny:runApp]{shiny::runApp()}}.}
 }
@@ -18,9 +19,11 @@ Does not return; runs the Shiny app.
 }
 \description{
 Opens an interactive Shiny app for designing hex stickers
-visually. The default v5 workspace offers 45 CTTIR identities, hexagonal,
-pentagonal and square frames, individual vector-layer editing, portable
-projects, and PNG/SVG/PDF export. The classic designer remains available.
+visually. The default workspace starts a new editable logo with a hexagonal,
+pentagonal or square frame. Add, duplicate, remove and edit individual parts;
+optionally reuse artwork from the secondary CTTIR Gallery. Portable projects,
+R recipes and PNG/SVG/PDF export preserve the current design. The classic
+designer remains available.
 }
 \details{
 Launch the hexmakR Shiny App

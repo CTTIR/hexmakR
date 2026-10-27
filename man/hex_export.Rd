@@ -18,7 +18,8 @@ The destination path, invisibly.
 }
 \description{
 The same native grid geometry powers previews and all three export formats.
-SVG and PDF contain vector paths, including outlined package-name glyphs.
+SVG and PDF retain vector paths, including outlined package-name glyphs;
+uploaded PNG/JPEG figures remain embedded raster images.
 }
 \examples{
 f <- tempfile(fileext = ".svg")
