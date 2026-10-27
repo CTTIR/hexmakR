@@ -13,13 +13,13 @@ Source:
 Heller R (2026). *hexmakR: Interactive Hex Sticker Generator for R
 Packages*.
 [doi:10.5281/zenodo.21889938](https://doi.org/10.5281/zenodo.21889938).
-R package version 0.1.0, <https://github.com/cttir/hexmakR>.
+R package version 0.3.0, <https://github.com/cttir/hexmakR>.
 
     @Manual{,
       doi = {10.5281/zenodo.21889938},
       title = {hexmakR: Interactive Hex Sticker Generator for R Packages},
       author = {R. Heller},
       year = {2026},
-      note = {R package version 0.1.0},
+      note = {R package version 0.3.0},
       url = {https://github.com/cttir/hexmakR},
     }

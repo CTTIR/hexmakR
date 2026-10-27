@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../logo.svg" alt="" class="themakr-navbar-logo" data-cttir-dark-src="../reference/figures/logo-dark.svg">hexmakR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,110 +82,121 @@
 
     
     
+<!-- cttir-vignette-logo: start -->
+<style>
+.cttir-vignette-logo { float: right; width: 120px; max-width: 30%; margin: 0 0 1rem 1.5rem; }
+.cttir-vignette-logo img { width: 100%; height: auto; border: 0; background: transparent; box-shadow: none; }
+.cttir-vignette-logo .cttir-vignette-logo-light { display: block; }
+.cttir-vignette-logo .cttir-vignette-logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .cttir-vignette-logo .cttir-vignette-logo-light { display: none; }
+  .cttir-vignette-logo .cttir-vignette-logo-dark { display: block; }
+}
+[data-bs-theme="light"] .cttir-vignette-logo .cttir-vignette-logo-light { display: block; }
+[data-bs-theme="light"] .cttir-vignette-logo .cttir-vignette-logo-dark { display: none; }
+[data-bs-theme="dark"] .cttir-vignette-logo .cttir-vignette-logo-light { display: none; }
+[data-bs-theme="dark"] .cttir-vignette-logo .cttir-vignette-logo-dark { display: block; }
+</style>
+<div class="cttir-vignette-logo">
+<p><img class="cttir-vignette-logo-light" src="figures/logo.svg" alt="hexmakR logo" width="120" height="139"><img class="cttir-vignette-logo-dark" src="figures/logo-dark.svg" alt="hexmakR logo" width="120" height="139"></p>
+</div>
+<!-- cttir-vignette-logo: end -->
 <!-- badges: start -->
 <p><a href="https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://cttir.github.io/hexmakR/" class="external-link"><img src="https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a> <a href="https://CRAN.R-project.org/package=hexmakR" class="external-link"><img src="https://www.r-pkg.org/badges/version/hexmakR" alt="CRAN status"></a> <a href="https://app.codecov.io/gh/CTTIR/hexmakR?branch=main" class="external-link"><img src="https://codecov.io/gh/CTTIR/hexmakR/branch/main/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://cran.r-project.org/package=hexmakR" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/hexmakR" alt="CRAN downloads"></a> <a href="https://cran.r-project.org/package=hexmakR" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/hexmakR" alt="CRAN downloads total"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="License: MIT"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <!-- badges: end --></p>
-<p><img src="figures/logo.svg" class="r-plt" alt="" style="float:right; margin-left:1em;"></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Install hexmakR from CRAN:</p>
+<p>Install the development package from GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"hexmakR"</span><span class="op">)</span></span></code></pre></div>
-<p>Or install the development version from GitHub:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"cttir/hexmakR"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"CTTIR/hexmakR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="your-first-hex-sticker-in-3-lines">Your first hex sticker in 3 lines<a class="anchor" aria-label="anchor" href="#your-first-hex-sticker-in-3-lines"></a>
+<h2 id="start-with-a-fresh-logo">Start with a fresh logo<a class="anchor" aria-label="anchor" href="#start-with-a-fresh-logo"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cttir.github.io/hexmakR/" class="external-link">hexmakR</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/hex_sticker.html">hex_sticker</a></span><span class="op">(</span><span class="st">"mypackage"</span>, icon <span class="op">=</span> <span class="st">"atom"</span>, theme <span class="op">=</span> <span class="st">"stats"</span><span class="op">)</span></span></code></pre></div>
-<p>That’s it. The default settings produce a dark-themed sticker with
-the <code>stats</code> color palette and an atom icon.</p>
-</div>
-<div class="section level2">
-<h2 id="saving-to-a-file">Saving to a file<a class="anchor" aria-label="anchor" href="#saving-to-a-file"></a>
-</h2>
-<p>Pass <code>filename</code> to write a transparent PNG directly:</p>
+<span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/logo_design.html">logo_design</a></span><span class="op">(</span><span class="st">"My package"</span><span class="op">)</span></span></code></pre></div>
+<p>This creates a hexagonal frame and name with no archived scientific
+motif. The name sits inside the lower part of the frame. A pentagon or
+square is available with <code>shape = "pentagon"</code> or
+<code>shape = "square"</code>.</p>
+<p>Add your own artwork as individually editable parts:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hex_add_part.html">hex_add_part</a></span><span class="op">(</span><span class="va">design</span>, <span class="st">"circle"</span>, x <span class="op">=</span> <span class="fl">.5</span>, y <span class="op">=</span> <span class="fl">.6</span>, r <span class="op">=</span> <span class="fl">.15</span><span class="op">)</span></span>
+<span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hex_add_part.html">hex_add_part</a></span><span class="op">(</span><span class="va">design</span>, <span class="st">"line"</span>,</span>
+<span>                       x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.3</span>, <span class="fl">.7</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.6</span>, <span class="fl">.6</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"white"</span>, lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/hex_layers.html">hex_layers</a></span><span class="op">(</span><span class="va">design</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">design</span><span class="op">)</span></span></code></pre></div>
+<p>Parts have stable IDs such as <code>part_0001</code>. The native
+frame and name have <code>layer_</code> IDs. Obtain the current IDs from
+<code><a href="../reference/hex_layers.html">hex_layers()</a></code> before editing.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/hex_sticker.html">hex_sticker</a></span><span class="op">(</span></span>
-<span>  <span class="st">"mypackage"</span>,</span>
-<span>  icon     <span class="op">=</span> <span class="st">"dna"</span>,</span>
-<span>  theme    <span class="op">=</span> <span class="st">"genomics"</span>,</span>
-<span>  filename <span class="op">=</span> <span class="st">"man/figures/logo.png"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<p>The file will have the correct hexb.in aspect ratio (width / height =
-√3 / 2) and a transparent background, ready for use in your README or
-pkgdown site.</p>
+<code class="sourceCode R"><span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hex_edit_layer.html">hex_edit_layer</a></span><span class="op">(</span><span class="va">design</span>, <span class="st">"part_0001"</span>, fill <span class="op">=</span> <span class="st">"#45B59A"</span>, dx <span class="op">=</span> <span class="fl">.04</span><span class="op">)</span></span>
+<span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hex_duplicate_part.html">hex_duplicate_part</a></span><span class="op">(</span><span class="va">design</span>, <span class="st">"part_0001"</span><span class="op">)</span></span>
+<span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hex_edit_layer.html">hex_edit_layer</a></span><span class="op">(</span><span class="va">design</span>, <span class="st">"part_0003"</span>, dx <span class="op">=</span> <span class="op">-</span><span class="fl">.2</span>, scale <span class="op">=</span> <span class="fl">.7</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="exploring-themes">Exploring themes<a class="anchor" aria-label="anchor" href="#exploring-themes"></a>
+<h2 id="use-an-icon-or-archive-artwork">Use an icon or archive artwork<a class="anchor" aria-label="anchor" href="#use-an-icon-or-archive-artwork"></a>
 </h2>
+<p>All 46 generic icons remain available:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/hexmakr_themes.html">hexmakr_themes</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Preview a theme interactively:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/logo_design.html">logo_design</a></span><span class="op">(</span><span class="st">"Study"</span>, shape <span class="op">=</span> <span class="st">"square"</span>, icon <span class="op">=</span> <span class="st">"microscope"</span><span class="op">)</span></span></code></pre></div>
+<p>Archive reuse is optional. Add selected artwork to the design you are
+making:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/hexmakr_preview_theme.html">hexmakr_preview_theme</a></span><span class="op">(</span><span class="st">"genomics"</span>, mode <span class="op">=</span> <span class="st">"dark"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/hexmakr_preview_theme.html">hexmakr_preview_theme</a></span><span class="op">(</span><span class="st">"genomics"</span>, mode <span class="op">=</span> <span class="st">"light"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/hex_catalog.html">hex_catalog</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">design</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hex_reuse_part.html">hex_reuse_part</a></span><span class="op">(</span><span class="va">design</span>, <span class="st">"phenoscapR"</span><span class="op">)</span></span></code></pre></div>
+<p>This imports the source motif’s editable parts while retaining your
+name, frame, palette and existing parts. An explicit
+<code>hex_design("phenoscapR")</code> instead starts from that whole
+archived design. A call to <code><a href="../reference/hex_design.html">hex_design()</a></code> without a package
+also starts fresh; <code>logo_design("My package")</code> is the direct
+way to set your own project name.</p>
 </div>
 <div class="section level2">
-<h2 id="exploring-icons">Exploring icons<a class="anchor" aria-label="anchor" href="#exploring-icons"></a>
+<h2 id="save-and-continue-later">Save and continue later<a class="anchor" aria-label="anchor" href="#save-and-continue-later"></a>
 </h2>
+<p>Use <code>hex_import_art(design, "figure.png")</code> to add an
+embedded PNG/JPEG image, or supply an SVG file for separately editable
+vector shapes. Supported SVG curves become vector polylines. The editor
+provides the same feature under <strong>Add an image or vector
+drawing</strong>. Uploads are capped at 10 MiB; outline text and flatten
+gradients, masks or intersecting clips first. See
+<code><a href="../reference/hex_import_art.html">?hex_import_art</a></code> for the supported SVG subset. Item labels
+and groups can be organised with <code><a href="../reference/hex_label_layer.html">hex_label_layer()</a></code> and
+<code><a href="../reference/hex_groups.html">hex_group_layers()</a></code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># All categories</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/hexmakr_icons.html">hexmakr_icons</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Icons in a specific category</span></span>
-<span><span class="fu"><a href="../reference/hexmakr_icons.html">hexmakr_icons</a></span><span class="op">(</span><span class="st">"biology"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/hex_save_design.html">hex_save_design</a></span><span class="op">(</span><span class="va">design</span>, <span class="st">"my-package.json"</span><span class="op">)</span></span>
+<span><span class="va">restored</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hex_save_design.html">hex_read_design</a></span><span class="op">(</span><span class="st">"my-package.json"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="va">restored</span>, <span class="st">"my-package.svg"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="va">restored</span>, <span class="st">"my-package.png"</span>, width <span class="op">=</span> <span class="fl">1600</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="va">restored</span>, <span class="st">"my-package.pdf"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/hex_recipe.html">hex_recipe</a></span><span class="op">(</span><span class="va">restored</span>, <span class="st">"reproduce.R"</span><span class="op">)</span></span></code></pre></div>
+<p>PNG has a transparent exterior. SVG and PDF contain native vector
+artwork and outlined name glyphs, so they do not depend on locally
+installed fonts. JSON stores validated settings and parts; opening a
+project does not evaluate R code. A project must fit within the same 20
+MiB limit when saved and reopened.</p>
 </div>
 <div class="section level2">
-<h2 id="customizing-colors">Customizing colors<a class="anchor" aria-label="anchor" href="#customizing-colors"></a>
+<h2 id="open-the-manual-editor">Open the manual editor<a class="anchor" aria-label="anchor" href="#open-the-manual-editor"></a>
 </h2>
-<p>Override any theme color individually:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/hex_sticker.html">hex_sticker</a></span><span class="op">(</span></span>
-<span>  <span class="st">"mypackage"</span>,</span>
-<span>  theme        <span class="op">=</span> <span class="st">"stats"</span>,</span>
-<span>  mode         <span class="op">=</span> <span class="st">"dark"</span>,</span>
-<span>  bg           <span class="op">=</span> <span class="st">"#0D1117"</span>,</span>
-<span>  accent       <span class="op">=</span> <span class="st">"#58A6FF"</span>,</span>
-<span>  text_color   <span class="op">=</span> <span class="st">"#FFFFFF"</span>,</span>
-<span>  border_color <span class="op">=</span> <span class="st">"#58A6FF"</span>,</span>
-<span>  sub_color    <span class="op">=</span> <span class="st">"#8B949E"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="choosing-a-font">Choosing a font<a class="anchor" aria-label="anchor" href="#choosing-a-font"></a>
-</h2>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/hex_sticker.html">hex_sticker</a></span><span class="op">(</span></span>
-<span>  <span class="st">"mypackage"</span>,</span>
-<span>  font_family <span class="op">=</span> <span class="st">"serif"</span>,</span>
-<span>  font_bold   <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  font_italic <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  font_size   <span class="op">=</span> <span class="fl">14</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<p>Available font shorthands: <code>"mono"</code>,
-<code>"courier"</code>, <code>"consolas"</code>,
-<code>"source_code"</code>, <code>"fira_code"</code>,
-<code>"serif"</code>, <code>"times"</code>, <code>"palatino"</code>,
-<code>"sans"</code>, <code>"helvetica"</code>, <code>"roboto"</code>,
-<code>"open_sans"</code>, <code>"lato"</code>.</p>
-</div>
-<div class="section level2">
-<h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
-</h2>
-<ul>
-<li>For full parameter reference:
-<code><a href="../articles/programmatic-usage.html">vignette("programmatic-usage")</a></code>
-</li>
-<li>To use the interactive designer: <code><a href="../articles/shiny-app.html">vignette("shiny-app")</a></code>
-or just run <code><a href="../reference/hexmakr_app.html">hexmakr_app()</a></code>
-</li>
-</ul>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>The Designer opens a new logo. Add parts, select one, and use
+<strong>Apply part edit</strong> after changing its colours, position,
+size, opacity or points. Click a part to select it and drag it to move
+it. Rename items, organise groups and switch the mouse target to move a
+whole group together. The CTTIR Gallery tab is secondary; browsing it
+leaves the current logo unchanged.</p>
+<p>The original generic sticker interface remains available through
+<code>hexmakr_app(workspace = "classic")</code>. Its
+<code><a href="../reference/hex_sticker.html">hex_sticker()</a></code> function returns a ggplot object and supports
+the existing themes, fonts and uploaded images.</p>
+<p>See <code><a href="../articles/cttir-library.html">vignette("cttir-library")</a></code> for archive reuse and
+editable projects, and <code><a href="../articles/shiny-app.html">vignette("shiny-app")</a></code> for the manual
+workflow.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

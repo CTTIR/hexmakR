@@ -1,5 +1,7 @@
 # Programmatic Usage
 
+![hexmakR logo](figures/logo.svg)![hexmakR logo](figures/logo-dark.svg)
+
 [![R-CMD-check](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://cttir.github.io/hexmakR/)
 [![CRAN
@@ -15,9 +17,49 @@ MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.or
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
-![](figures/logo.svg)
+## Editable logo projects
 
-## All parameters
+The current project API starts from a fresh name and frame:
+
+``` r
+
+library(hexmakR)
+design <- logo_design("My project", shape = "square")
+design <- hex_add_part(design, "rectangle", x = .5, y = .6,
+                       width = .3, height = .2)
+design <- hex_edit_layer(design, "part_0001", fill = "#45B59A")
+design <- hex_reuse_part(design, "phenoscapR")
+hex_export(design, "my-project.svg")
+hex_save_design(design, "my-project.json")
+```
+
+Use [`hex_layers()`](../reference/hex_layers.md) to inspect IDs, roles
+and geometry.
+[`hex_duplicate_part()`](../reference/hex_duplicate_part.md) retains an
+edited part’s current appearance;
+[`hex_remove_part()`](../reference/hex_duplicate_part.md) deletes an
+added part or hides native geometry. JSON projects and generated R
+recipes retain these edits. See
+[`vignette("cttir-library")`](../articles/cttir-library.md) for complete
+examples.
+
+`hex_import_art(design, "figure.png")` embeds a PNG/JPEG figure as one
+part; `hex_import_art(design, "drawing.svg")` imports supported shapes
+as separate vector parts. SVG curves become vector polylines. Source
+files are no longer needed after import. Use `angle` in
+[`hex_edit_layer()`](../reference/hex_edit_layer.md) for rotation,
+[`hex_label_layer()`](../reference/hex_label_layer.md) for short labels,
+and
+[`hex_groups()`](../reference/hex_groups.md)/[`hex_group_layers()`](../reference/hex_groups.md)
+to organise items. Projects preserve these settings and have a 20 MiB
+limit; uploads have a 10 MiB limit. See
+[`?hex_import_art`](../reference/hex_import_art.md) for SVG feature
+limits.
+
+The functions below remain the classic ggplot-based API, including
+custom PNG/JPEG images, theme presets and font selection.
+
+## Classic sticker parameters
 
 ``` r
 

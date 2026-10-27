@@ -1,10 +1,37 @@
 # CTTIR v5 and project logos
 
-The v5 library contains 45 identities. Named designs place the exact
-package name inside the lower part of the hex, with the native R
-scientific artwork above. The exterior is transparent. Light, dark and
-monochrome modes share this layout. The original 1,035 assets are
-included unchanged.
+![hexmakR logo](figures/logo.svg)![hexmakR logo](figures/logo-dark.svg)
+
+## Create first, reuse when useful
+
+A new project starts with its own name and frame, without an archived
+motif:
+
+``` r
+
+project <- logo_design("My project", shape = "pentagon")
+project <- hex_add_part(project, "circle", x = .5, y = .6, r = .15)
+project <- hex_add_part(project, "polygon",
+                        x = c(.35, .65, .5), y = c(.45, .45, .75))
+hex_layers(project)
+#>           id     type    fill     col points  role   name visible
+#> 1 layer_0001  polygon #191919 #000000      5 frame  Frame    TRUE
+#> 2 layer_0002 pathgrob #FFFFFF    <NA>   1050  name   Name    TRUE
+#> 3  part_0001   circle #009E73 #FFFFFF      1 added Circle    TRUE
+#> 4  part_0002  polygon #009E73 #FFFFFF      3 added  Shape    TRUE
+```
+
+Hexagons, regular pentagons and squares share the same object, editing
+API and export formats. The name is inside the lower part of the frame,
+and the exterior is transparent. `layout = "motif"` creates a
+transparent square without a frame or name. Add primitives there to work
+from an empty canvas.
+
+## Browse the archive
+
+The v5 library contains 45 identities and 1,035 original SVG/PNG/PDF
+assets. The original masters are included unchanged. Light, dark and
+monochrome named masters keep the exact package name inside the hex.
 
 ``` r
 
@@ -32,87 +59,199 @@ head(hex_catalog())
 #> 6     delphyr
 ```
 
-Create an editable design or locate an approved original:
+An explicit identity starts from its editable native R design; original
+approved assets can be located separately:
 
 ``` r
 
-design <- hex_design("phenoscapR")
-print(design)
-hex_export(design, "phenoscapR.svg")
-hex_export(design, "phenoscapR.png", width = 1600)
-hex_asset("phenoscapR", mode = "dark", layout = "lockup", format = "pdf")
+archived <- hex_design("phenoscapR")
+print(archived)
+hex_asset("phenoscapR", mode = "dark", layout = "lockup", format = "svg")
 ```
 
-Project logos can use hexagonal, regular pentagonal or square frames.
-Choose any CTTIR motif and palette as a starting point, or a generic
-built-in icon:
+[`hex_design()`](../reference/hex_design.md) without an explicit package
+also starts fresh. For a named project, `logo_design("My project")`
+makes that intent explicit. Supply `motif = "phenoscapR"` only when its
+full motif should be the starting point; `icon = "microscope"` instead
+selects a generic icon.
+
+## Reuse selected components
 
 ``` r
 
-project <- logo_design("My project", motif = "phenoscapR", shape = "pentagon")
-hex_export(project, "project.svg")
-study <- logo_design("Study", shape = "square", icon = "microscope")
-hex_export(study, "study.pdf")
+archived <- hex_design("phenoscapR")
+source_layers <- hex_layers(archived)
+source_layers[source_layers$role == "motif", c("id", "type", "points")]
+#>            id    type points
+#> 2  layer_0002   lines      7
+#> 3  layer_0003   lines      2
+#> 4  layer_0004 polygon     90
+#> 5  layer_0005 polygon     90
+#> 6  layer_0006   lines     80
+#> 7  layer_0007  circle      1
+#> 8  layer_0008  circle      1
+#> 9  layer_0009   lines      2
+#> 10 layer_0010 polygon     90
+#> 11 layer_0011 polygon     90
+#> 12 layer_0012   lines     80
+#> 13 layer_0013  circle      1
+#> 14 layer_0014  circle      1
+#> 15 layer_0015   lines      2
+#> 16 layer_0016 polygon     90
+#> 17 layer_0017 polygon     90
+#> 18 layer_0018   lines     80
+#> 19 layer_0019  circle      1
+#> 20 layer_0020  circle      1
+#> 21 layer_0021   lines      2
+#> 22 layer_0022 polygon     90
+#> 23 layer_0023 polygon     90
+#> 24 layer_0024   lines     80
+#> 25 layer_0025  circle      1
+#> 26 layer_0026  circle      1
+#> 27 layer_0027   lines      2
+#> 28 layer_0028 polygon     90
+#> 29 layer_0029 polygon     90
+#> 30 layer_0030   lines     80
+#> 31 layer_0031  circle      1
+#> 32 layer_0032  circle      1
+#> 33 layer_0033   lines      2
+#> 34 layer_0034 polygon     90
+#> 35 layer_0035 polygon     90
+#> 36 layer_0036   lines     80
+#> 37 layer_0037  circle      1
+#> 38 layer_0038  circle      1
+#> 39 layer_0039 polygon     90
+#> 40 layer_0040 polygon     90
+#> 41 layer_0041   lines     80
+#> 42 layer_0042  circle      1
+#> 43 layer_0043  circle      1
+#> 44 layer_0044  circle      1
+#> 45 layer_0045  circle      1
+#> 46 layer_0046  circle      1
+first_motif <- source_layers$id[source_layers$role == "motif"][1]
+project <- hex_reuse_part(project, archived, first_motif)
 ```
 
-Shapes use the same design object, palette roles, editable layers and
-project format. Pentagonal and square exports have square canvases.
-Hexagonal masters use the width/height ratio sqrt(3)/2. The
-`layout = "motif"` option exports the standalone artwork on a
-transparent square without a frame or name.
-
-Inspect and modify vector geometry:
+Omit `layer` to import every motif component, excluding the source frame
+and name:
 
 ``` r
 
-design <- hex_design("phenoscapR")
-head(hex_layers(design))
-#>           id    type      fill       col points
-#> 1 layer_0001 polygon   #193F34   #009E73      6
-#> 2 layer_0002   lines   #0C4E4B   #0C4E4B      7
-#> 3 layer_0003   lines   #B2E1D5   #B2E1D5      2
-#> 4 layer_0004 polygon #030A1240      <NA>     90
-#> 5 layer_0005 polygon   #38B391      <NA>     90
-#> 6 layer_0006   lines #F4F8FC99 #F4F8FC99     80
+project <- hex_reuse_part(project, "phenoscapR")
 ```
 
+The destination keeps its name, frame, palette and existing parts. Each
+import stores a validated snapshot of native source settings and edits,
+and remains independently editable. Imported colours therefore stay as
+chosen in the source until you edit those parts. Changing an archive
+selection does not alter imported artwork.
+
+## Edit, duplicate and remove
+
 ``` r
 
-# Layer 1 is the frame. Shape IDs are deterministic within a composition.
-edited <- hex_edit_layer(design, "layer_0001", fill = "#193E36")
-# Move or recolour an individual shape; the input object stays unchanged.
-edited <- hex_edit_layer(edited, "layer_0005", dx = 0.03, fill = "#45B59A")
-hex_save_design(edited, "project.json")
+project <- hex_edit_layer(project, "part_0001",
+                          fill = "#45B59A", dx = .03, scale = .9)
+project <- hex_duplicate_part(project, "part_0001")
+hex_layers(project)
+#>           id     type    fill     col points  role     name visible
+#> 1 layer_0001  polygon #191919 #000000      5 frame    Frame    TRUE
+#> 2 layer_0002 pathgrob #FFFFFF    <NA>   1050  name     Name    TRUE
+#> 3  part_0001   circle #45B59A #FFFFFF      1 added Circle 1    TRUE
+#> 4  part_0002  polygon #009E73 #FFFFFF      3 added    Shape    TRUE
+#> 5  part_0003    lines #0C4E4B #0C4E4B      7 added     Line    TRUE
+#> 6  part_0004   circle #45B59A #FFFFFF      1 added Circle 2    TRUE
+```
+
+Use current IDs from [`hex_layers()`](../reference/hex_layers.md).
+Native geometry uses `layer_` IDs; additional primitives and imported
+components use `part_` IDs. Adding or removing another part retains the
+IDs of existing parts.
+
+[`hex_edit_layer()`](../reference/hex_edit_layer.md) accepts fill,
+outline, line width, opacity, visibility, translation, scale, rotation
+(`angle`) and explicit X/Y point coordinates. Coordinates are local to
+the part’s viewport; supply the same number of points. The input design
+is unchanged, so keeping an earlier object provides undo in R.
+
+``` r
+
+project <- hex_remove_part(project, "part_0002")
+```
+
+Removing an added part deletes it. Removing a native part hides it with
+a saved visibility override. `hex_edit_layer(design, id, reset = TRUE)`
+removes that part’s overrides. Review edited scientific shapes at full
+size and icon size because a changed silhouette can imply a different
+meaning.
+
+## Portable projects and exports
+
+Upload local figures and vector artwork with the same project API:
+
+``` r
+
+project <- hex_import_art(project, "figure.svg")  # also PNG or JPEG
+project <- hex_label_layer(project, "part_0001", "Central cell")
+project <- hex_edit_layer(project, "part_0001", angle = 20, alpha = .8)
+hex_groups(project)
+project <- hex_group_layers(project, c("part_0001", "part_0002"), "Cells")
+```
+
+PNG/JPEG becomes one image part with embedded bytes; supported SVG
+shapes become independently editable vector paths. Neither needs its
+original file after import. SVG curves use bounded vector polylines.
+Solid fills/strokes, transforms and local references are supported.
+Outline text and flatten gradients, masks, filters, group opacity or
+intersecting clips first; unsupported features produce an error. Uploads
+are capped at 10 MiB and rasters at 8192 pixels per side and 16 million
+pixels total. See [`?hex_import_art`](../reference/hex_import_art.md)
+for the complete supported subset and bounds.
+
+``` r
+
+hex_save_design(project, "project.json")
 restored <- hex_read_design("project.json")
+hex_export(restored, "project.svg")
+hex_export(restored, "project.png", width = 1600)
+hex_export(restored, "project.pdf")
 hex_recipe(restored, "reproduce.R")
 ```
 
-Coordinates refer to each shape’s local viewport. Fill, stroke, line
-width, opacity, visibility, translation, scale and explicit point
-coordinates can be edited. Artwork is clipped to its frame. Changes to a
-silhouette can alter its scientific meaning; review the result at full
-size and icon size. Changing the composition, frame or icon in the
-editor resets shape overrides; Undo can restore the previous design. The
-original assets are never modified.
+JSON contains only supported settings, geometry and source snapshots. It
+never loads executable R, external files or serialised grid objects.
+Unknown fields, nested archive parts, invalid coordinates and projects
+over 20 MiB are rejected. Earlier v5 JSON files remain supported and
+retain their archived motif behaviour.
+
+The bundled JetBrains Mono font supplies outlined name glyphs. Vector
+exports do not depend on installed fonts. Font licences are supplied
+under `system.file("cttir/source/fonts", package = "hexmakR")`. Hex
+canvases use width/height `sqrt(3)/2`; pentagon, square and unframed
+canvases are square.
+
+## Manual editor
 
 ``` r
 
-hexmakr_app(package = "phenoscapR")
-hexmakr_app(workspace = "classic")
+hexmakr_app()
+hexmakr_app(package = "phenoscapR")  # preselect CTTIR Gallery; Designer stays fresh
 ```
 
-Select a package, shape and name, then **Apply design**. Choose a vector
-layer, optionally highlight it, edit its properties, then **Apply shape
-edit**. The point editor can load the original coordinates for manual
-adjustment. **Save project** downloads JSON; **Open saved project**
-resumes that work. PNG, SVG, PDF and R-recipe downloads use the current
-saved design settings. Pending form changes take effect only after
-Apply. JSON loading validates fields and never evaluates uploaded R
-code.
+The Designer starts with a new logo. Apply its name and frame, add
+parts, then select, drag and edit individual components. Short labels
+and editable groups organise the composition. CTTIR Gallery browsing
+leaves the logo unchanged; adding a selected part, adding a motif, and
+starting from a whole archive design are separate explicit actions.
 
-The bundled JetBrains Mono font supplies outlined name glyphs, so vector
-exports do not depend on installed fonts. The shipped font OFL licences
-are in `system.file("cttir/source/fonts", package = "hexmakR")`.
+**Undo** restores applied actions. **Reset to starting design** returns
+to the fresh, explicitly loaded archive or opened-project baseline.
+**Save project** and **Open saved project** preserve editable parts.
+Downloads use the applied design, so apply pending form changes first.
+The classic workspace remains available as
+`hexmakr_app(workspace = "classic")`.
+
+## Original catalogue and legacy references
 
 ``` r
 
@@ -120,15 +259,17 @@ are in `system.file("cttir/source/fonts", package = "hexmakR")`.
 hex_render_catalog("exports")
 ```
 
-The twelve catalogue names present only in the older hexstickers
-repository are preserved as legacy SVG references under `cttir/legacy`.
-They are not claimed as approved v5 motifs. `hexmakeR` maps to
-`hexmakR`; `delphyR` maps to `delphyr`. Archive and asset hashes
-document the imported source material.
+This regenerates designs from native R geometry. Use
+[`hex_asset()`](../reference/hex_asset.md) when the unchanged approved
+master is required.
 
-The identities `CTTIR` and `cttiR` differ only in case. To prevent
-collisions on macOS and Windows, the organisation’s asset folder is
-`CTTIR-brand`; the R package retains `cttiR`. `hex_catalog()$asset_dir`
-records the mapping, and asset lookup, the gallery and batch rendering
-use it. Displayed names remain exact. Original assets were re-imported
-directly from distinct ZIP entries.
+The twelve names present only in the older hexstickers repository remain
+legacy SVG references under `cttir/legacy`. They are not claimed as
+approved v5 motifs. `hexmakeR` maps to `hexmakR`; `delphyR` maps to
+`delphyr`.
+
+`CTTIR` and `cttiR` differ only in case. The organisation’s asset
+directory is `CTTIR-brand`; the R package retains `cttiR`.
+`hex_catalog()$asset_dir` records this mapping to prevent collisions on
+macOS and Windows. Display names keep their exact spelling. Archive and
+asset hashes record the supplied originals.

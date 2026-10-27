@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../logo.svg" alt="" class="themakr-navbar-logo" data-cttir-dark-src="../reference/figures/logo-dark.svg">hexmakR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,172 +82,232 @@
 
     
     
+<!-- cttir-vignette-logo: start -->
+<style>
+.cttir-vignette-logo { float: right; width: 120px; max-width: 30%; margin: 0 0 1rem 1.5rem; }
+.cttir-vignette-logo img { width: 100%; height: auto; border: 0; background: transparent; box-shadow: none; }
+.cttir-vignette-logo .cttir-vignette-logo-light { display: block; }
+.cttir-vignette-logo .cttir-vignette-logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .cttir-vignette-logo .cttir-vignette-logo-light { display: none; }
+  .cttir-vignette-logo .cttir-vignette-logo-dark { display: block; }
+}
+[data-bs-theme="light"] .cttir-vignette-logo .cttir-vignette-logo-light { display: block; }
+[data-bs-theme="light"] .cttir-vignette-logo .cttir-vignette-logo-dark { display: none; }
+[data-bs-theme="dark"] .cttir-vignette-logo .cttir-vignette-logo-light { display: none; }
+[data-bs-theme="dark"] .cttir-vignette-logo .cttir-vignette-logo-dark { display: block; }
+</style>
+<div class="cttir-vignette-logo">
+<p><img class="cttir-vignette-logo-light" src="figures/logo.svg" alt="hexmakR logo" width="120" height="139"><img class="cttir-vignette-logo-dark" src="figures/logo-dark.svg" alt="hexmakR logo" width="120" height="139"></p>
+</div>
+<!-- cttir-vignette-logo: end -->
 <!-- badges: start -->
 <p><a href="https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://cttir.github.io/hexmakR/" class="external-link"><img src="https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a> <a href="https://CRAN.R-project.org/package=hexmakR" class="external-link"><img src="https://www.r-pkg.org/badges/version/hexmakR" alt="CRAN status"></a> <a href="https://app.codecov.io/gh/CTTIR/hexmakR?branch=main" class="external-link"><img src="https://codecov.io/gh/CTTIR/hexmakR/branch/main/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://cran.r-project.org/package=hexmakR" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/hexmakR" alt="CRAN downloads"></a> <a href="https://cran.r-project.org/package=hexmakR" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/hexmakR" alt="CRAN downloads total"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="License: MIT"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a> <!-- badges: end --></p>
-<p><img src="figures/logo.svg" class="r-plt" alt="" style="float:right; margin-left:1em;"></p>
 <div class="section level2">
-<h2 id="launching-the-app">Launching the app<a class="anchor" aria-label="anchor" href="#launching-the-app"></a>
+<h2 id="launch-the-designer">Launch the designer<a class="anchor" aria-label="anchor" href="#launch-the-designer"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cttir.github.io/hexmakR/" class="external-link">hexmakR</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span>workspace <span class="op">=</span> <span class="st">"classic"</span><span class="op">)</span></span></code></pre></div>
-<p>This opens the hexmakR Shiny designer in your default browser (or the
-RStudio Viewer pane).</p>
+<span><span class="fu"><a href="../reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>The default <strong>Designer</strong> opens a new logo with a frame
+and the name “New project”. It contains no archived motif. The
+<strong>CTTIR Gallery</strong> tab is an optional source of inspiration
+and reusable parts. The application title is the text
+<strong>hexmakR</strong>.</p>
 </div>
 <div class="section level2">
-<h2 id="app-layout">App layout<a class="anchor" aria-label="anchor" href="#app-layout"></a>
-</h2>
-<p>The app is divided into two panels:</p>
-<div class="section level3">
-<h3 id="left-panel-live-preview">Left panel — Live preview<a class="anchor" aria-label="anchor" href="#left-panel-live-preview"></a>
-</h3>
-<ul>
-<li>The hex sticker updates in real time as you change any control.</li>
-<li>The <strong>Export PNG</strong> button downloads a 600 × 693 px
-transparent PNG.</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="right-panel-controls">Right panel — Controls<a class="anchor" aria-label="anchor" href="#right-panel-controls"></a>
-</h3>
-<p>The controls are organized into five sections:</p>
-<div class="section level4">
-<h4 id="text">1. Text<a class="anchor" aria-label="anchor" href="#text"></a>
-</h4>
-<table class="table">
-<thead><tr class="header">
-<th>Control</th>
-<th>Description</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Package Name</td>
-<td>The main text on the sticker</td>
-</tr>
-<tr class="even">
-<td>Subtitle</td>
-<td>Optional smaller text below the name</td>
-</tr>
-<tr class="odd">
-<td>URL</td>
-<td>Optional URL near the bottom</td>
-</tr>
-<tr class="even">
-<td>Font Size</td>
-<td>Slider from 6–32 pt</td>
-</tr>
-<tr class="odd">
-<td>Font</td>
-<td>Dropdown with 13 font options</td>
-</tr>
-<tr class="even">
-<td>Bold / Italic</td>
-<td>Checkboxes</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section level4">
-<h4 id="icon">2. Icon<a class="anchor" aria-label="anchor" href="#icon"></a>
-</h4>
-<table class="table">
-<thead><tr class="header">
-<th>Control</th>
-<th>Description</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Built-in Icon</td>
-<td>Dropdown of all 46 icons, grouped by category</td>
-</tr>
-<tr class="even">
-<td>Custom Image</td>
-<td>Upload a PNG or JPEG to use instead</td>
-</tr>
-<tr class="odd">
-<td>Icon Size</td>
-<td>Multiplier from 0.3 to 2.5</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section level4">
-<h4 id="theme">3. Theme<a class="anchor" aria-label="anchor" href="#theme"></a>
-</h4>
-<table class="table">
-<thead><tr class="header">
-<th>Control</th>
-<th>Description</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Theme</td>
-<td>Dropdown with all 19 themes</td>
-</tr>
-<tr class="even">
-<td>Mode</td>
-<td>Dark or Light</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section level4">
-<h4 id="custom-colors">4. Custom Colors<a class="anchor" aria-label="anchor" href="#custom-colors"></a>
-</h4>
-<p>Five color pickers let you override any individual theme color:
-Background, Accent, Text, Border, and Subtitle.</p>
-</div>
-<div class="section level4">
-<h4 id="border">5. Border<a class="anchor" aria-label="anchor" href="#border"></a>
-</h4>
-<table class="table">
-<thead><tr class="header">
-<th>Control</th>
-<th>Description</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Border Width</td>
-<td>0–8 mm</td>
-</tr>
-<tr class="even">
-<td>Inner Accent Ring</td>
-<td>Checkbox to show/hide the inner border</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="workflow-tips">Workflow tips<a class="anchor" aria-label="anchor" href="#workflow-tips"></a>
+<h2 id="create-your-own-logo">Create your own logo<a class="anchor" aria-label="anchor" href="#create-your-own-logo"></a>
 </h2>
 <ol style="list-style-type: decimal">
-<li>
-<strong>Start with a theme</strong> — pick a theme in the Theme
-section that matches your package’s domain.</li>
-<li>
-<strong>Pick an icon</strong> — use the Built-in Icon dropdown or
-upload a custom logo.</li>
-<li>
-<strong>Adjust text</strong> — set your package name; add a subtitle
-only if it fits at the chosen font size.</li>
-<li>
-<strong>Fine-tune colors</strong> — the Custom Colors section lets
-you tweak individual colors without switching themes.</li>
-<li>
-<strong>Export</strong> — click the Export PNG button. The file will
-be named after your package.</li>
+<li>Enter your package or project name.</li>
+<li>Choose <strong>Hexagon</strong>, <strong>Pentagon</strong> or
+<strong>Square</strong>, then a light, dark or monochrome
+appearance.</li>
+<li>Keep <strong>Blank canvas</strong> as the base artwork, or select a
+generic icon.</li>
+<li>Use <strong>Apply logo settings</strong> to update the preview.</li>
+<li>Choose a circle, rectangle, line or triangle and select <strong>Add
+part</strong>.</li>
 </ol>
+<p>The name stays inside the frame. <strong>Artwork only</strong> omits
+the name, while <strong>No frame</strong> gives a transparent square
+canvas. You can add parts to that empty canvas as well.</p>
 </div>
 <div class="section level2">
-<h2 id="after-export">After export<a class="anchor" aria-label="anchor" href="#after-export"></a>
+<h2 id="edit-individual-parts">Edit individual parts<a class="anchor" aria-label="anchor" href="#edit-individual-parts"></a>
 </h2>
-<p>Place the downloaded PNG at <code>man/figures/logo.png</code> in your
-package directory and add it to your README:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"man/figures/logo.png"</span><span class="ot"> align</span><span class="op">=</span><span class="st">"right"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"139"</span><span class="ot"> </span><span class="dt">/&gt;</span></span></code></pre></div>
-<p>See <code><a href="../articles/programmatic-usage.html">vignette("programmatic-usage")</a></code> for details on
-integrating the sticker with usethis and pkgdown.</p>
+<p>Click a visible part in the preview or choose a <strong>Selected
+part</strong>. Drag and release to move the selected artwork; use the
+list for overlapping or hidden items. The list includes the frame, name,
+native artwork and every added part. Highlighting helps locate the
+selection and is only a preview aid; it is not included in exported
+artwork.</p>
+<table class="table">
+<colgroup>
+<col width="52%">
+<col width="47%">
+</colgroup>
+<thead><tr class="header">
+<th>Control</th>
+<th>Effect</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Fill and Outline</td>
+<td>Set a colour name or hex value; blank restores the underlying colour
+when the edit is applied</td>
+</tr>
+<tr class="even">
+<td>Horizontal/Vertical offset</td>
+<td>Move the part relative to its original geometry</td>
+</tr>
+<tr class="odd">
+<td>Part size</td>
+<td>Scale the part</td>
+</tr>
+<tr class="even">
+<td>Rotation (degrees)</td>
+<td>Rotate the part around its centre</td>
+</tr>
+<tr class="odd">
+<td>Outline width and Opacity</td>
+<td>Adjust stroke width and transparency</td>
+</tr>
+<tr class="even">
+<td>Visible</td>
+<td>Hide or show the part</td>
+</tr>
+<tr class="odd">
+<td>Edit points</td>
+<td>Replace X/Y coordinates for the same number of points</td>
+</tr>
+<tr class="even">
+<td>Restore part</td>
+<td>Remove the selected part’s overrides</td>
+</tr>
+<tr class="odd">
+<td>Duplicate part</td>
+<td>Copy its current appearance into a new independent part</td>
+</tr>
+<tr class="even">
+<td>Remove part</td>
+<td>Delete an added part or hide a native frame/name/artwork layer</td>
+</tr>
+</tbody>
+</table>
+<p>Choose <strong>Apply part edit</strong> to save changes to the
+selected part. Point coordinates are local to that part’s viewport.
+<strong>Load original points</strong> loads its underlying geometry for
+editing. Invalid colours, nonfinite values or mismatched point counts
+produce an error while retaining the last valid logo.</p>
+<p>Palette changes affect native design roles. Imported archive parts
+retain their source colours; edit their individual fill and outline when
+needed. Changing the frame, composition or base artwork retains your
+added parts. Native geometry overrides are reset when their underlying
+structure changes.</p>
+</div>
+<div class="section level2">
+<h2 id="name-and-group-items">Name and group items<a class="anchor" aria-label="anchor" href="#name-and-group-items"></a>
+</h2>
+<p>Every item has a short label. Enter a <strong>Short name</strong> and
+choose <strong>Rename part</strong> to identify its purpose. The initial
+Frame, Icon and Name groups separate the composition. Under
+<strong>Image groups</strong>, choose members and <strong>Create
+group</strong> or <strong>Set members</strong>; <strong>Rename
+group</strong> and <strong>Ungroup selected members</strong> update the
+organisation without changing appearance. One item belongs to one
+group.</p>
+<p>Set <strong>Mouse target</strong> to <strong>Whole group</strong> to
+drag all members together, or use the group movement controls.
+<strong>Individual part</strong> moves only the selected item. The part
+property controls always edit the selected member. Undo and project
+saves retain labels, groups and movement.</p>
+</div>
+<div class="section level2">
+<h2 id="add-a-figure-or-vector-drawing">Add a figure or vector drawing<a class="anchor" aria-label="anchor" href="#add-a-figure-or-vector-drawing"></a>
+</h2>
+<p>Use <strong>Add an image or vector drawing</strong> to upload PNG,
+JPEG or SVG. Existing work is retained and the import can be undone.
+PNG/JPEG is one image part: move, scale, rotate, hide or change its
+opacity. Source transparency is kept. SVG shapes and paths become
+separate vector parts with editable colours, strokes and coordinates.
+Curves are approximated by bounded vector polylines; SVG and PDF exports
+keep those vectors. Raster images stay raster in exports.</p>
+<p>Each upload may be at most 10 MiB. Raster dimensions are capped at
+8192 pixels per side and 16 million pixels per image, with 32 million
+embedded pixels per project. SVG supports solid fills/strokes, common
+shapes and paths, transforms and local references. Text must be
+outlined; gradients, masks, filters, group opacity and intersecting
+clips must first be flattened to paths. Unsupported features return an
+explanation. Scripts, external resources and XML entities are rejected.
+Imported files are embedded as image bytes or vector coordinates, so
+reopening a project does not need the original upload.</p>
+</div>
+<div class="section level2">
+<h2 id="reuse-archive-artwork">Reuse archive artwork<a class="anchor" aria-label="anchor" href="#reuse-archive-artwork"></a>
+</h2>
+<p>Open <strong>CTTIR Gallery</strong> and select an identity. The
+preview and part list update; your current logo and undo history stay
+unchanged.</p>
+<ul>
+<li>
+<strong>Add selected part to my logo</strong> imports just the
+chosen native component.</li>
+<li>
+<strong>Add artwork to my logo</strong> imports the motif’s
+components, excluding its frame and package name.</li>
+<li>
+<strong>Start from whole design</strong> replaces the current logo
+with that archived composition. This is a separate explicit action;
+<strong>Undo</strong> restores your work.</li>
+</ul>
+<p>Imports retain your current name, frame, palette and existing parts.
+Imported components remain individually editable and use a saved source
+snapshot. They do not change when you later browse a different archive
+identity.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"phenoscapR"</span><span class="op">)</span></span></code></pre></div>
+<p>The <code>package</code> argument preselects an archive identity. The
+Designer still starts with a fresh logo.</p>
+</div>
+<div class="section level2">
+<h2 id="undo-reset-and-reopen">Undo, reset and reopen<a class="anchor" aria-label="anchor" href="#undo-reset-and-reopen"></a>
+</h2>
+<p><strong>Undo</strong> restores the previous applied action, including
+New logo, archive replacement and opening a project. The editor retains
+up to 30 undo steps. <strong>Reset to starting design</strong> returns
+to the current baseline: the fresh project, the explicitly loaded
+archive design, or the opened JSON project. <strong>New logo</strong>
+starts another blank composition.</p>
+<p><strong>Save project</strong> downloads editable JSON. <strong>Open
+saved project</strong> restores its settings, primitives, uploaded
+artwork, imported archive parts, labels, groups and individual edits.
+Only the supported data schema is accepted; project loading does not
+execute R code. Saved and loaded projects share a 20 MiB size limit.</p>
+</div>
+<div class="section level2">
+<h2 id="export">Export<a class="anchor" aria-label="anchor" href="#export"></a>
+</h2>
+<p>PNG, SVG and PDF use the currently applied design. Choose the PNG
+width in pixels; vector exports retain outlined paths and names.
+<strong>R recipe</strong> writes code that reproduces the same project.
+Pending settings must be applied before downloading.</p>
+<p>For a package README or pkgdown site, place the named SVG/PNG at
+<code>man/figures/logo.svg</code> and <code>man/figures/logo.png</code>.
+Use the matching named dark variant at
+<code>man/figures/logo-dark.svg</code>. Keep the package name inside the
+image.</p>
+</div>
+<div class="section level2">
+<h2 id="classic-designer">Classic designer<a class="anchor" aria-label="anchor" href="#classic-designer"></a>
+</h2>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span>workspace <span class="op">=</span> <span class="st">"classic"</span><span class="op">)</span></span></code></pre></div>
+<p>The classic workspace retains its live ggplot preview, 19 theme
+presets, 46 icons, PNG/JPEG upload, 13 font choices, subtitle/URL
+controls and PNG export. Use it for existing generic-sticker workflows;
+the default Designer provides individually editable vector parts and
+portable projects.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

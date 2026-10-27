@@ -1,9 +1,10 @@
 # Create an editable CTTIR v5 design
 
-Defaults to the approved named composition: artwork above the package
-name, inside a tinted hex with an opaque family border and transparent
-exterior. All geometry is drawn in R. Name glyphs use the bundled
-JetBrains Mono font.
+A call without a package starts a fresh composition with a frame and
+name. Supplying a package explicitly loads its editable archive motif.
+Archive artwork can also be reused one part at a time with
+[`hex_reuse_part()`](hex_reuse_part.md). All geometry is drawn in R.
+Name glyphs use the bundled JetBrains Mono font.
 
 ## Usage
 
@@ -21,7 +22,8 @@ hex_design(
   label_size = 32,
   border_width = 5.5,
   shape = c("hex", "pentagon", "square"),
-  icon = NULL
+  icon = NULL,
+  archive = !missing(package)
 )
 ```
 
@@ -77,6 +79,11 @@ hex_design(
 
   Optional generic icon key from [`hexmakr_icons()`](hexmakr_icons.md),
   replacing the CTTIR motif.
+
+- archive:
+
+  Include the package's archive motif. By default this is true only when
+  `package` is supplied explicitly.
 
 ## Value
 

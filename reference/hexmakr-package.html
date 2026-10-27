@@ -5,13 +5,23 @@ Shiny app or programmatically via R functions.
 Comes with 19 curated color themes (dark + light variants), 46
 built-in scientific and technical icons across 7 categories, custom image
 upload support, 13 font options, and transparent PNG export.
-The v5 workspace adds 45 native R vector identities, individual shape edits,
-JSON projects, PNG/SVG/PDF exports and hexagonal, pentagonal or square logos.
+The default Designer starts a fresh logo. Add, duplicate, remove and edit
+individual parts; optionally reuse components from 45 archived vector
+identities. JSON projects, R recipes and PNG/SVG/PDF exports retain edits
+across hexagonal, pentagonal or square logos.
+Import portable PNG/JPEG figures or supported SVG components, select and
+drag items, rotate individual parts, and organise named groups.
 Main functions
 
 
-hex_design() –editable CTTIR v5 design.
-logo_design() –project logos in three frame shapes.
+logo_design() –fresh project logos in three frame shapes.
+hex_add_part() –add editable geometric parts.
+hex_import_art() –import embedded figures or editable vector components.
+hex_groups() –organise named groups of items.
+hex_label_layer() –give an item a short label.
+hex_reuse_part() –reuse selected archive artwork.
+hex_edit_layer() –edit individual part properties and points.
+hex_design() –fresh or explicitly selected archive design.
 hex_export() –vector and raster export.
 hex_catalog() –all 45 registered identities.
 hex_sticker() –programmatic hex sticker creation; returns a ggplot
@@ -30,13 +40,23 @@ Shiny app or programmatically via R functions.
 Comes with 19 curated color themes (dark + light variants), 46
 built-in scientific and technical icons across 7 categories, custom image
 upload support, 13 font options, and transparent PNG export.
-The v5 workspace adds 45 native R vector identities, individual shape edits,
-JSON projects, PNG/SVG/PDF exports and hexagonal, pentagonal or square logos.
+The default Designer starts a fresh logo. Add, duplicate, remove and edit
+individual parts; optionally reuse components from 45 archived vector
+identities. JSON projects, R recipes and PNG/SVG/PDF exports retain edits
+across hexagonal, pentagonal or square logos.
+Import portable PNG/JPEG figures or supported SVG components, select and
+drag items, rotate individual parts, and organise named groups.
 Main functions
 
 
-hex_design() –editable CTTIR v5 design.
-logo_design() –project logos in three frame shapes.
+logo_design() –fresh project logos in three frame shapes.
+hex_add_part() –add editable geometric parts.
+hex_import_art() –import embedded figures or editable vector components.
+hex_groups() –organise named groups of items.
+hex_label_layer() –give an item a short label.
+hex_reuse_part() –reuse selected archive artwork.
+hex_edit_layer() –edit individual part properties and points.
+hex_design() –fresh or explicitly selected archive design.
 hex_export() –vector and raster export.
 hex_catalog() –all 45 registered identities.
 hex_sticker() –programmatic hex sticker creation; returns a ggplot
@@ -57,7 +77,7 @@ save_hex_svg() –save a sticker to SVG (requires svglite).
 
     <a class="navbar-brand me-2" href="../index.html"><img src="../logo.svg" alt="" class="themakr-navbar-logo" data-cttir-dark-src="../reference/figures/logo-dark.svg">hexmakR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,12 +122,22 @@ Shiny app or programmatically via R functions.</p>
 <p>Comes with <strong>19 curated color themes</strong> (dark + light variants), <strong>46
 built-in scientific and technical icons</strong> across 7 categories, custom image
 upload support, 13 font options, and transparent PNG export.</p>
-<p>The v5 workspace adds 45 native R vector identities, individual shape edits,
-JSON projects, PNG/SVG/PDF exports and hexagonal, pentagonal or square logos.</p><div class="section">
+<p>The default Designer starts a fresh logo. Add, duplicate, remove and edit
+individual parts; optionally reuse components from 45 archived vector
+identities. JSON projects, R recipes and PNG/SVG/PDF exports retain edits
+across hexagonal, pentagonal or square logos.
+Import portable PNG/JPEG figures or supported SVG components, select and
+drag items, rotate individual parts, and organise named groups.</p><div class="section">
 <h3 id="main-functions">Main functions<a class="anchor" aria-label="anchor" href="#main-functions"></a></h3>
 
-<ul><li><p><code><a href="hex_design.html">hex_design()</a></code> –editable CTTIR v5 design.</p></li>
-<li><p><code><a href="logo_design.html">logo_design()</a></code> –project logos in three frame shapes.</p></li>
+<ul><li><p><code><a href="logo_design.html">logo_design()</a></code> –fresh project logos in three frame shapes.</p></li>
+<li><p><code><a href="hex_add_part.html">hex_add_part()</a></code> –add editable geometric parts.</p></li>
+<li><p><code><a href="hex_import_art.html">hex_import_art()</a></code> –import embedded figures or editable vector components.</p></li>
+<li><p><code><a href="hex_groups.html">hex_groups()</a></code> –organise named groups of items.</p></li>
+<li><p><code><a href="hex_label_layer.html">hex_label_layer()</a></code> –give an item a short label.</p></li>
+<li><p><code><a href="hex_reuse_part.html">hex_reuse_part()</a></code> –reuse selected archive artwork.</p></li>
+<li><p><code><a href="hex_edit_layer.html">hex_edit_layer()</a></code> –edit individual part properties and points.</p></li>
+<li><p><code><a href="hex_design.html">hex_design()</a></code> –fresh or explicitly selected archive design.</p></li>
 <li><p><code><a href="hex_export.html">hex_export()</a></code> –vector and raster export.</p></li>
 <li><p><code><a href="hex_catalog.html">hex_catalog()</a></code> –all 45 registered identities.</p></li>
 <li><p><code><a href="hex_sticker.html">hex_sticker()</a></code> –programmatic hex sticker creation; returns a ggplot

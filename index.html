@@ -31,7 +31,7 @@
 
     <a class="navbar-brand me-2" href="index.html"><img src="logo.svg" alt="" class="themakr-navbar-logo" data-cttir-dark-src="reference/figures/logo-dark.svg">hexmakR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +71,7 @@
   </div>
 </nav><script src="themakr-brand.js" defer></script><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><p><picture class="cttir-readme-logo"><source class="cttir-logo-dark-source" media="(prefers-color-scheme: dark)" srcset="reference/figures/logo-with-name-dark.svg"><img src="reference/figures/logo-with-name.svg" align="right" alt="hexmakR logo" width="120" height="139"></picture></p>
+  <main id="main" class="col-md-9"><p><picture class="cttir-readme-logo"><source class="cttir-logo-dark-source" media="(prefers-color-scheme: dark)" srcset="reference/figures/logo-with-name-dark.png"><img src="reference/figures/logo-with-name.png" align="right" alt="hexmakR logo" width="120" height="139"></picture></p>
 <div class="section level1">
 <div class="page-header">
 <img src="logo.svg" class="logo" alt=""><h1 id="hexmakr">hexmakR<a class="anchor" aria-label="anchor" href="#hexmakr"></a>
@@ -83,19 +83,27 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>hexmakR creates editable logos for R packages and projects. The default v5 workspace includes <strong>45 CTTIR identities</strong>, <strong>1,035 original SVG/PNG/PDF assets</strong>, and native R vector artwork. Package names stay <strong>inside the hex</strong>, with the scientific motif above, a family-coloured border and a transparent exterior. Project logos also support <strong>pentagonal and square frames</strong>.</p>
-<p>The manual editor supports palette and layout changes, individual vector shapes, point coordinates, undo/reset, JSON project save/load, and PNG/SVG/PDF exports. The original designer with 46 generic icons and 19 themes remains available. All 46 icons also work in the new project-logo editor.</p>
+<p>hexmakR creates editable logos for R packages and projects. The default Designer starts a <strong>new logo with your name and a blank frame</strong>. Choose a hexagon, pentagon or square, then add shapes, uploaded artwork or a generic icon and edit each part. Names stay <strong>inside the frame</strong> and the exterior is transparent.</p>
+<p>The secondary <strong>CTTIR Gallery</strong> contains 45 identities and 1,035 original SVG/PNG/PDF assets. Browse for inspiration, import one selected part or an entire motif into your current logo, or explicitly start from a whole archived design. Browsing the archive does not replace your work.</p>
+<p>Click a visible part to select it, then drag it to a new position. Short item names and Frame/Icon/Name groups help organise the composition; custom groups can be renamed, regrouped and moved together. The editor supports individual fills, outlines, positions, sizes, rotation, opacity, visibility and point coordinates, plus duplicate/remove, undo/reset, JSON projects and PNG/SVG/PDF export. All 46 generic icons are available. The classic designer retains its 19 themes, custom image uploads and font controls.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cttir.github.io/hexmakR/" class="external-link">hexmakR</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span><span class="op">)</span>                          <span class="co"># v5 library and project-logo editor</span></span>
-<span><span class="fu"><a href="reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"phenoscapR"</span><span class="op">)</span>     <span class="co"># open a specific identity</span></span>
+<span><span class="fu"><a href="reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span><span class="op">)</span>                          <span class="co"># fresh logo; optional CTTIR Gallery tab</span></span>
+<span><span class="fu"><a href="reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"phenoscapR"</span><span class="op">)</span>     <span class="co"># preselect archive, keep fresh logo</span></span>
 <span><span class="fu"><a href="reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span>workspace <span class="op">=</span> <span class="st">"classic"</span><span class="op">)</span>      <span class="co"># original generic sticker designer</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="fu"><a href="reference/hex_design.html">hex_design</a></span><span class="op">(</span><span class="st">"phenoscapR"</span><span class="op">)</span>, <span class="st">"phenoscapR.svg"</span><span class="op">)</span></span>
-<span><span class="va">project</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/logo_design.html">logo_design</a></span><span class="op">(</span><span class="st">"My project"</span>, motif <span class="op">=</span> <span class="st">"phenoscapR"</span>, shape <span class="op">=</span> <span class="st">"pentagon"</span><span class="op">)</span></span>
+<span><span class="va">project</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/logo_design.html">logo_design</a></span><span class="op">(</span><span class="st">"My project"</span>, shape <span class="op">=</span> <span class="st">"pentagon"</span><span class="op">)</span></span>
+<span><span class="va">project</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/hex_add_part.html">hex_add_part</a></span><span class="op">(</span><span class="va">project</span>, <span class="st">"circle"</span>, x <span class="op">=</span> <span class="fl">.5</span>, y <span class="op">=</span> <span class="fl">.6</span>, r <span class="op">=</span> <span class="fl">.15</span><span class="op">)</span></span>
+<span><span class="va">project</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/hex_edit_layer.html">hex_edit_layer</a></span><span class="op">(</span><span class="va">project</span>, <span class="st">"part_0001"</span>, fill <span class="op">=</span> <span class="st">"#45B59A"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="va">project</span>, <span class="st">"project.png"</span><span class="op">)</span></span>
-<span><span class="va">logo</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/logo_design.html">logo_design</a></span><span class="op">(</span><span class="st">"Study"</span>, shape <span class="op">=</span> <span class="st">"square"</span>, icon <span class="op">=</span> <span class="st">"microscope"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="va">logo</span>, <span class="st">"study.pdf"</span><span class="op">)</span></span></code></pre></div>
+<span></span>
+<span><span class="co"># Reuse archive artwork while keeping the new name, frame and existing parts.</span></span>
+<span><span class="va">project</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/hex_reuse_part.html">hex_reuse_part</a></span><span class="op">(</span><span class="va">project</span>, <span class="st">"phenoscapR"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/hex_save_design.html">hex_save_design</a></span><span class="op">(</span><span class="va">project</span>, <span class="st">"project.json"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="va">project</span>, <span class="st">"project.svg"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># An explicit identity still opens that complete editable archive design.</span></span>
+<span><span class="fu"><a href="reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="fu"><a href="reference/hex_design.html">hex_design</a></span><span class="op">(</span><span class="st">"phenoscapR"</span><span class="op">)</span>, <span class="st">"phenoscapR.svg"</span><span class="op">)</span></span></code></pre></div>
 <p>See the <a href="plans/2026-10-27-v5-update.html">detailed update plan</a> and <a href="https://cttir.github.io/hexmakR/articles/cttir-library.html" class="external-link">v5 library guide</a>.</p>
 </div>
 <div class="section level2">
@@ -133,16 +141,27 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cttir.github.io/hexmakR/" class="external-link">hexmakR</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Three lines to a sticker</span></span>
-<span><span class="fu"><a href="reference/hex_sticker.html">hex_sticker</a></span><span class="op">(</span><span class="st">"mypackage"</span>, icon <span class="op">=</span> <span class="st">"dna"</span>, theme <span class="op">=</span> <span class="st">"genomics"</span>,</span>
-<span>            filename <span class="op">=</span> <span class="st">"man/figures/logo.png"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">logo</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/logo_design.html">logo_design</a></span><span class="op">(</span><span class="st">"My package"</span><span class="op">)</span></span>
+<span><span class="va">logo</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/hex_add_part.html">hex_add_part</a></span><span class="op">(</span><span class="va">logo</span>, <span class="st">"polygon"</span>,</span>
+<span>                     x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.35</span>, <span class="fl">.65</span>, <span class="fl">.5</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.45</span>, <span class="fl">.45</span>, <span class="fl">.75</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/hex_layers.html">hex_layers</a></span><span class="op">(</span><span class="va">logo</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/hex_export.html">hex_export</a></span><span class="op">(</span><span class="va">logo</span>, <span class="st">"my-package.svg"</span><span class="op">)</span></span></code></pre></div>
+<p><code><a href="reference/logo_design.html">logo_design()</a></code> starts with a frame and name, with no archived motif. Pass <code>motif = "phenoscapR"</code> or another identity only when that artwork is wanted. Use <code>shape = "pentagon"</code> or <code>shape = "square"</code> for project logos.</p>
 </div>
 <div class="section level2">
 <h2 id="shiny-app">Shiny App<a class="anchor" aria-label="anchor" href="#shiny-app"></a>
 </h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/hexmakr_app.html">hexmakr_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>The Shiny designer opens in your browser with live preview. Adjust text, select a frame and artwork, and export PNG, SVG or PDF. Use <strong>Apply design</strong> to apply composition settings and <strong>Apply shape edit</strong> for a selected layer. <strong>Save project</strong> preserves editable settings; <strong>R recipe</strong> reproduces the design.</p>
+<p>Enter your name and choose a frame, then select <strong>Apply logo settings</strong>. <strong>Add part</strong> creates a circle, rectangle, line or triangle. Select a part, change its properties or points, and choose <strong>Apply part edit</strong>. <strong>Duplicate part</strong> and <strong>Remove part</strong> act on the selection. The CTTIR Gallery tab offers <strong>Add selected part to my logo</strong>, <strong>Add artwork to my logo</strong>, and the separate <strong>Start from whole design</strong> action.</p>
+<p><strong>Undo</strong> restores the previous edit. <strong>Reset to starting design</strong> restores the current session baseline: the new logo, the explicitly loaded archive design, or the opened JSON project. <strong>New logo</strong> starts fresh and can also be undone. Downloads use the applied design; pending form changes must be applied first. <strong>Save project</strong> preserves editable parts and <strong>R recipe</strong> reproduces them.</p>
+<p>Use <strong>Add an image or vector drawing</strong> for PNG/JPEG figures or SVG artwork. PNG/JPEG remains one movable, scalable and rotatable image with editable opacity. Supported SVG shapes become individual vector parts. Both are embedded in the project, so reopening needs no original upload file.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">project</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/hex_import_art.html">hex_import_art</a></span><span class="op">(</span><span class="fu"><a href="reference/logo_design.html">logo_design</a></span><span class="op">(</span><span class="st">"My project"</span><span class="op">)</span>, <span class="st">"figure.svg"</span><span class="op">)</span></span>
+<span><span class="va">project</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/hex_label_layer.html">hex_label_layer</a></span><span class="op">(</span><span class="va">project</span>, <span class="st">"part_0001"</span>, <span class="st">"Central cell"</span><span class="op">)</span></span>
+<span><span class="va">project</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/hex_edit_layer.html">hex_edit_layer</a></span><span class="op">(</span><span class="va">project</span>, <span class="st">"part_0001"</span>, angle <span class="op">=</span> <span class="fl">25</span>, alpha <span class="op">=</span> <span class="fl">.8</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/hex_groups.html">hex_groups</a></span><span class="op">(</span><span class="va">project</span><span class="op">)</span></span></code></pre></div>
+<p>Uploads are limited to 10 MiB; projects to 20 MiB. SVG supports solid-colour paths/shapes, transforms and local references. Curves become bounded vector polylines, and SVG/PDF exports keep that vector geometry. Outline text and flatten gradients, masks, filters or intersecting clips before uploading; unsupported features produce an explanatory error. Raster content stays raster inside SVG/PDF exports. The application title is the text <strong>hexmakR</strong>.</p>
 </div>
 <div class="section level2">
 <h2 id="classic-designer-comparison">Classic designer comparison<a class="anchor" aria-label="anchor" href="#classic-designer-comparison"></a>
@@ -299,7 +318,7 @@
 </tr>
 </tbody>
 </table>
-<p>Each theme has both <code>dark</code> and <code>light</code> variants.</p>
+<p>Each classic theme has both <code>dark</code> and <code>light</code> variants.</p>
 </div>
 <div class="section level2">
 <h2 id="available-icons">Available Icons<a class="anchor" aria-label="anchor" href="#available-icons"></a>
@@ -358,6 +377,7 @@
 <h2 id="vignettes">Vignettes<a class="anchor" aria-label="anchor" href="#vignettes"></a>
 </h2>
 <ul>
+<li><a href="https://cttir.github.io/hexmakR/articles/cttir-library.html" class="external-link">Creating and reusing parts</a></li>
 <li><a href="https://cttir.github.io/hexmakR/articles/getting-started.html" class="external-link">Getting Started</a></li>
 <li><a href="https://cttir.github.io/hexmakR/articles/programmatic-usage.html" class="external-link">Programmatic Usage</a></li>
 <li><a href="https://cttir.github.io/hexmakR/articles/shiny-app.html" class="external-link">Shiny App</a></li>

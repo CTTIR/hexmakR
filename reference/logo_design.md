@@ -1,15 +1,18 @@
 # Create a project logo in three frame shapes
 
-Reuse a CTTIR scientific motif or a generic icon for a project, with its
-name inside a hexagonal, pentagonal or square frame. The same editing,
-project and export functions work with all shapes.
+Start a fresh project with its name inside a hexagonal, pentagonal or
+square frame. Add individual parts with
+[`hex_add_part()`](hex_add_part.md), optionally reuse archive artwork
+with [`hex_reuse_part()`](hex_reuse_part.md), or choose a generic icon.
+The same editing, project and export functions work with every frame
+shape.
 
 ## Usage
 
 ``` r
 logo_design(
   name,
-  motif = "hexmakR",
+  motif = NULL,
   shape = c("hex", "pentagon", "square"),
   icon = NULL,
   ...
@@ -24,7 +27,8 @@ logo_design(
 
 - motif:
 
-  CTTIR identity supplying the motif and default palette.
+  Optional CTTIR archive identity supplying a motif and palette. `NULL`
+  starts a fresh composition without archive artwork.
 
 - shape:
 
@@ -45,7 +49,8 @@ An editable `hex_design` object.
 ## Examples
 
 ``` r
-logo_design("My project", motif = "phenoscapR", shape = "pentagon")
-
+project <- logo_design("New project", shape = "pentagon")
+project <- hex_add_part(project, "circle")
+project <- hex_reuse_part(project, "phenoscapR")
 logo_design("Study", shape = "square", icon = "microscope")
 ```

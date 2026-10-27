@@ -20,8 +20,10 @@ hex_edit_layer(design, layer, ..., reset = FALSE)
 
 - ...:
 
-  Edits: `fill`, `col`, `lwd`, `alpha`, `dx`, `dy`, `scale`, `visible`,
-  or explicit numeric `x`/`y` coordinates in the layer's local viewport.
+  Edits: `fill`, `col`, `lwd`, `alpha`, `dx`, `dy`, `scale`, `angle`,
+  `visible`, or explicit numeric `x`/`y` coordinates in the layer's
+  local viewport. `angle` rotates a part around its centre in degrees,
+  from -180 to 180.
 
 - reset:
 

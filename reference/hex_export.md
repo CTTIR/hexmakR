@@ -1,8 +1,9 @@
 # Export an editable v5 design
 
 The same native grid geometry powers previews and all three export
-formats. SVG and PDF contain vector paths, including outlined
-package-name glyphs.
+formats. SVG and PDF retain vector paths, including outlined
+package-name glyphs; uploaded PNG/JPEG figures remain embedded raster
+images.
 
 ## Usage
 

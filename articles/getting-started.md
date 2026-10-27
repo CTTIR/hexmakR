@@ -1,5 +1,7 @@
 # Getting Started with hexmakR
 
+![hexmakR logo](figures/logo.svg)![hexmakR logo](figures/logo-dark.svg)
+
 [![R-CMD-check](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://cttir.github.io/hexmakR/)
 [![CRAN
@@ -15,120 +17,124 @@ MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.or
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
-![](figures/logo.svg)
-
 ## Installation
 
-Install hexmakR from CRAN:
-
-``` r
-
-install.packages("hexmakR")
-```
-
-Or install the development version from GitHub:
+Install the development package from GitHub:
 
 ``` r
 
 # install.packages("pak")
-pak::pak("cttir/hexmakR")
+pak::pak("CTTIR/hexmakR")
 ```
 
-## Your first hex sticker in 3 lines
+## Start with a fresh logo
 
 ``` r
 
 library(hexmakR)
-
-hex_sticker("mypackage", icon = "atom", theme = "stats")
+design <- logo_design("My package")
 ```
 
-That’s it. The default settings produce a dark-themed sticker with the
-`stats` color palette and an atom icon.
+This creates a hexagonal frame and name with no archived scientific
+motif. The name sits inside the lower part of the frame. A pentagon or
+square is available with `shape = "pentagon"` or `shape = "square"`.
 
-## Saving to a file
-
-Pass `filename` to write a transparent PNG directly:
+Add your own artwork as individually editable parts:
 
 ``` r
 
-hex_sticker(
-  "mypackage",
-  icon     = "dna",
-  theme    = "genomics",
-  filename = "man/figures/logo.png"
-)
+design <- hex_add_part(design, "circle", x = .5, y = .6, r = .15)
+design <- hex_add_part(design, "line",
+                       x = c(.3, .7), y = c(.6, .6), col = "white", lwd = 3)
+hex_layers(design)
+print(design)
 ```
 
-The file will have the correct hexb.in aspect ratio (width / height = √3
-/ 2) and a transparent background, ready for use in your README or
-pkgdown site.
-
-## Exploring themes
+Parts have stable IDs such as `part_0001`. The native frame and name
+have `layer_` IDs. Obtain the current IDs from
+[`hex_layers()`](../reference/hex_layers.md) before editing.
 
 ``` r
 
-names(hexmakr_themes())
+design <- hex_edit_layer(design, "part_0001", fill = "#45B59A", dx = .04)
+design <- hex_duplicate_part(design, "part_0001")
+design <- hex_edit_layer(design, "part_0003", dx = -.2, scale = .7)
 ```
 
-Preview a theme interactively:
+## Use an icon or archive artwork
+
+All 46 generic icons remain available:
 
 ``` r
 
-hexmakr_preview_theme("genomics", mode = "dark")
-hexmakr_preview_theme("genomics", mode = "light")
+logo_design("Study", shape = "square", icon = "microscope")
 ```
 
-## Exploring icons
+Archive reuse is optional. Add selected artwork to the design you are
+making:
 
 ``` r
 
-# All categories
-names(hexmakr_icons())
-
-# Icons in a specific category
-hexmakr_icons("biology")
+head(hex_catalog())
+design <- hex_reuse_part(design, "phenoscapR")
 ```
 
-## Customizing colors
+This imports the source motif’s editable parts while retaining your
+name, frame, palette and existing parts. An explicit
+`hex_design("phenoscapR")` instead starts from that whole archived
+design. A call to [`hex_design()`](../reference/hex_design.md) without a
+package also starts fresh; `logo_design("My package")` is the direct way
+to set your own project name.
 
-Override any theme color individually:
+## Save and continue later
+
+Use `hex_import_art(design, "figure.png")` to add an embedded PNG/JPEG
+image, or supply an SVG file for separately editable vector shapes.
+Supported SVG curves become vector polylines. The editor provides the
+same feature under **Add an image or vector drawing**. Uploads are
+capped at 10 MiB; outline text and flatten gradients, masks or
+intersecting clips first. See
+[`?hex_import_art`](../reference/hex_import_art.md) for the supported
+SVG subset. Item labels and groups can be organised with
+[`hex_label_layer()`](../reference/hex_label_layer.md) and
+[`hex_group_layers()`](../reference/hex_groups.md).
 
 ``` r
 
-hex_sticker(
-  "mypackage",
-  theme        = "stats",
-  mode         = "dark",
-  bg           = "#0D1117",
-  accent       = "#58A6FF",
-  text_color   = "#FFFFFF",
-  border_color = "#58A6FF",
-  sub_color    = "#8B949E"
-)
+hex_save_design(design, "my-package.json")
+restored <- hex_read_design("my-package.json")
+hex_export(restored, "my-package.svg")
+hex_export(restored, "my-package.png", width = 1600)
+hex_export(restored, "my-package.pdf")
+hex_recipe(restored, "reproduce.R")
 ```
 
-## Choosing a font
+PNG has a transparent exterior. SVG and PDF contain native vector
+artwork and outlined name glyphs, so they do not depend on locally
+installed fonts. JSON stores validated settings and parts; opening a
+project does not evaluate R code. A project must fit within the same 20
+MiB limit when saved and reopened.
+
+## Open the manual editor
 
 ``` r
 
-hex_sticker(
-  "mypackage",
-  font_family = "serif",
-  font_bold   = TRUE,
-  font_italic = TRUE,
-  font_size   = 14
-)
+hexmakr_app()
 ```
 
-Available font shorthands: `"mono"`, `"courier"`, `"consolas"`,
-`"source_code"`, `"fira_code"`, `"serif"`, `"times"`, `"palatino"`,
-`"sans"`, `"helvetica"`, `"roboto"`, `"open_sans"`, `"lato"`.
+The Designer opens a new logo. Add parts, select one, and use **Apply
+part edit** after changing its colours, position, size, opacity or
+points. Click a part to select it and drag it to move it. Rename items,
+organise groups and switch the mouse target to move a whole group
+together. The CTTIR Gallery tab is secondary; browsing it leaves the
+current logo unchanged.
 
-## Next steps
+The original generic sticker interface remains available through
+`hexmakr_app(workspace = "classic")`. Its
+[`hex_sticker()`](../reference/hex_sticker.md) function returns a ggplot
+object and supports the existing themes, fonts and uploaded images.
 
-- For full parameter reference:
-  [`vignette("programmatic-usage")`](../articles/programmatic-usage.md)
-- To use the interactive designer:
-  [`vignette("shiny-app")`](../articles/shiny-app.md) or just run
-  [`hexmakr_app()`](../reference/hexmakr_app.md)
+See [`vignette("cttir-library")`](../articles/cttir-library.md) for
+archive reuse and editable projects, and
+[`vignette("shiny-app")`](../articles/shiny-app.md) for the manual
+workflow.
