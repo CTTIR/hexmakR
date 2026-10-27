@@ -36,9 +36,9 @@ if (requireNamespace("svglite", quietly = TRUE)) {
 \seealso{
 \code{\link[=save_hex]{save_hex()}}, \code{\link[=hex_sticker]{hex_sticker()}}
 
-Other stickers: 
-\code{\link{hex_sticker}()},
-\code{\link{hexmakr_app}()},
-\code{\link{save_hex}()}
+Other stickers:
+\code{\link[=hex_sticker]{hex_sticker()}},
+\code{\link[=hexmakr_app]{hexmakr_app()}},
+\code{\link[=save_hex]{save_hex()}}
 }
 \concept{stickers}

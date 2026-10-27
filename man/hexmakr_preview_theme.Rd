@@ -30,8 +30,8 @@ hexmakr_preview_theme("genomics", mode = "light")
 \seealso{
 \code{\link[=hexmakr_themes]{hexmakr_themes()}}, \code{\link[=hex_sticker]{hex_sticker()}}
 
-Other themes: 
-\code{\link{hexmakr_icons}()},
-\code{\link{hexmakr_themes}()}
+Other themes:
+\code{\link[=hexmakr_icons]{hexmakr_icons()}},
+\code{\link[=hexmakr_themes]{hexmakr_themes()}}
 }
 \concept{themes}

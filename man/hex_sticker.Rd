@@ -114,9 +114,9 @@ file.exists(tmp)
 \code{\link[=hexmakr_themes]{hexmakr_themes()}}, \code{\link[=hexmakr_icons]{hexmakr_icons()}}, \code{\link[=save_hex]{save_hex()}},
 \code{\link[=hexmakr_app]{hexmakr_app()}}
 
-Other stickers: 
-\code{\link{hexmakr_app}()},
-\code{\link{save_hex}()},
-\code{\link{save_hex_svg}()}
+Other stickers:
+\code{\link[=hexmakr_app]{hexmakr_app()}},
+\code{\link[=save_hex]{save_hex()}},
+\code{\link[=save_hex_svg]{save_hex_svg()}}
 }
 \concept{stickers}

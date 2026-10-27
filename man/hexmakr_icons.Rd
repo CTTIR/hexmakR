@@ -32,8 +32,8 @@ hexmakr_icons("science")
 \seealso{
 \code{\link[=hex_sticker]{hex_sticker()}}
 
-Other themes: 
-\code{\link{hexmakr_preview_theme}()},
-\code{\link{hexmakr_themes}()}
+Other themes:
+\code{\link[=hexmakr_preview_theme]{hexmakr_preview_theme()}},
+\code{\link[=hexmakr_themes]{hexmakr_themes()}}
 }
 \concept{themes}

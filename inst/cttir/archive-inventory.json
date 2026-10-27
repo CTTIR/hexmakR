@@ -1,0 +1,80 @@
+[
+  {
+    "archive": "CTTIR_Codex_Start_v5.zip",
+    "sha256": "420401d00ab4c5eefdd74440d826b76282f3c1e5262c1f044fc0c6a052f6890e",
+    "files": 635,
+    "bytes": 10369759
+  },
+  {
+    "archive": "CTTIR_Gallery_dark_v5.zip",
+    "sha256": "c20d45a7d5c0ca6fe3e42a0475a1d9716f5f98c99ce9f03dcd8ba2963b668d53",
+    "files": 17,
+    "bytes": 3735892
+  },
+  {
+    "archive": "CTTIR_Gallery_light_v5.zip",
+    "sha256": "c2936a9a2178f2bb0bfc3df0e9bac50c3abd79e64f493a84d6819cb319431070",
+    "files": 17,
+    "bytes": 3899192
+  },
+  {
+    "archive": "CTTIR_Gallery_mono_v5.zip",
+    "sha256": "094bb48e130d2141a78be3f0021d8da0d6d7e840a75d3daab0150e04a8cafeb5",
+    "files": 16,
+    "bytes": 3710700
+  },
+  {
+    "archive": "CTTIR_PNG_01_v5.zip",
+    "sha256": "59dc9484a14e0225192bfaa13959cd4f286269ca397bb06c225b0068dfc3ebbc",
+    "files": 68,
+    "bytes": 5336900
+  },
+  {
+    "archive": "CTTIR_PNG_02_v5.zip",
+    "sha256": "eeb08ba77db734b71aa541ca324430d32a071f9cdd8f9fa38af2dc86b4ea1d35",
+    "files": 68,
+    "bytes": 5226430
+  },
+  {
+    "archive": "CTTIR_PNG_03_v5.zip",
+    "sha256": "abd5fa51c28ea51fa0f9c9884ae083db90e2527006cf609e36910f9b80f2d04a",
+    "files": 79,
+    "bytes": 5475723
+  },
+  {
+    "archive": "CTTIR_PNG_04_v5.zip",
+    "sha256": "0c06fb2ad1b386c1a808e00f9ea911c514a7132a31955a7d62bb648a38098532",
+    "files": 79,
+    "bytes": 5468158
+  },
+  {
+    "archive": "CTTIR_PNG_05_v5.zip",
+    "sha256": "3a44284770f754358459c3f2b79fdc3b4e37025b9e4d7619279d15e39661d1e9",
+    "files": 90,
+    "bytes": 5457087
+  },
+  {
+    "archive": "CTTIR_PNG_06_v5.zip",
+    "sha256": "65f9fc0fa962abbaa77f420d8bdb4e14c4fc14ba5c49c1ad197e2cb8dc8b2ef5",
+    "files": 101,
+    "bytes": 5390604
+  },
+  {
+    "archive": "CTTIR_PNG_07_v5.zip",
+    "sha256": "53093fd79e66d8b9e2dfad130c9e4cac0bb65abded76362dabdd575e77000df3",
+    "files": 24,
+    "bytes": 1073160
+  },
+  {
+    "archive": "CTTIR_R_Hex_System_v4_1.zip",
+    "sha256": "cda4a2c6f647ba597fee68bf090b3ad748431e5efd81646ce78b703742be9c2c",
+    "files": 1171,
+    "bytes": 56035738
+  },
+  {
+    "archive": "CTTIR_R_Source_Code_v4_1.zip",
+    "sha256": "f3c5953d08e9de3ed453e3b840e1698e105a3489eda5331864e66de14aef9abd",
+    "files": 90,
+    "bytes": 2668869
+  }
+]

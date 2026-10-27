@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="580" viewBox="0 0 500 580">
+  <defs>
+    <linearGradient id="bgpcb" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#030d06" />
+      <stop offset="100%" stop-color="#010802" />
+    </linearGradient>
+    <clipPath id="hexpcb">
+      <polygon points="250,30 455,145 455,375 250,490 45,375 45,145" />
+    </clipPath>
+  </defs>
+
+  <polygon points="250,30 455,145 455,375 250,490 45,375 45,145" fill="url(#bgpcb)" />
+
+  <g clip-path="url(#hexpcb)">
+
+
+    <line x1="45" y1="170" x2="455" y2="170" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="45" y1="200" x2="455" y2="200" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="45" y1="230" x2="455" y2="230" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="45" y1="260" x2="455" y2="260" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="45" y1="290" x2="455" y2="290" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="45" y1="320" x2="455" y2="320" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="45" y1="350" x2="455" y2="350" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="45" y1="380" x2="455" y2="380" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="45" y1="410" x2="455" y2="410" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="45" y1="440" x2="455" y2="440" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="100" y1="145" x2="100" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="130" y1="145" x2="130" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="160" y1="145" x2="160" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="190" y1="145" x2="190" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="220" y1="145" x2="220" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="250" y1="145" x2="250" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="280" y1="145" x2="280" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="310" y1="145" x2="310" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="340" y1="145" x2="340" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="370" y1="145" x2="370" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="400" y1="145" x2="400" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+    <line x1="430" y1="145" x2="430" y2="490" stroke="#1a3a20" stroke-width="0.4" opacity="0.5" />
+
+
+    <polyline points="250,185 250,200 310,200 310,230" fill="none" stroke="#b87333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75" />
+    <polyline points="310,260 310,290 220,290 220,320" fill="none" stroke="#b87333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75" />
+    <polyline points="220,350 220,370 310,370 310,400" fill="none" stroke="#b87333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75" />
+    <polyline points="310,425 310,440 220,440 220,455" fill="none" stroke="#b87333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7" />
+    <polyline points="310,425 310,440 400,440 400,455" fill="none" stroke="#b87333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" />
+    <polyline points="253,185 253,197 313,197 313,230" fill="none" stroke="#b87333" stroke-width="0.8" opacity="0.3" stroke-linecap="round" stroke-linejoin="round" />
+    <polyline points="247,185 247,203 307,203 307,230" fill="none" stroke="#b87333" stroke-width="0.8" opacity="0.3" stroke-linecap="round" stroke-linejoin="round" />
+    <polyline points="100,200 130,200 130,260 160,260" fill="none" stroke="#b87333" stroke-width="1.2" opacity="0.35" stroke-linecap="round" stroke-linejoin="round" />
+    <polyline points="160,260 160,320 130,320 130,380 160,380" fill="none" stroke="#b87333" stroke-width="1.2" opacity="0.35" stroke-linecap="round" stroke-linejoin="round" />
+    <polyline points="400,200 370,200 370,290 400,290" fill="none" stroke="#b87333" stroke-width="1.2" opacity="0.35" stroke-linecap="round" stroke-linejoin="round" />
+    <polyline points="400,290 430,290 430,380 400,380" fill="none" stroke="#b87333" stroke-width="1.2" opacity="0.35" stroke-linecap="round" stroke-linejoin="round" />
+    <polyline points="186,478 186,488 250,488" fill="none" stroke="#b87333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" />
+    <polyline points="371,478 371,488 250,488" fill="none" stroke="#b87333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
+
+
+    <circle cx="310" cy="200" r="4" fill="#030d06" stroke="#b87333" stroke-width="1.5" opacity="0.8" />
+    <circle cx="310" cy="290" r="4" fill="#030d06" stroke="#b87333" stroke-width="1.5" opacity="0.8" />
+    <circle cx="220" cy="290" r="4" fill="#030d06" stroke="#b87333" stroke-width="1.5" opacity="0.8" />
+    <circle cx="220" cy="370" r="4" fill="#030d06" stroke="#b87333" stroke-width="1.5" opacity="0.8" />
+    <circle cx="310" cy="370" r="4" fill="#030d06" stroke="#b87333" stroke-width="1.5" opacity="0.8" />
+    <circle cx="310" cy="440" r="4" fill="#030d06" stroke="#b87333" stroke-width="1.5" opacity="0.75" />
+    <circle cx="220" cy="440" r="4" fill="#030d06" stroke="#b87333" stroke-width="1.5" opacity="0.75" />
+    <circle cx="130" cy="200" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="130" cy="260" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="160" cy="260" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="160" cy="320" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="130" cy="320" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="130" cy="380" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="370" cy="200" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="370" cy="290" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="400" cy="290" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="430" cy="290" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="430" cy="380" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="400" cy="380" r="3" fill="#030d06" stroke="#b87333" stroke-width="1.2" opacity="0.55" />
+    <circle cx="186" cy="488" r="3.5" fill="#030d06" stroke="#b87333" stroke-width="1.5" opacity="0.75" />
+    <circle cx="371" cy="488" r="3.5" fill="#030d06" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+
+
+    <rect x="190" y="157" width="120" height="28" rx="4" fill="#0a1f0d" stroke="#39B54A" stroke-width="1.5" opacity="0.95" />
+    <line x1="190" y1="163" x2="183" y2="163" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="190" y1="169" x2="183" y2="169" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="190" y1="175" x2="183" y2="175" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="190" y1="181" x2="183" y2="181" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="310" y1="163" x2="317" y2="163" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="310" y1="169" x2="317" y2="169" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="310" y1="175" x2="317" y2="175" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="310" y1="181" x2="317" y2="181" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <path d="M 248,157 Q 250,153 252,157" fill="none" stroke="#39B54A" stroke-width="1" opacity="0.7" />
+    <text font-family="monospace" font-size="9" font-weight="700" fill="#39B54A" text-anchor="middle" x="250" y="168" opacity="0.95">BAM/FASTQ</text>
+    <text font-family="monospace" font-size="6" fill="#1D9E75" text-anchor="middle" x="250" y="179" opacity="0.7">INPUT</text>
+
+
+    <rect x="275" y="230" width="72" height="30" rx="4" fill="#0a1f0d" stroke="#1D9E75" stroke-width="1.4" opacity="0.95" />
+    <line x1="275" y1="237" x2="268" y2="237" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="275" y1="244" x2="268" y2="244" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="275" y1="251" x2="268" y2="251" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="347" y1="237" x2="354" y2="237" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="347" y1="244" x2="354" y2="244" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="347" y1="251" x2="354" y2="251" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <path d="M 309,230 Q 311,226 313,230" fill="none" stroke="#1D9E75" stroke-width="1" opacity="0.7" />
+    <text font-family="monospace" font-size="9" font-weight="700" fill="#1D9E75" text-anchor="middle" x="311" y="243" opacity="0.95">QC / Trim</text>
+    <text font-family="monospace" font-size="6" fill="#5DCAA5" text-anchor="middle" x="311" y="254" opacity="0.7">FastQC · Trim</text>
+
+
+    <rect x="183" y="320" width="74" height="30" rx="4" fill="#0a1f0d" stroke="#378ADD" stroke-width="1.4" opacity="0.95" />
+    <line x1="183" y1="327" x2="176" y2="327" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="183" y1="334" x2="176" y2="334" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="183" y1="341" x2="176" y2="341" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="257" y1="327" x2="264" y2="327" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="257" y1="334" x2="264" y2="334" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="257" y1="341" x2="264" y2="341" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <path d="M 218,320 Q 220,316 222,320" fill="none" stroke="#378ADD" stroke-width="1" opacity="0.7" />
+    <text font-family="monospace" font-size="9" font-weight="700" fill="#378ADD" text-anchor="middle" x="220" y="333" opacity="0.95">Align/Sort</text>
+    <text font-family="monospace" font-size="6" fill="#B5D4F4" text-anchor="middle" x="220" y="344" opacity="0.7">STAR · HISAT2</text>
+
+
+    <rect x="275" y="400" width="72" height="30" rx="4" fill="#0a1f0d" stroke="#7F77DD" stroke-width="1.4" opacity="0.95" />
+    <line x1="275" y1="407" x2="268" y2="407" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="275" y1="414" x2="268" y2="414" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="275" y1="421" x2="268" y2="421" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="347" y1="407" x2="354" y2="407" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="347" y1="414" x2="354" y2="414" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <line x1="347" y1="421" x2="354" y2="421" stroke="#b87333" stroke-width="1.5" opacity="0.7" />
+    <path d="M 309,400 Q 311,396 313,400" fill="none" stroke="#7F77DD" stroke-width="1" opacity="0.7" />
+    <text font-family="monospace" font-size="9" font-weight="700" fill="#7F77DD" text-anchor="middle" x="311" y="413" opacity="0.95">Count/Call</text>
+    <text font-family="monospace" font-size="6" fill="#CECBF6" text-anchor="middle" x="311" y="424" opacity="0.7">featureCounts</text>
+
+
+    <rect x="155" y="452" width="62" height="26" rx="4" fill="#0a1f0d" stroke="#D4537E" stroke-width="1.3" opacity="0.95" />
+    <path d="M 184,452 Q 186,448 188,452" fill="none" stroke="#D4537E" stroke-width="1" opacity="0.7" />
+    <text font-family="monospace" font-size="8.5" font-weight="700" fill="#D4537E" text-anchor="middle" x="186" y="464" opacity="0.95">DE/DESeq2</text>
+    <text font-family="monospace" font-size="5.5" fill="#F4C0D1" text-anchor="middle" x="186" y="473" opacity="0.65">edgeR · limma</text>
+
+
+    <rect x="340" y="452" width="62" height="26" rx="4" fill="#0a1f0d" stroke="#EF9F27" stroke-width="1.3" opacity="0.95" />
+    <path d="M 369,452 Q 371,448 373,452" fill="none" stroke="#EF9F27" stroke-width="1" opacity="0.7" />
+    <text font-family="monospace" font-size="8.5" font-weight="700" fill="#EF9F27" text-anchor="middle" x="371" y="464" opacity="0.95">Variant/GATK</text>
+    <text font-family="monospace" font-size="5.5" fill="#FAC775" text-anchor="middle" x="371" y="473" opacity="0.65">VarScan · Mutect</text>
+
+
+    <rect x="192" y="493" width="116" height="32" rx="4" fill="#0a1f0d" stroke="#39B54A" stroke-width="2" opacity="0.98" />
+    <path d="M 248,493 Q 250,489 252,493" fill="none" stroke="#39B54A" stroke-width="1.2" opacity="0.8" />
+    <text font-family="monospace" font-size="9" font-weight="700" fill="#39B54A" text-anchor="middle" x="250" y="507" opacity="0.98">Shiny + Report</text>
+    <text font-family="monospace" font-size="6" fill="#9FE1CB" text-anchor="middle" x="250" y="518" opacity="0.7">OUTPUT</text>
+    <circle cx="200" cy="499" r="2" fill="#39B54A" opacity="0.5" />
+    <circle cx="300" cy="499" r="2" fill="#39B54A" opacity="0.5" />
+    <circle cx="200" cy="519" r="2" fill="#39B54A" opacity="0.5" />
+    <circle cx="300" cy="519" r="2" fill="#39B54A" opacity="0.5" />
+
+
+    <circle cx="250" cy="200" r="4" fill="#39B54A" opacity="0.9" />
+    <circle cx="310" cy="200" r="3.5" fill="#39B54A" opacity="0.7" />
+    <circle cx="310" cy="245" r="3" fill="#1D9E75" opacity="0.65" />
+    <circle cx="265" cy="290" r="3" fill="#378ADD" opacity="0.65" />
+    <circle cx="220" cy="335" r="3" fill="#378ADD" opacity="0.65" />
+    <circle cx="265" cy="370" r="3" fill="#7F77DD" opacity="0.65" />
+    <circle cx="310" cy="415" r="3" fill="#7F77DD" opacity="0.65" />
+
+  </g>
+
+
+  <polygon id="outer-border" points="250,30 455,145 455,375 250,490 45,375 45,145" fill="none" stroke="#1A5C22" stroke-width="11" stroke-linejoin="round" /><polygon id="inner-border" points="250,44 441,153 441,367 250,476 59,367 59,153" fill="none" stroke="#0E3A15" stroke-width="1.5" stroke-linejoin="round" opacity="0.6" /><text id="wordmark" x="250" y="545" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-weight="700" font-size="26" letter-spacing="0.5" fill="#86EFAC">bamflowR</text></svg>

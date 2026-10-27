@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/CTTIR/website/main/hugo.toml",
+    "bytes": 1624,
+    "sha256": "c4a2831e8b2d86f7a0d04c1bb975cd166d840a50edd6c088fe00917f88659d09",
+    "reviewed_date": "2026-10-25"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/CTTIR/website/main/assets/css/custom.css",
+    "bytes": 8910,
+    "sha256": "9d12b03da57a42c989c973f87a3bb75c8ff496c07a3c42bb5e47c8aa13d19678",
+    "reviewed_date": "2026-10-25"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/CTTIR/themakR/main/inst/pkgdown/extra.scss",
+    "bytes": 4843,
+    "sha256": "c7183b67f8708c4364f97e50db229a0dfa2643b87a496236ee0a4617eb192dbd",
+    "reviewed_date": "2026-10-25"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/CTTIR/themakR/main/inst/pkgdown/_pkgdown.yml",
+    "bytes": 2511,
+    "sha256": "8065d5ebdb85d4e9397e8ac6d6805029ef5fa7590806ab77aeeea343a2bf7aba",
+    "reviewed_date": "2026-10-25"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/CTTIR/themakR/main/vignettes/themakR.Rmd",
+    "bytes": 4991,
+    "sha256": "cf12d71240737a27f8d17c6915629a247594a8c977104f3106b2460dd9bbd178",
+    "reviewed_date": "2026-10-25"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/CTTIR/themakR/main/vignettes/showcase.Rmd",
+    "bytes": 3140,
+    "sha256": "99e2df6a64445633d4bfd5f0f9b63249c9b0335cf26982ae0fb1a8774b1d51c7",
+    "reviewed_date": "2026-10-25"
+  }
+]

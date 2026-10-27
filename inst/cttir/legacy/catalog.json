@@ -1,0 +1,74 @@
+[
+  {
+    "name": "annotatR",
+    "group": "imaging",
+    "description": "half-annotated tile: pixels \\ | ROI layers + mask",
+    "v5_replacement": ""
+  },
+  {
+    "name": "bamflowR",
+    "group": "pipelines",
+    "description": "staged BAM workflow",
+    "v5_replacement": ""
+  },
+  {
+    "name": "comparsR",
+    "group": "parsers",
+    "description": "complement double-helix + arrow",
+    "v5_replacement": ""
+  },
+  {
+    "name": "delphyR",
+    "group": "statistics",
+    "description": "dolphin leaping over a Delphi consensus peak",
+    "v5_replacement": "delphyr"
+  },
+  {
+    "name": "diplomacyR",
+    "group": "games",
+    "description": "provinces, order arrows, units",
+    "v5_replacement": ""
+  },
+  {
+    "name": "gambitR",
+    "group": "games",
+    "description": "chessboard, gambit square highlighted",
+    "v5_replacement": ""
+  },
+  {
+    "name": "hexmakeR",
+    "group": "tooling",
+    "description": "the hex-maker",
+    "v5_replacement": "hexmakR"
+  },
+  {
+    "name": "lstparsR",
+    "group": "parsers",
+    "description": "list/log parser",
+    "v5_replacement": ""
+  },
+  {
+    "name": "maumauR",
+    "group": "games",
+    "description": "fanned cards with generic geometric symbols",
+    "v5_replacement": ""
+  },
+  {
+    "name": "risikoR",
+    "group": "games",
+    "description": "territory graph + armies + dice",
+    "v5_replacement": ""
+  },
+  {
+    "name": "skatR",
+    "group": "games",
+    "description": "German suits (Eichel/Gr\u00fcn/Herz/Schell) + trick",
+    "v5_replacement": ""
+  },
+  {
+    "name": "synesthR",
+    "group": "exception",
+    "description": "waveform-as-arc, text\u2192colour+sound",
+    "v5_replacement": ""
+  }
+]

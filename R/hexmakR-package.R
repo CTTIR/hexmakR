@@ -10,7 +10,15 @@
 #' built-in scientific and technical icons** across 7 categories, custom image
 #' upload support, 13 font options, and transparent PNG export.
 #'
+#' The v5 workspace adds 45 native R vector identities, individual shape edits,
+#' JSON projects, PNG/SVG/PDF exports and hexagonal, pentagonal or square logos.
+#'
 #' ## Main functions
+#'
+#' * [hex_design()] --editable CTTIR v5 design.
+#' * [logo_design()] --project logos in three frame shapes.
+#' * [hex_export()] --vector and raster export.
+#' * [hex_catalog()] --all 45 registered identities.
 #'
 #' * [hex_sticker()] --programmatic hex sticker creation; returns a ggplot
 #'   object.

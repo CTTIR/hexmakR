@@ -1,0 +1,10 @@
+* checking for file ‘hexmakR/DESCRIPTION’ ... OK
+* preparing ‘hexmakR’:
+* checking DESCRIPTION meta-information ... OK
+* installing the package (it is needed to build vignettes)
+* creating vignettes ... OK
+* checking for LF line-endings in source and make files and shell scripts
+* checking for empty or unneeded directories
+Removed empty directory ‘hexmakR/tools’
+* building ‘hexmakR_0.2.0.tar.gz’
+

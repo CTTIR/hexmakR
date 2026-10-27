@@ -14,8 +14,15 @@ Shiny app or programmatically via R functions.
 Comes with \strong{19 curated color themes} (dark + light variants), \strong{46
 built-in scientific and technical icons} across 7 categories, custom image
 upload support, 13 font options, and transparent PNG export.
+
+The v5 workspace adds 45 native R vector identities, individual shape edits,
+JSON projects, PNG/SVG/PDF exports and hexagonal, pentagonal or square logos.
 \subsection{Main functions}{
 \itemize{
+\item \code{\link[=hex_design]{hex_design()}} --editable CTTIR v5 design.
+\item \code{\link[=logo_design]{logo_design()}} --project logos in three frame shapes.
+\item \code{\link[=hex_export]{hex_export()}} --vector and raster export.
+\item \code{\link[=hex_catalog]{hex_catalog()}} --all 45 registered identities.
 \item \code{\link[=hex_sticker]{hex_sticker()}} --programmatic hex sticker creation; returns a ggplot
 object.
 \item \code{\link[=hexmakr_app]{hexmakr_app()}} --launch the interactive Shiny designer.
@@ -29,14 +36,19 @@ object.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://r-heller.github.io/hexmakR/}
-  \item \url{https://github.com/r-heller/hexmakR}
-  \item Report bugs at \url{https://github.com/r-heller/hexmakR/issues}
+  \item \url{https://cttir.github.io/hexmakR/}
+  \item \url{https://github.com/cttir/hexmakR}
+  \item Report bugs at \url{https://github.com/cttir/hexmakR/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Raban Heller \email{raban.heller@uni-ulm.de} (\href{https://orcid.org/0000-0001-8006-9742}{ORCID})
+\strong{Maintainer}: R. Heller \email{raban.heller@uni-ulm.de} (\href{https://orcid.org/0000-0001-8006-9742}{ORCID})
+
+Authors:
+\itemize{
+  \item R. Heller \email{raban.heller@uni-ulm.de} (\href{https://orcid.org/0000-0001-8006-9742}{ORCID})
+}
 
 }
 \keyword{internal}

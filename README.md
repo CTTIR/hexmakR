@@ -17,11 +17,32 @@
 
 ## Overview
 
-hexmakR is an interactive hex sticker generator for R packages. Design
-publication-ready hexagon stickers visually through a Shiny app or
-programmatically via R functions. Comes with 19 curated color themes (dark +
-light), 46 built-in scientific and technical icons, custom image support, font
-selection, and transparent PNG export.
+hexmakR creates editable logos for R packages and projects. The default v5
+workspace includes **45 CTTIR identities**, **1,035 original SVG/PNG/PDF assets**,
+and native R vector artwork. Package names stay **inside the hex**, with the
+scientific motif above, a family-coloured border and a transparent exterior.
+Project logos also support **pentagonal and square frames**.
+
+The manual editor supports palette and layout changes, individual vector
+shapes, point coordinates, undo/reset, JSON project save/load, and PNG/SVG/PDF
+exports. The original designer with 46 generic icons and 19 themes remains
+available. All 46 icons also work in the new project-logo editor.
+
+```r
+library(hexmakR)
+hexmakr_app()                          # v5 library and project-logo editor
+hexmakr_app(package = "phenoscapR")     # open a specific identity
+hexmakr_app(workspace = "classic")      # original generic sticker designer
+
+hex_export(hex_design("phenoscapR"), "phenoscapR.svg")
+project <- logo_design("My project", motif = "phenoscapR", shape = "pentagon")
+hex_export(project, "project.png")
+logo <- logo_design("Study", shape = "square", icon = "microscope")
+hex_export(logo, "study.pdf")
+```
+
+See the [detailed update plan](plans/2026-10-27-v5-update.md) and
+[v5 library guide](https://cttir.github.io/hexmakR/articles/cttir-library.html).
 
 ## Standing on the shoulders of `hexSticker`
 
@@ -59,9 +80,6 @@ then fine-tune programmatically — with either package.
 ## Installation
 
 ```r
-# CRAN
-install.packages("hexmakR")
-
 # Development version
 # install.packages("pak")
 pak::pak("cttir/hexmakR")
@@ -84,9 +102,11 @@ hexmakr_app()
 ```
 
 The Shiny designer opens in your browser with live preview. Adjust text,
-pick an icon, choose a theme, and hit **Export PNG** when you're happy.
+select a frame and artwork, and export PNG, SVG or PDF. Use **Apply design**
+to apply composition settings and **Apply shape edit** for a selected layer.
+**Save project** preserves editable settings; **R recipe** reproduces the design.
 
-## Feature Comparison
+## Classic designer comparison
 
 | Feature | hexSticker | hexmakR |
 |---------|-----------|---------|
@@ -100,7 +120,7 @@ pick an icon, choose a theme, and hit **Export PNG** when you're happy.
 | Google Fonts support | ✅ | — |
 | Programmatic API | ✅ | ✅ |
 | Returns ggplot object | ✅ | ✅ |
-| CRAN available | ✅ | ✅ |
+| Installation | CRAN | GitHub development version |
 
 ## Available Themes
 

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="580" viewBox="0 0 500 580">
+  <defs>
+    <linearGradient id="bgskat" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#12100a" />
+      <stop offset="100%" stop-color="#080703" />
+    </linearGradient>
+    <clipPath id="hexskat">
+      <polygon points="250,30 455,145 455,375 250,490 45,375 45,145" />
+    </clipPath>
+  </defs>
+
+  <polygon points="250,30 455,145 455,375 250,490 45,375 45,145" fill="url(#bgskat)" />
+
+  <g clip-path="url(#hexskat)">
+
+
+    <ellipse cx="250" cy="285" rx="175" ry="115" fill="#1a3a2a" opacity="0.22" />
+
+
+
+
+
+    <g transform="translate(120,180)">
+      <ellipse cx="0" cy="4" rx="9" ry="11" fill="#8a5a2a" />
+      <path d="M -9,-2 Q 0,-8 9,-2 Q 6,2 0,2 Q -6,2 -9,-2 Z" fill="#5a3a18" />
+      <line x1="0" y1="-8" x2="0" y2="-14" stroke="#5a3a18" stroke-width="1.8" stroke-linecap="round" />
+      <path d="M -7,-4 Q -9,-9 -4,-11" fill="none" stroke="#5a3a18" stroke-width="1.2" />
+    </g>
+    <text font-family="monospace" font-size="7" fill="#8a5a2a" opacity="0.6" text-anchor="middle" x="120" y="212">Eichel</text>
+
+
+    <g transform="translate(205,180)">
+      <path d="M 0,-14 Q 12,-4 4,12 Q 0,16 -4,12 Q -12,-4 0,-14 Z" fill="#2E7D32" />
+      <line x1="0" y1="-8" x2="0" y2="14" stroke="#1a4a1e" stroke-width="1.2" />
+      <line x1="0" y1="0" x2="6" y2="-4" stroke="#1a4a1e" stroke-width="0.9" />
+      <line x1="0" y1="4" x2="-6" y2="0" stroke="#1a4a1e" stroke-width="0.9" />
+    </g>
+    <text font-family="monospace" font-size="7" fill="#3a9d42" opacity="0.6" text-anchor="middle" x="205" y="212">Grün</text>
+
+
+    <g transform="translate(290,180)">
+      <path d="M 0,-4 C -6,-14 -20,-8 -20,2 C -20,12 0,18 0,18 C 0,18 20,12 20,2 C 20,-8 6,-14 0,-4 Z" fill="#C62828" transform="scale(0.7)" />
+    </g>
+    <text font-family="monospace" font-size="7" fill="#C62828" opacity="0.6" text-anchor="middle" x="290" y="212">Herz</text>
+
+
+    <g transform="translate(375,180)">
+      <path d="M 0,-13 Q -11,-9 -10,4 L -12,9 L 12,9 L 10,4 Q 11,-9 0,-13 Z" fill="#E0A020" />
+      <circle cx="0" cy="-13" r="2.5" fill="#E0A020" />
+      <circle cx="0" cy="12" r="2.5" fill="#B07810" />
+      <path d="M -10,4 L 10,4" stroke="#B07810" stroke-width="1" opacity="0.6" />
+    </g>
+    <text font-family="monospace" font-size="7" fill="#E0A020" opacity="0.6" text-anchor="middle" x="375" y="212">Schell</text>
+
+
+    <line x1="90" y1="228" x2="410" y2="228" stroke="#8a6a2a" stroke-width="0.8" opacity="0.4" />
+
+
+
+    <g transform="rotate(-20 250 320)">
+      <rect x="175" y="262" width="74" height="104" rx="7" fill="#FBF7EE" stroke="#D97706" stroke-width="1.8" />
+      <ellipse cx="196" cy="286" rx="7" ry="9" fill="#8a5a2a" />
+      <path d="M 189,281 Q 196,276 203,281 Q 200,284 196,284 Q 192,284 189,281 Z" fill="#5a3a18" />
+      <text font-family="'Georgia',serif" font-weight="700" font-size="13" fill="#5a3a18" text-anchor="middle" x="212" y="300">U</text>
+    </g>
+
+
+    <g transform="rotate(20 250 320)">
+      <rect x="251" y="262" width="74" height="104" rx="7" fill="#FBF7EE" stroke="#D97706" stroke-width="1.8" />
+      <path d="M 274,286 Q 265,290 266,300 L 264,304 L 284,304 L 282,300 Q 283,290 274,286 Z" fill="#E0A020" />
+      <circle cx="274" cy="286" r="2" fill="#E0A020" />
+      <text font-family="'Georgia',serif" font-weight="700" font-size="13" fill="#B07810" text-anchor="middle" x="290" y="300">O</text>
+    </g>
+
+
+    <g transform="rotate(-2 250 320)">
+      <rect x="213" y="252" width="78" height="110" rx="8" fill="#FFFDF8" stroke="#F59E0B" stroke-width="2.4" />
+      <text font-family="'Georgia',serif" font-weight="700" font-size="16" fill="#C62828" text-anchor="middle" x="230" y="276">A</text>
+      <path d="M 252,286 C 247,279 237,281 237,289 C 237,298 252,308 252,308 C 252,308 267,298 267,289 C 267,281 257,279 252,286 Z" fill="#C62828" opacity="0.92" />
+      <text font-family="'Georgia',serif" font-weight="700" font-size="16" fill="#C62828" text-anchor="middle" x="274" y="348" transform="rotate(180 274 342)">A</text>
+    </g>
+
+
+    <rect x="211" y="250" width="82" height="114" rx="9" fill="none" stroke="#F59E0B" stroke-width="1" opacity="0.5" transform="rotate(-2 250 320)" />
+
+
+    <text font-family="monospace" font-size="8" fill="#D97706" opacity="0.65" text-anchor="middle" x="250" y="398">Stich · Grand</text>
+
+  </g>
+
+
+  <polygon id="outer-border" points="250,30 455,145 455,375 250,490 45,375 45,145" fill="none" stroke="#D97706" stroke-width="11" stroke-linejoin="round" /><polygon id="inner-border" points="250,44 441,153 441,367 250,476 59,367 59,153" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round" opacity="0.6" /></svg>

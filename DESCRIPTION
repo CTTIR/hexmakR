@@ -1,6 +1,6 @@
 Package: hexmakR
-Title: Interactive Hex Sticker Generator for R Packages
-Version: 0.1.0
+Title: Editable Hex Stickers and Project Logos
+Version: 0.2.0
 Authors@R:
     person("R.", "Heller", , "raban.heller@uni-ulm.de", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-8006-9742"))
@@ -12,14 +12,16 @@ Description: Create publication-ready hexagon stickers for R packages
     technical icons, custom image upload support, font selection, and
     export to transparent PNG. Designed for the R package ecosystem with
     presets for CRAN, Bioconductor, Tidyverse, and domain-specific
-    color palettes.
+    color palettes. Includes the CTTIR v5 library of 45 native R vector
+    identities, editable shapes, reproducible JSON projects, and transparent
+    PNG, SVG and PDF export with package names inside the hexagon.
+    Project logos also support pentagonal and square frames.
 License: MIT + file LICENSE
 URL: https://cttir.github.io/hexmakR/,
     https://github.com/cttir/hexmakR
 BugReports: https://github.com/cttir/hexmakR/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 Depends:
     R (>= 4.1.0)
 Imports:
@@ -28,7 +30,11 @@ Imports:
     grDevices,
     shiny (>= 1.7.0),
     png,
-    utils
+    utils,
+    tools,
+    stats,
+    jsonlite,
+    systemfonts (>= 1.3.0)
 Suggests:
     testthat (>= 3.0.0),
     knitr,
@@ -41,3 +47,4 @@ Suggests:
 Config/testthat/edition: 3
 Config/Needs/website: CTTIR/themakR, pkgdown
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.0.0

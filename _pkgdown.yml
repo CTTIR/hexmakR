@@ -4,6 +4,20 @@ development:
   mode: auto
 destination: site
 reference:
+  - title: CTTIR library and project logos
+    contents:
+      - hex_catalog
+      - hex_asset
+      - hex_design
+      - logo_design
+      - hex_palette
+      - hex_grob
+      - hex_layers
+      - hex_edit_layer
+      - hex_export
+      - hex_save_design
+      - hex_recipe
+      - hex_render_catalog
   - title: Create and export
     contents:
       - hex_sticker
@@ -21,6 +35,7 @@ articles:
   - title: Guides
     navbar: ~
     contents:
+      - cttir-library
       - getting-started
       - programmatic-usage
       - shiny-app

@@ -36,7 +36,7 @@ knitr::include_graphics("figures/logo.svg")
 
 ```{r launch}
 library(hexmakR)
-hexmakr_app()
+hexmakr_app(workspace = "classic")
 ```
 
 This opens the hexmakR Shiny designer in your default browser (or the RStudio

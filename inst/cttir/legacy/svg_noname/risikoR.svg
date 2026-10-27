@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="580" viewBox="0 0 500 580">
+  <defs>
+    <linearGradient id="bgrisiko" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#1c1206" />
+      <stop offset="100%" stop-color="#0e0a04" />
+    </linearGradient>
+    <clipPath id="hexrisiko">
+      <polygon points="250,30 455,145 455,375 250,490 45,375 45,145" />
+    </clipPath>
+  </defs>
+
+  <polygon points="250,30 455,145 455,375 250,490 45,375 45,145" fill="url(#bgrisiko)" />
+
+  <g clip-path="url(#hexrisiko)">
+
+
+    <line x1="45" y1="200" x2="455" y2="200" stroke="#3a2a10" stroke-width="0.4" opacity="0.4" />
+    <line x1="45" y1="250" x2="455" y2="250" stroke="#3a2a10" stroke-width="0.4" opacity="0.4" />
+    <line x1="45" y1="300" x2="455" y2="300" stroke="#3a2a10" stroke-width="0.4" opacity="0.4" />
+    <line x1="45" y1="350" x2="455" y2="350" stroke="#3a2a10" stroke-width="0.4" opacity="0.4" />
+    <line x1="150" y1="145" x2="150" y2="490" stroke="#3a2a10" stroke-width="0.4" opacity="0.4" />
+    <line x1="250" y1="145" x2="250" y2="490" stroke="#3a2a10" stroke-width="0.4" opacity="0.4" />
+    <line x1="350" y1="145" x2="350" y2="490" stroke="#3a2a10" stroke-width="0.4" opacity="0.4" />
+
+
+
+    <line x1="130" y1="200" x2="200" y2="180" stroke="#8a6a2a" stroke-width="1.2" opacity="0.5" />
+    <line x1="200" y1="180" x2="280" y2="205" stroke="#8a6a2a" stroke-width="1.2" opacity="0.5" />
+    <line x1="280" y1="205" x2="360" y2="185" stroke="#8a6a2a" stroke-width="1.2" opacity="0.5" />
+    <line x1="130" y1="200" x2="165" y2="270" stroke="#8a6a2a" stroke-width="1.2" opacity="0.45" />
+    <line x1="200" y1="180" x2="235" y2="265" stroke="#8a6a2a" stroke-width="1.2" opacity="0.45" />
+    <line x1="280" y1="205" x2="300" y2="280" stroke="#8a6a2a" stroke-width="1.2" opacity="0.45" />
+    <line x1="360" y1="185" x2="375" y2="265" stroke="#8a6a2a" stroke-width="1.2" opacity="0.45" />
+    <line x1="165" y1="270" x2="235" y2="265" stroke="#8a6a2a" stroke-width="1.2" opacity="0.5" />
+    <line x1="235" y1="265" x2="300" y2="280" stroke="#8a6a2a" stroke-width="1.2" opacity="0.5" />
+    <line x1="300" y1="280" x2="375" y2="265" stroke="#8a6a2a" stroke-width="1.2" opacity="0.5" />
+    <line x1="165" y1="270" x2="200" y2="335" stroke="#8a6a2a" stroke-width="1.2" opacity="0.45" />
+    <line x1="235" y1="265" x2="270" y2="335" stroke="#8a6a2a" stroke-width="1.2" opacity="0.45" />
+    <line x1="300" y1="280" x2="330" y2="340" stroke="#8a6a2a" stroke-width="1.2" opacity="0.45" />
+    <line x1="200" y1="335" x2="270" y2="335" stroke="#8a6a2a" stroke-width="1.2" opacity="0.5" />
+    <line x1="270" y1="335" x2="330" y2="340" stroke="#8a6a2a" stroke-width="1.2" opacity="0.5" />
+
+
+
+    <circle cx="130" cy="200" r="11" fill="#C62828" stroke="#F59E0B" stroke-width="1.5" opacity="0.92" />
+    <circle cx="200" cy="180" r="11" fill="#C62828" stroke="#F59E0B" stroke-width="1.5" opacity="0.92" />
+    <circle cx="280" cy="205" r="11" fill="#1565C0" stroke="#F59E0B" stroke-width="1.5" opacity="0.9" />
+    <circle cx="360" cy="185" r="11" fill="#1565C0" stroke="#F59E0B" stroke-width="1.5" opacity="0.9" />
+    <circle cx="165" cy="270" r="11" fill="#C62828" stroke="#F59E0B" stroke-width="1.5" opacity="0.9" />
+    <circle cx="235" cy="265" r="12" fill="#2E7D32" stroke="#F59E0B" stroke-width="1.8" opacity="0.92" />
+    <circle cx="300" cy="280" r="11" fill="#1565C0" stroke="#F59E0B" stroke-width="1.5" opacity="0.9" />
+    <circle cx="375" cy="265" r="10" fill="#555" stroke="#F59E0B" stroke-width="1.3" opacity="0.85" />
+    <circle cx="200" cy="335" r="11" fill="#2E7D32" stroke="#F59E0B" stroke-width="1.5" opacity="0.9" />
+    <circle cx="270" cy="335" r="11" fill="#2E7D32" stroke="#F59E0B" stroke-width="1.5" opacity="0.9" />
+    <circle cx="330" cy="340" r="10" fill="#555" stroke="#F59E0B" stroke-width="1.3" opacity="0.85" />
+
+
+    <text font-family="monospace" font-weight="700" font-size="10" fill="#fff" text-anchor="middle" x="130" y="204" opacity="0.95">3</text>
+    <text font-family="monospace" font-weight="700" font-size="10" fill="#fff" text-anchor="middle" x="200" y="184" opacity="0.95">5</text>
+    <text font-family="monospace" font-weight="700" font-size="10" fill="#fff" text-anchor="middle" x="280" y="209" opacity="0.95">2</text>
+    <text font-family="monospace" font-weight="700" font-size="10" fill="#fff" text-anchor="middle" x="360" y="189" opacity="0.95">4</text>
+    <text font-family="monospace" font-weight="700" font-size="10" fill="#fff" text-anchor="middle" x="165" y="274" opacity="0.95">1</text>
+    <text font-family="monospace" font-weight="700" font-size="11" fill="#fff" text-anchor="middle" x="235" y="269" opacity="0.95">7</text>
+    <text font-family="monospace" font-weight="700" font-size="10" fill="#fff" text-anchor="middle" x="300" y="284" opacity="0.95">3</text>
+    <text font-family="monospace" font-weight="700" font-size="10" fill="#fff" text-anchor="middle" x="200" y="339" opacity="0.95">2</text>
+    <text font-family="monospace" font-weight="700" font-size="10" fill="#fff" text-anchor="middle" x="270" y="339" opacity="0.95">6</text>
+
+
+    <path d="M 224,276 Q 200,300 208,323" fill="none" stroke="#F59E0B" stroke-width="2.4" opacity="0.9" stroke-linecap="round" />
+    <polygon points="203,316 208,327 214,318" fill="#F59E0B" opacity="0.9" />
+
+
+
+    <rect x="175" y="378" width="42" height="42" rx="8" fill="#F5F0E6" stroke="#D97706" stroke-width="2" />
+    <circle cx="187" cy="390" r="3.2" fill="#7a1010" />
+    <circle cx="205" cy="390" r="3.2" fill="#7a1010" />
+    <circle cx="187" cy="408" r="3.2" fill="#7a1010" />
+    <circle cx="205" cy="408" r="3.2" fill="#7a1010" />
+    <circle cx="196" cy="399" r="3.2" fill="#7a1010" />
+
+    <rect x="228" y="384" width="42" height="42" rx="8" fill="#F5F0E6" stroke="#D97706" stroke-width="2" transform="rotate(8 249 405)" />
+    <circle cx="240" cy="396" r="3.2" fill="#7a1010" />
+    <circle cx="258" cy="414" r="3.2" fill="#7a1010" />
+    <circle cx="249" cy="405" r="3.2" fill="#7a1010" />
+
+
+    <text font-family="monospace" font-size="8" fill="#D97706" opacity="0.6" text-anchor="middle" x="222" y="440">attack roll</text>
+
+  </g>
+
+
+  <polygon id="outer-border" points="250,30 455,145 455,375 250,490 45,375 45,145" fill="none" stroke="#D97706" stroke-width="11" stroke-linejoin="round" /><polygon id="inner-border" points="250,44 441,153 441,367 250,476 59,367 59,153" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round" opacity="0.6" /></svg>

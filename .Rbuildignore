@@ -17,3 +17,9 @@
 ^_coverage$
 ^site$
 ^tools/branding$
+
+^plans$
+^validation$
+^\.zenodo\.json$
+^CITATION\.cff$
+^tests/testthat/Rplots[.]pdf$

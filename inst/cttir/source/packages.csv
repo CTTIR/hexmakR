@@ -1,0 +1,46 @@
+name,repo,family,symbol,kind,source
+molpathR,molpathR,clinical,molpathR,R package,https://github.com/CTTIR/molpathR/blob/main/DESCRIPTION
+pressR,pressR,clinical,pressR,R package,https://github.com/CTTIR/pressR/blob/main/DESCRIPTION
+scimagR,scimagR,clinical,scimagR,R package,https://github.com/CTTIR/scimagR/blob/main/DESCRIPTION
+zhncommandR,zhncommandR,clinical,zhncommandR,R package,https://github.com/CTTIR/zhncommandR/blob/main/DESCRIPTION
+brainwritR,brainwritR,evidence,brainwritR,R package,https://github.com/CTTIR/brainwritR/blob/main/DESCRIPTION
+delphyr,delphyR,evidence,delphyr,R package,https://github.com/CTTIR/delphyR/blob/main/packages/delphyr/DESCRIPTION
+delphyrApp,delphyR,evidence,delphyrApp,R package,https://github.com/CTTIR/delphyR/blob/main/packages/delphyrApp/DESCRIPTION
+researchR,researchR,evidence,researchR,R package,https://github.com/CTTIR/researchR/blob/main/DESCRIPTION
+scimapR,scimapR,evidence,scimapR,R package,https://github.com/CTTIR/scimapR/blob/main/DESCRIPTION
+inferguidR,inferguidR,methods,inferguidR,R package,https://github.com/CTTIR/inferguidR/blob/main/DESCRIPTION
+songR,songR,methods,songR,R package,https://github.com/CTTIR/songR/blob/main/DESCRIPTION
+sorenR,sorenR,methods,sorenR,R package,https://github.com/CTTIR/sorenR/blob/main/DESCRIPTION
+bambamR,bambamR,omics,bambamR,R package,https://github.com/CTTIR/bambamR/blob/main/DESCRIPTION
+qviewparsR,qviewparsR,omics,qviewparsR,R package,https://github.com/CTTIR/qviewparsR/blob/main/DESCRIPTION
+cttiR,cttiR,platform,cttiR,R package,https://github.com/CTTIR/cttiR/blob/main/DESCRIPTION
+harbouR,harbouR,platform,harbouR,R package,https://github.com/CTTIR/harbouR/blob/main/DESCRIPTION
+hexmakR,hexmakR,platform,hexmakR,R package,https://github.com/CTTIR/hexmakR/blob/main/DESCRIPTION
+reflowR,reflowR,platform,reflowR,R package,https://github.com/CTTIR/reflowR/blob/main/DESCRIPTION
+themakR,themakR,platform,themakR,R package,https://github.com/CTTIR/themakR/blob/main/DESCRIPTION
+dynasimR,dynasimR,simulation,dynasimR,R package,https://github.com/CTTIR/dynasimR/blob/main/DESCRIPTION
+sandtablR,sandtablR,simulation,sandtablR,R package,https://github.com/CTTIR/sandtablR/blob/main/DESCRIPTION
+shieldR,shieldR,simulation,shieldR,R package,https://github.com/CTTIR/shieldR/blob/main/DESCRIPTION
+bloodspottR,bloodspottR,spatial,bloodspottR,R package,https://github.com/CTTIR/bloodspottR/blob/main/DESCRIPTION
+cellreportR,cellreportR,spatial,cellreportR,R package,https://github.com/CTTIR/cellreportR/blob/main/DESCRIPTION
+cellspecR,cellspecR,spatial,cellspecR,R package,https://github.com/CTTIR/cellspecR/blob/main/DESCRIPTION
+gatekeepR,gatekeepR,spatial,gatekeepR,R package,https://github.com/CTTIR/gatekeepR/blob/main/DESCRIPTION
+mssrscopR,mssrscopR,spatial,mssrscopR,R package,https://github.com/CTTIR/mssrscopR/blob/main/DESCRIPTION
+phenoscapR,phenoscapR,spatial,phenoscapR,R package,https://github.com/CTTIR/phenoscapR/blob/main/DESCRIPTION
+qupflowR,qupflowR,spatial,qupflowR,R package,https://github.com/CTTIR/qupflowR/blob/main/DESCRIPTION
+segmantR,segmantR,spatial,segmantR,R package,https://github.com/CTTIR/segmantR/blob/main/DESCRIPTION
+cuvis.r,cuvis.r,spectral,cuvis.r,R package,https://github.com/CTTIR/cuvis.r/blob/main/DESCRIPTION
+hyperannotatR,hyperannotatR,spectral,hyperannotatR,R package,https://github.com/CTTIR/hyperannotatR/blob/main/DESCRIPTION
+hypermodR,hypermodR,spectral,hypermodR,R package,https://github.com/CTTIR/hypermodR/blob/main/DESCRIPTION
+hyperspectaculR,hyperspectaculR,spectral,hyperspectaculR,R package,https://github.com/CTTIR/hyperspectaculR/blob/main/DESCRIPTION
+hyperspectR,hyperspectR,spectral,hyperspectR,R package,https://github.com/CTTIR/hyperspectR/blob/main/DESCRIPTION
+libscanR,libscanR,spectral,libscanR,R package,https://github.com/CTTIR/libscanR/blob/main/DESCRIPTION
+tivis.r,tivis.r,spectral,tivis.r,R package,https://github.com/CTTIR/tivis.r/blob/main/DESCRIPTION
+CTTIR,.github,brand,CTTIR,Organisation,https://github.com/CTTIR
+argus-one,argus-one,evidence,argus-one,Companion app,https://github.com/CTTIR/argus-one
+attaclone-dedup,attaclone-dedup,evidence,attaclone-dedup,Companion app,https://github.com/CTTIR/attaclone-dedup
+metadata-mender,metadata-mender,evidence,metadata-mender,Companion app,https://github.com/CTTIR/metadata-mender
+pwa-quest,pwa-quest,evidence,pwa-quest,Companion app,https://github.com/CTTIR/pwa-quest
+shinylaunchR,shinylaunchR,platform,shinylaunchR,Companion app,https://github.com/CTTIR/shinylaunchR
+hyperloom,,spectral,hyperloom,Suite,User-specified suite identity
+phenoloom,,spatial,phenoloom,Suite,User-specified suite identity

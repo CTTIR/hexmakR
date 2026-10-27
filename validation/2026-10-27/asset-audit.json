@@ -1,0 +1,21 @@
+{
+  "original": {
+    "png": 495,
+    "svg": 270,
+    "pdf": 270,
+    "transparent_png": 495,
+    "monochrome_png": 90
+  },
+  "regenerated": {
+    "png": 495,
+    "svg": 270,
+    "pdf": 270,
+    "transparent_png": 495,
+    "monochrome_png": 90
+  },
+  "browser_png_download": {
+    "shape": "pentagon",
+    "width": 1600,
+    "height": 1600
+  }
+}

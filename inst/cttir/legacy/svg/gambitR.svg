@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="580" viewBox="0 0 500 580">
+  <defs>
+    <linearGradient id="bggambit" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#161210" />
+      <stop offset="100%" stop-color="#0a0806" />
+    </linearGradient>
+    <clipPath id="hexgambit">
+      <polygon points="250,30 455,145 455,375 250,490 45,375 45,145" />
+    </clipPath>
+  </defs>
+
+  <polygon points="250,30 455,145 455,375 250,490 45,375 45,145" fill="url(#bggambit)" />
+
+  <g clip-path="url(#hexgambit)">
+
+
+
+    <g>
+
+      <rect x="110" y="172" width="56" height="56" fill="#C8A878" />
+      <rect x="166" y="172" width="56" height="56" fill="#5a4530" />
+      <rect x="222" y="172" width="56" height="56" fill="#C8A878" />
+      <rect x="278" y="172" width="56" height="56" fill="#5a4530" />
+      <rect x="334" y="172" width="56" height="56" fill="#C8A878" />
+
+      <rect x="110" y="228" width="56" height="56" fill="#5a4530" />
+      <rect x="166" y="228" width="56" height="56" fill="#C8A878" />
+      <rect x="222" y="228" width="56" height="56" fill="#5a4530" />
+      <rect x="278" y="228" width="56" height="56" fill="#C8A878" />
+      <rect x="334" y="228" width="56" height="56" fill="#5a4530" />
+
+      <rect x="110" y="284" width="56" height="56" fill="#C8A878" />
+      <rect x="166" y="284" width="56" height="56" fill="#5a4530" />
+      <rect x="222" y="284" width="56" height="56" fill="#C8A878" />
+      <rect x="278" y="284" width="56" height="56" fill="#5a4530" />
+      <rect x="334" y="284" width="56" height="56" fill="#C8A878" />
+
+      <rect x="110" y="340" width="56" height="34" fill="#5a4530" opacity="0.85" />
+      <rect x="166" y="340" width="56" height="34" fill="#C8A878" opacity="0.85" />
+      <rect x="222" y="340" width="56" height="34" fill="#5a4530" opacity="0.85" />
+      <rect x="278" y="340" width="56" height="34" fill="#C8A878" opacity="0.85" />
+      <rect x="334" y="340" width="56" height="34" fill="#5a4530" opacity="0.85" />
+    </g>
+
+
+    <rect x="110" y="172" width="280" height="202" fill="none" stroke="#D97706" stroke-width="2.5" />
+
+
+
+    <rect x="222" y="228" width="56" height="56" fill="#F59E0B" fill-opacity="0.28" stroke="#F59E0B" stroke-width="3" />
+
+    <path d="M 226,232 L 226,228 L 230,228" fill="none" stroke="#F59E0B" stroke-width="2" />
+    <path d="M 270,228 L 274,228 L 274,232" fill="none" stroke="#F59E0B" stroke-width="2" />
+    <path d="M 274,280 L 274,284 L 270,284" fill="none" stroke="#F59E0B" stroke-width="2" />
+    <path d="M 230,284 L 226,284 L 226,280" fill="none" stroke="#F59E0B" stroke-width="2" />
+
+
+
+    <g transform="translate(250,256)">
+      <circle cx="0" cy="-8" r="6" fill="#F5F0E6" />
+      <path d="M -4,-3 L 4,-3 L 7,12 L -7,12 Z" fill="#F5F0E6" />
+      <ellipse cx="0" cy="12" rx="10" ry="3" fill="#F5F0E6" />
+    </g>
+
+
+    <g transform="translate(194,312)">
+      <path d="M -7,12 L 7,12 L 7,8 Q 8,-2 0,-8 Q -6,-11 -4,-4 Q -9,-3 -8,3 L -5,2 L -6,8 Z" fill="#2a2420" stroke="#0a0806" stroke-width="0.8" />
+      <ellipse cx="0" cy="12" rx="9" ry="2.5" fill="#2a2420" />
+      <circle cx="-2" cy="-3" r="1" fill="#C8A878" />
+    </g>
+
+
+    <g transform="translate(306,200)">
+      <circle cx="0" cy="-9" r="4" fill="#F5F0E6" />
+      <path d="M -3,-6 Q -7,2 -5,10 L 5,10 Q 7,2 3,-6 Z" fill="#F5F0E6" />
+      <ellipse cx="0" cy="10" rx="8" ry="2.5" fill="#F5F0E6" />
+      <line x1="0" y1="-12" x2="0" y2="-7" stroke="#C8A878" stroke-width="1.2" />
+    </g>
+
+
+    <g transform="translate(138,200)">
+      <path d="M -6,-8 L -6,-4 L -3,-4 L -3,-8 L -1,-8 L -1,-4 L 1,-4 L 1,-8 L 3,-8 L 3,-4 L 6,-4 L 6,-8                L 5,-8 L 5,8 L -5,8 L -5,-8 Z" fill="#2a2420" stroke="#0a0806" stroke-width="0.6" />
+      <ellipse cx="0" cy="9" rx="8" ry="2.5" fill="#2a2420" />
+    </g>
+
+
+    <path d="M 200,300 Q 225,275 244,262" fill="none" stroke="#C62828" stroke-width="2" stroke-dasharray="4 3" opacity="0.75" />
+
+
+    <text font-family="monospace" font-size="8" fill="#F59E0B" opacity="0.7" text-anchor="middle" x="250" y="398">e4 · gambit</text>
+
+  </g>
+
+
+  <polygon id="outer-border" points="250,30 455,145 455,375 250,490 45,375 45,145" fill="none" stroke="#D97706" stroke-width="11" stroke-linejoin="round" /><polygon id="inner-border" points="250,44 441,153 441,367 250,476 59,367 59,153" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round" opacity="0.6" /><text id="wordmark" x="250" y="545" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-weight="700" font-size="26" letter-spacing="0.5" fill="#F5C77E">gambitR</text></svg>

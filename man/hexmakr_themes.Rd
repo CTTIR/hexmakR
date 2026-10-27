@@ -31,8 +31,8 @@ themes$stats$dark
 \seealso{
 \code{\link[=hex_sticker]{hex_sticker()}}, \code{\link[=hexmakr_preview_theme]{hexmakr_preview_theme()}}
 
-Other themes: 
-\code{\link{hexmakr_icons}()},
-\code{\link{hexmakr_preview_theme}()}
+Other themes:
+\code{\link[=hexmakr_icons]{hexmakr_icons()}},
+\code{\link[=hexmakr_preview_theme]{hexmakr_preview_theme()}}
 }
 \concept{themes}

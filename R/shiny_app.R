@@ -2,9 +2,12 @@
 #'
 #' @title Launch Interactive Hex Sticker Designer
 #' @description Opens an interactive Shiny app for designing hex stickers
-#'   visually. The app provides live preview, theme selection, icon picking,
-#'   custom color overrides, and PNG export.
+#'   visually. The default v5 workspace offers 45 CTTIR identities, hexagonal,
+#'   pentagonal and square frames, individual vector-layer editing, portable
+#'   projects, and PNG/SVG/PDF export. The classic designer remains available.
 #'
+#' @param workspace Use the CTTIR `v5` editor (default) or the `classic` designer.
+#' @param package Initial v5 identity.
 #' @param ... Additional arguments passed to [shiny::runApp()].
 #'
 #' @return Does not return; runs the Shiny app.
@@ -17,13 +20,14 @@
 #' @seealso [hex_sticker()], [save_hex()]
 #' @family stickers
 #' @export
-hexmakr_app <- function(...) {
-  app <- .build_shiny_app()
+hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...) {
+  workspace <- match.arg(workspace)
+  app <- if (workspace == "v5") .build_shiny_app(package) else .build_classic_app()
   shiny::runApp(app, ...)
 }
 
 #' @noRd
-.build_shiny_app <- function() {
+.build_classic_app <- function() {
 
   # ---- CSS ---------------------------------------------------------------
   custom_css <- "
@@ -121,14 +125,14 @@ hexmakr_app <- function(...) {
               ),
               shiny::tags$span(" | "),
               shiny::tags$a(
-                href = "https://github.com/r-heller/hexmakR",
+                href = "https://github.com/CTTIR/hexmakR",
                 target = "_blank",
                 style = "color:#38BDF8; text-decoration:none;",
                 "GitHub"
               ),
               shiny::tags$span(" | "),
               shiny::tags$a(
-                href = "https://r-heller.github.io/hexmakR/",
+                href = "https://cttir.github.io/hexmakR/",
                 target = "_blank",
                 style = "color:#38BDF8; text-decoration:none;",
                 "Documentation"
@@ -218,11 +222,11 @@ hexmakr_app <- function(...) {
 
 #' @noRd
 .shiny_logo_svg <- function() {
-  logo_path <- system.file("logo", "logo.svg", package = "hexmakR")
+  logo_path <- base::system.file("logo", "logo.svg", package = "hexmakR")
   if (nzchar(logo_path) && file.exists(logo_path)) {
     svg_text <- paste(readLines(logo_path, warn = FALSE), collapse = "\n")
     # Wrap in a div to control sizing
-    paste0('<div style="display:inline-block; width:80px; height:93px;">',
+    paste0('<div role="img" aria-label="hexmakR logo" style="display:inline-block; width:80px; height:93px;">',
            gsub('width="500" height="580"',
                 'width="80" height="93" style="max-width:80px;"',
                 svg_text),

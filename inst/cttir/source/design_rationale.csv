@@ -1,0 +1,46 @@
+name,family,rationale
+molpathR,clinical,Molecular strand integrated with a pathology network
+pressR,clinical,Insole silhouette with concentric pressure islands and a trajectory
+scimagR,clinical,Imaging tile with stacked vertebral elements and continuous cord
+zhncommandR,clinical,"Clinical audit dashboard with cohort, survival and verification cues"
+brainwritR,evidence,Idea exchange around a central writing tool
+delphyr,evidence,Five input panels converging on a consensus centre
+delphyrApp,evidence,Consensus mechanism within an application frame
+researchR,evidence,Research surveillance radar with a source record
+scimapR,evidence,Citation topology connecting publication nodes
+inferguidR,methods,Faceted compass for navigable statistical inference
+songR,methods,Folded continuous neighbourhood lattice
+sorenR,methods,Evolving prototype network with an outward growth motif
+bambamR,omics,Parallel transcript strands and count blocks
+qviewparsR,omics,Multiplex assay plate with individually modelled wells
+cttiR,platform,Three inputs leading to an assembled research project
+harbouR,platform,Stacked infrastructure containers in a sheltered quay
+hexmakR,platform,Nested material hexagons and a dimensional drawing tool
+reflowR,platform,Reproducible workflow planes inside a return loop
+themakR,platform,Fanned layout and theme swatches
+dynasimR,simulation,Three-state dynamic loop with a continuous response
+sandtablR,simulation,Dimensional tabletop board with differentiated agents and a care station
+shieldR,simulation,Faceted protective shield around a connected system
+bloodspottR,spatial,Calibrated histology frame containing blood-burden spots
+cellreportR,spatial,Specimen slide integrating cells and analytical results
+cellspecR,spatial,Single-cell profile linked to a measurement matrix
+gatekeepR,spatial,Cytometry gate selecting a separate cell population
+mssrscopR,spatial,Two resolved peaks emerging from a broad optical response
+phenoscapR,spatial,Spatial cell neighbourhood with irregular membranes and a central cell
+qupflowR,spatial,Verified exchange between specimen and analysis planes
+segmantR,spatial,Overlapping cellular forms divided by a segmentation boundary
+cuvis.r,spectral,Dimensional acquisition camera with layered optical lens and sampling plane
+hyperannotatR,spectral,Polygon annotation on a spectral slice with editable handles and a stylus
+hypermodR,spectral,Spectral planes feeding model branches and a response curve
+hyperspectaculR,spectral,Folded spectral pinwheel expressing artistic hyperspectral composition
+hyperspectR,spectral,Exploded spectral cube with parallel band planes and a spatial grid
+libscanR,spectral,"Laser excitation, sampling plane and dispersed emission"
+tivis.r,spectral,Tissue plane connected to a compact spectral signature
+CTTIR,brand,Three joined material ribbons forming a shared hexagonal core
+argus-one,evidence,An observant eye with a convergent central lens
+attaclone-dedup,evidence,Matching attachments with one retained verification seal
+metadata-mender,evidence,Structured metadata fields with a repair tile
+pwa-quest,evidence,Offline questionnaire handset with completion seal
+shinylaunchR,platform,Dimensional launcher lifting from a dashboard tile
+hyperloom,spectral,Interlaced spectral ribbons form the top and sides of a dimensional data cube
+phenoloom,spatial,Interwoven tissue ribbons hold four distinct cellular neighbourhoods

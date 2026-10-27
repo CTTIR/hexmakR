@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="580" viewBox="0 0 500 580">
+  <defs>
+    <linearGradient id="bgsyn" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#15101e" />
+      <stop offset="100%" stop-color="#0a0710" />
+    </linearGradient>
+
+
+    <linearGradient id="valence" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FF5252" />
+      <stop offset="22%" stop-color="#FF8A3D" />
+      <stop offset="42%" stop-color="#FFD23D" />
+      <stop offset="60%" stop-color="#7DD957" />
+      <stop offset="80%" stop-color="#3DC8D9" />
+      <stop offset="100%" stop-color="#5B8DEF" />
+    </linearGradient>
+
+
+    <linearGradient id="valenceGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FF5252" stop-opacity="0.5" />
+      <stop offset="42%" stop-color="#FFD23D" stop-opacity="0.5" />
+      <stop offset="80%" stop-color="#3DC8D9" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#5B8DEF" stop-opacity="0.5" />
+    </linearGradient>
+
+    <clipPath id="hexsyn">
+      <polygon points="250,30 455,145 455,375 250,490 45,375 45,145" />
+    </clipPath>
+  </defs>
+
+  <polygon points="250,30 455,145 455,375 250,490 45,375 45,145" fill="url(#bgsyn)" />
+
+  <g clip-path="url(#hexsyn)">
+
+
+
+
+    <g opacity="0.55">
+
+      <line x1="78" y1="210" x2="120" y2="210" stroke="#9C8FB0" stroke-width="2" stroke-linecap="round" />
+      <line x1="78" y1="218" x2="108" y2="218" stroke="#9C8FB0" stroke-width="2" stroke-linecap="round" />
+
+      <line x1="78" y1="240" x2="124" y2="240" stroke="#9C8FB0" stroke-width="2" stroke-linecap="round" />
+      <line x1="78" y1="248" x2="100" y2="248" stroke="#9C8FB0" stroke-width="2" stroke-linecap="round" />
+
+      <line x1="78" y1="270" x2="118" y2="270" stroke="#9C8FB0" stroke-width="2" stroke-linecap="round" />
+      <line x1="78" y1="278" x2="112" y2="278" stroke="#9C8FB0" stroke-width="2" stroke-linecap="round" />
+
+      <line x1="78" y1="300" x2="122" y2="300" stroke="#9C8FB0" stroke-width="2" stroke-linecap="round" />
+      <line x1="78" y1="308" x2="96" y2="308" stroke="#9C8FB0" stroke-width="2" stroke-linecap="round" />
+
+      <line x1="78" y1="330" x2="116" y2="330" stroke="#9C8FB0" stroke-width="2" stroke-linecap="round" />
+    </g>
+
+
+
+    <circle cx="132" cy="212" r="2.5" fill="#FF5252" opacity="0.7" />
+    <circle cx="142" cy="244" r="2" fill="#FF7A45" opacity="0.65" />
+    <circle cx="138" cy="272" r="2.3" fill="#FF8A3D" opacity="0.68" />
+    <circle cx="148" cy="300" r="2" fill="#FFB23D" opacity="0.6" />
+    <circle cx="135" cy="330" r="1.8" fill="#FF6452" opacity="0.6" />
+    <circle cx="158" cy="226" r="2" fill="#FFC53D" opacity="0.62" />
+    <circle cx="165" cy="258" r="1.8" fill="#FFD23D" opacity="0.6" />
+    <circle cx="160" cy="288" r="1.6" fill="#FFAA3D" opacity="0.55" />
+    <circle cx="172" cy="312" r="1.6" fill="#FFD23D" opacity="0.5" />
+    <circle cx="180" cy="240" r="1.5" fill="#E8D44D" opacity="0.5" />
+    <circle cx="188" cy="276" r="1.4" fill="#BCDA4D" opacity="0.5" />
+
+
+
+
+
+
+
+
+    <path d="M 150,290              C 175,288 182,250 200,250              C 215,250 218,300 232,300              C 244,300 246,235 262,232              C 276,229 280,310 296,308              C 310,306 312,260 328,255              C 342,251 348,295 364,288              C 380,281 388,245 410,240" fill="none" stroke="url(#valenceGlow)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.4" />
+
+
+    <path d="M 150,290              C 175,288 182,250 200,250              C 215,250 218,300 232,300              C 244,300 246,235 262,232              C 276,229 280,310 296,308              C 310,306 312,260 328,255              C 342,251 348,295 364,288              C 380,281 388,245 410,240" fill="none" stroke="url(#valence)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+
+
+
+
+
+
+    <line x1="200" y1="250" x2="200" y2="330" stroke="#FF8A3D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+    <line x1="216" y1="270" x2="216" y2="312" stroke="#FFA53D" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+    <line x1="232" y1="300" x2="232" y2="320" stroke="#FFC53D" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+    <line x1="247" y1="232" x2="247" y2="340" stroke="#FFD23D" stroke-width="2.5" stroke-linecap="round" opacity="0.55" />
+    <line x1="262" y1="232" x2="262" y2="325" stroke="#E8D84D" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+    <line x1="279" y1="270" x2="279" y2="318" stroke="#9DD957" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+    <line x1="296" y1="308" x2="296" y2="325" stroke="#7DD957" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+    <line x1="312" y1="260" x2="312" y2="330" stroke="#5BD0C9" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+    <line x1="328" y1="255" x2="328" y2="320" stroke="#3DC8D9" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+    <line x1="346" y1="280" x2="346" y2="315" stroke="#46B0E0" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+    <line x1="364" y1="288" x2="364" y2="318" stroke="#5B8DEF" stroke-width="2" stroke-linecap="round" opacity="0.5" />
+    <line x1="386" y1="252" x2="386" y2="305" stroke="#5B8DEF" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+
+
+    <line x1="200" y1="250" x2="200" y2="225" stroke="#FF8A3D" stroke-width="2" stroke-linecap="round" opacity="0.3" />
+    <line x1="247" y1="232" x2="247" y2="200" stroke="#FFD23D" stroke-width="2" stroke-linecap="round" opacity="0.3" />
+    <line x1="262" y1="232" x2="262" y2="205" stroke="#E8D84D" stroke-width="1.8" stroke-linecap="round" opacity="0.28" />
+    <line x1="312" y1="260" x2="312" y2="235" stroke="#3DC8D9" stroke-width="2" stroke-linecap="round" opacity="0.3" />
+    <line x1="386" y1="252" x2="386" y2="228" stroke="#5B8DEF" stroke-width="1.8" stroke-linecap="round" opacity="0.28" />
+
+
+
+
+
+    <rect x="150" y="358" width="30" height="12" rx="2" fill="#FF5252" opacity="0.9" />
+    <rect x="182" y="358" width="30" height="12" rx="2" fill="#FF8A3D" opacity="0.9" />
+    <rect x="214" y="358" width="30" height="12" rx="2" fill="#FFD23D" opacity="0.9" />
+    <rect x="246" y="358" width="30" height="12" rx="2" fill="#7DD957" opacity="0.9" />
+    <rect x="278" y="358" width="30" height="12" rx="2" fill="#3DC8D9" opacity="0.9" />
+    <rect x="310" y="358" width="30" height="12" rx="2" fill="#5B8DEF" opacity="0.9" />
+
+    <text font-family="monospace" font-size="7" fill="#9C8FB0" opacity="0.55" text-anchor="middle" x="250" y="384">palette</text>
+
+
+
+
+
+    <g opacity="0.6" transform="translate(150, 200)">
+      <path d="M -8,0 Q 0,-7 8,0 Q 0,7 -8,0 Z" fill="none" stroke="#FF8A3D" stroke-width="1.4" />
+      <circle cx="0" cy="0" r="2.5" fill="#FF8A3D" />
+    </g>
+
+    <g opacity="0.6" transform="translate(405, 205)">
+      <circle cx="0" cy="8" r="3.5" fill="#5B8DEF" />
+      <line x1="3.2" y1="8" x2="3.2" y2="-6" stroke="#5B8DEF" stroke-width="1.5" />
+      <path d="M 3.2,-6 Q 10,-4 9,2" fill="none" stroke="#5B8DEF" stroke-width="1.5" />
+    </g>
+
+
+    <text font-family="monospace" font-size="7" fill="#9C8FB0" opacity="0.5" text-anchor="start" x="78" y="195">text</text>
+
+  </g>
+
+
+  <polygon id="outer-border" points="250,30 455,145 455,375 250,490 45,375 45,145" fill="none" stroke="url(#valence)" stroke-width="11" stroke-linejoin="round" /><polygon id="inner-border" points="250,44 441,153 441,367 250,476 59,367 59,153" fill="none" stroke="#FFD23D" stroke-width="1.5" stroke-linejoin="round" opacity="0.6" /></svg>

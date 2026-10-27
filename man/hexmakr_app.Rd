@@ -4,9 +4,13 @@
 \alias{hexmakr_app}
 \title{Launch Interactive Hex Sticker Designer}
 \usage{
-hexmakr_app(...)
+hexmakr_app(workspace = c("v5", "classic"), package = "hexmakR", ...)
 }
 \arguments{
+\item{workspace}{Use the CTTIR \code{v5} editor (default) or the \code{classic} designer.}
+
+\item{package}{Initial v5 identity.}
+
 \item{...}{Additional arguments passed to \code{\link[shiny:runApp]{shiny::runApp()}}.}
 }
 \value{
@@ -14,8 +18,9 @@ Does not return; runs the Shiny app.
 }
 \description{
 Opens an interactive Shiny app for designing hex stickers
-visually. The app provides live preview, theme selection, icon picking,
-custom color overrides, and PNG export.
+visually. The default v5 workspace offers 45 CTTIR identities, hexagonal,
+pentagonal and square frames, individual vector-layer editing, portable
+projects, and PNG/SVG/PDF export. The classic designer remains available.
 }
 \details{
 Launch the hexmakR Shiny App
@@ -29,9 +34,9 @@ if (interactive()) {
 \seealso{
 \code{\link[=hex_sticker]{hex_sticker()}}, \code{\link[=save_hex]{save_hex()}}
 
-Other stickers: 
-\code{\link{hex_sticker}()},
-\code{\link{save_hex}()},
-\code{\link{save_hex_svg}()}
+Other stickers:
+\code{\link[=hex_sticker]{hex_sticker()}},
+\code{\link[=save_hex]{save_hex()}},
+\code{\link[=save_hex_svg]{save_hex_svg()}}
 }
 \concept{stickers}

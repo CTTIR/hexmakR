@@ -38,9 +38,9 @@ file.exists(tmp)
 \seealso{
 \code{\link[=hex_sticker]{hex_sticker()}}
 
-Other stickers: 
-\code{\link{hex_sticker}()},
-\code{\link{hexmakr_app}()},
-\code{\link{save_hex_svg}()}
+Other stickers:
+\code{\link[=hex_sticker]{hex_sticker()}},
+\code{\link[=hexmakr_app]{hexmakr_app()}},
+\code{\link[=save_hex_svg]{save_hex_svg()}}
 }
 \concept{stickers}
