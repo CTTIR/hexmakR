@@ -170,8 +170,10 @@ inside the image.
 hexmakr_app(workspace = "classic")
 ```
 
-The classic workspace retains its live ggplot preview, 19 theme presets,
-46 icons, PNG/JPEG upload, 13 font choices, subtitle/URL controls and
-PNG export. Use it for existing generic-sticker workflows; the default
-Designer provides individually editable vector parts and portable
-projects.
+The classic workspace retains its live ggplot preview, 46 icons,
+PNG/JPEG upload, subtitle/URL controls and PNG export. Its 28 theme
+presets list the nine CTTIR v5 families first, under **CTTIR v5**,
+followed by the 19 generic themes. Its 14 font choices include the
+bundled JetBrains Mono used for v5 names. Use it for existing
+generic-sticker workflows; the default Designer provides individually
+editable vector parts and portable projects.

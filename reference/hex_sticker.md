@@ -65,8 +65,10 @@ hex_sticker(
 
 - theme:
 
-  Character. Theme name. One of `names(hexmakr_themes())`. Default
-  `"stats"`.
+  Character. Theme name. One of `names(hexmakr_themes())`. The nine
+  CTTIR v5 families (for example `"spatial"` or `"clinical"`) are listed
+  first and are the house standard; for complete v5 artwork use
+  [`hex_design()`](hex_design.md). Default `"stats"`.
 
 - mode:
 
@@ -96,7 +98,10 @@ hex_sticker(
 - font_family:
 
   Character. Font shorthand (e.g. `"mono"`, `"serif"`, `"sans"`) or a
-  system font name. Default `"mono"`.
+  system font name. Default `"mono"`. `"jetbrains_mono"` uses the
+  JetBrains Mono font bundled for CTTIR v5 names, drawn as glyph
+  outlines so it needs no installed font (bold uses the semibold cut;
+  italic is slanted).
 
 - font_bold:
 
@@ -159,6 +164,11 @@ hex_sticker("mypackage")
 
 # With icon and theme
 hex_sticker("mypackage", icon = "dna", theme = "genomics")
+
+
+# CTTIR v5 family colours and the bundled v5 name font
+hex_sticker("mypackage", icon = "microscope", theme = "spatial",
+            font_family = "jetbrains_mono")
 
 
 # Save to file

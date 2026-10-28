@@ -238,7 +238,16 @@ pkgdown will automatically pick it up.</p>
 <div class="section level2">
 <h2 id="all-available-themes">All available themes<a class="anchor" aria-label="anchor" href="#all-available-themes"></a>
 </h2>
+<p>The first nine themes are the CTTIR v5 families, the house standard.
+Their colours come from the v5 design tokens through the same engine as
+<code><a href="../reference/hex_design.html">hex_design()</a></code>: the tile face as background, the family rim
+as border, and the v5 ink and muted text colours. The 19 generic themes
+follow. For complete v5 artwork with motifs and outlined names, use
+<code><a href="../reference/hex_design.html">hex_design()</a></code>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/hex_sticker.html">hex_sticker</a></span><span class="op">(</span><span class="st">"mypackage"</span>, icon <span class="op">=</span> <span class="st">"microscope"</span>, theme <span class="op">=</span> <span class="st">"spatial"</span>,</span>
+<span>            font_family <span class="op">=</span> <span class="st">"jetbrains_mono"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">themes</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hexmakr_themes.html">hexmakr_themes</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">nm</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">themes</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">nm</span>, <span class="st">"—"</span>, <span class="va">themes</span><span class="op">[[</span><span class="va">nm</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">label</span>, <span class="st">"\n"</span><span class="op">)</span></span>
@@ -247,7 +256,7 @@ pkgdown will automatically pick it up.</p>
 <div class="section level2">
 <h2 id="all-available-icons">All available icons<a class="anchor" aria-label="anchor" href="#all-available-icons"></a>
 </h2>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">icons</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hexmakr_icons.html">hexmakr_icons</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">cat_name</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">icons</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">icon_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">icons</span><span class="op">[[</span><span class="va">cat_name</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>

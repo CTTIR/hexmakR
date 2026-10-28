@@ -1,8 +1,21 @@
 # List Available Themes
 
-Returns a named list of all 19 built-in color themes for hex stickers.
+Returns a named list of all 28 built-in color themes for hex stickers.
 Each theme has `dark` and `light` sub-lists with color values for `bg`,
 `accent`, `text`, `border`, and `sub` (subtitle).
+
+The first nine are the CTTIR v5 families (`spectral`, `spatial`,
+`omics`, `clinical`, `methods`, `simulation`, `evidence`, `platform`,
+`brand`) and are the house standard. They are derived from the bundled
+v5 design tokens by the same engine as [`hex_design()`](hex_design.md):
+`bg` is the family's tile face, `border` its rim, `text` the v5 heading
+ink and `sub` the muted text colour. `accent`, used for icons and the
+inner ring, follows the colour v5 motifs use on each tile: the mid shade
+(the default motif fill) on dark tiles and the darker edge shade
+(strokes on a pale badge) on light tiles. Icons reach at least 3:1 and
+text at least 4.5:1 contrast on every tile. The 19 generic themes follow
+unchanged. For complete v5 artwork with motifs and outlined names, use
+[`hex_design()`](hex_design.md).
 
 ## Usage
 
@@ -12,11 +25,15 @@ hexmakr_themes()
 
 ## Value
 
-A named list of length 19. Each element contains:
+A named list of length 28. Each element contains:
 
 - label:
 
   Human-readable theme name (character).
+
+- group:
+
+  `"CTTIR v5"` for the nine v5 families; absent for the generic themes.
 
 - dark:
 
@@ -33,7 +50,8 @@ List available themes
 ## See also
 
 [`hex_sticker()`](hex_sticker.md),
-[`hexmakr_preview_theme()`](hexmakr_preview_theme.md)
+[`hexmakr_preview_theme()`](hexmakr_preview_theme.md),
+[`hex_design()`](hex_design.md)
 
 Other themes: [`hexmakr_icons()`](hexmakr_icons.md),
 [`hexmakr_preview_theme()`](hexmakr_preview_theme.md)
@@ -43,10 +61,12 @@ Other themes: [`hexmakr_icons()`](hexmakr_icons.md),
 ``` r
 themes <- hexmakr_themes()
 names(themes)
-#>  [1] "stats"    "viz"      "bio"      "medical"  "tech"     "earth"   
-#>  [7] "cran"     "bioc"     "tidy"     "genomics" "proteo"   "pharma"  
-#> [13] "ocean"    "midnight" "cyber"    "neon"     "sunset"   "viridis" 
-#> [19] "plasma"  
+#>  [1] "spectral"   "spatial"    "omics"      "clinical"   "methods"   
+#>  [6] "simulation" "evidence"   "platform"   "brand"      "stats"     
+#> [11] "viz"        "bio"        "medical"    "tech"       "earth"     
+#> [16] "cran"       "bioc"       "tidy"       "genomics"   "proteo"    
+#> [21] "pharma"     "ocean"      "midnight"   "cyber"      "neon"      
+#> [26] "sunset"     "viridis"    "plasma"    
 themes$stats$dark
 #> $bg
 #> [1] "#1B2838"
@@ -62,5 +82,21 @@ themes$stats$dark
 #> 
 #> $sub
 #> [1] "#8EC8B8"
+#> 
+themes$spatial$light
+#> $bg
+#> [1] "#D7EDE7"
+#> 
+#> $accent
+#> [1] "#0A6356"
+#> 
+#> $text
+#> [1] "#212121"
+#> 
+#> $border
+#> [1] "#009E73"
+#> 
+#> $sub
+#> [1] "#212121"
 #> 
 ```

@@ -178,6 +178,20 @@ save_hex_svg(s, "logo.svg", width = 2)
 
 ## All available themes
 
+The first nine themes are the CTTIR v5 families, the house standard.
+Their colours come from the v5 design tokens through the same engine as
+[`hex_design()`](../reference/hex_design.md): the tile face as
+background, the family rim as border, and the v5 ink and muted text
+colours. The 19 generic themes follow. For complete v5 artwork with
+motifs and outlined names, use
+[`hex_design()`](../reference/hex_design.md).
+
+``` r
+
+hex_sticker("mypackage", icon = "microscope", theme = "spatial",
+            font_family = "jetbrains_mono")
+```
+
 ``` r
 
 themes <- hexmakr_themes()

@@ -118,7 +118,9 @@ JPEG). If provided, overrides <code>icon</code>.</p></dd>
 
 <dt id="arg-theme">theme<a class="anchor" aria-label="anchor" href="#arg-theme"></a></dt>
 <dd><p>Character. Theme name. One of <code>names(hexmakr_themes())</code>.
-Default <code>"stats"</code>.</p></dd>
+The nine CTTIR v5 families (for example <code>"spatial"</code> or <code>"clinical"</code>)
+are listed first and are the house standard; for complete v5 artwork
+use <code><a href="hex_design.html">hex_design()</a></code>. Default <code>"stats"</code>.</p></dd>
 
 
 <dt id="arg-mode">mode<a class="anchor" aria-label="anchor" href="#arg-mode"></a></dt>
@@ -148,7 +150,10 @@ e.g. <code>"#1B2838"</code>).</p></dd>
 
 <dt id="arg-font-family">font_family<a class="anchor" aria-label="anchor" href="#arg-font-family"></a></dt>
 <dd><p>Character. Font shorthand (e.g. <code>"mono"</code>, <code>"serif"</code>,
-<code>"sans"</code>) or a system font name. Default <code>"mono"</code>.</p></dd>
+<code>"sans"</code>) or a system font name. Default <code>"mono"</code>. <code>"jetbrains_mono"</code>
+uses the JetBrains Mono font bundled for CTTIR v5 names, drawn as glyph
+outlines so it needs no installed font (bold uses the semibold cut;
+italic is slanted).</p></dd>
 
 
 <dt id="arg-font-bold">font_bold<a class="anchor" aria-label="anchor" href="#arg-font-bold"></a></dt>
@@ -214,6 +219,11 @@ aspect ratio). Default <code>600</code>.</p></dd>
 <span class="r-in"><span><span class="co"># With icon and theme</span></span></span>
 <span class="r-in"><span><span class="fu">hex_sticker</span><span class="op">(</span><span class="st">"mypackage"</span>, icon <span class="op">=</span> <span class="st">"dna"</span>, theme <span class="op">=</span> <span class="st">"genomics"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="hex_sticker-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># CTTIR v5 family colours and the bundled v5 name font</span></span></span>
+<span class="r-in"><span><span class="fu">hex_sticker</span><span class="op">(</span><span class="st">"mypackage"</span>, icon <span class="op">=</span> <span class="st">"microscope"</span>, theme <span class="op">=</span> <span class="st">"spatial"</span>,</span></span>
+<span class="r-in"><span>            font_family <span class="op">=</span> <span class="st">"jetbrains_mono"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="hex_sticker-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Save to file</span></span></span>
 <span class="r-in"><span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".png"</span><span class="op">)</span></span></span>

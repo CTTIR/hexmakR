@@ -132,7 +132,8 @@ current logo unchanged.
 The original generic sticker interface remains available through
 `hexmakr_app(workspace = "classic")`. Its
 [`hex_sticker()`](../reference/hex_sticker.md) function returns a ggplot
-object and supports the existing themes, fonts and uploaded images.
+object and supports 28 themes, led by the nine CTTIR v5 families, font
+choices including the bundled JetBrains Mono, and uploaded images.
 
 See [`vignette("cttir-library")`](../articles/cttir-library.md) for
 archive reuse and editable projects, and
