@@ -65,7 +65,7 @@ hexmakr_icons("science")
 #>             lwd = size * 4, lty = 1))
 #>     }
 #> }
-#> <bytecode: 0x5ab735578ed8>
+#> <bytecode: 0x5a18013d69b8>
 #> <environment: namespace:hexmakR>
 #> 
 #> 
@@ -89,7 +89,7 @@ hexmakr_icons("science")
 #>         0.2, height = size * 0.04, gp = grid::gpar(fill = color, 
 #>         col = color))
 #> }
-#> <bytecode: 0x5ab735579f50>
+#> <bytecode: 0x5a180130cb50>
 #> <environment: namespace:hexmakR>
 #> 
 #> 
@@ -115,7 +115,7 @@ hexmakr_icons("science")
 #>         0.05, height = size * 0.12, gp = grid::gpar(fill = color, 
 #>         col = color))
 #> }
-#> <bytecode: 0x5ab737c70338>
+#> <bytecode: 0x5a180130e418>
 #> <environment: namespace:hexmakR>
 #> 
 #> 
@@ -141,7 +141,7 @@ hexmakr_icons("science")
 #>             col = color))
 #>     }
 #> }
-#> <bytecode: 0x5ab737c753a0>
+#> <bytecode: 0x5a180130f688>
 #> <environment: namespace:hexmakR>
 #> 
 #> 
@@ -170,7 +170,7 @@ hexmakr_icons("science")
 #>         width = (r_out - r_in), height = size * 0.12, gp = grid::gpar(fill = color, 
 #>             col = color))
 #> }
-#> <bytecode: 0x5ab737c765d8>
+#> <bytecode: 0x5a18020d8218>
 #> <environment: namespace:hexmakR>
 #> 
 #> 
