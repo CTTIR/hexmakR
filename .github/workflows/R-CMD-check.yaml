@@ -13,3 +13,6 @@ permissions: read-all
 jobs:
   R-CMD-check:
     uses: CTTIR/.github/.github/workflows/R-CMD-check.yaml@main
+    with:
+      # Cairo graphics devices on macOS need the X11 libraries.
+      macos-xquartz: true

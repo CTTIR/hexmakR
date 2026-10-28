@@ -36,13 +36,16 @@ save_hex <- function(sticker, filename, width = 600, dpi = 300) {
   if (!dir.exists(dir_path)) {
     dir.create(dir_path, recursive = TRUE)
   }
+  # Cairo where available: the default device on macOS (quartz) applies colour
+  # management and gives other pixel values than on Linux and Windows.
   grDevices::png(
     filename  = filename,
     width     = width,
     height    = height,
     units     = "px",
     res       = dpi,
-    bg        = "transparent"
+    bg        = "transparent",
+    type      = if (capabilities("cairo")) "cairo" else getOption("bitmapType")
   )
   print(sticker)
   grDevices::dev.off()

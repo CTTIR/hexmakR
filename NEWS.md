@@ -1,5 +1,8 @@
 # hexmakR (development version)
 
+* `save_hex()` writes PNG files with the cairo device where available, so
+  stickers have the same pixel values on macOS as on Linux and Windows.
+
 * The classic sticker API now speaks the CTTIR v5 design language. The nine
   v5 families (`spectral`, `spatial`, `omics`, `clinical`, `methods`,
   `simulation`, `evidence`, `platform`, `brand`) lead `hexmakr_themes()` and
