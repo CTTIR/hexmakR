@@ -1,11 +1,10 @@
 CTTIR V5 / SMALL UPLOAD BUNDLES
 
-START WITH CTTIR_Codex_Start_v5.zip.
+START WITH THE STARTER ARCHIVE OF THE KIT.
 It contains the full editable R project, bundled fonts, all 45 identities as
 SVG/PDF in both compositions (name inside the hex, or artwork only) and all
 three modes, plus the offline SVG browser and the main gallery PDF.
-All archives are ordinary independent ZIPs under 5,000,000 bytes. This is a
-conservative packaging target, not a claim about a documented Codex limit.
+All archives are ordinary independent ZIPs under 5,000,000 bytes.
 
 Upload the starter alone to work on the design or regenerate everything.
 Extract it into a working folder. It creates CTTIR_R_Hex_System_v5/.
@@ -35,11 +34,3 @@ inside another. No binary reassembly or special split-archive tool is needed.
 UPLOAD_PARTS.csv maps every PNG package to its archive.
 Extract all add-ons to reconstruct every file from the original complete kit.
 With only the starter, all SVG previews and the main gallery-PDF link work.
-
-PROMPT TO PASTE INTO CODEX
-Extract the attached CTTIR starter ZIP and read START_HERE.txt and README.txt.
-Keep the approved v5 artwork, exact package names INSIDE the named hexes,
-artwork-only alternatives, group-tinted tiles, solid group-colour borders
-and transparent exterior. Verify R and Cairo;
-use the included fonts. Run render_all.R, review_cvd.R and validate_exports.R
-from the project folder. Report the generated files and check results.

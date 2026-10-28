@@ -36,10 +36,9 @@ SVG and PDF are vector formats. SVG name glyphs are paths, so displaying an
 export does not require the font to be installed. R source stays editable.
 
 SMALL UPLOAD BUNDLES
-Start with CTTIR_Codex_Start_v5.zip for the R source, fonts and vector assets.
+Start with the starter archive for the R source, fonts and vector assets.
 Optional PNG and gallery archives supply the original rendered images.
-Each supplied upload ZIP is below 5,000,000 bytes; this is a conservative
-packaging target, not a claim about a documented Codex upload limit.
+Each supplied upload ZIP is below 5,000,000 bytes.
 Extract add-ons into the same parent directory as the starter so their
 CTTIR_R_Hex_System_v5/ folders merge. These are ordinary independent ZIPs,
 not binary split archives. See START_HERE.txt and UPLOAD_PARTS.csv in the
