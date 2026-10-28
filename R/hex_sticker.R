@@ -27,7 +27,10 @@
 #' @param border_color Character or `NULL`. Override the border color.
 #' @param sub_color Character or `NULL`. Override the subtitle/URL color.
 #' @param font_family Character. Font shorthand (e.g. `"mono"`, `"serif"`,
-#'   `"sans"`) or a system font name. Default `"mono"`.
+#'   `"sans"`) or a system font name. Default `"mono"`. `"jetbrains_mono"`
+#'   uses the JetBrains Mono font bundled for CTTIR v5 names, drawn as glyph
+#'   outlines so it needs no installed font (bold uses the semibold cut;
+#'   italic is slanted).
 #' @param font_bold Logical. Use bold weight. Default `TRUE`.
 #' @param font_italic Logical. Use italic style. Default `FALSE`.
 #' @param font_size Numeric. Base font size in pt for the package name.
@@ -50,8 +53,9 @@
 #' # With icon and theme
 #' hex_sticker("mypackage", icon = "dna", theme = "genomics")
 #'
-#' # CTTIR v5 family colours
-#' hex_sticker("mypackage", icon = "microscope", theme = "spatial")
+#' # CTTIR v5 family colours and the bundled v5 name font
+#' hex_sticker("mypackage", icon = "microscope", theme = "spatial",
+#'             font_family = "jetbrains_mono")
 #'
 #' # Save to file
 #' tmp <- tempfile(fileext = ".png")

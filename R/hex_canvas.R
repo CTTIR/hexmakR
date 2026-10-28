@@ -128,44 +128,75 @@ utils::globalVariables(c("x", "y", "label"))
   sub_y  <- name_y - H_data * 0.10
   url_y  <- cy - H_data * 0.38
 
-  p <- p + ggplot2::geom_text(
-    data    = data.frame(x = 0.5, y = name_y, label = name),
-    mapping = ggplot2::aes(x = x, y = y, label = label),
-    color    = colors$text,
-    family   = font_family,
-    fontface = face,
-    size     = font_size * 0.36,
-    hjust    = 0.5,
-    vjust    = 0.5
-  )
+  p <- p + .text_layer(name, name_y, colors$text, font_family, face,
+                       font_size * 0.36, H_data)
 
   if (!is.null(subtitle) && nzchar(subtitle)) {
-    p <- p + ggplot2::geom_text(
-      data    = data.frame(x = 0.5, y = sub_y, label = subtitle),
-      mapping = ggplot2::aes(x = x, y = y, label = label),
-      color    = colors$sub,
-      family   = font_family,
-      fontface = if (font_italic) "italic" else "plain",
-      size     = font_size * 0.25,
-      hjust    = 0.5,
-      vjust    = 0.5
-    )
+    p <- p + .text_layer(subtitle, sub_y, colors$sub, font_family,
+                         if (font_italic) "italic" else "plain",
+                         font_size * 0.25, H_data)
   }
 
   if (!is.null(url) && nzchar(url)) {
-    p <- p + ggplot2::geom_text(
-      data    = data.frame(x = 0.5, y = url_y, label = url),
-      mapping = ggplot2::aes(x = x, y = y, label = label),
-      color    = colors$sub,
-      family   = font_family,
-      fontface = "plain",
-      size     = font_size * 0.17,
-      hjust    = 0.5,
-      vjust    = 0.5
-    )
+    p <- p + .text_layer(url, url_y, colors$sub, font_family, "plain",
+                         font_size * 0.17, H_data)
   }
 
   p
+}
+
+# ---------------------------------------------------------------------------
+# Helper: one centred text line, as device text or bundled-font outlines
+# ---------------------------------------------------------------------------
+
+#' @noRd
+.text_layer <- function(label, y, color, font_family, fontface, size, H_data) {
+  files <- .bundled_fonts[[font_family]]
+  if (is.null(files)) {
+    return(ggplot2::geom_text(
+      data    = data.frame(x = 0.5, y = y, label = label),
+      mapping = ggplot2::aes(x = x, y = y, label = label),
+      color    = color,
+      family   = font_family,
+      fontface = fontface,
+      size     = size,
+      hjust    = 0.5,
+      vjust    = 0.5
+    ))
+  }
+  # Bundled fonts are drawn as outlines; size stays in mm like geom_text()
+  weight <- if (fontface %in% c("bold", "bold.italic")) "bold" else "plain"
+  glyphs <- .make_glyph_grob(label, 0.5, y / H_data, size * 72 / 25.4, color,
+                             .cttir_path("source", "fonts", files[[weight]]),
+                             italic = fontface %in% c("italic", "bold.italic"))
+  ggplot2::annotation_custom(glyphs, xmin = 0, xmax = 1, ymin = 0, ymax = H_data)
+}
+
+# ---------------------------------------------------------------------------
+# Helper: glyph outlines of a label, centred on (x, y) in npc
+# ---------------------------------------------------------------------------
+
+#' @noRd
+.make_glyph_grob <- function(label, x, y, size, color, font, italic = FALSE) {
+  # size is in big points; outlines need no installed font or device support
+  if (!nzchar(label)) return(grid::nullGrob())
+  shape <- systemfonts::shape_string(label, path = font, size = size,
+                                     align = "center")
+  o <- systemfonts::glyph_outline(shape$shape$index, font, size = size,
+                                  tolerance = .04)
+  if (!nrow(o)) return(grid::nullGrob())
+  o$x <- o$x + shape$shape$x_offset[o$glyph] - shape$metrics$width / 2
+  o$y <- o$y + shape$shape$y_offset[o$glyph]
+  o$y <- o$y - mean(range(o$y))
+  if (italic) o$x <- o$x + .2 * o$y  # no italic cut is bundled; slant instead
+  ids <- paste(o$glyph, o$contour)
+  grid::pathGrob(
+    x    = grid::unit(x, "npc") + grid::unit(o$x, "bigpts"),
+    y    = grid::unit(y, "npc") + grid::unit(o$y, "bigpts"),
+    id   = as.integer(factor(ids, levels = unique(ids))),
+    rule = "winding",
+    gp   = grid::gpar(fill = color, col = NA)
+  )
 }
 
 # ---------------------------------------------------------------------------

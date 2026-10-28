@@ -36,7 +36,8 @@ mod_text_ui <- function(id) {
                              "Helvetica" = "helvetica",
                              "Roboto" = "roboto",
                              "Open Sans" = "open_sans",
-                             "Lato" = "lato"
+                             "Lato" = "lato",
+                             "JetBrains Mono (CTTIR v5)" = "jetbrains_mono"
                            ),
                            selected = "mono")
       )
