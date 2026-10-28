@@ -101,8 +101,9 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
             ),
             shiny::tags$p(
               "Design publication-ready hexagon stickers for R packages. ",
-              "Choose from 19 curated color themes (dark + light), 46 built-in ",
-              "scientific and technical icons, 13 fonts, and export to transparent PNG."
+              "Choose from 28 curated color themes (dark + light), led by the ",
+              "nine CTTIR v5 families, 46 built-in scientific and technical ",
+              "icons, 14 fonts, and export to transparent PNG."
             ),
             shiny::tags$p(
               style = "margin-bottom:6px;",

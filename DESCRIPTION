@@ -7,14 +7,15 @@ Authors@R:
 Description: Create publication-ready hexagon stickers for R packages
     interactively via a Shiny app or programmatically via R functions.
     Complements the 'hexSticker' package (which embeds R plots into
-    stickers) by providing an interactive visual designer with 19 curated
-    color themes (dark and light variants), 46 built-in scientific and
-    technical icons, custom image upload support, font selection, and
-    export to transparent PNG. Designed for the R package ecosystem with
-    presets for CRAN, Bioconductor, Tidyverse, and domain-specific
-    color palettes. Includes the CTTIR v5 library of 45 native R vector
-    identities, editable shapes, reproducible JSON projects, and transparent
-    PNG, SVG and PDF export with package names inside the hexagon.
+    stickers) by providing an interactive visual designer with 28 curated
+    color themes (dark and light variants, led by the nine CTTIR v5
+    families), 46 built-in scientific and technical icons, custom image
+    upload support, font selection, and export to transparent PNG.
+    Designed for the R package ecosystem with presets for CRAN,
+    Bioconductor, Tidyverse, and domain-specific color palettes. Includes
+    the CTTIR v5 library of 45 native R vector identities, editable shapes,
+    reproducible JSON projects, and transparent PNG, SVG and PDF export
+    with package names inside the hexagon.
     Project logos also support pentagonal and square frames.
 License: MIT + file LICENSE
 URL: https://cttir.github.io/hexmakR/,

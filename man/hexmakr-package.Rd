@@ -11,9 +11,10 @@
 Create publication-ready hexagon stickers for R packages interactively via a
 Shiny app or programmatically via R functions.
 
-Comes with \strong{19 curated color themes} (dark + light variants), \strong{46
-built-in scientific and technical icons} across 7 categories, custom image
-upload support, 13 font options, and transparent PNG export.
+Comes with \strong{28 curated color themes} (dark + light variants), led by the
+nine CTTIR v5 families, \strong{46 built-in scientific and technical icons}
+across 7 categories, custom image upload support, 14 font options
+including the bundled JetBrains Mono, and transparent PNG export.
 
 The default Designer starts a fresh logo. Add, duplicate, remove and edit
 individual parts; optionally reuse components from 45 archived vector
@@ -36,7 +37,7 @@ drag items, rotate individual parts, and organise named groups.
 \item \code{\link[=hex_sticker]{hex_sticker()}} --programmatic hex sticker creation; returns a ggplot
 object.
 \item \code{\link[=hexmakr_app]{hexmakr_app()}} --launch the interactive Shiny designer.
-\item \code{\link[=hexmakr_themes]{hexmakr_themes()}} --list all 19 built-in themes.
+\item \code{\link[=hexmakr_themes]{hexmakr_themes()}} --list all 28 built-in themes, CTTIR v5 families first.
 \item \code{\link[=hexmakr_icons]{hexmakr_icons()}} --list all 46 built-in icons.
 \item \code{\link[=save_hex]{save_hex()}} --save a sticker to a transparent PNG.
 \item \code{\link[=save_hex_svg]{save_hex_svg()}} --save a sticker to SVG (requires svglite).

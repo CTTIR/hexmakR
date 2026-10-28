@@ -33,7 +33,8 @@ can be renamed, regrouped and moved together. The editor supports individual
 fills, outlines, positions, sizes, rotation, opacity, visibility and point
 coordinates, plus duplicate/remove, undo/reset, JSON
 projects and PNG/SVG/PDF export. All 46 generic icons are available. The
-classic designer retains its 19 themes, custom image uploads and font controls.
+classic designer offers 28 themes, led by the nine CTTIR v5 families, plus
+custom image uploads and font controls.
 
 ```r
 library(hexmakR)
@@ -77,13 +78,15 @@ reproducible sticker generation with full control over subplot positioning.
 
 - **Interactive visual design** — a Shiny app where you see changes live
   and export when you're happy, no code required
-- **A curated theme library** — 19 domain-specific color palettes
-  (Statistics, Bioinformatics, Genomics, Pharma, CRAN, Bioconductor,
-  Tidyverse, and more) with one-click dark/light switching
+- **A curated theme library** — the nine CTTIR v5 family palettes plus
+  19 domain-specific color palettes (Statistics, Bioinformatics, Genomics,
+  Pharma, CRAN, Bioconductor, Tidyverse, and more) with one-click
+  dark/light switching
 - **A built-in icon library** — 46 hand-drawn scientific and technical
   icons across 7 categories, so you don't need external image files
-- **Font selection** — choose from 13 fonts with bold/italic toggles
-  directly in the UI
+- **Font selection** — choose from 14 fonts, including the bundled
+  JetBrains Mono used for v5 names, with bold/italic toggles directly in
+  the UI
 - **Zero-to-sticker speed** — designed for the case where you want a
   good-looking hex sticker in under a minute without writing any code
 
@@ -160,7 +163,7 @@ inside SVG/PDF exports. The application title is the text **hexmakR**.
 | Embed R plots (base/lattice/ggplot2) | ✅ | — |
 | Interactive Shiny designer | — | ✅ |
 | Built-in icon library (46 icons) | — | ✅ |
-| Curated theme presets (19 themes) | — | ✅ |
+| Curated theme presets (28 themes) | — | ✅ |
 | Dark/light mode toggle | — | ✅ |
 | Custom image upload | ✅ | ✅ |
 | Font selection UI | — | ✅ |
@@ -171,14 +174,39 @@ inside SVG/PDF exports. The application title is the text **hexmakR**.
 
 ## Available Themes
 
+The nine CTTIR v5 families come first and are the house standard. Their
+colours are derived from the v5 design tokens by the same engine as
+`hex_design()`, so a classic sticker uses the tile face, rim, ink and muted
+text of the v5 artwork. Use `hex_design()` for complete v5 artwork with
+motifs and outlined names.
+
+```r
+hex_sticker("mypkg", icon = "microscope", theme = "spatial",
+            font_family = "jetbrains_mono")
+```
+
+| Key | Label |
+|-----|-------|
+| `spectral` | Spectral imaging |
+| `spatial` | Spatial biology |
+| `omics` | Molecular data |
+| `clinical` | Clinical science |
+| `methods` | Learning & inference |
+| `simulation` | Systems & simulation |
+| `evidence` | Evidence & discovery |
+| `platform` | Research infrastructure |
+| `brand` | Science, connected |
+
+The 19 generic themes follow:
+
 | Key | Label |
 |-----|-------|
 | `stats` | Statistics |
-| `viz` | Data Visualization |
-| `bio` | Biology |
-| `medical` | Medical |
-| `tech` | Technology |
-| `earth` | Earth Sciences |
+| `viz` | Visualization |
+| `bio` | Bioinformatics |
+| `medical` | Medical/Clinical |
+| `tech` | Tech/Computing |
+| `earth` | Earth/Nature |
 | `cran` | CRAN |
 | `bioc` | Bioconductor |
 | `tidy` | Tidyverse |
@@ -187,13 +215,13 @@ inside SVG/PDF exports. The application title is the text **hexmakR**.
 | `pharma` | Pharma |
 | `ocean` | Ocean |
 | `midnight` | Midnight |
-| `cyber` | Cyberpunk |
+| `cyber` | Cyber |
 | `neon` | Neon |
 | `sunset` | Sunset |
 | `viridis` | Viridis |
 | `plasma` | Plasma |
 
-Each classic theme has both `dark` and `light` variants.
+Each theme has both `dark` and `light` variants.
 
 ## Available Icons
 
