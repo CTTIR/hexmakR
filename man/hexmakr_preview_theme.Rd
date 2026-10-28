@@ -24,6 +24,7 @@ Preview a theme
 \donttest{
 hexmakr_preview_theme("stats")
 hexmakr_preview_theme("genomics", mode = "light")
+hexmakr_preview_theme("spatial")
 }
 
 }

@@ -135,16 +135,49 @@
   )
 )
 
+# CTTIR v5 families, the house standard. Built at run time from the installed
+# design tokens with the same engine as hex_design(), so classic stickers and
+# v5 artwork cannot drift apart. Platform draws in its material colour inside
+# its black rim, exactly as the v5 artwork does.
+.cttir_themes <- function() {
+  engine <- .cttir_engine()
+  roles <- function(family, mode) {
+    s <- engine$cttir_style(family, mode)
+    list(bg = s$face, accent = s$material, text = s$ink,
+         border = s$rim, sub = s$muted)
+  }
+  families <- names(engine$cttir_accents)
+  themes <- lapply(families, function(family) list(
+    label = engine$cttir_family_labels[[family]],
+    group = "CTTIR v5",
+    dark  = roles(family, "dark"),
+    light = roles(family, "light")
+  ))
+  names(themes) <- families
+  themes
+}
+
 #' List available themes
 #'
 #' @title List Available Themes
-#' @description Returns a named list of all 19 built-in color themes for hex
+#' @description Returns a named list of all 28 built-in color themes for hex
 #'   stickers. Each theme has `dark` and `light` sub-lists with color values
 #'   for `bg`, `accent`, `text`, `border`, and `sub` (subtitle).
 #'
-#' @return A named list of length 19. Each element contains:
+#'   The first nine are the CTTIR v5 families (`spectral`, `spatial`, `omics`,
+#'   `clinical`, `methods`, `simulation`, `evidence`, `platform`, `brand`) and
+#'   are the house standard. They are derived from the bundled v5 design
+#'   tokens by the same engine as [hex_design()]: `bg` is the family's tile
+#'   face, `border` its rim, `accent` the family colour (the material colour
+#'   for `platform`), `text` the v5 heading ink and `sub` the muted text
+#'   colour. The 19 generic themes follow unchanged. For complete v5 artwork
+#'   with motifs and outlined names, use [hex_design()].
+#'
+#' @return A named list of length 28. Each element contains:
 #'   \describe{
 #'     \item{label}{Human-readable theme name (character).}
+#'     \item{group}{`"CTTIR v5"` for the nine v5 families; absent for the
+#'       generic themes.}
 #'     \item{dark}{List of 5 color hex strings for dark mode.}
 #'     \item{light}{List of 5 color hex strings for light mode.}
 #'   }
@@ -153,12 +186,13 @@
 #' themes <- hexmakr_themes()
 #' names(themes)
 #' themes$stats$dark
+#' themes$spatial$light
 #'
-#' @seealso [hex_sticker()], [hexmakr_preview_theme()]
+#' @seealso [hex_sticker()], [hexmakr_preview_theme()], [hex_design()]
 #' @family themes
 #' @export
 hexmakr_themes <- function() {
-  .themes
+  c(.cttir_themes(), .themes)
 }
 
 #' Preview a theme
@@ -175,6 +209,7 @@ hexmakr_themes <- function() {
 #' \donttest{
 #' hexmakr_preview_theme("stats")
 #' hexmakr_preview_theme("genomics", mode = "light")
+#' hexmakr_preview_theme("spatial")
 #' }
 #'
 #' @seealso [hexmakr_themes()], [hex_sticker()]
@@ -183,7 +218,7 @@ hexmakr_themes <- function() {
 hexmakr_preview_theme <- function(theme = "stats", mode = "dark") {
   p <- hex_sticker(
     name     = theme,
-    subtitle = .themes[[theme]]$label,
+    subtitle = hexmakr_themes()[[theme]]$label,
     theme    = theme,
     mode     = mode
   )

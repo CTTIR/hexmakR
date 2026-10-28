@@ -115,8 +115,18 @@ mod_icon_server <- function(id) {
 mod_theme_ui <- function(id) {
   ns <- shiny::NS(id)
 
-  theme_buttons <- lapply(names(.themes), function(tn) {
-    th <- .themes[[tn]]
+  # CTTIR v5 families first, then the generic themes
+  themes <- hexmakr_themes()
+  v5     <- vapply(themes, function(th) identical(th$group, "CTTIR v5"),
+                   logical(1))
+  labels <- vapply(themes, `[[`, character(1), "label")
+  theme_choices <- list(
+    "CTTIR v5" = setNames(names(themes)[v5], labels[v5]),
+    "Classic"  = setNames(names(themes)[!v5], labels[!v5])
+  )
+
+  theme_buttons <- lapply(names(themes), function(tn) {
+    th <- themes[[tn]]
     shiny::tags$button(
       id    = ns(paste0("theme_", tn)),
       class = "hexmakr-theme-btn",
@@ -144,8 +154,7 @@ mod_theme_ui <- function(id) {
     shiny::fluidRow(
       shiny::column(6,
         shiny::selectInput(ns("theme"), "Theme",
-                           choices = setNames(names(.themes),
-                                              vapply(.themes, `[[`, character(1), "label")),
+                           choices = theme_choices,
                            selected = "stats", width = "100%")
       ),
       shiny::column(6,

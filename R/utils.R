@@ -35,7 +35,7 @@
 #' @noRd
 .resolve_colors <- function(theme, mode, bg, accent, text_color,
                              border_color, sub_color) {
-  t <- .themes[[theme]][[mode]]
+  t <- hexmakr_themes()[[theme]][[mode]]
   list(
     bg     = if (!is.null(bg))           bg           else t$bg,
     accent = if (!is.null(accent))       accent       else t$accent,

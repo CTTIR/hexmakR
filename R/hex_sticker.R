@@ -16,7 +16,9 @@
 #'   JPEG). If provided, overrides `icon`.
 #' @param icon_size Numeric. Size multiplier for the icon (default `1.0`).
 #' @param theme Character. Theme name. One of `names(hexmakr_themes())`.
-#'   Default `"stats"`.
+#'   The nine CTTIR v5 families (for example `"spatial"` or `"clinical"`)
+#'   are listed first and are the house standard; for complete v5 artwork
+#'   use [hex_design()]. Default `"stats"`.
 #' @param mode Character. Color mode, either `"dark"` (default) or `"light"`.
 #' @param bg Character or `NULL`. Override the background color (hex string,
 #'   e.g. `"#1B2838"`).
@@ -47,6 +49,9 @@
 #'
 #' # With icon and theme
 #' hex_sticker("mypackage", icon = "dna", theme = "genomics")
+#'
+#' # CTTIR v5 family colours
+#' hex_sticker("mypackage", icon = "microscope", theme = "spatial")
 #'
 #' # Save to file
 #' tmp <- tempfile(fileext = ".png")
@@ -83,10 +88,11 @@ hex_sticker <- function(
   dpi          = 300
 ) {
   # ---- Input validation ---------------------------------------------------
-  if (!theme %in% names(.themes)) {
+  themes <- hexmakr_themes()
+  if (!theme %in% names(themes)) {
     stop(sprintf(
       "Unknown theme '%s'. Available themes: %s",
-      theme, paste(names(.themes), collapse = ", ")
+      theme, paste(names(themes), collapse = ", ")
     ))
   }
   if (!mode %in% c("dark", "light")) {

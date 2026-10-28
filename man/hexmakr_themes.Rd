@@ -7,17 +7,28 @@
 hexmakr_themes()
 }
 \value{
-A named list of length 19. Each element contains:
+A named list of length 28. Each element contains:
 \describe{
 \item{label}{Human-readable theme name (character).}
+\item{group}{\code{"CTTIR v5"} for the nine v5 families; absent for the
+generic themes.}
 \item{dark}{List of 5 color hex strings for dark mode.}
 \item{light}{List of 5 color hex strings for light mode.}
 }
 }
 \description{
-Returns a named list of all 19 built-in color themes for hex
+Returns a named list of all 28 built-in color themes for hex
 stickers. Each theme has \code{dark} and \code{light} sub-lists with color values
 for \code{bg}, \code{accent}, \code{text}, \code{border}, and \code{sub} (subtitle).
+
+The first nine are the CTTIR v5 families (\code{spectral}, \code{spatial}, \code{omics},
+\code{clinical}, \code{methods}, \code{simulation}, \code{evidence}, \code{platform}, \code{brand}) and
+are the house standard. They are derived from the bundled v5 design
+tokens by the same engine as \code{\link[=hex_design]{hex_design()}}: \code{bg} is the family's tile
+face, \code{border} its rim, \code{accent} the family colour (the material colour
+for \code{platform}), \code{text} the v5 heading ink and \code{sub} the muted text
+colour. The 19 generic themes follow unchanged. For complete v5 artwork
+with motifs and outlined names, use \code{\link[=hex_design]{hex_design()}}.
 }
 \details{
 List available themes
@@ -26,10 +37,11 @@ List available themes
 themes <- hexmakr_themes()
 names(themes)
 themes$stats$dark
+themes$spatial$light
 
 }
 \seealso{
-\code{\link[=hex_sticker]{hex_sticker()}}, \code{\link[=hexmakr_preview_theme]{hexmakr_preview_theme()}}
+\code{\link[=hex_sticker]{hex_sticker()}}, \code{\link[=hexmakr_preview_theme]{hexmakr_preview_theme()}}, \code{\link[=hex_design]{hex_design()}}
 
 Other themes:
 \code{\link[=hexmakr_icons]{hexmakr_icons()}},

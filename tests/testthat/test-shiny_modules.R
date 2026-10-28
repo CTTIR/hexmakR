@@ -68,3 +68,15 @@ test_that("mod_border_server() returns width and inner_border flag", {
     expect_false(out$inner_border)
   })
 })
+
+test_that("the classic theme picker lists the CTTIR v5 families first", {
+  html <- as.character(hexmakR:::mod_theme_ui("theme"))
+  v5 <- regexpr('<optgroup label="CTTIR v5">', html, fixed = TRUE)
+  classic <- regexpr('<optgroup label="Classic">', html, fixed = TRUE)
+  expect_gt(v5, 0)
+  expect_gt(classic, v5)
+  expect_gt(regexpr('value="spatial"', html, fixed = TRUE), v5)
+  expect_lt(regexpr('value="spatial"', html, fixed = TRUE), classic)
+  expect_gt(regexpr('value="stats" selected', html, fixed = TRUE), classic)
+  expect_match(html, "Spatial biology", fixed = TRUE)
+})

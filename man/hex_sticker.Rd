@@ -47,7 +47,9 @@ JPEG). If provided, overrides \code{icon}.}
 \item{icon_size}{Numeric. Size multiplier for the icon (default \code{1.0}).}
 
 \item{theme}{Character. Theme name. One of \code{names(hexmakr_themes())}.
-Default \code{"stats"}.}
+The nine CTTIR v5 families (for example \code{"spatial"} or \code{"clinical"})
+are listed first and are the house standard; for complete v5 artwork
+use \code{\link[=hex_design]{hex_design()}}. Default \code{"stats"}.}
 
 \item{mode}{Character. Color mode, either \code{"dark"} (default) or \code{"light"}.}
 
@@ -102,6 +104,9 @@ hex_sticker("mypackage")
 
 # With icon and theme
 hex_sticker("mypackage", icon = "dna", theme = "genomics")
+
+# CTTIR v5 family colours
+hex_sticker("mypackage", icon = "microscope", theme = "spatial")
 
 # Save to file
 tmp <- tempfile(fileext = ".png")

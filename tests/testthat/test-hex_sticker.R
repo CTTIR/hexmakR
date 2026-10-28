@@ -7,7 +7,7 @@ test_that("default call with only name doesn't error", {
   expect_no_error(hex_sticker("testpkg"))
 })
 
-test_that("all 19 themes work in dark mode", {
+test_that("all themes work in dark mode", {
   themes <- names(hexmakr_themes())
   for (th in themes) {
     expect_no_error(hex_sticker("pkg", theme = th, mode = "dark"),
@@ -15,7 +15,7 @@ test_that("all 19 themes work in dark mode", {
   }
 })
 
-test_that("all 19 themes work in light mode", {
+test_that("all themes work in light mode", {
   themes <- names(hexmakr_themes())
   for (th in themes) {
     expect_no_error(hex_sticker("pkg", theme = th, mode = "light"),
@@ -90,4 +90,26 @@ test_that("providing both icon and icon_image messages and uses the image", {
 
 test_that("light mode resolves light theme colors", {
   expect_no_error(hex_sticker("pkg", theme = "cran", mode = "light"))
+})
+
+test_that("a classic sticker draws a v5 family's tile, rim and ink", {
+  th <- hexmakr_themes()$spatial$dark
+  p  <- hex_sticker("pkg", icon = "microscope", theme = "spatial")
+  frame <- p$layers[[1]]$aes_params
+  expect_identical(frame$fill, th$bg)
+  expect_identical(frame$colour, th$border)
+  name <- Filter(function(l) inherits(l$geom, "GeomText"), p$layers)[[1]]
+  expect_identical(name$aes_params$colour, th$text)
+})
+
+test_that("a classic sticker with a v5 theme renders the v5 face to PNG", {
+  for (mode in c("dark", "light")) {
+    path <- withr::local_tempfile(fileext = ".png")
+    hex_sticker("pkg", theme = "clinical", mode = mode, filename = path)
+    img <- png::readPNG(path)
+    # Sample the empty upper part of the tile, away from text and rings
+    pixel <- img[round(dim(img)[1] * .2), round(dim(img)[2] * .5), 1:3]
+    face  <- grDevices::col2rgb(hexmakr_themes()$clinical[[mode]]$bg)[, 1] / 255
+    expect_equal(pixel, unname(face), tolerance = 2 / 255, info = mode)
+  }
 })
