@@ -25,10 +25,13 @@ The first nine are the CTTIR v5 families (\code{spectral}, \code{spatial}, \code
 \code{clinical}, \code{methods}, \code{simulation}, \code{evidence}, \code{platform}, \code{brand}) and
 are the house standard. They are derived from the bundled v5 design
 tokens by the same engine as \code{\link[=hex_design]{hex_design()}}: \code{bg} is the family's tile
-face, \code{border} its rim, \code{accent} the family colour (the material colour
-for \code{platform}), \code{text} the v5 heading ink and \code{sub} the muted text
-colour. The 19 generic themes follow unchanged. For complete v5 artwork
-with motifs and outlined names, use \code{\link[=hex_design]{hex_design()}}.
+face, \code{border} its rim, \code{text} the v5 heading ink and \code{sub} the muted
+text colour. \code{accent}, used for icons and the inner ring, follows the
+colour v5 motifs use on each tile: the mid shade (the default motif
+fill) on dark tiles and the darker edge shade (strokes on a pale badge)
+on light tiles. Icons reach at least 3:1 and text at least 4.5:1
+contrast on every tile. The 19 generic themes follow unchanged. For
+complete v5 artwork with motifs and outlined names, use \code{\link[=hex_design]{hex_design()}}.
 }
 \details{
 List available themes

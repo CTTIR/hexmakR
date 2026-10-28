@@ -6,10 +6,11 @@
   the classic theme picker under "CTTIR v5", with the v5 labels. Their
   colours are derived at run time from the v5 design tokens by the engine
   behind `hex_design()`: tile face as background, family rim as border, v5
-  ink and muted text.
-  Text and subtitles reach at least 5.99:1 contrast on every tile. The 19
-  generic themes and the `stats`/dark defaults are unchanged; use
-  `hex_design()` for complete v5 artwork.
+  ink and muted text. Icons follow the v5 motif colours: the mid shade (the
+  default motif fill) on dark tiles and the darker edge shade on light
+  tiles. Text and subtitles reach at least 5.99:1 and icons at least 3.55:1
+  contrast on every tile. The 19 generic themes and the `stats`/dark
+  defaults are unchanged; use `hex_design()` for complete v5 artwork.
 * `hex_sticker(font_family = "jetbrains_mono")` uses the JetBrains Mono font
   bundled for v5 names, drawn as glyph outlines on every device without
   installing the font. The classic default font is unchanged.

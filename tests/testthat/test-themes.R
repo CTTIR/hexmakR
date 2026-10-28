@@ -97,8 +97,8 @@ test_that("v5 theme colours equal the engine's style in both modes", {
       s <- engine$cttir_style(family, mode)
       expect_identical(
         themes[[family]][[mode]],
-        list(bg = s$face, accent = s$material, text = s$ink,
-             border = s$rim, sub = s$muted),
+        list(bg = s$face, accent = if (mode == "light") s$edge else s$mid,
+             text = s$ink, border = s$rim, sub = s$muted),
         info = paste(family, mode)
       )
     }
@@ -113,29 +113,31 @@ test_that("v5 themes follow the bundled design tokens", {
                                                 tokens$token == name]
   themes <- hexmakr_themes()
   for (family in v5_families) {
-    # Rim and accent are the family colour; platform draws in its material
+    # The rim is the family colour; icons use the v5 motif shades
     expect_identical(themes[[family]]$dark$border, token("topic", family))
     expect_identical(themes[[family]]$light$border, token("topic", family))
     expect_identical(themes[[family]]$dark$text, token("dark", "heading"))
     expect_identical(themes[[family]]$dark$sub, token("dark", "text"))
     expect_identical(themes[[family]]$light$text, token("light", "heading"))
     expect_identical(themes[[family]]$light$sub, token("light", "text"))
-    if (family != "platform") {
-      expect_identical(themes[[family]]$dark$accent, token("topic", family))
-    }
   }
-  expect_identical(themes$platform$dark$accent, "#8FAABD")
+  expect_identical(themes$spatial$dark$accent, "#38B391")
+  expect_identical(themes$spatial$light$accent, "#0A6356")
+  expect_identical(themes$evidence$light$accent, "#82863E")
+  expect_identical(themes$platform$dark$accent, "#A7BCCB")
+  expect_identical(themes$platform$dark$border, "#000000")
   expect_identical(themes$spatial$dark$bg, "#193F34")
   expect_identical(themes$spatial$light$bg, "#D7EDE7")
 })
 
-test_that("v5 text and subtitle colours reach WCAG AA on the tile", {
+test_that("v5 text reaches WCAG AA and icons 3:1 on the tile", {
   themes <- hexmakr_themes()
   for (family in v5_families) {
     for (mode in c("dark", "light")) {
       th <- themes[[family]][[mode]]
       expect_gte(contrast_ratio(th$text, th$bg), 4.5)
       expect_gte(contrast_ratio(th$sub, th$bg), 4.5)
+      expect_gte(contrast_ratio(th$accent, th$bg), 3)
     }
   }
 })

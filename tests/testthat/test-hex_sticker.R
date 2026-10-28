@@ -100,6 +100,8 @@ test_that("a classic sticker draws a v5 family's tile, rim and ink", {
   expect_identical(frame$colour, th$border)
   name <- Filter(function(l) inherits(l$geom, "GeomText"), p$layers)[[1]]
   expect_identical(name$aes_params$colour, th$text)
+  icon <- Filter(function(l) inherits(l$geom, "GeomCustomAnn"), p$layers)[[1]]
+  expect_identical(icon$geom_params$grob$env$color, th$accent)
 })
 
 test_that("a classic sticker with a v5 theme renders the v5 face to PNG", {

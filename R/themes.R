@@ -137,14 +137,15 @@
 
 # CTTIR v5 families, the house standard. Built at run time from the installed
 # design tokens with the same engine as hex_design(), so classic stickers and
-# v5 artwork cannot drift apart. Platform draws in its material colour inside
-# its black rim, exactly as the v5 artwork does.
+# v5 artwork cannot drift apart. Icons take the colour v5 motifs use on each
+# tile: the mid shade (default motif fill) on dark tiles and the darker edge
+# shade (strokes on a pale badge) on light tiles. The border is the rim.
 .cttir_themes <- function() {
   engine <- .cttir_engine()
   roles <- function(family, mode) {
     s <- engine$cttir_style(family, mode)
-    list(bg = s$face, accent = s$material, text = s$ink,
-         border = s$rim, sub = s$muted)
+    list(bg = s$face, accent = if (mode == "light") s$edge else s$mid,
+         text = s$ink, border = s$rim, sub = s$muted)
   }
   families <- names(engine$cttir_accents)
   themes <- lapply(families, function(family) list(
@@ -168,10 +169,13 @@
 #'   `clinical`, `methods`, `simulation`, `evidence`, `platform`, `brand`) and
 #'   are the house standard. They are derived from the bundled v5 design
 #'   tokens by the same engine as [hex_design()]: `bg` is the family's tile
-#'   face, `border` its rim, `accent` the family colour (the material colour
-#'   for `platform`), `text` the v5 heading ink and `sub` the muted text
-#'   colour. The 19 generic themes follow unchanged. For complete v5 artwork
-#'   with motifs and outlined names, use [hex_design()].
+#'   face, `border` its rim, `text` the v5 heading ink and `sub` the muted
+#'   text colour. `accent`, used for icons and the inner ring, follows the
+#'   colour v5 motifs use on each tile: the mid shade (the default motif
+#'   fill) on dark tiles and the darker edge shade (strokes on a pale badge)
+#'   on light tiles. Icons reach at least 3:1 and text at least 4.5:1
+#'   contrast on every tile. The 19 generic themes follow unchanged. For
+#'   complete v5 artwork with motifs and outlined names, use [hex_design()].
 #'
 #' @return A named list of length 28. Each element contains:
 #'   \describe{
