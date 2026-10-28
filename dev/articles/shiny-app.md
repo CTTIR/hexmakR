@@ -1,0 +1,179 @@
+# Interactive Shiny App
+
+![hexmakR logo](figures/logo.svg)![hexmakR logo](figures/logo-dark.svg)
+
+[![R-CMD-check](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://cttir.github.io/hexmakR/)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/hexmakR)](https://CRAN.R-project.org/package=hexmakR)
+[![Codecov test
+coverage](https://codecov.io/gh/CTTIR/hexmakR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/CTTIR/hexmakR?branch=main)
+[![CRAN
+downloads](https://cranlogs.r-pkg.org/badges/hexmakR)](https://cran.r-project.org/package=hexmakR)
+[![CRAN downloads
+total](https://cranlogs.r-pkg.org/badges/grand-total/hexmakR)](https://cran.r-project.org/package=hexmakR)
+[![License:
+MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
+## Launch the designer
+
+``` r
+
+library(hexmakR)
+hexmakr_app()
+```
+
+The default **Designer** opens a new logo with a frame and the name “New
+project”. It contains no archived motif. The **CTTIR Gallery** tab is an
+optional source of inspiration and reusable parts. The application title
+is the text **hexmakR**.
+
+## Create your own logo
+
+1.  Enter your package or project name.
+2.  Choose **Hexagon**, **Pentagon** or **Square**, then a light, dark
+    or monochrome appearance.
+3.  Keep **Blank canvas** as the base artwork, or select a generic icon.
+4.  Use **Apply logo settings** to update the preview.
+5.  Choose a circle, rectangle, line or triangle and select **Add
+    part**.
+
+The name stays inside the frame. **Artwork only** omits the name, while
+**No frame** gives a transparent square canvas. You can add parts to
+that empty canvas as well.
+
+## Edit individual parts
+
+Click a visible part in the preview or choose a **Selected part**. Drag
+and release to move the selected artwork; use the list for overlapping
+or hidden items. The list includes the frame, name, native artwork and
+every added part. Highlighting helps locate the selection and is only a
+preview aid; it is not included in exported artwork.
+
+| Control | Effect |
+|----|----|
+| Fill and Outline | Set a colour name or hex value; blank restores the underlying colour when the edit is applied |
+| Horizontal/Vertical offset | Move the part relative to its original geometry |
+| Part size | Scale the part |
+| Rotation (degrees) | Rotate the part around its centre |
+| Outline width and Opacity | Adjust stroke width and transparency |
+| Visible | Hide or show the part |
+| Edit points | Replace X/Y coordinates for the same number of points |
+| Restore part | Remove the selected part’s overrides |
+| Duplicate part | Copy its current appearance into a new independent part |
+| Remove part | Delete an added part or hide a native frame/name/artwork layer |
+
+Choose **Apply part edit** to save changes to the selected part. Point
+coordinates are local to that part’s viewport. **Load original points**
+loads its underlying geometry for editing. Invalid colours, nonfinite
+values or mismatched point counts produce an error while retaining the
+last valid logo.
+
+Palette changes affect native design roles. Imported archive parts
+retain their source colours; edit their individual fill and outline when
+needed. Changing the frame, composition or base artwork retains your
+added parts. Native geometry overrides are reset when their underlying
+structure changes.
+
+## Name and group items
+
+Every item has a short label. Enter a **Short name** and choose **Rename
+part** to identify its purpose. The initial Frame, Icon and Name groups
+separate the composition. Under **Image groups**, choose members and
+**Create group** or **Set members**; **Rename group** and **Ungroup
+selected members** update the organisation without changing appearance.
+One item belongs to one group.
+
+Set **Mouse target** to **Whole group** to drag all members together, or
+use the group movement controls. **Individual part** moves only the
+selected item. The part property controls always edit the selected
+member. Undo and project saves retain labels, groups and movement.
+
+## Add a figure or vector drawing
+
+Use **Add an image or vector drawing** to upload PNG, JPEG or SVG.
+Existing work is retained and the import can be undone. PNG/JPEG is one
+image part: move, scale, rotate, hide or change its opacity. Source
+transparency is kept. SVG shapes and paths become separate vector parts
+with editable colours, strokes and coordinates. Curves are approximated
+by bounded vector polylines; SVG and PDF exports keep those vectors.
+Raster images stay raster in exports.
+
+Each upload may be at most 10 MiB. Raster dimensions are capped at 8192
+pixels per side and 16 million pixels per image, with 32 million
+embedded pixels per project. SVG supports solid fills/strokes, common
+shapes and paths, transforms and local references. Text must be
+outlined; gradients, masks, filters, group opacity and intersecting
+clips must first be flattened to paths. Unsupported features return an
+explanation. Scripts, external resources and XML entities are rejected.
+Imported files are embedded as image bytes or vector coordinates, so
+reopening a project does not need the original upload.
+
+## Reuse archive artwork
+
+Open **CTTIR Gallery** and select an identity. The preview and part list
+update; your current logo and undo history stay unchanged.
+
+- **Add selected part to my logo** imports just the chosen native
+  component.
+- **Add artwork to my logo** imports the motif’s components, excluding
+  its frame and package name.
+- **Start from whole design** replaces the current logo with that
+  archived composition. This is a separate explicit action; **Undo**
+  restores your work.
+
+Imports retain your current name, frame, palette and existing parts.
+Imported components remain individually editable and use a saved source
+snapshot. They do not change when you later browse a different archive
+identity.
+
+``` r
+
+hexmakr_app(package = "phenoscapR")
+```
+
+The `package` argument preselects an archive identity. The Designer
+still starts with a fresh logo.
+
+## Undo, reset and reopen
+
+**Undo** restores the previous applied action, including New logo,
+archive replacement and opening a project. The editor retains up to 30
+undo steps. **Reset to starting design** returns to the current
+baseline: the fresh project, the explicitly loaded archive design, or
+the opened JSON project. **New logo** starts another blank composition.
+
+**Save project** downloads editable JSON. **Open saved project**
+restores its settings, primitives, uploaded artwork, imported archive
+parts, labels, groups and individual edits. Only the supported data
+schema is accepted; project loading does not execute R code. Saved and
+loaded projects share a 20 MiB size limit.
+
+## Export
+
+PNG, SVG and PDF use the currently applied design. Choose the PNG width
+in pixels; vector exports retain outlined paths and names. **R recipe**
+writes code that reproduces the same project. Pending settings must be
+applied before downloading.
+
+For a package README or pkgdown site, place the named SVG/PNG at
+`man/figures/logo.svg` and `man/figures/logo.png`. Use the matching
+named dark variant at `man/figures/logo-dark.svg`. Keep the package name
+inside the image.
+
+## Classic designer
+
+``` r
+
+hexmakr_app(workspace = "classic")
+```
+
+The classic workspace retains its live ggplot preview, 46 icons,
+PNG/JPEG upload, subtitle/URL controls and PNG export. Its 28 theme
+presets list the nine CTTIR v5 families first, under **CTTIR v5**,
+followed by the 19 generic themes. Its 14 font choices include the
+bundled JetBrains Mono used for v5 names. Use it for existing
+generic-sticker workflows; the default Designer provides individually
+editable vector parts and portable projects.
