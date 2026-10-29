@@ -2,11 +2,10 @@ cff-version: 1.2.0
 message: If you use this software, please cite it as below.
 type: software
 title: 'hexmakR: Editable Hex Stickers and Project Logos'
-version: 0.3.0
-date-released: '2026-08-11'
 authors:
 - family-names: Heller
-  given-names: Raban
+  given-names: R.
   orcid: https://orcid.org/0000-0001-8006-9742
 repository-code: https://github.com/CTTIR/hexmakR
+url: https://cttir.github.io/hexmakR/
 license: MIT
