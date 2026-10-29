@@ -1,6 +1,6 @@
 Package: hexmakR
 Title: Editable Hex Stickers and Project Logos
-Version: 0.3.0.9000
+Version: 0.4.0
 Authors@R: c(
     person("R.", "Heller", , "raban.heller@uni-ulm.de",
            role = c("aut", "cre", "cph"),

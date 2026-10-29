@@ -1,4 +1,4 @@
-# hexmakR (development version)
+# hexmakR 0.4.0
 
 * The package now ships the 270 SVG and 270 PDF masters of the CTTIR v5
   library in one compressed archive, which keeps it small. `hex_asset()`
