@@ -8,6 +8,11 @@
   'rsvg' package) and draws icons with the package renderer, under the same
   file names as before. All files go to a folder in `tempdir()` unless the new
   `dir` argument names another one.
+* PNG files from `hex_asset()` are now rendered from the SVG masters with
+  'rsvg', and icons are drawn by the package renderer. Both differ slightly
+  from the PNG masters shipped before (antialiasing at glyph and shape
+  edges), so branding outputs made from them change once on their next
+  render. SVG and PDF files are the shipped masters, byte for byte.
 * The colour fields of the classic designer now work. They were plain HTML
   colour pickers that Shiny never read, so the override panel did nothing.
   They are now 'colourpicker' inputs (a text field when 'colourpicker' is not
