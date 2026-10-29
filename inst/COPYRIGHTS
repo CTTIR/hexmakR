@@ -2,7 +2,7 @@ hexmakR copyright notes
 =======================
 
 The package code and the CTTIR v5 artwork it contains (the SVG masters in
-inst/cttir/logos, the files in inst/branding and man/figures) are
+inst/cttir/logos.tar.xz, the files in inst/branding and man/figures) are
 released under the package's MIT licence; see the file LICENSE for the
 copyright holder.
 

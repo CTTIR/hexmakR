@@ -56,8 +56,9 @@ without a frame or name. Add primitives there to work from an empty canvas.
 ## Browse the archive
 
 The v5 library contains 45 identities. Their 270 original SVG masters are
-included unchanged; `hex_asset()` renders the PNG and PDF versions from them,
-and the five icon sizes with the package renderer, on demand. Light, dark and
+included unchanged in a compressed archive; `hex_asset()` returns copies of
+them and renders the PNG and PDF versions from them, and the five icon sizes
+with the package renderer, on demand. Light, dark and
 monochrome named masters keep the exact package name inside the hex.
 
 ```{r catalogue}
