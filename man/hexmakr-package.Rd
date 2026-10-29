@@ -61,5 +61,10 @@ Authors:
   \item R. Heller \email{raban.heller@uni-ulm.de} (\href{https://orcid.org/0000-0001-8006-9742}{ORCID})
 }
 
+Other contributors:
+\itemize{
+  \item The JetBrains Mono Project Authors (JetBrains Mono font) [copyright holder]
+}
+
 }
 \keyword{internal}

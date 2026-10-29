@@ -1,0 +1,23 @@
+hexmakR copyright notes
+=======================
+
+The package code and the CTTIR v5 artwork it contains (the SVG masters in
+inst/cttir/logos, the files in inst/branding and man/figures) are
+released under the package's MIT licence; see the file LICENSE for the
+copyright holder.
+
+Bundled fonts
+-------------
+
+inst/cttir/source/fonts/JetBrainsMono-Regular.ttf
+inst/cttir/source/fonts/JetBrainsMono-SemiBold.ttf
+
+  JetBrains Mono
+  Copyright 2020 The JetBrains Mono Project Authors
+  (https://github.com/JetBrains/JetBrainsMono)
+  Licensed under the SIL Open Font License, Version 1.1. The licence text
+  is shipped next to the fonts in
+  inst/cttir/source/fonts/JetBrainsMono-OFL.txt.
+
+The package draws package names from the outlines of these fonts. The
+fonts are not installed on the system and are not modified.

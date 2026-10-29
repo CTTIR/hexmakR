@@ -2,8 +2,10 @@ Package: hexmakR
 Title: Editable Hex Stickers and Project Logos
 Version: 0.3.0.9000
 Authors@R:
-    person("R.", "Heller", , "raban.heller@uni-ulm.de", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-8006-9742"))
+    c(person("R.", "Heller", , "raban.heller@uni-ulm.de", role = c("aut", "cre"),
+             comment = c(ORCID = "0000-0001-8006-9742")),
+      person("The JetBrains Mono Project Authors", role = "cph",
+             comment = "JetBrains Mono font"))
 Description: Create publication-ready hexagon stickers for R packages
     interactively via a Shiny app or programmatically via R functions.
     Complements the 'hexSticker' package (which embeds R plots into
@@ -18,6 +20,7 @@ Description: Create publication-ready hexagon stickers for R packages
     with package names inside the hexagon.
     Project logos also support pentagonal and square frames.
 License: MIT + file LICENSE
+Copyright: see file inst/COPYRIGHTS
 URL: https://cttir.github.io/hexmakR/,
     https://github.com/cttir/hexmakR
 BugReports: https://github.com/cttir/hexmakR/issues
