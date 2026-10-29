@@ -886,6 +886,7 @@ icon_gamepad <- function(x, y, size, color) {
 #' @export
 hexmakr_icons <- function(category = NULL) {
   if (is.null(category)) return(.icons)
+  .check_string(category, "category")
   valid <- names(.icons)
   if (!category %in% valid) {
     stop(sprintf(

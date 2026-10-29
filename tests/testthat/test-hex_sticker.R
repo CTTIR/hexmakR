@@ -115,3 +115,17 @@ test_that("a classic sticker with a v5 theme renders the v5 face to PNG", {
     expect_equal(pixel, unname(face), tolerance = 2 / 255, info = mode)
   }
 })
+
+test_that("scalar arguments give clear errors", {
+  expect_error(hex_sticker(name = NULL), "'name' must be a single string")
+  expect_error(hex_sticker(name = NA_character_), "'name' must be a single string")
+  expect_error(hex_sticker("pkg", theme = c("stats", "viz")),
+               "'theme' must be a single string")
+  expect_error(hex_sticker("pkg", mode = c("dark", "light")),
+               "'mode' must be a single string")
+  expect_error(hex_sticker("pkg", font_family = c("mono", "serif")),
+               "'font_family' must be a single string")
+  expect_error(hexmakr_icons(c("science", "fun")),
+               "'category' must be a single string")
+  expect_error(hexmakr_icons(NA_character_), "'category' must be a single string")
+})

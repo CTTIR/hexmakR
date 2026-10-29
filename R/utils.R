@@ -22,6 +22,15 @@
   x
 }
 
+#' Ensure value is a single non-missing string; stop with a clear message if not
+#' @noRd
+.check_string <- function(x, arg) {
+  if (!is.character(x) || length(x) != 1L || is.na(x)) {
+    stop(sprintf("'%s' must be a single string.", arg))
+  }
+  x
+}
+
 #' Blend two hex colors (simple linear interpolation in RGB)
 #' @noRd
 .blend_colors <- function(col1, col2, alpha = 0.5) {

@@ -90,6 +90,10 @@ hex_sticker <- function(
   dpi          = 300
 ) {
   # ---- Input validation ---------------------------------------------------
+  .check_string(name, "name")
+  .check_string(theme, "theme")
+  .check_string(mode, "mode")
+  .check_string(font_family, "font_family")
   themes <- hexmakr_themes()
   if (!theme %in% names(themes)) {
     stop(sprintf(
