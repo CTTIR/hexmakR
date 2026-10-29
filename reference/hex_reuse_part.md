@@ -15,11 +15,15 @@ hex_reuse_part(design, source, layer = NULL)
 
 - design:
 
-  Destination [`hex_design()`](hex_design.md) object.
+  Destination
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
+  object.
 
 - source:
 
-  A catalogue identity or a [`hex_design()`](hex_design.md) object.
+  A catalogue identity or a
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
+  object.
 
 - layer:
 

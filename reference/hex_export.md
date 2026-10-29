@@ -15,7 +15,9 @@ hex_export(design, filename, width = 1600L)
 
 - design:
 
-  A [`hex_design()`](hex_design.md) object.
+  A
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
+  object.
 
 - filename:
 
@@ -32,6 +34,8 @@ The destination path, invisibly.
 ## Examples
 
 ``` r
-f <- tempfile(fileext = ".svg")
-hex_export(hex_design("phenoscapR"), f)
+if (capabilities("cairo")) {
+  f <- tempfile(fileext = ".svg")
+  hex_export(hex_design("phenoscapR"), f)
+}
 ```

@@ -3,8 +3,9 @@
 A call without a package starts a fresh composition with a frame and
 name. Supplying a package explicitly loads its editable archive motif.
 Archive artwork can also be reused one part at a time with
-[`hex_reuse_part()`](hex_reuse_part.md). All geometry is drawn in R.
-Name glyphs use the bundled JetBrains Mono font.
+[`hex_reuse_part()`](https://cttir.github.io/hexmakR/reference/hex_reuse_part.md).
+All geometry is drawn in R. Name glyphs use the bundled JetBrains Mono
+font.
 
 ## Usage
 
@@ -31,7 +32,8 @@ hex_design(
 
 - package:
 
-  Exact identity from [`hex_catalog()`](hex_catalog.md).
+  Exact identity from
+  [`hex_catalog()`](https://cttir.github.io/hexmakR/reference/hex_catalog.md).
 
 - mode:
 
@@ -49,7 +51,8 @@ hex_design(
 
   Named list of colour-role overrides, for example
   `list(face = "#193E36", rim = "#009E73", ink = "white")`. Use
-  [`hex_palette()`](hex_palette.md) to see available roles.
+  [`hex_palette()`](https://cttir.github.io/hexmakR/reference/hex_palette.md)
+  to see available roles.
 
 - motif_x, motif_y:
 
@@ -77,7 +80,8 @@ hex_design(
 
 - icon:
 
-  Optional generic icon key from [`hexmakr_icons()`](hexmakr_icons.md),
+  Optional generic icon key from
+  [`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md),
   replacing the CTTIR motif.
 
 - archive:

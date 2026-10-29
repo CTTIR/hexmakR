@@ -2,7 +2,8 @@
 
 Generates a publication-ready hexagon sticker for an R package. Returns
 a ggplot object that can be printed, further customised with `+`, or
-saved with [`save_hex()`](save_hex.md).
+saved with
+[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md).
 
 ## Usage
 
@@ -51,8 +52,8 @@ hex_sticker(
 - icon:
 
   Character or `NULL`. Name of a built-in icon. See
-  [`hexmakr_icons()`](hexmakr_icons.md) for valid values. Ignored if
-  `icon_image` is provided.
+  [`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md)
+  for valid values. Ignored if `icon_image` is provided.
 
 - icon_image:
 
@@ -68,32 +69,33 @@ hex_sticker(
   Character. Theme name. One of `names(hexmakr_themes())`. The nine
   CTTIR v5 families (for example `"spatial"` or `"clinical"`) are listed
   first and are the house standard; for complete v5 artwork use
-  [`hex_design()`](hex_design.md). Default `"stats"`.
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md).
+  Default `"stats"`.
 
 - mode:
 
-  Character. Color mode, either `"dark"` (default) or `"light"`.
+  Character. Colour mode, either `"dark"` (default) or `"light"`.
 
 - bg:
 
-  Character or `NULL`. Override the background color (hex string, e.g.
+  Character or `NULL`. Override the background colour (hex string, e.g.
   `"#1B2838"`).
 
 - accent:
 
-  Character or `NULL`. Override the accent color.
+  Character or `NULL`. Override the accent colour.
 
 - text_color:
 
-  Character or `NULL`. Override the text color.
+  Character or `NULL`. Override the text colour.
 
 - border_color:
 
-  Character or `NULL`. Override the border color.
+  Character or `NULL`. Override the border colour.
 
 - sub_color:
 
-  Character or `NULL`. Override the subtitle/URL color.
+  Character or `NULL`. Override the subtitle/URL colour.
 
 - font_family:
 
@@ -126,7 +128,8 @@ hex_sticker(
 - filename:
 
   Character or `NULL`. If provided, save the sticker as a transparent
-  PNG at this path using [`save_hex()`](save_hex.md).
+  PNG at this path using
+  [`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md).
 
 - width:
 
@@ -147,17 +150,19 @@ Create a hex sticker
 
 ## See also
 
-[`hexmakr_themes()`](hexmakr_themes.md),
-[`hexmakr_icons()`](hexmakr_icons.md), [`save_hex()`](save_hex.md),
-[`hexmakr_app()`](hexmakr_app.md)
+[`hexmakr_themes()`](https://cttir.github.io/hexmakR/reference/hexmakr_themes.md),
+[`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md),
+[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md),
+[`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md)
 
-Other stickers: [`hexmakr_app()`](hexmakr_app.md),
-[`save_hex()`](save_hex.md), [`save_hex_svg()`](save_hex_svg.md)
+Other stickers:
+[`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md),
+[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md),
+[`save_hex_svg()`](https://cttir.github.io/hexmakR/reference/save_hex_svg.md)
 
 ## Examples
 
 ``` r
-# \donttest{
 # Minimal sticker
 hex_sticker("mypackage")
 
@@ -176,5 +181,4 @@ tmp <- tempfile(fileext = ".png")
 hex_sticker("mypackage", icon = "atom", theme = "stats", filename = tmp)
 file.exists(tmp)
 #> [1] TRUE
-# }
 ```

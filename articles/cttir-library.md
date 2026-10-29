@@ -29,9 +29,13 @@ from an empty canvas.
 
 ## Browse the archive
 
-The v5 library contains 45 identities and 1,035 original SVG/PNG/PDF
-assets. The original masters are included unchanged. Light, dark and
-monochrome named masters keep the exact package name inside the hex.
+The v5 library contains 45 identities. Their 270 original SVG and 270
+PDF masters are included unchanged in a compressed archive;
+[`hex_asset()`](https://cttir.github.io/hexmakR/reference/hex_asset.md)
+returns copies of them and renders the PNG versions from the SVG
+masters, and the five icon sizes with the package renderer, on demand.
+Light, dark and monochrome named masters keep the exact package name
+inside the hex.
 
 ``` r
 
@@ -69,11 +73,11 @@ print(archived)
 hex_asset("phenoscapR", mode = "dark", layout = "lockup", format = "svg")
 ```
 
-[`hex_design()`](../reference/hex_design.md) without an explicit package
-also starts fresh. For a named project, `logo_design("My project")`
-makes that intent explicit. Supply `motif = "phenoscapR"` only when its
-full motif should be the starting point; `icon = "microscope"` instead
-selects a generic icon.
+[`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
+without an explicit package also starts fresh. For a named project,
+`logo_design("My project")` makes that intent explicit. Supply
+`motif = "phenoscapR"` only when its full motif should be the starting
+point; `icon = "microscope"` instead selects a generic icon.
 
 ## Reuse selected components
 
@@ -163,16 +167,18 @@ hex_layers(project)
 #> 6  part_0004   circle #45B59A #FFFFFF      1 added Circle 2    TRUE
 ```
 
-Use current IDs from [`hex_layers()`](../reference/hex_layers.md).
+Use current IDs from
+[`hex_layers()`](https://cttir.github.io/hexmakR/reference/hex_layers.md).
 Native geometry uses `layer_` IDs; additional primitives and imported
 components use `part_` IDs. Adding or removing another part retains the
 IDs of existing parts.
 
-[`hex_edit_layer()`](../reference/hex_edit_layer.md) accepts fill,
-outline, line width, opacity, visibility, translation, scale, rotation
-(`angle`) and explicit X/Y point coordinates. Coordinates are local to
-the part’s viewport; supply the same number of points. The input design
-is unchanged, so keeping an earlier object provides undo in R.
+[`hex_edit_layer()`](https://cttir.github.io/hexmakR/reference/hex_edit_layer.md)
+accepts fill, outline, line width, opacity, visibility, translation,
+scale, rotation (`angle`) and explicit X/Y point coordinates.
+Coordinates are local to the part’s viewport; supply the same number of
+points. The input design is unchanged, so keeping an earlier object
+provides undo in R.
 
 ``` r
 
@@ -205,7 +211,8 @@ Solid fills/strokes, transforms and local references are supported.
 Outline text and flatten gradients, masks, filters, group opacity or
 intersecting clips first; unsupported features produce an error. Uploads
 are capped at 10 MiB and rasters at 8192 pixels per side and 16 million
-pixels total. See [`?hex_import_art`](../reference/hex_import_art.md)
+pixels total. See
+[`?hex_import_art`](https://cttir.github.io/hexmakR/reference/hex_import_art.md)
 for the complete supported subset and bounds.
 
 ``` r
@@ -260,13 +267,13 @@ hex_render_catalog("exports")
 ```
 
 This regenerates designs from native R geometry. Use
-[`hex_asset()`](../reference/hex_asset.md) when the unchanged approved
-master is required.
+[`hex_asset()`](https://cttir.github.io/hexmakR/reference/hex_asset.md)
+when the unchanged approved master is required.
 
 The twelve names present only in the older hexstickers repository remain
-legacy SVG references under `cttir/legacy`. They are not claimed as
-approved v5 motifs. `hexmakeR` maps to `hexmakR`; `delphyR` maps to
-`delphyr`.
+legacy SVG references under `inst/cttir/legacy` in the source
+repository. They are not claimed as approved v5 motifs. `hexmakeR` maps
+to `hexmakR`; `delphyR` maps to `delphyr`.
 
 `CTTIR` and `cttiR` differ only in case. The organisation’s asset
 directory is `CTTIR-brand`; the R package retains `cttiR`.

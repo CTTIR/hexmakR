@@ -2,10 +2,11 @@
 
 Start a fresh project with its name inside a hexagonal, pentagonal or
 square frame. Add individual parts with
-[`hex_add_part()`](hex_add_part.md), optionally reuse archive artwork
-with [`hex_reuse_part()`](hex_reuse_part.md), or choose a generic icon.
-The same editing, project and export functions work with every frame
-shape.
+[`hex_add_part()`](https://cttir.github.io/hexmakR/reference/hex_add_part.md),
+optionally reuse archive artwork with
+[`hex_reuse_part()`](https://cttir.github.io/hexmakR/reference/hex_reuse_part.md),
+or choose a generic icon. The same editing, project and export functions
+work with every frame shape.
 
 ## Usage
 
@@ -40,7 +41,8 @@ logo_design(
 
 - ...:
 
-  Other settings passed to [`hex_design()`](hex_design.md).
+  Other settings passed to
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md).
 
 ## Value
 

@@ -39,10 +39,13 @@ Launch the hexmakR Shiny App
 
 ## See also
 
-[`hex_sticker()`](hex_sticker.md), [`save_hex()`](save_hex.md)
+[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md),
+[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md)
 
-Other stickers: [`hex_sticker()`](hex_sticker.md),
-[`save_hex()`](save_hex.md), [`save_hex_svg()`](save_hex_svg.md)
+Other stickers:
+[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md),
+[`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md),
+[`save_hex_svg()`](https://cttir.github.io/hexmakR/reference/save_hex_svg.md)
 
 ## Examples
 

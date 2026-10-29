@@ -1,13 +1,14 @@
 # List Available Themes
 
-Returns a named list of all 28 built-in color themes for hex stickers.
-Each theme has `dark` and `light` sub-lists with color values for `bg`,
+Returns a named list of all 28 built-in colour themes for hex stickers.
+Each theme has `dark` and `light` sub-lists with colour values for `bg`,
 `accent`, `text`, `border`, and `sub` (subtitle).
 
 The first nine are the CTTIR v5 families (`spectral`, `spatial`,
 `omics`, `clinical`, `methods`, `simulation`, `evidence`, `platform`,
 `brand`) and are the house standard. They are derived from the bundled
-v5 design tokens by the same engine as [`hex_design()`](hex_design.md):
+v5 design tokens by the same engine as
+[`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md):
 `bg` is the family's tile face, `border` its rim, `text` the v5 heading
 ink and `sub` the muted text colour. `accent`, used for icons and the
 inner ring, follows the colour v5 motifs use on each tile: the mid shade
@@ -15,7 +16,7 @@ inner ring, follows the colour v5 motifs use on each tile: the mid shade
 (strokes on a pale badge) on light tiles. Icons reach at least 3:1 and
 text at least 4.5:1 contrast on every tile. The 19 generic themes follow
 unchanged. For complete v5 artwork with motifs and outlined names, use
-[`hex_design()`](hex_design.md).
+[`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md).
 
 ## Usage
 
@@ -37,11 +38,11 @@ A named list of length 28. Each element contains:
 
 - dark:
 
-  List of 5 color hex strings for dark mode.
+  List of 5 colour hex strings for dark mode.
 
 - light:
 
-  List of 5 color hex strings for light mode.
+  List of 5 colour hex strings for light mode.
 
 ## Details
 
@@ -49,12 +50,13 @@ List available themes
 
 ## See also
 
-[`hex_sticker()`](hex_sticker.md),
-[`hexmakr_preview_theme()`](hexmakr_preview_theme.md),
-[`hex_design()`](hex_design.md)
+[`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md),
+[`hexmakr_preview_theme()`](https://cttir.github.io/hexmakR/reference/hexmakr_preview_theme.md),
+[`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
 
-Other themes: [`hexmakr_icons()`](hexmakr_icons.md),
-[`hexmakr_preview_theme()`](hexmakr_preview_theme.md)
+Other themes:
+[`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md),
+[`hexmakr_preview_theme()`](https://cttir.github.io/hexmakR/reference/hexmakr_preview_theme.md)
 
 ## Examples
 

@@ -21,11 +21,14 @@ hex_rename_group(design, group, label)
 
 - design:
 
-  A [`hex_design()`](hex_design.md) object.
+  A
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
+  object.
 
 - layers:
 
-  Character vector of IDs from [`hex_layers()`](hex_layers.md).
+  Character vector of IDs from
+  [`hex_layers()`](https://cttir.github.io/hexmakR/reference/hex_layers.md).
 
 - label:
 

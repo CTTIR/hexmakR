@@ -12,11 +12,14 @@ hex_edit_layer(design, layer, ..., reset = FALSE)
 
 - design:
 
-  A [`hex_design()`](hex_design.md) object.
+  A
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
+  object.
 
 - layer:
 
-  A stable layer ID from [`hex_layers()`](hex_layers.md).
+  A stable layer ID from
+  [`hex_layers()`](https://cttir.github.io/hexmakR/reference/hex_layers.md).
 
 - ...:
 

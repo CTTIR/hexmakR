@@ -4,14 +4,8 @@
 
 [![R-CMD-check](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://cttir.github.io/hexmakR/)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/hexmakR)](https://CRAN.R-project.org/package=hexmakR)
 [![Codecov test
 coverage](https://codecov.io/gh/CTTIR/hexmakR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/CTTIR/hexmakR?branch=main)
-[![CRAN
-downloads](https://cranlogs.r-pkg.org/badges/hexmakR)](https://cran.r-project.org/package=hexmakR)
-[![CRAN downloads
-total](https://cranlogs.r-pkg.org/badges/grand-total/hexmakR)](https://cran.r-project.org/package=hexmakR)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Lifecycle:
@@ -33,28 +27,30 @@ hex_export(design, "my-project.svg")
 hex_save_design(design, "my-project.json")
 ```
 
-Use [`hex_layers()`](../reference/hex_layers.md) to inspect IDs, roles
-and geometry.
-[`hex_duplicate_part()`](../reference/hex_duplicate_part.md) retains an
-edited part’s current appearance;
-[`hex_remove_part()`](../reference/hex_duplicate_part.md) deletes an
-added part or hides native geometry. JSON projects and generated R
-recipes retain these edits. See
-[`vignette("cttir-library")`](../articles/cttir-library.md) for complete
-examples.
+Use
+[`hex_layers()`](https://cttir.github.io/hexmakR/reference/hex_layers.md)
+to inspect IDs, roles and geometry.
+[`hex_duplicate_part()`](https://cttir.github.io/hexmakR/reference/hex_duplicate_part.md)
+retains an edited part’s current appearance;
+[`hex_remove_part()`](https://cttir.github.io/hexmakR/reference/hex_duplicate_part.md)
+deletes an added part or hides native geometry. JSON projects and
+generated R recipes retain these edits. See
+[`vignette("cttir-library")`](https://cttir.github.io/hexmakR/articles/cttir-library.md)
+for complete examples.
 
 `hex_import_art(design, "figure.png")` embeds a PNG/JPEG figure as one
 part; `hex_import_art(design, "drawing.svg")` imports supported shapes
 as separate vector parts. SVG curves become vector polylines. Source
 files are no longer needed after import. Use `angle` in
-[`hex_edit_layer()`](../reference/hex_edit_layer.md) for rotation,
-[`hex_label_layer()`](../reference/hex_label_layer.md) for short labels,
-and
-[`hex_groups()`](../reference/hex_groups.md)/[`hex_group_layers()`](../reference/hex_groups.md)
+[`hex_edit_layer()`](https://cttir.github.io/hexmakR/reference/hex_edit_layer.md)
+for rotation,
+[`hex_label_layer()`](https://cttir.github.io/hexmakR/reference/hex_label_layer.md)
+for short labels, and
+[`hex_groups()`](https://cttir.github.io/hexmakR/reference/hex_groups.md)/[`hex_group_layers()`](https://cttir.github.io/hexmakR/reference/hex_groups.md)
 to organise items. Projects preserve these settings and have a 20 MiB
 limit; uploads have a 10 MiB limit. See
-[`?hex_import_art`](../reference/hex_import_art.md) for SVG feature
-limits.
+[`?hex_import_art`](https://cttir.github.io/hexmakR/reference/hex_import_art.md)
+for SVG feature limits.
 
 The functions below remain the classic ggplot-based API, including
 custom PNG/JPEG images, theme presets and font selection.
@@ -91,6 +87,8 @@ hex_sticker(
 )
 ```
 
+![](programmatic-usage_files/figure-html/all-params-1.png)
+
 The function returns a **ggplot object**, so you can chain additional
 ggplot2 layers:
 
@@ -102,6 +100,8 @@ hex_sticker("mypackage") +
   annotate("text", x = 0.5, y = 0.05,
            label = "v0.1.0", color = "#64748B", size = 2.5)
 ```
+
+![](programmatic-usage_files/figure-html/ggplot-chain-1.png)
 
 ## Batch generation
 
@@ -171,6 +171,9 @@ s <- hex_sticker("mypackage", theme = "tidy")
 
 # PNG (transparent background)
 save_hex(s, "logo.png", width = 600, dpi = 300)
+```
+
+``` r
 
 # SVG (requires svglite)
 save_hex_svg(s, "logo.svg", width = 2)
@@ -180,11 +183,11 @@ save_hex_svg(s, "logo.svg", width = 2)
 
 The first nine themes are the CTTIR v5 families, the house standard.
 Their colours come from the v5 design tokens through the same engine as
-[`hex_design()`](../reference/hex_design.md): the tile face as
-background, the family rim as border, and the v5 ink and muted text
-colours. The 19 generic themes follow. For complete v5 artwork with
-motifs and outlined names, use
-[`hex_design()`](../reference/hex_design.md).
+[`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md):
+the tile face as background, the family rim as border, and the v5 ink
+and muted text colours. The 19 generic themes follow. For complete v5
+artwork with motifs and outlined names, use
+[`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md).
 
 ``` r
 
@@ -192,12 +195,42 @@ hex_sticker("mypackage", icon = "microscope", theme = "spatial",
             font_family = "jetbrains_mono")
 ```
 
+![](programmatic-usage_files/figure-html/v5-theme-1.png)
+
 ``` r
 
 themes <- hexmakr_themes()
 for (nm in names(themes)) {
   cat(nm, "—", themes[[nm]]$label, "\n")
 }
+#> spectral — Spectral imaging 
+#> spatial — Spatial biology 
+#> omics — Molecular data 
+#> clinical — Clinical science 
+#> methods — Learning & inference 
+#> simulation — Systems & simulation 
+#> evidence — Evidence & discovery 
+#> platform — Research infrastructure 
+#> brand — Science, connected 
+#> stats — Statistics 
+#> viz — Visualization 
+#> bio — Bioinformatics 
+#> medical — Medical/Clinical 
+#> tech — Tech/Computing 
+#> earth — Earth/Nature 
+#> cran — CRAN 
+#> bioc — Bioconductor 
+#> tidy — Tidyverse 
+#> genomics — Genomics 
+#> proteo — Proteomics 
+#> pharma — Pharma 
+#> ocean — Ocean 
+#> midnight — Midnight 
+#> cyber — Cyber 
+#> neon — Neon 
+#> sunset — Sunset 
+#> viridis — Viridis 
+#> plasma — Plasma
 ```
 
 ## All available icons
@@ -209,4 +242,11 @@ for (cat_name in names(icons)) {
   icon_names <- names(icons[[cat_name]])
   cat(cat_name, "(", length(icon_names), "):", paste(icon_names, collapse = ", "), "\n")
 }
+#> science ( 5 ): atom, flask, microscope, molecule, magnet 
+#> biology ( 6 ): dna, cell, brain, leaf, bacteria, tree 
+#> stats ( 8 ): bar_chart, scatter, line_chart, bell_curve, pie, sigma, boxplot, network 
+#> medical ( 6 ): stethoscope, heart, pulse, pill, cross, syringe 
+#> tech ( 6 ): terminal, brackets, gear, database, hash, rlogo 
+#> shapes ( 7 ): star, shield, diamond, hexagon, infinity, arrow_up, circle 
+#> fun ( 8 ): rocket, lightning, fire, sparkle, crown, coffee, music, gamepad
 ```

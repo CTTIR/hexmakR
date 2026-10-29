@@ -12,11 +12,14 @@ hex_label_layer(design, layer, label)
 
 - design:
 
-  A [`hex_design()`](hex_design.md) object.
+  A
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
+  object.
 
 - layer:
 
-  Stable item ID from [`hex_layers()`](hex_layers.md).
+  Stable item ID from
+  [`hex_layers()`](https://cttir.github.io/hexmakR/reference/hex_layers.md).
 
 - label:
 

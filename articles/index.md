@@ -2,7 +2,11 @@
 
 ### Guides
 
-- [CTTIR v5 and project logos](cttir-library.md):
-- [Getting Started with hexmakR](getting-started.md):
-- [Programmatic Usage](programmatic-usage.md):
-- [Interactive Shiny App](shiny-app.md):
+- [CTTIR v5 and project
+  logos](https://cttir.github.io/hexmakR/articles/cttir-library.md):
+- [Getting Started with
+  hexmakR](https://cttir.github.io/hexmakR/articles/getting-started.md):
+- [Programmatic
+  Usage](https://cttir.github.io/hexmakR/articles/programmatic-usage.md):
+- [Interactive Shiny
+  App](https://cttir.github.io/hexmakR/articles/shiny-app.md):

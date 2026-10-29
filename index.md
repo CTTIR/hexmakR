@@ -2,8 +2,6 @@
 
 ![hexmakR logo](reference/figures/logo-with-name.png)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21889938.svg)](https://doi.org/10.5281/zenodo.21889938)
-
 ## Overview
 
 hexmakR creates editable logos for R packages and projects. The default
@@ -12,11 +10,13 @@ a hexagon, pentagon or square, then add shapes, uploaded artwork or a
 generic icon and edit each part. Names stay **inside the frame** and the
 exterior is transparent.
 
-The secondary **CTTIR Gallery** contains 45 identities and 1,035
-original SVG/PNG/PDF assets. Browse for inspiration, import one selected
-part or an entire motif into your current logo, or explicitly start from
-a whole archived design. Browsing the archive does not replace your
-work.
+The secondary **CTTIR Gallery** contains 45 identities with their
+original SVG and PDF masters;
+[`hex_asset()`](https://cttir.github.io/hexmakR/reference/hex_asset.md)
+renders PNG and icon versions on demand. Browse for inspiration, import
+one selected part or an entire motif into your current logo, or
+explicitly start from a whole archived design. Browsing the archive does
+not replace your work.
 
 Click a visible part to select it, then drag it to a new position. Short
 item names and Frame/Icon/Name groups help organise the composition;
@@ -48,8 +48,9 @@ hex_export(project, "project.svg")
 hex_export(hex_design("phenoscapR"), "phenoscapR.svg")
 ```
 
-See the [detailed update plan](plans/2026-10-27-v5-update.md) and [v5
-library
+See the [detailed update
+plan](https://github.com/CTTIR/hexmakR/blob/main/plans/2026-10-27-v5-update.md)
+and [v5 library
 guide](https://cttir.github.io/hexmakR/articles/cttir-library.html).
 
 ## Standing on the shoulders of `hexSticker`
@@ -74,7 +75,7 @@ subplot positioning.
 - **Interactive visual design** — a Shiny app where you see changes live
   and export when you’re happy, no code required
 - **A curated theme library** — the nine CTTIR v5 family palettes plus
-  19 domain-specific color palettes (Statistics, Bioinformatics,
+  19 domain-specific colour palettes (Statistics, Bioinformatics,
   Genomics, Pharma, CRAN, Bioconductor, Tidyverse, and more) with
   one-click dark/light switching
 - **A built-in icon library** — 46 hand-drawn scientific and technical
@@ -91,11 +92,12 @@ and then fine-tune programmatically — with either package.
 
 ## Installation
 
+hexmakR is not on CRAN yet. Install it from GitHub:
+
 ``` r
 
-# Development version
 # install.packages("pak")
-pak::pak("cttir/hexmakR")
+pak::pak("CTTIR/hexmakR")
 ```
 
 ## Quick Start
@@ -111,10 +113,11 @@ hex_layers(logo)
 hex_export(logo, "my-package.svg")
 ```
 
-[`logo_design()`](reference/logo_design.md) starts with a frame and
-name, with no archived motif. Pass `motif = "phenoscapR"` or another
-identity only when that artwork is wanted. Use `shape = "pentagon"` or
-`shape = "square"` for project logos.
+[`logo_design()`](https://cttir.github.io/hexmakR/reference/logo_design.md)
+starts with a frame and name, with no archived motif. Pass
+`motif = "phenoscapR"` or another identity only when that artwork is
+wanted. Use `shape = "pentagon"` or `shape = "square"` for project
+logos.
 
 ## Shiny App
 
@@ -179,10 +182,11 @@ The application title is the text **hexmakR**.
 
 The nine CTTIR v5 families come first and are the house standard. Their
 colours are derived from the v5 design tokens by the same engine as
-[`hex_design()`](reference/hex_design.md), so a classic sticker uses the
-tile face, rim, ink and muted text of the v5 artwork. Use
-[`hex_design()`](reference/hex_design.md) for complete v5 artwork with
-motifs and outlined names.
+[`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md),
+so a classic sticker uses the tile face, rim, ink and muted text of the
+v5 artwork. Use
+[`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
+for complete v5 artwork with motifs and outlined names.
 
 ``` r
 
@@ -254,7 +258,7 @@ Each theme has both `dark` and `light` variants.
 
 Contributions are welcome! Please open an issue first to discuss major
 changes at
-[github.com/cttir/hexmakR/issues](https://github.com/cttir/hexmakR/issues).
+[github.com/CTTIR/hexmakR/issues](https://github.com/CTTIR/hexmakR/issues).
 
 ## Code of Conduct
 
@@ -274,11 +278,11 @@ stickers as a staple of R package identity.
 
 If you use this software, please cite it as:
 
-> Heller, R. (2026). *hexmakR: Interactive hex sticker generator for R
-> packages* (Version 0.1.0) \[Computer software\]. Zenodo.
-> <https://doi.org/10.5281/zenodo.21889938>
+> Heller, R. (2026). *hexmakR: Editable Hex Stickers and Project Logos*
+> \[Computer software\]. <https://github.com/CTTIR/hexmakR>
 
-DOI: [10.5281/zenodo.21889938](https://doi.org/10.5281/zenodo.21889938)
+`citation("hexmakR")` gives the entry for the installed version. A DOI
+will be added once the archived release is published.
 
 ## Use of LLM tools
 

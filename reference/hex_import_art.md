@@ -3,10 +3,10 @@
 PNG and JPEG are embedded in the project as portable raster parts. SVG
 shapes become separate vector parts that can be recoloured, moved,
 rotated, resized and edited with
-[`hex_edit_layer()`](hex_edit_layer.md). SVG exports retain vector
-paths; curves are approximated with bounded polylines (32 segments per
-Bezier curve, about 32 segments per radian for arcs, and 128 points per
-ellipse).
+[`hex_edit_layer()`](https://cttir.github.io/hexmakR/reference/hex_edit_layer.md).
+SVG exports retain vector paths; curves are approximated with bounded
+polylines (32 segments per Bezier curve, about 32 segments per radian
+for arcs, and 128 points per ellipse).
 
 ## Usage
 
@@ -18,7 +18,9 @@ hex_import_art(design, path)
 
 - design:
 
-  A [`hex_design()`](hex_design.md) object.
+  A
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
+  object.
 
 - path:
 
@@ -39,9 +41,9 @@ expanded with cycle checks. Simple convex clip paths are accepted only
 when they provably do not cut the component; intersecting clips must
 first be flattened to paths. Text must be outlined. Gradients, masks,
 filters, nested SVG viewports, CSS stylesheets and group opacity are
-rejected with an explanation rather than silently rasterised. Nonuniform
-transforms on strokes require outlined strokes. Scripts, event handlers,
-external resources and XML entities are always rejected.
+rejected with an explanation rather than silently rasterised.
+Non-uniform transforms on strokes require outlined strokes. Scripts,
+event handlers, external resources and XML entities are always rejected.
 
 Input files are limited to 10 MiB. Raster images are limited to 8192
 pixels per side and 16 million pixels total; dimensions are checked

@@ -1,20 +1,76 @@
 # Changelog
 
-## hexmakR (development version)
+## hexmakR 0.4.0
+
+- The package now ships the 270 SVG and 270 PDF masters of the CTTIR v5
+  library in one compressed archive, which keeps it small.
+  [`hex_asset()`](https://cttir.github.io/hexmakR/reference/hex_asset.md)
+  unpacks the archive once per session and returns an SVG or PDF master
+  as a copy with identical bytes, rather than a path inside the
+  installed package. It renders PNG masters from the SVG master on
+  demand (this needs the ‘rsvg’ package) and draws icons with the
+  package renderer, under the same file names as before. All files go to
+  a folder in [`tempdir()`](https://rdrr.io/r/base/tempfile.html) unless
+  the new `dir` argument names another one. A stamp file in that folder
+  names the hexmakR version and build that wrote the files, so a folder
+  kept between sessions is refreshed after an upgrade or a reinstall.
+
+- PNG files from
+  [`hex_asset()`](https://cttir.github.io/hexmakR/reference/hex_asset.md)
+  are now rendered from the SVG masters with ‘rsvg’, and icons are drawn
+  by the package renderer. Both differ slightly from the PNG masters
+  shipped before (antialiasing at glyph and shape edges), so branding
+  outputs made from them change once on their next render. SVG and PDF
+  files are the shipped masters, byte for byte.
+
+- The colour fields of the classic designer now work. They were plain
+  HTML colour pickers that Shiny never read, so the override panel did
+  nothing. They are now ‘colourpicker’ inputs (a text field when
+  ‘colourpicker’ is not installed), show the selected theme’s colours,
+  and override the theme only where you change a colour. A theme switch
+  redraws the sticker once, with the new theme’s colours.
+
+- [`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md)
+  and
+  [`save_hex_svg()`](https://cttir.github.io/hexmakR/reference/save_hex_svg.md)
+  close their graphics device when a sticker fails to draw, instead of
+  leaving it open.
+
+- [`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
+  stops with a clear message when `name`, `theme`, `mode` or
+  `font_family` is not a single string; so does
+  [`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md)
+  for `category`.
+
+- The citation no longer carries a Zenodo DOI, which was never
+  registered; the DOI will be added once the record is published.
+  `citation("hexmakR")` reports the installed version.
+
+- The designer page takes its background, text, border, muted-text and
+  navigation-bar colours and its body font (Inter, with system fonts as
+  fallback) from the v5 design tokens.
+
+- [`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md)
+  writes PNG files with the cairo device where available, so stickers
+  have the same pixel values on macOS as on Linux and Windows.
 
 - The classic sticker API now speaks the CTTIR v5 design language. The
   nine v5 families (`spectral`, `spatial`, `omics`, `clinical`,
   `methods`, `simulation`, `evidence`, `platform`, `brand`) lead
-  [`hexmakr_themes()`](../reference/hexmakr_themes.md) and the classic
-  theme picker under “CTTIR v5”, with the v5 labels. Their colours are
-  derived at run time from the v5 design tokens by the engine behind
-  [`hex_design()`](../reference/hex_design.md): tile face as background,
-  family rim as border, v5 ink and muted text. Icons follow the v5 motif
-  colours: the mid shade (the default motif fill) on dark tiles and the
-  darker edge shade on light tiles. Text and subtitles reach at least
-  5.99:1 and icons at least 3.55:1 contrast on every tile. The 19
-  generic themes and the `stats`/dark defaults are unchanged; use
-  [`hex_design()`](../reference/hex_design.md) for complete v5 artwork.
+  [`hexmakr_themes()`](https://cttir.github.io/hexmakR/reference/hexmakr_themes.md)
+  and the classic theme picker under “CTTIR v5”, with the v5 labels.
+  Their colours are derived at run time from the v5 design tokens by the
+  engine behind
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md):
+  tile face as background, family rim as border, v5 ink and muted text.
+  Icons follow the v5 motif colours: the mid shade (the default motif
+  fill) on dark tiles and the darker edge shade on light tiles. Text and
+  subtitles reach at least 5.99:1 and icons at least 3.55:1 contrast on
+  every tile. The 19 generic themes and the `stats`/dark defaults are
+  unchanged; use
+  [`hex_design()`](https://cttir.github.io/hexmakR/reference/hex_design.md)
+  for complete v5 artwork.
+
 - `hex_sticker(font_family = "jetbrains_mono")` uses the JetBrains Mono
   font bundled for v5 names, drawn as glyph outlines on every device
   without installing the font. The classic default font is unchanged.
@@ -49,8 +105,8 @@
   1,035 unchanged original assets. Named designs place the package name
   inside.
 - Add hexagonal, pentagonal and square project logos with
-  [`logo_design()`](../reference/logo_design.md); reuse CTTIR motifs or
-  any of the 46 generic icons.
+  [`logo_design()`](https://cttir.github.io/hexmakR/reference/logo_design.md);
+  reuse CTTIR motifs or any of the 46 generic icons.
 - Add a default v5 editor with palette/layout controls, individual shape
   and coordinate editing, highlighting, undo/reset, JSON projects and R
   recipes.
@@ -65,7 +121,7 @@
 ## hexmakR 0.1.0
 
 - Initial release
-- 19 curated color themes with dark and light variants
+- 19 curated colour themes with dark and light variants
 - 46 built-in icons across 7 categories (science, biology, data/stats,
   medical, tech/code, shapes, fun)
 - Custom image upload support (PNG, JPG, SVG)
