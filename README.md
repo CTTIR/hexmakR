@@ -5,10 +5,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://cttir.github.io/hexmakR/)
-[![CRAN status](https://www.r-pkg.org/badges/version/hexmakR)](https://CRAN.R-project.org/package=hexmakR)
 [![Codecov test coverage](https://codecov.io/gh/CTTIR/hexmakR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/CTTIR/hexmakR?branch=main)
-[![CRAN downloads](https://cranlogs.r-pkg.org/badges/hexmakR)](https://cran.r-project.org/package=hexmakR)
-[![CRAN downloads total](https://cranlogs.r-pkg.org/badges/grand-total/hexmakR)](https://cran.r-project.org/package=hexmakR)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
@@ -55,8 +52,9 @@ hex_export(project, "project.svg")
 hex_export(hex_design("phenoscapR"), "phenoscapR.svg")
 ```
 
-See the [detailed update plan](plans/2026-10-27-v5-update.md) and
-[v5 library guide](https://cttir.github.io/hexmakR/articles/cttir-library.html).
+See the
+[detailed update plan](https://github.com/CTTIR/hexmakR/blob/main/plans/2026-10-27-v5-update.md)
+and [v5 library guide](https://cttir.github.io/hexmakR/articles/cttir-library.html).
 
 ## Standing on the shoulders of `hexSticker`
 
