@@ -25,3 +25,13 @@
 ^CITATION\.cff$
 ^tests/testthat/Rplots[.]pdf$
 ^inst/cttir/logos/.*\.(png|pdf)$
+^inst/cttir/source/[^/]+\.(R|txt|csv)$
+^inst/cttir/source/(R|scripts|provenance)$
+^inst/cttir/source/fonts/(Inter.*\.ttf|OFL\.txt|fontconfig-linux\.conf)$
+^inst/cttir/(asset-provenance|archive-inventory|SHA256)\.json$
+^inst/cttir/legacy$
+^man/figures/icon-
+^man/figures/logo-(dark|light|mono|symbol)\.
+^man/figures/logo-with-name(-dark|-mono)?\.(pdf|svg)$
+^man/figures/logo-with-name-mono\.png$
+^man/figures/logo\.(pdf|png)$

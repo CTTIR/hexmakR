@@ -199,8 +199,9 @@ This regenerates designs from native R geometry. Use `hex_asset()` when the
 unchanged approved master is required.
 
 The twelve names present only in the older hexstickers repository remain
-legacy SVG references under `cttir/legacy`. They are not claimed as approved
-v5 motifs. `hexmakeR` maps to `hexmakR`; `delphyR` maps to `delphyr`.
+legacy SVG references under `inst/cttir/legacy` in the source repository.
+They are not claimed as approved v5 motifs. `hexmakeR` maps to `hexmakR`;
+`delphyR` maps to `delphyr`.
 
 `CTTIR` and `cttiR` differ only in case. The organisation's asset directory is
 `CTTIR-brand`; the R package retains `cttiR`. `hex_catalog()$asset_dir` records

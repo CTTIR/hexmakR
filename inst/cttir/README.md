@@ -16,6 +16,11 @@ to rebuild exports with the package's renderer.
 references. They are not v5 R motifs. `hexmakeR` maps to `hexmakR`; `delphyR`
 maps to `delphyr`. No equivalence is assumed for the other names.
 
+The built package keeps only what it uses at run time: the SVG masters, the
+registry, the design tokens and the JetBrains Mono fonts with their licence.
+The supplied kit scripts, the Inter fonts, `legacy/` and the provenance and
+hash records stay in the source repository.
+
 The artwork was supplied by the repository owner for this library. Original
 CTTIR brand identities and older internal artwork are retained as reference
 assets; their inclusion does not grant third-party trademark rights. Font
