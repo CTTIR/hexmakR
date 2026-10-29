@@ -29,8 +29,9 @@
 * The citation no longer carries a Zenodo DOI, which was never registered;
   the DOI will be added once the record is published. `citation("hexmakR")`
   reports the installed version.
-* The designer page takes its background, text colour and body font (Inter,
-  with system fonts as fallback) from the v5 design tokens.
+* The designer page takes its background, text, border, muted-text and
+  navigation-bar colours and its body font (Inter, with system fonts as
+  fallback) from the v5 design tokens.
 
 * `save_hex()` writes PNG files with the cairo device where available, so
   stickers have the same pixel values on macOS as on Linux and Windows.

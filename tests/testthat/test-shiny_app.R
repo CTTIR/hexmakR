@@ -17,6 +17,11 @@ test_that(".build_shiny_app() returns a shiny app object with ui + server", {
   # The page uses the v5 surface, text colour and body font.
   expect_match(page$content, "body{background:#FAFAFA;color:#212121;font-family:Inter,system-ui,sans-serif}",
                fixed = TRUE)
+  # Borders, muted text and the navigation bar take v5 values as well.
+  expect_false(grepl("{{", page$content, fixed = TRUE))
+  expect_match(page$content, "border:1px solid #D8D8D8", fixed = TRUE)
+  expect_match(page$content, "color:#575757;font-size:13px", fixed = TRUE)
+  expect_match(page$content, ".navbar{border:0;border-radius:0;background:#212121}", fixed = TRUE)
 })
 
 test_that("hexmakr_app() hands the app to the launcher", {

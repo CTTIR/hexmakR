@@ -533,23 +533,32 @@
       shiny::actionButton(paste0("pick_", row$name), "Inspect parts"),
       shiny::tags$a(href = paste0("hexmakr-v5/", row$asset_dir, "/lockup-dark.svg"), download = paste0(row$name, ".svg"), "Original SVG"))
   })
-  # Page colours and body font come from the v5 design tokens.
-  css <- paste0("
-    body{background:", cttir_token("light", "page"), ";color:", cttir_token("light", "text"),
-    ";font-family:", cttir_token("type", "body_font"), ",system-ui,sans-serif}
-    .navbar{border:0;border-radius:0;background:#173c36}.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{color:#fff}
-    .navbar-default .navbar-nav>.active>a{background:#e4f0eb;color:#173c36}
-    .container-fluid{max-width:1600px}.editor-controls,.preview-card{background:white;border:1px solid #dce4e3;border-radius:14px;padding:22px;margin-bottom:18px}
+  # Colours and body font come from the v5 design tokens; muted text is
+  # 75 percent text over the page, as in reflowR.
+  ink <- grDevices::col2rgb(c(cttir_token("light", "text"), cttir_token("light", "page")))
+  v5 <- c(
+    page = cttir_token("light", "page"), text = cttir_token("light", "text"),
+    font = cttir_token("type", "body_font"), bar = cttir_token("dark", "page"),
+    border = cttir_token("light", "border"), surface = cttir_token("light", "code_surface"),
+    link = cttir_token("light", "link"),
+    muted = grDevices::rgb(t(ink %*% c(0.75, 0.25)), maxColorValue = 255)
+  )
+  css <- "
+    body{background:{{page}};color:{{text}};font-family:{{font}},system-ui,sans-serif}
+    .navbar{border:0;border-radius:0;background:{{bar}}}.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{color:#fff}
+    .navbar-default .navbar-nav>.active>a{background:{{page}};color:{{text}}}
+    .container-fluid{max-width:1600px}.editor-controls,.preview-card{background:white;border:1px solid {{border}};border-radius:14px;padding:22px;margin-bottom:18px}
     .editor-controls{max-height:calc(100vh - 100px);overflow:auto}.editor-controls h3{font-size:18px;margin-top:0}
     details{margin:12px 0}summary{cursor:pointer;font-weight:600;padding:8px 0}.btn{border-radius:7px;margin:3px}
-    .btn-primary{background:#176f5b;border-color:#176f5b}.preview-heading h2{margin-top:0;font-size:25px}.preview-heading{margin-bottom:16px}
-    .checkerboard{border-radius:9px;background-color:#e9eeee;background-image:linear-gradient(45deg,#dce3e3 25%,transparent 25%),linear-gradient(-45deg,#dce3e3 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#dce3e3 75%),linear-gradient(-45deg,transparent 75%,#dce3e3 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}
+    .btn-primary{background:{{link}};border-color:{{link}}}.preview-heading h2{margin-top:0;font-size:25px}.preview-heading{margin-bottom:16px}
+    .checkerboard{border-radius:9px;background-color:{{surface}};background-image:linear-gradient(45deg,{{border}} 25%,transparent 25%),linear-gradient(-45deg,{{border}} 25%,transparent 25%),linear-gradient(45deg,transparent 75%,{{border}} 75%),linear-gradient(-45deg,transparent 75%,{{border}} 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}
     #preview-stage{position:relative}#preview{display:flex;align-items:center;justify-content:center;padding:18px}#preview img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;cursor:grab;touch-action:none;user-select:none}.preview-dragging #preview img{cursor:grabbing}.preview-selection{position:absolute;pointer-events:none;z-index:2}.preview-selection svg{display:block;width:100%;height:100%;overflow:visible;pointer-events:none}
     #archive_preview img{max-width:100%;max-height:320px;object-fit:contain}
-    .preview-caption,.help-note,#part_detail{color:#52666a;font-size:13px;margin-top:12px}.export-actions{padding-top:18px}
-    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;padding:20px 0}.gallery-card{padding:18px;background:white;border-radius:12px;border:1px solid #dce4e3;text-align:center}.gallery-card img{width:100%;height:220px}.gallery-card p{min-height:38px;color:#52666a;font-size:12px}.gallery-card a{display:block;margin-top:8px}
+    .preview-caption,.help-note,#part_detail{color:{{muted}};font-size:13px;margin-top:12px}.export-actions{padding-top:18px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;padding:20px 0}.gallery-card{padding:18px;background:white;border-radius:12px;border:1px solid {{border}};text-align:center}.gallery-card img{width:100%;height:220px}.gallery-card p{min-height:38px;color:{{muted}};font-size:12px}.gallery-card a{display:block;margin-top:8px}
     @media(max-width:767px){.editor-row{display:flex;flex-direction:column}.editor-row>.col-sm-8{order:-1}.editor-controls{max-height:none}#preview{height:420px!important}}
-  ")
+  "
+  for (name in names(v5)) css <- gsub(paste0("{{", name, "}}"), v5[[name]], css, fixed = TRUE)
   ui <- shiny::navbarPage("hexmakR",
     id = "workspace", windowTitle = "hexmakR", selected = "designer",
     header = shiny::tagList(.cttir_brand_head(),
