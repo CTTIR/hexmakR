@@ -2,21 +2,22 @@
 
 0 errors | 0 warnings | 1 note
 
-The only NOTE is the standard "New submission" / "Maintainer" note.
+* This is a new submission.
+
+The NOTE is the incoming feasibility note: "New submission" and "Version
+contains large components (0.3.0.9000)". The development version number will
+be bumped to a release version before submission.
+
+The installed size is about 8 MB. Most of it is the library of 270 SVG logo
+masters that the package documents and reuses; PNG and PDF versions are
+rendered on demand rather than shipped.
 
 ## Test environments
 
-- local Windows 11 (x86_64), R 4.5.2
-- GitHub Actions: ubuntu-latest (release, devel, oldrel-1), macOS-latest (release), windows-latest (release)
+* local: Ubuntu 26.04, R 4.6.1
+* GitHub Actions: ubuntu-latest (R release, devel and oldrel-1),
+  macOS-latest (R release), windows-latest (R release)
 
 ## Downstream dependencies
 
 This is a new package with no downstream dependencies.
-
-## Notes
-
-This is a new submission. The package provides interactive and programmatic
-tools for creating hexagon stickers for R packages. It complements the
-existing `hexSticker` package (which excels at embedding R plots into
-stickers) by offering a Shiny-based interactive designer with a curated
-theme library, 46 built-in icons, and zero-code sticker creation.
