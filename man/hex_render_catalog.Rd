@@ -36,7 +36,9 @@ A data frame of generated file paths and identities, invisibly.
 Regenerate the v5 catalogue
 }
 \examples{
-\dontrun{
-hex_render_catalog("exports")
+if (capabilities("cairo")) {
+  files <- hex_render_catalog(tempfile(), packages = "hexmakR",
+                              formats = "svg", icons = FALSE)
+  basename(files$path)
 }
 }

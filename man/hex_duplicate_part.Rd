@@ -22,3 +22,9 @@ design object permits undo.
 \description{
 Duplicate or remove an editable part
 }
+\examples{
+d <- hex_add_part(logo_design("New project"), "circle")
+d <- hex_duplicate_part(d, "part_0001")
+d <- hex_remove_part(d, "part_0001")
+hex_layers(d)
+}

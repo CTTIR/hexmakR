@@ -21,11 +21,9 @@ Renders a sample hex sticker to preview a theme's colors.
 Preview a theme
 }
 \examples{
-\donttest{
 hexmakr_preview_theme("stats")
 hexmakr_preview_theme("genomics", mode = "light")
 hexmakr_preview_theme("spatial")
-}
 
 }
 \seealso{

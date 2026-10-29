@@ -22,6 +22,8 @@ SVG and PDF retain vector paths, including outlined package-name glyphs;
 uploaded PNG/JPEG figures remain embedded raster images.
 }
 \examples{
-f <- tempfile(fileext = ".svg")
-hex_export(hex_design("phenoscapR"), f)
+if (capabilities("cairo")) {
+  f <- tempfile(fileext = ".svg")
+  hex_export(hex_design("phenoscapR"), f)
+}
 }

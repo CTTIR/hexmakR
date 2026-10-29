@@ -13,12 +13,10 @@
 #' @return The `filename` path, invisibly.
 #'
 #' @examples
-#' \donttest{
 #' s <- hex_sticker("mypackage", icon = "atom", theme = "stats")
 #' tmp <- tempfile(fileext = ".png")
 #' save_hex(s, tmp)
 #' file.exists(tmp)
-#' }
 #'
 #' @seealso [hex_sticker()]
 #' @family stickers
@@ -65,12 +63,10 @@ save_hex <- function(sticker, filename, width = 600, dpi = 300) {
 #' @return The `filename` path, invisibly.
 #'
 #' @examples
-#' \donttest{
 #' if (requireNamespace("svglite", quietly = TRUE)) {
 #'   s <- hex_sticker("mypackage")
 #'   tmp <- tempfile(fileext = ".svg")
 #'   save_hex_svg(s, tmp)
-#' }
 #' }
 #'
 #' @seealso [save_hex()], [hex_sticker()]

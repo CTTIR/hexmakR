@@ -15,3 +15,6 @@ A named list of colours.
 \description{
 Inspect a design's palette roles
 }
+\examples{
+hex_palette(hex_design("phenoscapR", "light"))
+}

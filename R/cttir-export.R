@@ -9,8 +9,10 @@
 #' @return The destination path, invisibly.
 #' @export
 #' @examples
-#' f <- tempfile(fileext = ".svg")
-#' hex_export(hex_design("phenoscapR"), f)
+#' if (capabilities("cairo")) {
+#'   f <- tempfile(fileext = ".svg")
+#'   hex_export(hex_design("phenoscapR"), f)
+#' }
 hex_export <- function(design, filename, width = 1600L) {
   .validate_design(design)
   .scalar_number(width, "width", 32, 8192)
@@ -41,6 +43,12 @@ hex_export <- function(design, filename, width = 1600L) {
 #' @return `hex_save_design()` returns the path invisibly;
 #'   `hex_read_design()` returns a validated design.
 #' @export
+#' @examples
+#' path <- tempfile(fileext = ".json")
+#' design <- hex_add_part(logo_design("My project"), "circle")
+#' hex_save_design(design, path)
+#' restored <- hex_read_design(path)
+#' hex_layers(restored)
 hex_save_design <- function(design, path) {
   .validate_design(design)
   hex_grob(design)
@@ -71,6 +79,10 @@ hex_read_design <- function(path) {
 #' @param path Destination R file.
 #' @return The path, invisibly.
 #' @export
+#' @examples
+#' path <- tempfile(fileext = ".R")
+#' hex_recipe(logo_design("My project"), path)
+#' head(readLines(path))
 hex_recipe <- function(design, path) {
   .validate_design(design)
   hex_grob(design)
@@ -132,8 +144,10 @@ hex_recipe <- function(design, path) {
 #' @return A data frame of generated file paths and identities, invisibly.
 #' @export
 #' @examples
-#' \dontrun{
-#' hex_render_catalog("exports")
+#' if (capabilities("cairo")) {
+#'   files <- hex_render_catalog(tempfile(), packages = "hexmakR",
+#'                               formats = "svg", icons = FALSE)
+#'   basename(files$path)
 #' }
 hex_render_catalog <- function(directory, packages = hex_catalog()$name,
                                modes = c("light", "dark", "mono"),

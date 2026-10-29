@@ -17,3 +17,8 @@ The path, invisibly.
 \description{
 Write a reproducible R recipe
 }
+\examples{
+path <- tempfile(fileext = ".R")
+hex_recipe(logo_design("My project"), path)
+head(readLines(path))
+}

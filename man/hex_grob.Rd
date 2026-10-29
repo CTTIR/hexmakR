@@ -15,3 +15,7 @@ A grid gTree with stable, editable child layer names.
 \description{
 Render a design to native grid geometry
 }
+\examples{
+g <- hex_grob(logo_design("My project"))
+names(g$children)
+}

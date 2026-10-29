@@ -101,7 +101,6 @@ or saved with \code{\link[=save_hex]{save_hex()}}.
 Create a hex sticker
 }
 \examples{
-\donttest{
 # Minimal sticker
 hex_sticker("mypackage")
 
@@ -116,7 +115,6 @@ hex_sticker("mypackage", icon = "microscope", theme = "spatial",
 tmp <- tempfile(fileext = ".png")
 hex_sticker("mypackage", icon = "atom", theme = "stats", filename = tmp)
 file.exists(tmp)
-}
 
 }
 \seealso{

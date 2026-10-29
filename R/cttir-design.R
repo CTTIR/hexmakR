@@ -104,6 +104,8 @@ hex_design <- function(package = "hexmakR", mode = c("dark", "light", "mono"),
 #' @param design A [hex_design()] object.
 #' @return A named list of colours.
 #' @export
+#' @examples
+#' hex_palette(hex_design("phenoscapR", "light"))
 hex_palette <- function(design) {
   .validate_design(design)
   s <- cttir_style(.identity_row(design$package)$family, design$mode)
@@ -161,6 +163,9 @@ print.hex_design <- function(x, ...) {
 #' @param design A [hex_design()] object.
 #' @return A grid gTree with stable, editable child layer names.
 #' @export
+#' @examples
+#' g <- hex_grob(logo_design("My project"))
+#' names(g$children)
 hex_grob <- function(design) {
   .validate_design(design)
   tree <- .capture_cttir(design)
@@ -220,6 +225,8 @@ hex_grob <- function(design) {
 #' @param design A [hex_design()] object.
 #' @return A data frame with stable IDs, geometry type and current colour roles.
 #' @export
+#' @examples
+#' hex_layers(hex_design("phenoscapR"))
 hex_layers <- function(design) {
   g <- hex_grob(design)
   out <- lapply(seq_along(g$children), function(i) {

@@ -121,6 +121,11 @@ hex_reuse_part <- function(design, source, layer = NULL) {
 #'   Removal hides native geometry or removes an added part; retaining the old
 #'   design object permits undo.
 #' @export
+#' @examples
+#' d <- hex_add_part(logo_design("New project"), "circle")
+#' d <- hex_duplicate_part(d, "part_0001")
+#' d <- hex_remove_part(d, "part_0001")
+#' hex_layers(d)
 hex_duplicate_part <- function(design, layer) {
   .validate_design(design); .scalar_text(layer, "layer")
   if (!layer %in% hex_layers(design)$id) stop("Unknown layer: ", layer, call. = FALSE)

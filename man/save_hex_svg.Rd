@@ -24,12 +24,10 @@ Renders and saves a hex sticker to SVG. Requires the
 Save a hex sticker to an SVG file
 }
 \examples{
-\donttest{
 if (requireNamespace("svglite", quietly = TRUE)) {
   s <- hex_sticker("mypackage")
   tmp <- tempfile(fileext = ".svg")
   save_hex_svg(s, tmp)
-}
 }
 
 }

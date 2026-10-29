@@ -209,11 +209,9 @@ hexmakr_themes <- function() {
 #' @return A ggplot object (invisibly). Also prints the plot.
 #'
 #' @examples
-#' \donttest{
 #' hexmakr_preview_theme("stats")
 #' hexmakr_preview_theme("genomics", mode = "light")
 #' hexmakr_preview_theme("spatial")
-#' }
 #'
 #' @seealso [hexmakr_themes()], [hex_sticker()]
 #' @family themes

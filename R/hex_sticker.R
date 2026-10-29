@@ -46,7 +46,6 @@
 #' @return A ggplot object (invisibly if `filename` is not `NULL`).
 #'
 #' @examples
-#' \donttest{
 #' # Minimal sticker
 #' hex_sticker("mypackage")
 #'
@@ -61,7 +60,6 @@
 #' tmp <- tempfile(fileext = ".png")
 #' hex_sticker("mypackage", icon = "atom", theme = "stats", filename = tmp)
 #' file.exists(tmp)
-#' }
 #'
 #' @seealso [hexmakr_themes()], [hexmakr_icons()], [save_hex()],
 #'   [hexmakr_app()]

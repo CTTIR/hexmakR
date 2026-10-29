@@ -22,3 +22,10 @@ hex_read_design(path)
 JSON projects store declarative settings, additional parts and layer edits; loading never
 evaluates R code. Files larger than 20 MiB and unknown fields are rejected.
 }
+\examples{
+path <- tempfile(fileext = ".json")
+design <- hex_add_part(logo_design("My project"), "circle")
+hex_save_design(design, path)
+restored <- hex_read_design(path)
+hex_layers(restored)
+}

@@ -27,12 +27,10 @@ with a transparent background and the correct hexb.in aspect ratio
 Save a hex sticker to a PNG file
 }
 \examples{
-\donttest{
 s <- hex_sticker("mypackage", icon = "atom", theme = "stats")
 tmp <- tempfile(fileext = ".png")
 save_hex(s, tmp)
 file.exists(tmp)
-}
 
 }
 \seealso{

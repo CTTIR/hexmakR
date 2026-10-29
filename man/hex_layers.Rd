@@ -15,3 +15,6 @@ A data frame with stable IDs, geometry type and current colour roles.
 \description{
 Inspect editable vector layers
 }
+\examples{
+hex_layers(hex_design("phenoscapR"))
+}
