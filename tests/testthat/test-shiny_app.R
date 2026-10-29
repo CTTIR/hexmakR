@@ -16,30 +16,6 @@ test_that(".build_shiny_app() returns a shiny app object with ui + server", {
   expect_match(page$content, 'id="mouse_target"', fixed = TRUE)
 })
 
-test_that(".shiny_logo_svg() embeds the SVG when the logo file exists", {
-  logo_path <- system.file("logo", "logo.svg", package = "hexmakR")
-  expect_true(file.exists(logo_path))
-  local_mocked_bindings(
-    system.file = function(...) logo_path, .package = "base"
-  )
-  html <- hexmakR:::.shiny_logo_svg()
-  expect_type(html, "character")
-  # Package ships inst/logo/logo.svg, so an <svg> should be embedded
-  expect_match(html, "svg|hexmakR")
-  expect_match(html, '<svg style="width:80px;height:93px;max-width:100%;"',
-               fixed = TRUE)
-})
-
-test_that(".shiny_logo_svg() falls back to a heading when logo is absent", {
-  # Force system.file() to return "" so the fallback branch is taken
-  local_mocked_bindings(
-    system.file = function(...) "",
-    .package = "base"
-  )
-  html <- hexmakR:::.shiny_logo_svg()
-  expect_match(html, "hexmakR")
-})
-
 test_that("hexmakr_app() forwards to shiny::runApp()", {
   called <- new.env()
   local_mocked_bindings(

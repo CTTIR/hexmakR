@@ -33,14 +33,3 @@
   "JetBrains Mono" = c(plain = "JetBrainsMono-Regular.ttf",
                        bold  = "JetBrainsMono-SemiBold.ttf")
 )
-
-#' List available font shorthands
-#'
-#' Returns the 14 built-in font shorthand names that can be passed as
-#' `font_family` to [hex_sticker()].
-#'
-#' @return A named character vector mapping shorthand to font name.
-#' @noRd
-hexmakr_fonts <- function() {
-  unlist(.fonts)
-}

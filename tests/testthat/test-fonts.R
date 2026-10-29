@@ -1,20 +1,20 @@
 # Tests for the font registry in R/fonts.R
 
-test_that("hexmakr_fonts() returns the 14 built-in shorthands", {
-  fonts <- hexmakR:::hexmakr_fonts()
+test_that("the font registry has the 14 built-in shorthands", {
+  fonts <- unlist(hexmakR:::.fonts)
   expect_type(fonts, "character")
   expect_length(fonts, 14L)
   expect_true(all(c("mono", "serif", "sans", "jetbrains_mono") %in% names(fonts)))
 })
 
 test_that("every system font maps to a base R family alias", {
-  fonts <- hexmakR:::hexmakr_fonts()
+  fonts <- unlist(hexmakR:::.fonts)
   system <- fonts[names(fonts) != "jetbrains_mono"]
   expect_true(all(unname(system) %in% c("mono", "serif", "sans")))
 })
 
 test_that("specific shorthands resolve to expected base families", {
-  fonts <- hexmakR:::hexmakr_fonts()
+  fonts <- unlist(hexmakR:::.fonts)
   expect_identical(unname(fonts[["courier"]]), "mono")
   expect_identical(unname(fonts[["times"]]), "serif")
   expect_identical(unname(fonts[["roboto"]]), "sans")

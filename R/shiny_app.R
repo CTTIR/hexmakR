@@ -226,18 +226,3 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
 
   shiny::shinyApp(ui = ui, server = server)
 }
-
-#' @noRd
-.shiny_logo_svg <- function() {
-  logo_path <- base::system.file("logo", "logo.svg", package = "hexmakR")
-  if (nzchar(logo_path) && file.exists(logo_path)) {
-    svg_text <- paste(readLines(logo_path, warn = FALSE), collapse = "\n")
-    # Wrap in a div to control sizing
-    paste0('<div role="img" aria-label="hexmakR logo" style="display:inline-block; width:80px; height:93px;">',
-           sub('<svg ', '<svg style="width:80px;height:93px;max-width:100%;" ',
-                svg_text),
-           '</div>')
-  } else {
-    '<h3 style="color:#38BDF8; margin-bottom:4px;">hexmakR</h3>'
-  }
-}
