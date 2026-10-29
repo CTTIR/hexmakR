@@ -41,9 +41,12 @@ versions are rendered from the SVG master on demand with the 'rsvg' package,
 at the size of the supplied masters (1600 x 1848 pixels).
 Icons are drawn by the package renderer, which needs R with Cairo support.
 All files keep the master's file name and are written to
-\verb{dir/<asset_dir>/}, where \code{asset_dir} comes from \code{\link[=hex_catalog]{hex_catalog()}}; they are
-reused until the package is reinstalled. Use \code{\link[=hex_export]{hex_export()}} to regenerate
-artwork or export an edited design.
+\verb{dir/<asset_dir>/}, where \code{asset_dir} comes from \code{\link[=hex_catalog]{hex_catalog()}}, and are
+reused while the hexmakR version and build stay the same. A stamp file,
+\code{dir/.hexmakR-version}, names the version and build that wrote them; after
+an upgrade or a reinstall, each file is copied or rendered again on its
+next request. Use \code{\link[=hex_export]{hex_export()}} to regenerate artwork or export an edited
+design.
 }
 \examples{
 hex_asset("phenoscapR")

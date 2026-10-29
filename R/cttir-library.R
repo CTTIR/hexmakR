@@ -63,9 +63,12 @@ hex_catalog <- function(family = NULL) {
 #' at the size of the supplied masters (1600 x 1848 pixels).
 #' Icons are drawn by the package renderer, which needs R with Cairo support.
 #' All files keep the master's file name and are written to
-#' `dir/<asset_dir>/`, where `asset_dir` comes from [hex_catalog()]; they are
-#' reused until the package is reinstalled. Use [hex_export()] to regenerate
-#' artwork or export an edited design.
+#' `dir/<asset_dir>/`, where `asset_dir` comes from [hex_catalog()], and are
+#' reused while the hexmakR version and build stay the same. A stamp file,
+#' `dir/.hexmakR-version`, names the version and build that wrote them; after
+#' an upgrade or a reinstall, each file is copied or rendered again on its
+#' next request. Use [hex_export()] to regenerate artwork or export an edited
+#' design.
 #' @param package Exact identity from [hex_catalog()].
 #' @param mode One of `dark`, `light`, `mono`.
 #' @param layout `lockup` (name inside), `hex` (artwork only), or `icon`.
@@ -104,10 +107,8 @@ hex_asset <- function(package, mode = c("dark", "light", "mono"),
   if (!is.character(dir) || length(dir) != 1L || is.na(dir) || !nzchar(dir))
     stop("dir must be a single directory path.", call. = FALSE)
   target <- file.path(dir, row$asset_dir, paste0(stem, ".", format))
-  # Files are reused until the masters change or the package is reinstalled.
-  sources <- file.mtime(c(.cttir_path("logos.tar.xz"),
-                          system.file("DESCRIPTION", package = "hexmakR")))
-  if (!file.exists(target) || file.mtime(target) < max(sources, na.rm = TRUE)) {
+  stamp <- .asset_stamp(dir)
+  if (!file.exists(target) || file.mtime(target) < stamp) {
     # Icons are drawn by the package renderer, not from a master.
     master <- if (layout != "icon") {
       .cttir_master(row$asset_dir, paste0(stem, if (format == "pdf") ".pdf" else ".svg"))
@@ -115,6 +116,29 @@ hex_asset <- function(package, mode = c("dark", "light", "mono"),
     .render_asset(master, target, package, layout, format, size)
   }
   normalizePath(target, winslash = "/")
+}
+
+# Each asset directory holds a stamp naming the hexmakR version and build that
+# wrote its files. When another one writes there, the stamp is renewed, and
+# files older than the stamp are copied or rendered again when next requested.
+# File times of the installed package say nothing about its version (binary
+# packages keep the times of their build), so they are not used.
+.asset_stamp <- function(dir) {
+  if (is.null(.cttir_cache$build)) {
+    desc <- read.dcf(system.file("DESCRIPTION", package = "hexmakR"), c("Version", "Built"))
+    .cttir_cache$build <- c(paste("hexmakR", desc[1, "Version"]), paste("Built:", desc[1, "Built"]))
+  }
+  stamp <- file.path(dir, ".hexmakR-version")
+  current <- if (file.exists(stamp)) readLines(stamp, warn = FALSE)
+  if (!identical(current, .cttir_cache$build)) {
+    dir.create(dir, recursive = TRUE, showWarnings = FALSE)
+    temp <- tempfile("stamp-", tmpdir = dir)
+    on.exit(unlink(temp), add = TRUE)
+    writeLines(.cttir_cache$build, temp)
+    if (file.exists(stamp)) unlink(stamp)
+    if (!file.rename(temp, stamp)) stop("Could not write ", stamp, call. = FALSE)
+  }
+  file.mtime(stamp)
 }
 
 # Write to a temporary file first so an interrupted render leaves no partial asset.

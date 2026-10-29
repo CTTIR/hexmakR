@@ -108,7 +108,8 @@ test_that("PNG masters are rendered on demand under the master file names", {
     expect_equal(dim(png::readPNG(png)), c(1848, 1600, 4))
   }
   expect_length(list.files(dir, recursive = TRUE), 6)
-  # Renders are reused, and a render older than the installed master is redone.
+  # Renders are reused, and a file older than the directory's version stamp
+  # is redone.
   png <- hex_asset("phenoscapR", format = "png", dir = dir)
   first <- file.mtime(png)
   expect_identical(hex_asset("phenoscapR", format = "png", dir = dir), png)
@@ -119,6 +120,26 @@ test_that("PNG masters are rendered on demand under the master file names", {
   expect_equal(dim(png::readPNG(png)), c(1848, 1600, 4))
   default <- hex_asset("hexmakR", "light", "hex", "png")
   expect_true(startsWith(default, normalizePath(tempdir(), winslash = "/")))
+})
+
+test_that("files in a kept directory are refreshed when the hexmakR version changes", {
+  dir <- withr::local_tempdir()
+  svg <- hex_asset("phenoscapR", dir = dir)
+  master <- read_bytes(svg)
+  stamp <- file.path(dir, ".hexmakR-version")
+  version <- paste("hexmakR", utils::packageVersion("hexmakR"))
+  expect_identical(readLines(stamp)[1], version)
+  # Files written by this version are reused, whatever their file times say
+  # (binary installs keep the times of the build).
+  writeBin(charToRaw("kept"), svg)
+  Sys.setFileTime(c(svg, stamp), as.POSIXct("2000-01-01", tz = "UTC"))
+  expect_identical(read_bytes(hex_asset("phenoscapR", dir = dir)), charToRaw("kept"))
+  # Files written by another version are copied again on their next request.
+  writeBin(charToRaw("stale"), svg)
+  writeLines(c("hexmakR 0.3.0", "Built: R 4.5.0; ; 2026-08-11 00:00:00 UTC; unix"), stamp)
+  expect_identical(read_bytes(hex_asset("phenoscapR", dir = dir)), master)
+  expect_identical(readLines(stamp)[1], version)
+  expect_setequal(list.files(dir, all.files = TRUE, no.. = TRUE), c(".hexmakR-version", "phenoscapR"))
 })
 
 test_that("icons are drawn on demand under the master file names", {

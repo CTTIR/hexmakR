@@ -7,7 +7,9 @@
   It renders PNG masters from the SVG master on demand (this needs the
   'rsvg' package) and draws icons with the package renderer, under the same
   file names as before. All files go to a folder in `tempdir()` unless the new
-  `dir` argument names another one.
+  `dir` argument names another one. A stamp file in that folder names the
+  hexmakR version and build that wrote the files, so a folder kept between
+  sessions is refreshed after an upgrade or a reinstall.
 * PNG files from `hex_asset()` are now rendered from the SVG masters with
   'rsvg', and icons are drawn by the package renderer. Both differ slightly
   from the PNG masters shipped before (antialiasing at glyph and shape
