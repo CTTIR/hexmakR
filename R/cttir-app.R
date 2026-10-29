@@ -149,6 +149,9 @@
   )
 }
 
+# Slider updates go through this binding so tests can replace it.
+.update_slider <- function(session, inputId, value) shiny::updateSliderInput(session, inputId, value = value)
+
 .cttir_editor_server <- function(input, output, session, package = "hexmakR") {
   initial <- .cttir_new_design()
   current <- shiny::reactiveVal(initial)
@@ -186,7 +189,7 @@
     shiny::updateSelectizeInput(session, "generic_icon", selected = icon)
     shiny::updateTextInput(session, "label", value = d$label)
     for (id in c("motif_x", "motif_y", "motif_scale", "label_y", "label_size", "border_width"))
-      shiny::updateSliderInput(session, id, value = d[[id]])
+      .update_slider(session, id, value = d[[id]])
   }
   archive_design <- shiny::reactive(hex_design(input$identity %||% package))
   shiny::observeEvent(archive_design(), {
@@ -198,7 +201,7 @@
   })
   shiny::observeEvent(input$layout, {
     if (!identical(input$layout, current()$layout))
-      shiny::updateSliderInput(session, "motif_y", value = if (input$layout == "lockup") .585 else .5)
+      .update_slider(session, "motif_y", value = if (input$layout == "lockup") .585 else .5)
   }, ignoreInit = TRUE)
   shiny::observeEvent(input$apply_design, attempt({
     old <- current()
@@ -270,8 +273,8 @@
     }
     for (key in c("dx", "dy", "scale", "lwd")) shiny::updateNumericInput(session, key,
       value = e[[key]] %||% switch(key, dx = 0, dy = 0, scale = 1, lwd = g$gp$lwd %||% 1))
-    shiny::updateSliderInput(session, "angle", value = e$angle %||% 0)
-    shiny::updateSliderInput(session, "alpha",
+    .update_slider(session, "angle", value = e$angle %||% 0)
+    .update_slider(session, "alpha",
       value = .cttir_part_alpha(current(), id, g, e))
     shiny::updateCheckboxInput(session, "visible", value = e$visible %||% TRUE)
     for (axis in c("x", "y")) shiny::updateTextAreaInput(session, paste0("coords_", axis),

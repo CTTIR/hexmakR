@@ -16,17 +16,18 @@ test_that(".build_shiny_app() returns a shiny app object with ui + server", {
   expect_match(page$content, 'id="mouse_target"', fixed = TRUE)
 })
 
-test_that("hexmakr_app() forwards to shiny::runApp()", {
+test_that("hexmakr_app() hands the app to the launcher", {
   called <- new.env()
   local_mocked_bindings(
-    runApp = function(appDir, ...) {
-      called$hit <- TRUE
+    .run_shiny_app = function(app, ...) {
+      called$app <- app
+      called$args <- list(...)
       invisible(NULL)
-    },
-    .package = "shiny"
+    }
   )
-  hexmakr_app()
-  expect_true(isTRUE(called$hit))
+  hexmakr_app(port = 1234)
+  expect_s3_class(called$app, "shiny.appobj")
+  expect_identical(called$args, list(port = 1234))
 })
 
 
@@ -34,17 +35,17 @@ test_that("upload request size is scoped to the running v5 editor", {
   before <- getOption("shiny.maxRequestSize")
   observed <- NULL
   local_mocked_bindings(
-    runApp = function(appDir, ...) {
+    .run_shiny_app = function(app, ...) {
       observed <<- getOption("shiny.maxRequestSize")
       invisible(NULL)
-    }, .package = "shiny"
+    }
   )
   hexmakr_app()
   expect_equal(observed, 20 * 1024^2)
   expect_identical(getOption("shiny.maxRequestSize"), before)
   hexmakr_app(workspace = "classic")
   expect_identical(observed, before)
-  local_mocked_bindings(runApp = function(...) stop("launch failed"), .package = "shiny")
+  local_mocked_bindings(.run_shiny_app = function(...) stop("launch failed"))
   expect_error(hexmakr_app(), "launch failed")
   expect_identical(getOption("shiny.maxRequestSize"), before)
 })

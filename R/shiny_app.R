@@ -30,8 +30,12 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
     previous <- options(shiny.maxRequestSize = 20 * 1024^2)
     on.exit(options(previous), add = TRUE)
   }
-  shiny::runApp(app, ...)
+  .run_shiny_app(app, ...)
 }
+
+# App launches go through this binding so tests can replace it.
+#' @noRd
+.run_shiny_app <- function(app, ...) shiny::runApp(app, ...)
 
 #' @noRd
 .build_classic_app <- function() {

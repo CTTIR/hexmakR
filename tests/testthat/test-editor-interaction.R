@@ -193,11 +193,9 @@ test_that("native metadata follows roles when layout changes and artwork is repl
 
 test_that("part controls preserve source opacity through colour edits and hiding", {
   updates <- new.env(parent = emptyenv())
-  original <- shiny::updateSliderInput
-  local_mocked_bindings(updateSliderInput = function(session, inputId, ..., value = NULL) {
+  local_mocked_bindings(.update_slider = function(session, inputId, value) {
     if (identical(inputId, "alpha")) updates$alpha <- value
-    original(session, inputId, ..., value = value)
-  }, .package = "shiny")
+  })
   shiny::testServer(.cttir_editor_server, {
     d <- hex_add_part(logo_design("Opacity"), "circle", alpha = .4)
     id <- names(d$parts)[[1]]
