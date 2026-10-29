@@ -48,8 +48,8 @@ object.
 Useful links:
 \itemize{
   \item \url{https://cttir.github.io/hexmakR/}
-  \item \url{https://github.com/cttir/hexmakR}
-  \item Report bugs at \url{https://github.com/cttir/hexmakR/issues}
+  \item \url{https://github.com/CTTIR/hexmakR}
+  \item Report bugs at \url{https://github.com/CTTIR/hexmakR/issues}
 }
 
 }

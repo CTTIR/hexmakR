@@ -25,8 +25,8 @@ Description: Create publication-ready hexagon stickers for R packages
 License: MIT + file LICENSE
 Copyright: see file inst/COPYRIGHTS
 URL: https://cttir.github.io/hexmakR/,
-    https://github.com/cttir/hexmakR
-BugReports: https://github.com/cttir/hexmakR/issues
+    https://github.com/CTTIR/hexmakR
+BugReports: https://github.com/CTTIR/hexmakR/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Depends:

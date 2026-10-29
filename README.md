@@ -98,7 +98,7 @@ then fine-tune programmatically — with either package.
 ```r
 # Development version
 # install.packages("pak")
-pak::pak("cttir/hexmakR")
+pak::pak("CTTIR/hexmakR")
 ```
 
 ## Quick Start
@@ -244,7 +244,7 @@ Each theme has both `dark` and `light` variants.
 ## Contributing
 
 Contributions are welcome! Please open an issue first to discuss major
-changes at [github.com/cttir/hexmakR/issues](https://github.com/cttir/hexmakR/issues).
+changes at [github.com/CTTIR/hexmakR/issues](https://github.com/CTTIR/hexmakR/issues).
 
 ## Code of Conduct
 

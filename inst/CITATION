@@ -4,5 +4,5 @@ bibentry(
   author   = person("R.", "Heller", email = "raban.heller@uni-ulm.de"),
   year     = "2026",
   note     = paste("R package version", meta$Version),
-  url      = "https://github.com/cttir/hexmakR"
+  url      = "https://github.com/CTTIR/hexmakR"
 )

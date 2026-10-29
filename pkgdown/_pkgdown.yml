@@ -19,15 +19,15 @@ navbar:
       href: news/index.html
   right:
     - icon: fa-github
-      href: https://github.com/cttir/hexmakR
+      href: https://github.com/CTTIR/hexmakR
       aria-label: "GitHub"
 
 home:
   links:
     - text: "Browse source code"
-      href: https://github.com/cttir/hexmakR
+      href: https://github.com/CTTIR/hexmakR
     - text: "Report a bug"
-      href: https://github.com/cttir/hexmakR/issues
+      href: https://github.com/CTTIR/hexmakR/issues
 
 articles:
   - title: "Getting Started"
