@@ -93,8 +93,9 @@ then fine-tune programmatically — with either package.
 
 ## Installation
 
+hexmakR is not on CRAN yet. Install it from GitHub:
+
 ```r
-# Development version
 # install.packages("pak")
 pak::pak("CTTIR/hexmakR")
 ```
