@@ -42,15 +42,17 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  eval = FALSE
+  comment = "#>"
 )
 ```
 
 ## Launch the designer
 
-```{r launch}
+```{r library}
 library(hexmakR)
+```
+
+```{r launch, eval = FALSE}
 hexmakr_app()
 ```
 
@@ -151,7 +153,7 @@ Imports retain your current name, frame, palette and existing parts. Imported
 components remain individually editable and use a saved source snapshot.
 They do not change when you later browse a different archive identity.
 
-```{r preselect-archive}
+```{r preselect-archive, eval = FALSE}
 hexmakr_app(package = "phenoscapR")
 ```
 
@@ -185,7 +187,7 @@ variant at `man/figures/logo-dark.svg`. Keep the package name inside the image.
 
 ## Classic designer
 
-```{r classic}
+```{r classic, eval = FALSE}
 hexmakr_app(workspace = "classic")
 ```
 

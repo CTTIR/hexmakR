@@ -43,8 +43,11 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval = FALSE
+  fig.width = 3,
+  fig.height = 3.46  # 3 / (sqrt(3)/2) for correct hex ratio
 )
+# Files written by the examples go to a temporary folder.
+knitr::opts_knit$set(root.dir = tempdir())
 ```
 
 
@@ -52,7 +55,7 @@ knitr::opts_chunk$set(
 
 The current project API starts from a fresh name and frame:
 
-```{r editable-project}
+```{r editable-project, eval = capabilities("cairo")}
 library(hexmakR)
 design <- logo_design("My project", shape = "square")
 design <- hex_add_part(design, "rectangle", x = .5, y = .6,
@@ -185,7 +188,9 @@ s <- hex_sticker("mypackage", theme = "tidy")
 
 # PNG (transparent background)
 save_hex(s, "logo.png", width = 600, dpi = 300)
+```
 
+```{r export-svg, eval = requireNamespace("svglite", quietly = TRUE)}
 # SVG (requires svglite)
 save_hex_svg(s, "logo.svg", width = 2)
 ```

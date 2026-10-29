@@ -44,16 +44,17 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.width = 3,
-  fig.height = 3.46,  # 3 / (sqrt(3)/2) for correct hex ratio
-  eval = FALSE
+  fig.height = 3.46  # 3 / (sqrt(3)/2) for correct hex ratio
 )
+# Files written by the examples go to a temporary folder.
+knitr::opts_knit$set(root.dir = tempdir())
 ```
 
 ## Installation
 
 Install the development package from GitHub:
 
-```{r installation}
+```{r installation, eval = FALSE}
 # install.packages("pak")
 pak::pak("CTTIR/hexmakR")
 ```
@@ -119,7 +120,7 @@ and flatten gradients, masks or intersecting clips first. See `?hex_import_art`
 for the supported SVG subset. Item labels and groups can be organised with
 `hex_label_layer()` and `hex_group_layers()`.
 
-```{r save-project}
+```{r save-project, eval = capabilities("cairo")}
 hex_save_design(design, "my-package.json")
 restored <- hex_read_design("my-package.json")
 hex_export(restored, "my-package.svg")
@@ -135,7 +136,7 @@ R code. A project must fit within the same 20 MiB limit when saved and reopened.
 
 ## Open the manual editor
 
-```{r launch-editor}
+```{r launch-editor, eval = FALSE}
 hexmakr_app()
 ```
 
