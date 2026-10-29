@@ -51,18 +51,18 @@ The nine CTTIR v5 families (for example \code{"spatial"} or \code{"clinical"})
 are listed first and are the house standard; for complete v5 artwork
 use \code{\link[=hex_design]{hex_design()}}. Default \code{"stats"}.}
 
-\item{mode}{Character. Color mode, either \code{"dark"} (default) or \code{"light"}.}
+\item{mode}{Character. Colour mode, either \code{"dark"} (default) or \code{"light"}.}
 
-\item{bg}{Character or \code{NULL}. Override the background color (hex string,
+\item{bg}{Character or \code{NULL}. Override the background colour (hex string,
 e.g. \code{"#1B2838"}).}
 
-\item{accent}{Character or \code{NULL}. Override the accent color.}
+\item{accent}{Character or \code{NULL}. Override the accent colour.}
 
-\item{text_color}{Character or \code{NULL}. Override the text color.}
+\item{text_color}{Character or \code{NULL}. Override the text colour.}
 
-\item{border_color}{Character or \code{NULL}. Override the border color.}
+\item{border_color}{Character or \code{NULL}. Override the border colour.}
 
-\item{sub_color}{Character or \code{NULL}. Override the subtitle/URL color.}
+\item{sub_color}{Character or \code{NULL}. Override the subtitle/URL colour.}
 
 \item{font_family}{Character. Font shorthand (e.g. \code{"mono"}, \code{"serif"},
 \code{"sans"}) or a system font name. Default \code{"mono"}. \code{"jetbrains_mono"}

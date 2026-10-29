@@ -19,13 +19,13 @@
 #'   The nine CTTIR v5 families (for example `"spatial"` or `"clinical"`)
 #'   are listed first and are the house standard; for complete v5 artwork
 #'   use [hex_design()]. Default `"stats"`.
-#' @param mode Character. Color mode, either `"dark"` (default) or `"light"`.
-#' @param bg Character or `NULL`. Override the background color (hex string,
+#' @param mode Character. Colour mode, either `"dark"` (default) or `"light"`.
+#' @param bg Character or `NULL`. Override the background colour (hex string,
 #'   e.g. `"#1B2838"`).
-#' @param accent Character or `NULL`. Override the accent color.
-#' @param text_color Character or `NULL`. Override the text color.
-#' @param border_color Character or `NULL`. Override the border color.
-#' @param sub_color Character or `NULL`. Override the subtitle/URL color.
+#' @param accent Character or `NULL`. Override the accent colour.
+#' @param text_color Character or `NULL`. Override the text colour.
+#' @param border_color Character or `NULL`. Override the border colour.
+#' @param sub_color Character or `NULL`. Override the subtitle/URL colour.
 #' @param font_family Character. Font shorthand (e.g. `"mono"`, `"serif"`,
 #'   `"sans"`) or a system font name. Default `"mono"`. `"jetbrains_mono"`
 #'   uses the JetBrains Mono font bundled for CTTIR v5 names, drawn as glyph

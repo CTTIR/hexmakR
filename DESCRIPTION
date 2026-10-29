@@ -28,6 +28,7 @@ URL: https://cttir.github.io/hexmakR/,
     https://github.com/CTTIR/hexmakR
 BugReports: https://github.com/CTTIR/hexmakR/issues
 Encoding: UTF-8
+Language: en-GB
 Roxygen: list(markdown = TRUE)
 Depends:
     R (>= 4.1.0)

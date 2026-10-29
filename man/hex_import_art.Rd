@@ -31,7 +31,7 @@ checks. Simple convex clip paths are accepted only when they provably do not
 cut the component; intersecting clips must first be flattened to paths.
 Text must be outlined. Gradients, masks, filters, nested SVG viewports,
 CSS stylesheets and group opacity are rejected with an explanation rather
-than silently rasterised. Nonuniform
+than silently rasterised. Non-uniform
 transforms on strokes require outlined strokes. Scripts, event handlers,
 external resources and XML entities are always rejected.
 

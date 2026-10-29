@@ -12,13 +12,13 @@ A named list of length 28. Each element contains:
 \item{label}{Human-readable theme name (character).}
 \item{group}{\code{"CTTIR v5"} for the nine v5 families; absent for the
 generic themes.}
-\item{dark}{List of 5 color hex strings for dark mode.}
-\item{light}{List of 5 color hex strings for light mode.}
+\item{dark}{List of 5 colour hex strings for dark mode.}
+\item{light}{List of 5 colour hex strings for light mode.}
 }
 }
 \description{
-Returns a named list of all 28 built-in color themes for hex
-stickers. Each theme has \code{dark} and \code{light} sub-lists with color values
+Returns a named list of all 28 built-in colour themes for hex
+stickers. Each theme has \code{dark} and \code{light} sub-lists with colour values
 for \code{bg}, \code{accent}, \code{text}, \code{border}, and \code{sub} (subtitle).
 
 The first nine are the CTTIR v5 families (\code{spectral}, \code{spatial}, \code{omics},

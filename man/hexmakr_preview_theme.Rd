@@ -2,7 +2,7 @@
 % Please edit documentation in R/themes.R
 \name{hexmakr_preview_theme}
 \alias{hexmakr_preview_theme}
-\title{Preview a Color Theme}
+\title{Preview a Colour Theme}
 \usage{
 hexmakr_preview_theme(theme = "stats", mode = "dark")
 }
@@ -15,7 +15,7 @@ hexmakr_preview_theme(theme = "stats", mode = "dark")
 A ggplot object (invisibly). Also prints the plot.
 }
 \description{
-Renders a sample hex sticker to preview a theme's colors.
+Renders a sample hex sticker to preview a theme's colours.
 }
 \details{
 Preview a theme

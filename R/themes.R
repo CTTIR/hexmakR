@@ -160,8 +160,8 @@
 #' List available themes
 #'
 #' @title List Available Themes
-#' @description Returns a named list of all 28 built-in color themes for hex
-#'   stickers. Each theme has `dark` and `light` sub-lists with color values
+#' @description Returns a named list of all 28 built-in colour themes for hex
+#'   stickers. Each theme has `dark` and `light` sub-lists with colour values
 #'   for `bg`, `accent`, `text`, `border`, and `sub` (subtitle).
 #'
 #'   The first nine are the CTTIR v5 families (`spectral`, `spatial`, `omics`,
@@ -181,8 +181,8 @@
 #'     \item{label}{Human-readable theme name (character).}
 #'     \item{group}{`"CTTIR v5"` for the nine v5 families; absent for the
 #'       generic themes.}
-#'     \item{dark}{List of 5 color hex strings for dark mode.}
-#'     \item{light}{List of 5 color hex strings for light mode.}
+#'     \item{dark}{List of 5 colour hex strings for dark mode.}
+#'     \item{light}{List of 5 colour hex strings for light mode.}
 #'   }
 #'
 #' @examples
@@ -200,8 +200,8 @@ hexmakr_themes <- function() {
 
 #' Preview a theme
 #'
-#' @title Preview a Color Theme
-#' @description Renders a sample hex sticker to preview a theme's colors.
+#' @title Preview a Colour Theme
+#' @description Renders a sample hex sticker to preview a theme's colours.
 #'
 #' @param theme Character. Theme name, one of `names(hexmakr_themes())`.
 #' @param mode Character. Either `"dark"` (default) or `"light"`.

@@ -11,7 +11,7 @@
 Create publication-ready hexagon stickers for R packages interactively via a
 Shiny app or programmatically via R functions.
 
-Comes with \strong{28 curated color themes} (dark + light variants), led by the
+Comes with \strong{28 curated colour themes} (dark + light variants), led by the
 nine CTTIR v5 families, \strong{46 built-in scientific and technical icons}
 across 7 categories, custom image upload support, 14 font options
 including the bundled JetBrains Mono, and transparent PNG export.

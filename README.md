@@ -76,7 +76,7 @@ reproducible sticker generation with full control over subplot positioning.
 - **Interactive visual design** — a Shiny app where you see changes live
   and export when you're happy, no code required
 - **A curated theme library** — the nine CTTIR v5 family palettes plus
-  19 domain-specific color palettes (Statistics, Bioinformatics, Genomics,
+  19 domain-specific colour palettes (Statistics, Bioinformatics, Genomics,
   Pharma, CRAN, Bioconductor, Tidyverse, and more) with one-click
   dark/light switching
 - **A built-in icon library** — 46 hand-drawn scientific and technical
