@@ -48,10 +48,8 @@ Suggests:
     testthat (>= 3.0.0),
     knitr,
     rmarkdown,
-    pkgdown,
     svglite,
     rsvg,
-    covr,
     withr
 Config/testthat/edition: 3
 Config/Needs/website: CTTIR/themakR, pkgdown
