@@ -40,6 +40,7 @@ test_that("stroke-only parts and glyph holes are not selected as rectangles", {
 })
 
 test_that("rotation, point edits and clipping match the exported geometry", {
+  skip_without_cairo()
   d <- hex_add_part(logo_design(""), "rectangle", x = .5, y = .6,
     width = .4, height = .08, col = "transparent", lwd = 0)
   d <- hex_edit_layer(d, "part_0001", angle = 90)

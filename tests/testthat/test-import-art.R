@@ -13,6 +13,7 @@ art_png <- function() {
 }
 
 test_that("raster imports are portable, bounded and independently editable", {
+  skip_without_cairo()
   source <- art_png(); on.exit(unlink(source))
   original <- logo_design("A figure")
   d <- hex_import_art(original, source)
@@ -47,6 +48,7 @@ test_that("JPEG import detects content without depending on a filename extension
 })
 
 test_that("SVG shapes and curves remain separate portable vector components", {
+  skip_without_cairo()
   source <- art_svg(paste0(
     '<g transform="translate(2 3) rotate(5 50 50)">',
     '<rect id="panel" x="10" y="10" width="30" height="20" rx="3" fill="#0a8"/>',
@@ -78,6 +80,7 @@ test_that("SVG shapes and curves remain separate portable vector components", {
 })
 
 test_that("SVG transforms, fill holes and open strokes retain their semantics", {
+  skip_without_cairo()
   transformed <- .svg_transform("translate(10 20) scale(2) rotate(90)") %*% c(1, 0, 1)
   expect_equal(as.numeric(transformed), c(10, 22, 1), tolerance = 1e-10)
   curve <- .svg_path("M0 0 L10 0 M20 0 l0 10 z")
@@ -153,6 +156,7 @@ test_that("invalid embedded data and resource bounds fail before rendering", {
 })
 
 test_that("local references and redundant clips support ordinary Cairo SVG exports", {
+  skip_without_cairo()
   source <- tempfile(fileext = ".svg"); on.exit(unlink(source))
   hex_export(hex_add_part(logo_design("Own"), "circle"), source)
   imported <- hex_import_art(logo_design("Import"), source)

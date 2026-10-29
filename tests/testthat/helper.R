@@ -11,3 +11,6 @@ contrast_ratio <- function(a, b) {
   z <- sort(c(luminance(a), luminance(b)))
   (z[2] + .05) / (z[1] + .05)
 }
+
+# hex_export() and hex_render_catalog() need R with Cairo support.
+skip_without_cairo <- function() skip_if_not(capabilities("cairo"), "R without Cairo support")

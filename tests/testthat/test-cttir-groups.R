@@ -13,6 +13,7 @@ test_that("native and fresh parts receive readable names and default groups", {
 })
 
 test_that("names and custom groups retain appearance and roundtrip", {
+  skip_without_cairo()
   d <- hex_add_part(logo_design("Study"), "circle")
   d <- hex_add_part(d, "rectangle")
   before <- tempfile(fileext = ".png")

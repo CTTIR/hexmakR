@@ -58,7 +58,7 @@ test_that("PNG and PDF masters are rendered on demand under the master file name
 })
 
 test_that("icons are drawn on demand under the master file names", {
-  skip_if_not(capabilities("cairo"))
+  skip_without_cairo()
   dir <- withr::local_tempdir()
   for (size in c(32, 48, 64, 128, 256)) {
     f <- hex_asset("CTTIR", layout = "icon", format = "png", size = size, dir = dir)
@@ -70,7 +70,7 @@ test_that("icons are drawn on demand under the master file names", {
 test_that("both branding-script forms return a file for every identity", {
   skip_on_cran()
   skip_if_not_installed("rsvg")
-  skip_if_not(capabilities("cairo"))
+  skip_without_cairo()
   dir <- withr::local_tempdir()
   for (name in hex_catalog()$name) {
     for (mode in c("light", "dark", "mono")) for (layout in c("hex", "lockup")) {
@@ -106,7 +106,7 @@ test_that("all identities and modes produce distinct native vector layers", {
 
 test_that("the packaged renderer reproduces the geometry of the shipped masters", {
   skip_on_cran() # SVG number formatting depends on the cairo version
-  skip_if_not(capabilities("cairo"))
+  skip_without_cairo()
   paths <- function(file) {
     txt <- paste(readLines(file, warn = FALSE), collapse = "\n")
     unique(regmatches(txt, gregexpr(' d="[^"]+"', txt))[[1]])
@@ -157,7 +157,7 @@ test_that("malformed and executable project payloads are rejected", {
 })
 
 test_that("PNG and vector exports preserve transparency and canvas geometry", {
-  skip_if_not(capabilities("cairo"))
+  skip_without_cairo()
   d <- hex_design("phenoscapR")
   f <- tempfile(fileext = ".png"); on.exit(unlink(f), add = TRUE)
   hex_export(d, f, 400)
@@ -185,7 +185,7 @@ test_that("PNG and vector exports preserve transparency and canvas geometry", {
 })
 
 test_that("batch generation supplies both layouts, all modes and small icons", {
-  skip_if_not(capabilities("cairo"))
+  skip_without_cairo()
   out <- tempfile(); on.exit(unlink(out, recursive = TRUE))
   files <- hex_render_catalog(out, packages = "hexmakR", width = 128)
   expect_equal(nrow(files), 23)
@@ -223,6 +223,7 @@ test_that("editor applies edits, undo, reset and safe project loading", {
 })
 
 test_that("project logos support regular pentagonal and square frames", {
+  skip_without_cairo()
   for (shape in c("hex", "pentagon", "square")) {
     d <- logo_design("My project", "phenoscapR", shape)
     g <- hex_grob(d)

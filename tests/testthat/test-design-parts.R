@@ -1,4 +1,5 @@
 test_that("fresh designs have no archive motif and empty canvases remain drawable", {
+  skip_without_cairo()
   expect_false(hex_design()$archive)
   expect_false(logo_design("New project")$archive)
   expect_setequal(hex_layers(logo_design("New project"))$role, c("frame", "name"))
@@ -60,6 +61,7 @@ test_that("native duplication and archive reuse preserve edited source geometry"
 })
 
 test_that("whole motif reuse preserves the original native viewport placement", {
+  skip_without_cairo()
   source <- hex_design("phenoscapR")
   reused <- hex_reuse_part(hex_design("phenoscapR", archive = FALSE), source)
   expect_equal(length(reused$parts), sum(hex_layers(source)$role == "motif"))
@@ -130,6 +132,7 @@ test_that("oversized projects fail before replacing an existing file", {
 })
 
 test_that("new and reused parts clip to the current edited frame in every shape", {
+  skip_without_cairo()
   for (shape in c("hex", "pentagon", "square")) {
     d <- logo_design("", shape = shape, border_width = 0,
       colors = list(face = "transparent", rim = "transparent"))
