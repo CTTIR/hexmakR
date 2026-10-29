@@ -10,6 +10,11 @@
   They are now 'colourpicker' inputs (a text field when 'colourpicker' is not
   installed), show the selected theme's colours, and override the theme only
   where you change a colour.
+* `save_hex()` and `save_hex_svg()` close their graphics device when a
+  sticker fails to draw, instead of leaving it open.
+* `hex_sticker()` stops with a clear message when `name`, `theme`, `mode` or
+  `font_family` is not a single string; so does `hexmakr_icons()` for
+  `category`.
 * The citation no longer carries a Zenodo DOI, which was never registered;
   the DOI will be added once the record is published. `citation("hexmakR")`
   reports the installed version.
