@@ -533,8 +533,10 @@
       shiny::actionButton(paste0("pick_", row$name), "Inspect parts"),
       shiny::tags$a(href = paste0("hexmakr-v5/", row$asset_dir, "/lockup-dark.svg"), download = paste0(row$name, ".svg"), "Original SVG"))
   })
-  css <- "
-    body{background:#f2f4f6;color:#1b2b37;font-family:system-ui,sans-serif}
+  # Page colours and body font come from the v5 design tokens.
+  css <- paste0("
+    body{background:", cttir_token("light", "page"), ";color:", cttir_token("light", "text"),
+    ";font-family:", cttir_token("type", "body_font"), ",system-ui,sans-serif}
     .navbar{border:0;border-radius:0;background:#173c36}.navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{color:#fff}
     .navbar-default .navbar-nav>.active>a{background:#e4f0eb;color:#173c36}
     .container-fluid{max-width:1600px}.editor-controls,.preview-card{background:white;border:1px solid #dce4e3;border-radius:14px;padding:22px;margin-bottom:18px}
@@ -547,7 +549,7 @@
     .preview-caption,.help-note,#part_detail{color:#52666a;font-size:13px;margin-top:12px}.export-actions{padding-top:18px}
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;padding:20px 0}.gallery-card{padding:18px;background:white;border-radius:12px;border:1px solid #dce4e3;text-align:center}.gallery-card img{width:100%;height:220px}.gallery-card p{min-height:38px;color:#52666a;font-size:12px}.gallery-card a{display:block;margin-top:8px}
     @media(max-width:767px){.editor-row{display:flex;flex-direction:column}.editor-row>.col-sm-8{order:-1}.editor-controls{max-height:none}#preview{height:420px!important}}
-  "
+  ")
   ui <- shiny::navbarPage("hexmakR",
     id = "workspace", windowTitle = "hexmakR", selected = "designer",
     header = shiny::tagList(.cttir_brand_head(),

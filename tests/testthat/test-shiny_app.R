@@ -14,6 +14,9 @@ test_that(".build_shiny_app() returns a shiny app object with ui + server", {
   expect_match(page$content, "CTTIR Gallery", fixed = TRUE)
   expect_match(page$content, 'id="art_upload"', fixed = TRUE)
   expect_match(page$content, 'id="mouse_target"', fixed = TRUE)
+  # The page uses the v5 surface, text colour and body font.
+  expect_match(page$content, "body{background:#FAFAFA;color:#212121;font-family:Inter,system-ui,sans-serif}",
+               fixed = TRUE)
 })
 
 test_that("hexmakr_app() hands the app to the launcher", {
