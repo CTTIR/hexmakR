@@ -1,24 +1,27 @@
 Package: hexmakR
 Title: Editable Hex Stickers and Project Logos
 Version: 0.3.0.9000
-Authors@R:
-    c(person("R.", "Heller", , "raban.heller@uni-ulm.de", role = c("aut", "cre"),
-             comment = c(ORCID = "0000-0001-8006-9742")),
-      person("The JetBrains Mono Project Authors", role = "cph",
-             comment = "JetBrains Mono font"))
+Authors@R: c(
+    person("R.", "Heller", , "raban.heller@uni-ulm.de",
+           role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-8006-9742")),
+    person("The JetBrains Mono Project Authors", role = "cph",
+           comment = "JetBrains Mono font")
+  )
 Description: Create publication-ready hexagon stickers for R packages
-    interactively via a Shiny app or programmatically via R functions.
+    interactively via a 'shiny' app or programmatically via R functions.
     Complements the 'hexSticker' package (which embeds R plots into
     stickers) by providing an interactive visual designer with 28 curated
-    color themes (dark and light variants, led by the nine CTTIR v5
-    families), 46 built-in scientific and technical icons, custom image
-    upload support, font selection, and export to transparent PNG.
-    Designed for the R package ecosystem with presets for CRAN,
-    Bioconductor, Tidyverse, and domain-specific color palettes. Includes
-    the CTTIR v5 library of 45 native R vector identities, editable shapes,
-    reproducible JSON projects, and transparent PNG, SVG and PDF export
-    with package names inside the hexagon.
-    Project logos also support pentagonal and square frames.
+    colour themes (dark and light variants, led by the nine families of the
+    Computational Trauma and Tissue Injury Research (CTTIR) design, version
+    5 (CTTIR v5)), 46 built-in scientific and technical icons, custom image
+    upload support, font selection, and export to transparent PNG. Designed
+    for the R package ecosystem with presets for CRAN, Bioconductor,
+    Tidyverse, and domain-specific colour palettes. Includes the CTTIR v5
+    library of 45 native R vector identities, editable shapes, reproducible
+    JSON projects, and transparent PNG, SVG and PDF export with package
+    names inside the hexagon. Project logos also support pentagonal and
+    square frames.
 License: MIT + file LICENSE
 Copyright: see file inst/COPYRIGHTS
 URL: https://cttir.github.io/hexmakR/,
