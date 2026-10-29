@@ -167,8 +167,7 @@ hex_render_catalog <- function(directory, packages = hex_catalog()$name,
 }
 
 .export_cttir_icon <- function(package, path, size) {
-  engine <- .cttir_engine()
-  s <- engine$cttir_style(.identity_row(package)$family, "dark")
+  s <- cttir_style(.identity_row(package)$family, "dark")
   grDevices::png(path, width = size, height = size, res = size / 6,
     bg = "transparent", type = "cairo", antialias = "gray")
   on.exit(grDevices::dev.off(), add = TRUE)
@@ -177,6 +176,6 @@ hex_render_catalog <- function(directory, packages = hex_catalog()$name,
   grid::grid.polygon(.5+c(0,.48,.48,0,-.48,-.48), .5+c(.48,.24,-.24,-.48,-.24,.24),
     gp = grid::gpar(fill = s$face, col = s$rim, lwd = 5.5, linejoin = "round"))
   grid::pushViewport(grid::viewport(width = .88, height = .88 * .hex_ratio()))
-  engine$cttir_motif(package, s, small = TRUE)
+  cttir_motif(package, s, small = TRUE)
   grid::popViewport(2)
 }

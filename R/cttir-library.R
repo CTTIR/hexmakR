@@ -1,23 +1,10 @@
-# Installed v5 source is isolated from the user's global environment.
+# Session cache for values read from the installed v5 library.
 .cttir_cache <- new.env(parent = emptyenv())
 
 .cttir_path <- function(...) {
   path <- system.file("cttir", ..., package = "hexmakR")
   if (!nzchar(path)) stop("The installed CTTIR library is missing.", call. = FALSE)
   path
-}
-
-.cttir_engine <- function() {
-  if (!is.null(.cttir_cache$engine)) return(.cttir_cache$engine)
-  env <- new.env(parent = baseenv())
-  root <- .cttir_path("source")
-  sys.source(file.path(root, "R", "tokens.R"), env)
-  env$cttir_tokens <- env$cttir_load_tokens(file.path(root, "design_tokens.csv"))
-  for (file in c("accessibility.R", "palette.R", "primitives.R", "motifs.R")) {
-    sys.source(file.path(root, "R", file), env)
-  }
-  .cttir_cache$engine <- env
-  env
 }
 
 #' Browse the CTTIR v5 identities

@@ -40,6 +40,22 @@ test_that("all identities and modes produce distinct native vector layers", {
   expect_identical(ls(globalenv(), all.names = TRUE), before)
 })
 
+test_that("the packaged renderer reproduces the geometry of the shipped masters", {
+  skip_on_cran() # SVG number formatting depends on the cairo version
+  skip_if_not(capabilities("cairo"))
+  paths <- function(file) {
+    txt <- paste(readLines(file, warn = FALSE), collapse = "\n")
+    unique(regmatches(txt, gregexpr(' d="[^"]+"', txt))[[1]])
+  }
+  for (name in c("phenoscapR", "hyperloom", "CTTIR")) for (mode in c("dark", "light", "mono")) {
+    f <- tempfile(fileext = ".svg"); on.exit(unlink(f), add = TRUE)
+    hex_export(hex_design(name, mode, "hex"), f)
+    master <- paths(hex_asset(name, mode, "hex", "svg"))
+    expect_gt(length(master), 5)
+    expect_true(all(master %in% paths(f)), info = paste(name, mode))
+  }
+})
+
 test_that("layer edits change only intended geometry and roundtrip through JSON", {
   original <- hex_design("phenoscapR")
   d <- hex_edit_layer(original, "layer_0005", fill = "#FF0000", dx = .05, scale = 1.1)

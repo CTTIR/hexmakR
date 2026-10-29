@@ -141,15 +141,14 @@
 # tile: the mid shade (default motif fill) on dark tiles and the darker edge
 # shade (strokes on a pale badge) on light tiles. The border is the rim.
 .cttir_themes <- function() {
-  engine <- .cttir_engine()
   roles <- function(family, mode) {
-    s <- engine$cttir_style(family, mode)
+    s <- cttir_style(family, mode)
     list(bg = s$face, accent = if (mode == "light") s$edge else s$mid,
          text = s$ink, border = s$rim, sub = s$muted)
   }
-  families <- names(engine$cttir_accents)
+  families <- names(cttir_accents())
   themes <- lapply(families, function(family) list(
-    label = engine$cttir_family_labels[[family]],
+    label = cttir_family_labels[[family]],
     group = "CTTIR v5",
     dark  = roles(family, "dark"),
     light = roles(family, "light")

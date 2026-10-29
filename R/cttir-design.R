@@ -58,7 +58,7 @@ hex_design <- function(package = "hexmakR", mode = c("dark", "light", "mono"),
   .scalar_text(x$icon, "icon", empty = TRUE)
   if (nzchar(x$icon)) .lookup_icon(x$icon)
   .scalar_text(x$label, "label", empty = TRUE)
-  .named_fields(x$colors, setdiff(names(.cttir_engine()$cttir_style("spatial")), "mode"), "colour")
+  .named_fields(x$colors, setdiff(names(cttir_style("spatial")), "mode"), "colour")
   lapply(x$colors, .color_value)
   for (key in c("motif_x", "motif_y", "label_y")) .scalar_number(x[[key]], key, 0, 1)
   .scalar_number(x$motif_scale, "motif_scale", .1, 2)
@@ -106,7 +106,7 @@ hex_design <- function(package = "hexmakR", mode = c("dark", "light", "mono"),
 #' @export
 hex_palette <- function(design) {
   .validate_design(design)
-  s <- .cttir_engine()$cttir_style(.identity_row(design$package)$family, design$mode)
+  s <- cttir_style(.identity_row(design$package)$family, design$mode)
   s[names(design$colors)] <- design$colors
   s[setdiff(names(s), "mode")]
 }
@@ -138,8 +138,7 @@ print.hex_design <- function(x, ...) {
 }
 
 .draw_cttir <- function(design) {
-  engine <- .cttir_engine()
-  s <- engine$cttir_style(.identity_row(design$package)$family, design$mode)
+  s <- cttir_style(.identity_row(design$package)$family, design$mode)
   s[names(design$colors)] <- design$colors
   if (design$layout != "motif") {
     xy <- .logo_frame(design$shape)
@@ -153,7 +152,7 @@ print.hex_design <- function(x, ...) {
   grid::pushViewport(grid::viewport(x = design$motif_x, y = design$motif_y,
     width = size, height = size * .design_ratio(design), name = "motif-space"))
   if (nzchar(design$icon)) .lookup_icon(design$icon)(.5, .5, .85, s$mid)
-  else if (is.null(design$archive) || isTRUE(design$archive)) engine$cttir_motif(design$package, s, small = FALSE)
+  else if (is.null(design$archive) || isTRUE(design$archive)) cttir_motif(design$package, s, small = FALSE)
   grid::popViewport()
   if (design$layout == "lockup") .cttir_name_path(design$label, design$label_y, design$label_size, s$ink, .design_ratio(design))
 }

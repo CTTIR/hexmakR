@@ -5,8 +5,8 @@ import from the supplied v5 starter and seven PNG archives. Archive hashes
 are recorded in `archive-inventory.json`; file hashes in `SHA256.json`.
 
 `source/` preserves the supplied native R renderer, 45 drawing entry points,
-fonts and their OFL licences. The package loads geometry in a private R
-environment; its editable renderer uses bundled glyph outlines and does not
+fonts and their OFL licences. The package carries the motif renderer in its
+own R code; its editable renderer uses bundled glyph outlines and does not
 require fonts to be installed. Run the packaged `hex_render_catalog()` API
 to rebuild exports with the package's renderer.
 

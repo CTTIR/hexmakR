@@ -76,12 +76,11 @@ test_that("hexmakr_preview_theme() errors on an unknown theme", {
 
 test_that("the nine CTTIR v5 families come first with the v5 labels", {
   themes <- hexmakr_themes()
-  engine <- hexmakR:::.cttir_engine()
   expect_identical(names(themes)[1:9], v5_families)
-  expect_identical(names(themes)[1:9], names(engine$cttir_accents))
+  expect_identical(names(themes)[1:9], names(hexmakR:::cttir_accents()))
   for (family in v5_families) {
     expect_identical(themes[[family]]$label,
-                     engine$cttir_family_labels[[family]], info = family)
+                     hexmakR:::cttir_family_labels[[family]], info = family)
     expect_identical(themes[[family]]$group, "CTTIR v5", info = family)
   }
   expect_identical(themes$spatial$label, "Spatial biology")
@@ -91,10 +90,9 @@ test_that("the nine CTTIR v5 families come first with the v5 labels", {
 
 test_that("v5 theme colours equal the engine's style in both modes", {
   themes <- hexmakr_themes()
-  engine <- hexmakR:::.cttir_engine()
   for (family in v5_families) {
     for (mode in c("dark", "light")) {
-      s <- engine$cttir_style(family, mode)
+      s <- hexmakR:::cttir_style(family, mode)
       expect_identical(
         themes[[family]][[mode]],
         list(bg = s$face, accent = if (mode == "light") s$edge else s$mid,
