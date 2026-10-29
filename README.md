@@ -261,7 +261,8 @@ as a staple of R package identity.
 
 If you use this software, please cite it as:
 
-> Heller, R. (2026). *hexmakR: Interactive hex sticker generator for R packages* (Version 0.3.0.9000) [Computer software]. https://github.com/CTTIR/hexmakR
+> Heller, R. (2026). *hexmakR: Editable Hex Stickers and Project Logos*
+> [Computer software]. https://github.com/CTTIR/hexmakR
 
 `citation("hexmakR")` gives the entry for the installed version. A DOI will
 be added once the archived release is published.
