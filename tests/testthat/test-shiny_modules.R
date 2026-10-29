@@ -72,6 +72,13 @@ test_that("the colour fields are bound Shiny inputs", {
 test_that("mod_colors_server() passes only colours that differ from the theme", {
   theme <- shiny::reactiveVal(list(theme = "stats", mode = "dark"))
   shiny::testServer(hexmakR:::mod_colors_server, args = list(theme = theme), {
+    # What a sticker drawn from the module receives at each update.
+    seen <- list()
+    shiny::observe(seen[[length(seen) + 1L]] <<- session$getReturned()())
+    # The browser starts with the stats colours in the fields.
+    stats <- hexmakr_themes()$stats$dark
+    session$setInputs(bg = stats$bg, accent = stats$accent, text_color = stats$text,
+                      border_color = stats$border, sub_color = stats$sub)
     session$setInputs(bg = "#1b2838", accent = "#111111",
                       text_color = "#FFFFFF", border_color = "#00D4AA",
                       sub_color = "#444444")
@@ -83,12 +90,20 @@ test_that("mod_colors_server() passes only colours that differ from the theme", 
     expect_identical(out$sub_color, "#444444")
     session$setInputs(accent = "#12")
     expect_null(session$getReturned()()$accent)
-    # Once the fields show the genomics colours, nothing is overridden.
+    # Until the browser shows the genomics colours, the fields still hold the
+    # stats colours. They are frozen meanwhile, so the sticker is not drawn
+    # with those as overrides; it is drawn once the new colours arrive, and
+    # then nothing is overridden.
+    before <- length(seen)
     theme(list(theme = "genomics", mode = "dark"))
+    session$flushReact()
+    expect_length(seen, before)
     genomics <- hexmakr_themes()$genomics$dark
     session$setInputs(bg = genomics$bg, accent = genomics$accent,
                       text_color = genomics$text, border_color = genomics$border,
                       sub_color = genomics$sub)
+    expect_length(seen, before + 1L)
+    expect_true(all(vapply(seen[[before + 1L]], is.null, logical(1))))
     expect_true(all(vapply(session$getReturned()(), is.null, logical(1))))
   })
 })
@@ -99,8 +114,12 @@ test_that("a theme change shows that theme's colours in the fields", {
     updates[[inputId]] <<- value
   })
   theme <- shiny::reactiveVal(list(theme = "stats", mode = "dark"))
+  stats <- hexmakr_themes()$stats$dark
   shiny::testServer(hexmakR:::mod_colors_server, args = list(theme = theme), {
-    session$flushReact()
+    # Fields that already show the theme's colours are left alone.
+    session$setInputs(bg = stats$bg, accent = stats$accent, text_color = stats$text,
+                      border_color = stats$border, sub_color = stats$sub)
+    expect_length(updates, 0)
     theme(list(theme = "genomics", mode = "light"))
     session$flushReact()
   })

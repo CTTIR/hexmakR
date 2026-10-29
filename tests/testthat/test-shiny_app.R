@@ -57,3 +57,39 @@ test_that("the classic editor also uses a text-only package heading", {
   expect_match(page$content, '>hexmakR</h1>', fixed = TRUE)
   expect_false(grepl('<img[^>]+alt="hexmakR logo"', page$content))
 })
+
+test_that("a theme switch redraws the classic sticker once, without the old colours", {
+  skip_without_cairo()
+  real <- hex_sticker
+  drawn <- list()
+  local_mocked_bindings(hex_sticker = function(...) {
+    args <- list(...)
+    colours <- args[c("bg", "accent", "text_color", "border_color", "sub_color")]
+    drawn[[length(drawn) + 1L]] <<- list(theme = args$theme,
+                                         overrides = Filter(Negate(is.null), colours))
+    real(...)
+  })
+  stats <- hexmakr_themes()$stats$dark
+  genomics <- hexmakr_themes()$genomics$dark
+  shiny::testServer(hexmakR:::.build_classic_app(), {
+    session$setInputs(`text-name` = "demo", `text-subtitle` = "", `text-url` = "",
+      `text-font_family` = "mono", `text-font_bold` = TRUE, `text-font_italic` = FALSE,
+      `text-font_size` = 12, `icon-icon` = "atom", `icon-icon_size` = 1,
+      `theme-theme` = "stats", `theme-mode` = "dark",
+      `colors-bg` = stats$bg, `colors-accent` = stats$accent,
+      `colors-text_color` = stats$text, `colors-border_color` = stats$border,
+      `colors-sub_color` = stats$sub, `border-border_width` = 2,
+      `border-inner_border` = TRUE)
+    expect_length(drawn, 1)
+    # Nothing is drawn until the browser shows the genomics colours ...
+    session$setInputs(`theme-theme` = "genomics")
+    expect_length(drawn, 1)
+    # ... and sends back the fields that changed (the text stays white).
+    session$setInputs(`colors-bg` = genomics$bg, `colors-accent` = genomics$accent,
+                      `colors-border_color` = genomics$border,
+                      `colors-sub_color` = genomics$sub)
+  })
+  expect_length(drawn, 2)
+  expect_identical(drawn[[2]]$theme, "genomics")
+  expect_length(drawn[[2]]$overrides, 0)
+})

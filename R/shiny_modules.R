@@ -244,11 +244,17 @@ mod_colors_server <- function(id, theme = NULL) {
       hexmakr_themes()[[th$theme]][[th$mode]]
     })
     # Show the selected theme's colours, so a field only overrides once edited.
+    # A changed field keeps the old colour until the browser sends the new one
+    # back; freeze it meanwhile, so the sticker is not drawn with the previous
+    # theme's colours as overrides.
     shiny::observeEvent(defaults(), {
       for (field in names(.colour_roles)) {
-        .update_colour_input(session, field, defaults()[[.colour_roles[[field]]]])
+        value <- defaults()[[.colour_roles[[field]]]]
+        if (identical(toupper(input[[field]] %||% ""), toupper(value))) next
+        shiny::freezeReactiveValue(input, field)
+        .update_colour_input(session, field, value)
       }
-    })
+    }, priority = 1)
     shiny::reactive({
       d <- defaults()
       out <- lapply(names(.colour_roles), function(field) {
