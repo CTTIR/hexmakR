@@ -45,8 +45,9 @@ save_hex <- function(sticker, filename, width = 600, dpi = 300) {
     bg        = "transparent",
     type      = if (capabilities("cairo")) "cairo" else getOption("bitmapType")
   )
+  device <- grDevices::dev.cur()
+  on.exit(grDevices::dev.off(device), add = TRUE)
   print(sticker)
-  grDevices::dev.off()
   invisible(filename)
 }
 
@@ -90,7 +91,8 @@ save_hex_svg <- function(sticker, filename, width = 2) {
   }
   svglite::svglite(filename = filename, width = width, height = height,
                    bg = "transparent")
+  device <- grDevices::dev.cur()
+  on.exit(grDevices::dev.off(device), add = TRUE)
   print(sticker)
-  grDevices::dev.off()
   invisible(filename)
 }

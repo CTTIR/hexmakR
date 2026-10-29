@@ -50,3 +50,14 @@ test_that("SVG export works when svglite is available", {
   expect_true(file.exists(tmp))
   expect_gt(file.size(tmp), 0L)
 })
+
+test_that("save_hex() and save_hex_svg() close their device when drawing fails", {
+  bad <- ggplot2::ggplot(data.frame(x = 1), ggplot2::aes(x, missing_column)) +
+    ggplot2::geom_point()
+  devices <- grDevices::dev.list()
+  expect_error(save_hex(bad, tempfile(fileext = ".png")), "missing_column")
+  expect_identical(grDevices::dev.list(), devices)
+  skip_if_not_installed("svglite")
+  expect_error(save_hex_svg(bad, tempfile(fileext = ".svg")), "missing_column")
+  expect_identical(grDevices::dev.list(), devices)
+})
