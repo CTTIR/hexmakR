@@ -30,21 +30,37 @@ test_that("all 45 identities have their 270 unchanged SVG masters", {
 
 read_bytes <- function(f) readBin(f, "raw", file.size(f))
 
-test_that("SVG masters are copied byte for byte into the on-demand folder", {
+test_that("SVG and PDF masters are copied byte for byte into the on-demand folder", {
   dir <- withr::local_tempdir()
   archive <- withr::local_tempdir()
   utils::untar(system.file("cttir", "logos.tar.xz", package = "hexmakR"),
                exdir = archive, tar = "internal")
   masters <- hexmakR:::.cttir_masters()
   registry <- hex_catalog()
+  served <- character()
   for (i in seq_len(nrow(registry))) for (mode in c("dark", "light", "mono"))
-    for (layout in c("lockup", "hex")) {
-      file <- file.path(registry$asset_dir[i], paste0(master_stem(mode, layout), ".svg"))
-      f <- hex_asset(registry$name[i], mode, layout, "svg", dir = dir)
+    for (layout in c("lockup", "hex")) for (format in c("svg", "pdf")) {
+      file <- file.path(registry$asset_dir[i], paste0(master_stem(mode, layout), ".", format))
+      f <- hex_asset(registry$name[i], mode, layout, format, dir = dir)
       expect_identical(f, normalizePath(file.path(dir, file), winslash = "/"))
       expect_identical(read_bytes(f), read_bytes(file.path(archive, file)), info = file)
+      served[file] <- f
     }
-  expect_length(list.files(dir, recursive = TRUE), 270)
+  expect_length(list.files(dir, recursive = TRUE), 540)
+  # The installed hash list holds the hashes recorded when the masters were
+  # imported; tools/logos-archive.R copies them from SHA256.json.
+  recorded <- utils::read.table(system.file("cttir", "logos.sha256", package = "hexmakR"),
+                                col.names = c("sha256", "file"), colClasses = "character")
+  expect_setequal(recorded$file, names(served))
+  if (exists("sha256sum", asNamespace("tools"))) {
+    sha <- tools::sha256sum(served[recorded$file])
+    expect_identical(unname(sha), recorded$sha256)
+  }
+  # Two calls give the master's bytes, whatever the directory.
+  pdf <- hex_asset("phenoscapR", "dark", "lockup", "pdf", dir = withr::local_tempdir())
+  again <- hex_asset("phenoscapR", "dark", "lockup", "pdf", dir = withr::local_tempdir())
+  expect_identical(read_bytes(again), read_bytes(pdf))
+  expect_identical(read_bytes(pdf), read_bytes(file.path(archive, "phenoscapR", "lockup-dark.pdf")))
   # The archive is unpacked once per session, not per call.
   expect_identical(hexmakR:::.cttir_masters(), masters)
   expect_identical(hex_asset("hexmakR"), normalizePath(
@@ -55,43 +71,43 @@ test_that("SVG masters are copied byte for byte into the on-demand folder", {
   expect_identical(read_bytes(f), read_bytes(file.path(archive, "hexmakR", "hex.svg")))
 })
 
-test_that("the SVG archive holds exactly the masters of the source tree", {
+test_that("the archive holds exactly the SVG and PDF masters of the source tree", {
   # The folder is only in the source repository; tools/logos-archive.R
-  # rebuilds the archive from it.
+  # rebuilds the archive and the hash list from it.
   folder <- test_path("..", "..", "inst", "cttir", "logos")
-  skip_if_not(dir.exists(folder), "SVG master folder not available")
+  skip_if_not(dir.exists(folder), "master folder not available")
   out <- withr::local_tempdir()
   utils::untar(test_path("..", "..", "inst", "cttir", "logos.tar.xz"), exdir = out, tar = "internal")
-  files <- sort(list.files(folder, pattern = "[.]svg$", recursive = TRUE), method = "radix")
-  expect_length(files, 270)
+  files <- sort(list.files(folder, pattern = "[.](svg|pdf)$", recursive = TRUE), method = "radix")
+  expect_length(files, 540)
+  expect_equal(sum(endsWith(files, ".pdf")), 270)
   expect_identical(sort(list.files(out, recursive = TRUE, all.files = TRUE), method = "radix"), files)
   for (f in files) expect_identical(read_bytes(file.path(out, f)), read_bytes(file.path(folder, f)), info = f)
+  recorded <- jsonlite::fromJSON(test_path("..", "..", "inst", "cttir", "SHA256.json"))
+  listed <- utils::read.table(test_path("..", "..", "inst", "cttir", "logos.sha256"),
+                              col.names = c("sha256", "file"), colClasses = "character")
+  expect_identical(listed$file, files)
+  expect_identical(listed$sha256, unlist(recorded[paste0("logos/", files)], use.names = FALSE))
   dir <- withr::local_tempdir()
   registry <- hex_catalog()
   for (i in seq_len(nrow(registry))) for (mode in c("dark", "light", "mono"))
-    for (layout in c("lockup", "hex")) {
-      file <- file.path(registry$asset_dir[i], paste0(master_stem(mode, layout), ".svg"))
-      expect_identical(read_bytes(hex_asset(registry$name[i], mode, layout, "svg", dir = dir)),
+    for (layout in c("lockup", "hex")) for (format in c("svg", "pdf")) {
+      file <- file.path(registry$asset_dir[i], paste0(master_stem(mode, layout), ".", format))
+      expect_identical(read_bytes(hex_asset(registry$name[i], mode, layout, format, dir = dir)),
                        read_bytes(file.path(folder, file)), info = file)
     }
 })
 
-test_that("PNG and PDF masters are rendered on demand under the master file names", {
+test_that("PNG masters are rendered on demand under the master file names", {
   skip_if_not_installed("rsvg")
   dir <- withr::local_tempdir()
-  for (name in c("phenoscapR", "CTTIR")) for (mode in c("dark", "light", "mono"))
-    for (layout in c("lockup", "hex")) {
-      asset_dir <- hex_catalog()$asset_dir[hex_catalog()$name == name]
-      stem <- master_stem(mode, layout)
-      pdf <- hex_asset(name, mode, layout, "pdf", dir = dir)
-      expect_identical(pdf, normalizePath(file.path(dir, asset_dir, paste0(stem, ".pdf")), winslash = "/"))
-      expect_identical(readBin(pdf, "raw", 5), charToRaw("%PDF-"))
-      if (name != "phenoscapR") next
-      png <- hex_asset(name, mode, layout, "png", dir = dir)
-      expect_identical(png, normalizePath(file.path(dir, asset_dir, paste0(stem, ".png")), winslash = "/"))
-      expect_equal(dim(png::readPNG(png)), c(1848, 1600, 4))
-    }
-  expect_length(list.files(dir, recursive = TRUE), 18)
+  for (mode in c("dark", "light", "mono")) for (layout in c("lockup", "hex")) {
+    stem <- master_stem(mode, layout)
+    png <- hex_asset("phenoscapR", mode, layout, "png", dir = dir)
+    expect_identical(png, normalizePath(file.path(dir, "phenoscapR", paste0(stem, ".png")), winslash = "/"))
+    expect_equal(dim(png::readPNG(png)), c(1848, 1600, 4))
+  }
+  expect_length(list.files(dir, recursive = TRUE), 6)
   # Renders are reused, and a render older than the installed master is redone.
   png <- hex_asset("phenoscapR", format = "png", dir = dir)
   first <- file.mtime(png)
@@ -101,7 +117,7 @@ test_that("PNG and PDF masters are rendered on demand under the master file name
   hex_asset("phenoscapR", format = "png", dir = dir)
   expect_gt(file.mtime(png), as.POSIXct("2000-01-02", tz = "UTC"))
   expect_equal(dim(png::readPNG(png)), c(1848, 1600, 4))
-  default <- hex_asset("hexmakR", "light", "hex", "pdf")
+  default <- hex_asset("hexmakR", "light", "hex", "png")
   expect_true(startsWith(default, normalizePath(tempdir(), winslash = "/")))
 })
 

@@ -18,7 +18,7 @@ hexagon, pentagon or square, then add shapes, uploaded artwork or a generic icon
 part. Names stay **inside the frame** and the exterior is transparent.
 
 The secondary **CTTIR Gallery** contains 45 identities with their original
-SVG masters; `hex_asset()` renders PNG, PDF and icon versions on demand.
+SVG and PDF masters; `hex_asset()` renders PNG and icon versions on demand.
 Browse for inspiration, import one selected part or an entire motif into your
 current logo, or explicitly start from a whole archived design. Browsing the
 archive does not replace your work.

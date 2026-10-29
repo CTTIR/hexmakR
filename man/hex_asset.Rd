@@ -24,21 +24,21 @@ hex_asset(
 
 \item{size}{Icon width, one of 32, 48, 64, 128, 256. Icons use dark mode.}
 
-\item{dir}{Directory for the SVG copies and the rendered PNG, PDF and icon
-files. The default is a folder in \code{\link[=tempdir]{tempdir()}}, so nothing is kept after
-the session. To keep files between sessions, pass a directory of your
-choice, for example \code{tools::R_user_dir("hexmakR", "cache")}.}
+\item{dir}{Directory for the SVG and PDF copies and the rendered PNG and
+icon files. The default is a folder in \code{\link[=tempdir]{tempdir()}}, so nothing is kept
+after the session. To keep files between sessions, pass a directory of
+your choice, for example \code{tools::R_user_dir("hexmakR", "cache")}.}
 }
 \value{
-An absolute file path in \code{dir}: the copy of the SVG master, or the
-rendered PNG, PDF or icon.
+An absolute file path in \code{dir}: the copy of the SVG or PDF master,
+or the rendered PNG or icon.
 }
 \description{
-The 270 SVG files are the unchanged supplied masters. They are installed
-in one compressed archive, which is unpacked once per session, and an SVG
-request returns a copy with the master's exact bytes. PNG and PDF versions
-are rendered from the SVG master on demand with the 'rsvg' package, at the
-size of the supplied masters (1600 x 1848 pixels and 432 x 498 points).
+The 270 SVG and 270 PDF files are the unchanged supplied masters. They are
+installed in one compressed archive, which is unpacked once per session, and
+an SVG or PDF request returns a copy with the master's exact bytes. PNG
+versions are rendered from the SVG master on demand with the 'rsvg' package,
+at the size of the supplied masters (1600 x 1848 pixels).
 Icons are drawn by the package renderer, which needs R with Cairo support.
 All files keep the master's file name and are written to
 \verb{dir/<asset_dir>/}, where \code{asset_dir} comes from \code{\link[=hex_catalog]{hex_catalog()}}; they are

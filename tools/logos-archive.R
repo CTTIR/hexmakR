@@ -1,17 +1,35 @@
-# Rebuild inst/cttir/logos.tar.xz from the SVG masters in inst/cttir/logos.
+# Rebuild inst/cttir/logos.tar.xz from the SVG and PDF masters in
+# inst/cttir/logos, and inst/cttir/logos.sha256 from the hashes recorded for
+# them in inst/cttir/SHA256.json.
 #
 # The folder is the source of truth and stays in the repository; the built
-# package ships only the archive, which hex_asset() unpacks once per session.
+# package ships only the archive, which hex_asset() unpacks once per session,
+# and the hash list, which the tests use to check the installed masters.
 # Members are sorted and carry a fixed mode, owner and time, so rebuilding
-# unchanged masters gives the same bytes. Run from the package root:
+# unchanged masters gives the same bytes. Every master must match the hash
+# recorded when the library was imported. Needs R 4.5.0 or later for
+# tools::sha256sum(). Run from the package root:
 #
 #   Rscript tools/logos-archive.R
 write_logos_archive <- function() {
   masters <- file.path("inst", "cttir", "logos")
   archive <- file.path("inst", "cttir", "logos.tar.xz")
+  hashes <- file.path("inst", "cttir", "logos.sha256")
   if (!dir.exists(masters)) stop("Run this script from the package root.", call. = FALSE)
-  files <- sort(list.files(masters, pattern = "[.]svg$", recursive = TRUE), method = "radix")
-  if (!length(files)) stop("No SVG masters found in ", masters, call. = FALSE)
+  files <- sort(list.files(masters, pattern = "[.](svg|pdf)$", recursive = TRUE), method = "radix")
+  if (!length(files)) stop("No SVG or PDF masters found in ", masters, call. = FALSE)
+
+  recorded <- jsonlite::fromJSON(file.path("inst", "cttir", "SHA256.json"))
+  key <- paste0("logos/", files)
+  if (!all(key %in% names(recorded))) {
+    stop("Not recorded in SHA256.json: ", paste(files[!key %in% names(recorded)], collapse = ", "),
+         call. = FALSE)
+  }
+  sha <- unname(tools::sha256sum(file.path(masters, files)))
+  changed <- sha != unlist(recorded[key], use.names = FALSE)
+  if (any(changed)) {
+    stop("Masters differ from SHA256.json: ", paste(files[changed], collapse = ", "), call. = FALSE)
+  }
   # 25 October 2026, when the v5 library was supplied.
   mtime <- as.integer(as.POSIXct("2026-10-25", tz = "UTC"))
 
@@ -39,13 +57,19 @@ write_logos_archive <- function() {
   tar <- c(unlist(members, use.names = FALSE), raw(1024L))
   tar <- c(tar, pad(length(tar), 10240L))
 
-  temp <- tempfile("logos-", tmpdir = dirname(archive), fileext = ".tar.xz")
-  on.exit(unlink(temp), add = TRUE)
-  writeBin(memCompress(tar, "xz"), temp)
-  if (file.exists(archive)) unlink(archive)
-  if (!file.rename(temp, archive)) stop("Could not write ", archive, call. = FALSE)
-  message("Wrote ", archive, ": ", length(files), " SVG masters, ",
-          format(file.size(archive), big.mark = ","), " bytes.")
+  write_atomic <- function(bytes, path) {
+    temp <- tempfile("logos-", tmpdir = dirname(path))
+    on.exit(unlink(temp))
+    writeBin(bytes, temp)
+    if (file.exists(path)) unlink(path)
+    if (!file.rename(temp, path)) stop("Could not write ", path, call. = FALSE)
+  }
+  write_atomic(memCompress(tar, "xz"), archive)
+  # The format of sha256sum, with LF line endings on every platform.
+  write_atomic(charToRaw(paste0(sha, "  ", files, "\n", collapse = "")), hashes)
+  message("Wrote ", archive, ": ", sum(endsWith(files, ".svg")), " SVG and ",
+          sum(endsWith(files, ".pdf")), " PDF masters, ",
+          format(file.size(archive), big.mark = ","), " bytes; and ", hashes, ".")
 }
 
 write_logos_archive()

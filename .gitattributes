@@ -1,2 +1,2 @@
-# The SVG masters must keep their exact bytes on every platform.
+# The SVG and PDF masters must keep their exact bytes on every platform.
 inst/cttir/logos/** -text

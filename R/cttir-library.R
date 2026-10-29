@@ -7,9 +7,10 @@
   path
 }
 
-# The SVG masters are installed as one compressed archive. It is unpacked once
-# per session into a folder in tempdir(), the source for hex_asset() and the
-# gallery; `refresh = TRUE` unpacks it again if files went missing.
+# The SVG and PDF masters are installed as one compressed archive. It is
+# unpacked once per session into a folder in tempdir(), the source for
+# hex_asset() and the gallery; `refresh = TRUE` unpacks it again if files went
+# missing.
 .cttir_masters <- function(refresh = FALSE) {
   root <- .cttir_cache$masters
   if (refresh || is.null(root) || !dir.exists(root)) {
@@ -55,11 +56,11 @@ hex_catalog <- function(family = NULL) {
 
 #' Locate an original approved v5 asset
 #'
-#' The 270 SVG files are the unchanged supplied masters. They are installed
-#' in one compressed archive, which is unpacked once per session, and an SVG
-#' request returns a copy with the master's exact bytes. PNG and PDF versions
-#' are rendered from the SVG master on demand with the 'rsvg' package, at the
-#' size of the supplied masters (1600 x 1848 pixels and 432 x 498 points).
+#' The 270 SVG and 270 PDF files are the unchanged supplied masters. They are
+#' installed in one compressed archive, which is unpacked once per session, and
+#' an SVG or PDF request returns a copy with the master's exact bytes. PNG
+#' versions are rendered from the SVG master on demand with the 'rsvg' package,
+#' at the size of the supplied masters (1600 x 1848 pixels).
 #' Icons are drawn by the package renderer, which needs R with Cairo support.
 #' All files keep the master's file name and are written to
 #' `dir/<asset_dir>/`, where `asset_dir` comes from [hex_catalog()]; they are
@@ -70,12 +71,12 @@ hex_catalog <- function(family = NULL) {
 #' @param layout `lockup` (name inside), `hex` (artwork only), or `icon`.
 #' @param format File format: `svg`, `png`, or `pdf`.
 #' @param size Icon width, one of 32, 48, 64, 128, 256. Icons use dark mode.
-#' @param dir Directory for the SVG copies and the rendered PNG, PDF and icon
-#'   files. The default is a folder in [tempdir()], so nothing is kept after
-#'   the session. To keep files between sessions, pass a directory of your
-#'   choice, for example `tools::R_user_dir("hexmakR", "cache")`.
-#' @return An absolute file path in `dir`: the copy of the SVG master, or the
-#'   rendered PNG, PDF or icon.
+#' @param dir Directory for the SVG and PDF copies and the rendered PNG and
+#'   icon files. The default is a folder in [tempdir()], so nothing is kept
+#'   after the session. To keep files between sessions, pass a directory of
+#'   your choice, for example `tools::R_user_dir("hexmakR", "cache")`.
+#' @return An absolute file path in `dir`: the copy of the SVG or PDF master,
+#'   or the rendered PNG or icon.
 #' @export
 #' @examples
 #' hex_asset("phenoscapR")
@@ -108,7 +109,9 @@ hex_asset <- function(package, mode = c("dark", "light", "mono"),
                           system.file("DESCRIPTION", package = "hexmakR")))
   if (!file.exists(target) || file.mtime(target) < max(sources, na.rm = TRUE)) {
     # Icons are drawn by the package renderer, not from a master.
-    master <- if (layout != "icon") .cttir_master(row$asset_dir, paste0(stem, ".svg"))
+    master <- if (layout != "icon") {
+      .cttir_master(row$asset_dir, paste0(stem, if (format == "pdf") ".pdf" else ".svg"))
+    }
     .render_asset(master, target, package, layout, format, size)
   }
   normalizePath(target, winslash = "/")
@@ -118,22 +121,20 @@ hex_asset <- function(package, mode = c("dark", "light", "mono"),
 .render_asset <- function(master, target, package, layout, format, size) {
   if (layout == "icon") {
     if (!capabilities("cairo")) stop("R with Cairo support is required to draw icons.", call. = FALSE)
-  } else if (format != "svg" && !requireNamespace("rsvg", quietly = TRUE)) {
-    stop("Package 'rsvg' is required to render PNG and PDF masters.", call. = FALSE)
+  } else if (format == "png" && !requireNamespace("rsvg", quietly = TRUE)) {
+    stop("Package 'rsvg' is required to render PNG masters.", call. = FALSE)
   }
   dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
   temp <- tempfile("asset-", tmpdir = dirname(target), fileext = paste0(".", format))
   on.exit(unlink(temp), add = TRUE)
   if (layout == "icon") .export_cttir_icon(package, temp, as.integer(size))
-  else if (format == "svg") {
-    if (!file.copy(master, temp)) stop("Could not write ", target, call. = FALSE)
-  } else if (format == "png") {
+  else if (format == "png") {
     # The supplied PNG masters fill 1600 x 1848 pixels with the 432 x 498 point
     # drawing, a slightly different aspect ratio, so scale the axes separately.
     svg <- readChar(master, file.size(master), useBytes = TRUE)
     svg <- sub("<svg ", "<svg preserveAspectRatio=\"none\" ", svg, fixed = TRUE)
     rsvg::rsvg_png(charToRaw(svg), temp, width = 1600L, height = 1848L)
-  } else rsvg::rsvg_pdf(master, temp)
+  } else if (!file.copy(master, temp)) stop("Could not write ", target, call. = FALSE)
   if (file.exists(target)) unlink(target)
   if (!file.rename(temp, target)) stop("Could not write ", target, call. = FALSE)
   invisible(target)
