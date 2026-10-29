@@ -1,7 +1,7 @@
 # List Available Themes
 
-Returns a named list of all 28 built-in color themes for hex stickers.
-Each theme has `dark` and `light` sub-lists with color values for `bg`,
+Returns a named list of all 28 built-in colour themes for hex stickers.
+Each theme has `dark` and `light` sub-lists with colour values for `bg`,
 `accent`, `text`, `border`, and `sub` (subtitle).
 
 The first nine are the CTTIR v5 families (`spectral`, `spatial`,
@@ -38,11 +38,11 @@ A named list of length 28. Each element contains:
 
 - dark:
 
-  List of 5 color hex strings for dark mode.
+  List of 5 colour hex strings for dark mode.
 
 - light:
 
-  List of 5 color hex strings for light mode.
+  List of 5 colour hex strings for light mode.
 
 ## Details
 

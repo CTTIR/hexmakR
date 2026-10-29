@@ -53,7 +53,11 @@ A data frame of generated file paths and identities, invisibly.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-hex_render_catalog("exports")
-} # }
+if (capabilities("cairo")) {
+  files <- hex_render_catalog(tempfile(), packages = "hexmakR",
+                              formats = "svg", icons = FALSE)
+  basename(files$path)
+}
+#> [1] "lockup.svg"      "hex.svg"         "lockup-dark.svg" "hex-dark.svg"   
+#> [5] "lockup-mono.svg" "hex-mono.svg"   
 ```

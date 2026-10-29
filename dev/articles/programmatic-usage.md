@@ -4,14 +4,8 @@
 
 [![R-CMD-check](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://cttir.github.io/hexmakR/)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/hexmakR)](https://CRAN.R-project.org/package=hexmakR)
 [![Codecov test
 coverage](https://codecov.io/gh/CTTIR/hexmakR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/CTTIR/hexmakR?branch=main)
-[![CRAN
-downloads](https://cranlogs.r-pkg.org/badges/hexmakR)](https://cran.r-project.org/package=hexmakR)
-[![CRAN downloads
-total](https://cranlogs.r-pkg.org/badges/grand-total/hexmakR)](https://cran.r-project.org/package=hexmakR)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Lifecycle:
@@ -93,6 +87,8 @@ hex_sticker(
 )
 ```
 
+![](programmatic-usage_files/figure-html/all-params-1.png)
+
 The function returns a **ggplot object**, so you can chain additional
 ggplot2 layers:
 
@@ -104,6 +100,8 @@ hex_sticker("mypackage") +
   annotate("text", x = 0.5, y = 0.05,
            label = "v0.1.0", color = "#64748B", size = 2.5)
 ```
+
+![](programmatic-usage_files/figure-html/ggplot-chain-1.png)
 
 ## Batch generation
 
@@ -173,6 +171,9 @@ s <- hex_sticker("mypackage", theme = "tidy")
 
 # PNG (transparent background)
 save_hex(s, "logo.png", width = 600, dpi = 300)
+```
+
+``` r
 
 # SVG (requires svglite)
 save_hex_svg(s, "logo.svg", width = 2)
@@ -194,12 +195,42 @@ hex_sticker("mypackage", icon = "microscope", theme = "spatial",
             font_family = "jetbrains_mono")
 ```
 
+![](programmatic-usage_files/figure-html/v5-theme-1.png)
+
 ``` r
 
 themes <- hexmakr_themes()
 for (nm in names(themes)) {
   cat(nm, "—", themes[[nm]]$label, "\n")
 }
+#> spectral — Spectral imaging 
+#> spatial — Spatial biology 
+#> omics — Molecular data 
+#> clinical — Clinical science 
+#> methods — Learning & inference 
+#> simulation — Systems & simulation 
+#> evidence — Evidence & discovery 
+#> platform — Research infrastructure 
+#> brand — Science, connected 
+#> stats — Statistics 
+#> viz — Visualization 
+#> bio — Bioinformatics 
+#> medical — Medical/Clinical 
+#> tech — Tech/Computing 
+#> earth — Earth/Nature 
+#> cran — CRAN 
+#> bioc — Bioconductor 
+#> tidy — Tidyverse 
+#> genomics — Genomics 
+#> proteo — Proteomics 
+#> pharma — Pharma 
+#> ocean — Ocean 
+#> midnight — Midnight 
+#> cyber — Cyber 
+#> neon — Neon 
+#> sunset — Sunset 
+#> viridis — Viridis 
+#> plasma — Plasma
 ```
 
 ## All available icons
@@ -211,4 +242,11 @@ for (cat_name in names(icons)) {
   icon_names <- names(icons[[cat_name]])
   cat(cat_name, "(", length(icon_names), "):", paste(icon_names, collapse = ", "), "\n")
 }
+#> science ( 5 ): atom, flask, microscope, molecule, magnet 
+#> biology ( 6 ): dna, cell, brain, leaf, bacteria, tree 
+#> stats ( 8 ): bar_chart, scatter, line_chart, bell_curve, pie, sigma, boxplot, network 
+#> medical ( 6 ): stethoscope, heart, pulse, pill, cross, syringe 
+#> tech ( 6 ): terminal, brackets, gear, database, hash, rlogo 
+#> shapes ( 7 ): star, shield, diamond, hexagon, infinity, arrow_up, circle 
+#> fun ( 8 ): rocket, lightning, fire, sparkle, crown, coffee, music, gamepad
 ```

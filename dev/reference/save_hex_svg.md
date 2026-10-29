@@ -44,11 +44,9 @@ Other stickers:
 ## Examples
 
 ``` r
-# \donttest{
 if (requireNamespace("svglite", quietly = TRUE)) {
   s <- hex_sticker("mypackage")
   tmp <- tempfile(fileext = ".svg")
   save_hex_svg(s, tmp)
 }
-# }
 ```

@@ -29,9 +29,13 @@ from an empty canvas.
 
 ## Browse the archive
 
-The v5 library contains 45 identities and 1,035 original SVG/PNG/PDF
-assets. The original masters are included unchanged. Light, dark and
-monochrome named masters keep the exact package name inside the hex.
+The v5 library contains 45 identities. Their 270 original SVG and 270
+PDF masters are included unchanged in a compressed archive;
+[`hex_asset()`](https://cttir.github.io/hexmakR/dev/reference/hex_asset.md)
+returns copies of them and renders the PNG versions from the SVG
+masters, and the five icon sizes with the package renderer, on demand.
+Light, dark and monochrome named masters keep the exact package name
+inside the hex.
 
 ``` r
 
@@ -267,9 +271,9 @@ This regenerates designs from native R geometry. Use
 when the unchanged approved master is required.
 
 The twelve names present only in the older hexstickers repository remain
-legacy SVG references under `cttir/legacy`. They are not claimed as
-approved v5 motifs. `hexmakeR` maps to `hexmakR`; `delphyR` maps to
-`delphyr`.
+legacy SVG references under `inst/cttir/legacy` in the source
+repository. They are not claimed as approved v5 motifs. `hexmakeR` maps
+to `hexmakR`; `delphyR` maps to `delphyr`.
 
 `CTTIR` and `cttiR` differ only in case. The organisation’s asset
 directory is `CTTIR-brand`; the R package retains `cttiR`.

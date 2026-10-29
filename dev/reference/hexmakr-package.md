@@ -3,7 +3,7 @@
 Create publication-ready hexagon stickers for R packages interactively
 via a Shiny app or programmatically via R functions.
 
-Comes with **28 curated color themes** (dark + light variants), led by
+Comes with **28 curated colour themes** (dark + light variants), led by
 the nine CTTIR v5 families, **46 built-in scientific and technical
 icons** across 7 categories, custom image upload support, 14 font
 options including the bundled JetBrains Mono, and transparent PNG
@@ -72,16 +72,21 @@ Useful links:
 
 - <https://cttir.github.io/hexmakR/>
 
-- <https://github.com/cttir/hexmakR>
+- <https://github.com/CTTIR/hexmakR>
 
-- Report bugs at <https://github.com/cttir/hexmakR/issues>
+- Report bugs at <https://github.com/CTTIR/hexmakR/issues>
 
 ## Author
 
 **Maintainer**: R. Heller <raban.heller@uni-ulm.de>
-([ORCID](https://orcid.org/0000-0001-8006-9742))
+([ORCID](https://orcid.org/0000-0001-8006-9742)) \[copyright holder\]
 
 Authors:
 
 - R. Heller <raban.heller@uni-ulm.de>
-  ([ORCID](https://orcid.org/0000-0001-8006-9742))
+  ([ORCID](https://orcid.org/0000-0001-8006-9742)) \[copyright holder\]
+
+Other contributors:
+
+- The JetBrains Mono Project Authors (JetBrains Mono font) \[copyright
+  holder\]

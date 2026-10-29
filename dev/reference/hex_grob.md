@@ -19,3 +19,11 @@ hex_grob(design)
 ## Value
 
 A grid gTree with stable, editable child layer names.
+
+## Examples
+
+``` r
+g <- hex_grob(logo_design("My project"))
+names(g$children)
+#> [1] "layer_0001" "layer_0002"
+```

@@ -49,11 +49,9 @@ Other stickers:
 ## Examples
 
 ``` r
-# \donttest{
 s <- hex_sticker("mypackage", icon = "atom", theme = "stats")
 tmp <- tempfile(fileext = ".png")
 save_hex(s, tmp)
 file.exists(tmp)
 #> [1] TRUE
-# }
 ```

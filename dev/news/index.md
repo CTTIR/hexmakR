@@ -2,6 +2,54 @@
 
 ## hexmakR (development version)
 
+- The package now ships the 270 SVG and 270 PDF masters of the CTTIR v5
+  library in one compressed archive, which keeps it small.
+  [`hex_asset()`](https://cttir.github.io/hexmakR/dev/reference/hex_asset.md)
+  unpacks the archive once per session and returns an SVG or PDF master
+  as a copy with identical bytes, rather than a path inside the
+  installed package. It renders PNG masters from the SVG master on
+  demand (this needs the ‘rsvg’ package) and draws icons with the
+  package renderer, under the same file names as before. All files go to
+  a folder in [`tempdir()`](https://rdrr.io/r/base/tempfile.html) unless
+  the new `dir` argument names another one. A stamp file in that folder
+  names the hexmakR version and build that wrote the files, so a folder
+  kept between sessions is refreshed after an upgrade or a reinstall.
+
+- PNG files from
+  [`hex_asset()`](https://cttir.github.io/hexmakR/dev/reference/hex_asset.md)
+  are now rendered from the SVG masters with ‘rsvg’, and icons are drawn
+  by the package renderer. Both differ slightly from the PNG masters
+  shipped before (antialiasing at glyph and shape edges), so branding
+  outputs made from them change once on their next render. SVG and PDF
+  files are the shipped masters, byte for byte.
+
+- The colour fields of the classic designer now work. They were plain
+  HTML colour pickers that Shiny never read, so the override panel did
+  nothing. They are now ‘colourpicker’ inputs (a text field when
+  ‘colourpicker’ is not installed), show the selected theme’s colours,
+  and override the theme only where you change a colour. A theme switch
+  redraws the sticker once, with the new theme’s colours.
+
+- [`save_hex()`](https://cttir.github.io/hexmakR/dev/reference/save_hex.md)
+  and
+  [`save_hex_svg()`](https://cttir.github.io/hexmakR/dev/reference/save_hex_svg.md)
+  close their graphics device when a sticker fails to draw, instead of
+  leaving it open.
+
+- [`hex_sticker()`](https://cttir.github.io/hexmakR/dev/reference/hex_sticker.md)
+  stops with a clear message when `name`, `theme`, `mode` or
+  `font_family` is not a single string; so does
+  [`hexmakr_icons()`](https://cttir.github.io/hexmakR/dev/reference/hexmakr_icons.md)
+  for `category`.
+
+- The citation no longer carries a Zenodo DOI, which was never
+  registered; the DOI will be added once the record is published.
+  `citation("hexmakR")` reports the installed version.
+
+- The designer page takes its background, text, border, muted-text and
+  navigation-bar colours and its body font (Inter, with system fonts as
+  fallback) from the v5 design tokens.
+
 - [`save_hex()`](https://cttir.github.io/hexmakR/dev/reference/save_hex.md)
   writes PNG files with the cairo device where available, so stickers
   have the same pixel values on macOS as on Linux and Windows.
@@ -73,7 +121,7 @@
 ## hexmakR 0.1.0
 
 - Initial release
-- 19 curated color themes with dark and light variants
+- 19 curated colour themes with dark and light variants
 - 46 built-in icons across 7 categories (science, biology, data/stats,
   medical, tech/code, shapes, fun)
 - Custom image upload support (PNG, JPG, SVG)

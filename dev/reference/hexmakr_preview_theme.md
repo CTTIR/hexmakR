@@ -1,6 +1,6 @@
-# Preview a Color Theme
+# Preview a Colour Theme
 
-Renders a sample hex sticker to preview a theme's colors.
+Renders a sample hex sticker to preview a theme's colours.
 
 ## Usage
 
@@ -38,12 +38,10 @@ Other themes:
 ## Examples
 
 ``` r
-# \donttest{
 hexmakr_preview_theme("stats")
 
 hexmakr_preview_theme("genomics", mode = "light")
 
 hexmakr_preview_theme("spatial")
 
-# }
 ```

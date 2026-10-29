@@ -2,24 +2,24 @@
 
 ## Authors
 
-- **R. Heller**. Author, maintainer.
+- **R. Heller**. Author, maintainer, copyright holder.
   [](https://orcid.org/0000-0001-8006-9742)
+
+- **The JetBrains Mono Project Authors**. Copyright holder.  
+  JetBrains Mono font
 
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/cttir/hexmakR/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/CTTIR/hexmakR/blob/main/inst/CITATION)
 
-Heller R (2026). *hexmakR: Interactive Hex Sticker Generator for R
-Packages*.
-[doi:10.5281/zenodo.21889938](https://doi.org/10.5281/zenodo.21889938).
-R package version 0.3.0, <https://github.com/cttir/hexmakR>.
+Heller R (2026). *hexmakR: Editable Hex Stickers and Project Logos*. R
+package version 0.3.0.9000, <https://github.com/CTTIR/hexmakR>.
 
     @Manual{,
-      doi = {10.5281/zenodo.21889938},
-      title = {hexmakR: Interactive Hex Sticker Generator for R Packages},
+      title = {hexmakR: Editable Hex Stickers and Project Logos},
       author = {R. Heller},
       year = {2026},
-      note = {R package version 0.3.0},
-      url = {https://github.com/cttir/hexmakR},
+      note = {R package version 0.3.0.9000},
+      url = {https://github.com/CTTIR/hexmakR},
     }

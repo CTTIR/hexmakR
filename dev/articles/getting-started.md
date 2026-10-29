@@ -4,14 +4,8 @@
 
 [![R-CMD-check](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://cttir.github.io/hexmakR/)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/hexmakR)](https://CRAN.R-project.org/package=hexmakR)
 [![Codecov test
 coverage](https://codecov.io/gh/CTTIR/hexmakR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/CTTIR/hexmakR?branch=main)
-[![CRAN
-downloads](https://cranlogs.r-pkg.org/badges/hexmakR)](https://cran.r-project.org/package=hexmakR)
-[![CRAN downloads
-total](https://cranlogs.r-pkg.org/badges/grand-total/hexmakR)](https://cran.r-project.org/package=hexmakR)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Lifecycle:
@@ -47,8 +41,15 @@ design <- hex_add_part(design, "circle", x = .5, y = .6, r = .15)
 design <- hex_add_part(design, "line",
                        x = c(.3, .7), y = c(.6, .6), col = "white", lwd = 3)
 hex_layers(design)
+#>           id     type    fill     col points  role   name visible
+#> 1 layer_0001  polygon #191919 #000000      6 frame  Frame    TRUE
+#> 2 layer_0002 pathgrob #FFFFFF    <NA>   1265  name   Name    TRUE
+#> 3  part_0001   circle #009E73 #FFFFFF      1 added Circle    TRUE
+#> 4  part_0002    lines #009E73   white      2 added   Line    TRUE
 print(design)
 ```
+
+![](getting-started_files/figure-html/first-parts-1.png)
 
 Parts have stable IDs such as `part_0001`. The native frame and name
 have `layer_` IDs. Obtain the current IDs from
@@ -71,12 +72,35 @@ All 46 generic icons remain available:
 logo_design("Study", shape = "square", icon = "microscope")
 ```
 
+![](getting-started_files/figure-html/icon-logo-1.png)
+
 Archive reuse is optional. Add selected artwork to the design you are
 making:
 
 ``` r
 
 head(hex_catalog())
+#>          name        repo   family      symbol      kind
+#> 1    molpathR    molpathR clinical    molpathR R package
+#> 2      pressR      pressR clinical      pressR R package
+#> 3     scimagR     scimagR clinical     scimagR R package
+#> 4 zhncommandR zhncommandR clinical zhncommandR R package
+#> 5  brainwritR  brainwritR evidence  brainwritR R package
+#> 6     delphyr     delphyR evidence     delphyr R package
+#>                                                                    source
+#> 1                 https://github.com/CTTIR/molpathR/blob/main/DESCRIPTION
+#> 2                   https://github.com/CTTIR/pressR/blob/main/DESCRIPTION
+#> 3                  https://github.com/CTTIR/scimagR/blob/main/DESCRIPTION
+#> 4              https://github.com/CTTIR/zhncommandR/blob/main/DESCRIPTION
+#> 5               https://github.com/CTTIR/brainwritR/blob/main/DESCRIPTION
+#> 6 https://github.com/CTTIR/delphyR/blob/main/packages/delphyr/DESCRIPTION
+#>     asset_dir
+#> 1    molpathR
+#> 2      pressR
+#> 3     scimagR
+#> 4 zhncommandR
+#> 5  brainwritR
+#> 6     delphyr
 design <- hex_reuse_part(design, "phenoscapR")
 ```
 

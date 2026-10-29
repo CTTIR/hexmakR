@@ -62,7 +62,7 @@
 - [`hexmakr_themes()`](https://cttir.github.io/hexmakR/dev/reference/hexmakr_themes.md)
   : List Available Themes
 - [`hexmakr_preview_theme()`](https://cttir.github.io/hexmakR/dev/reference/hexmakr_preview_theme.md)
-  : Preview a Color Theme
+  : Preview a Colour Theme
 
 ## Interactive application
 

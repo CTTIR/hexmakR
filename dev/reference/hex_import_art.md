@@ -41,9 +41,9 @@ expanded with cycle checks. Simple convex clip paths are accepted only
 when they provably do not cut the component; intersecting clips must
 first be flattened to paths. Text must be outlined. Gradients, masks,
 filters, nested SVG viewports, CSS stylesheets and group opacity are
-rejected with an explanation rather than silently rasterised. Nonuniform
-transforms on strokes require outlined strokes. Scripts, event handlers,
-external resources and XML entities are always rejected.
+rejected with an explanation rather than silently rasterised.
+Non-uniform transforms on strokes require outlined strokes. Scripts,
+event handlers, external resources and XML entities are always rejected.
 
 Input files are limited to 10 MiB. Raster images are limited to 8192
 pixels per side and 16 million pixels total; dimensions are checked

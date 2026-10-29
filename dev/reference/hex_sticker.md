@@ -74,28 +74,28 @@ hex_sticker(
 
 - mode:
 
-  Character. Color mode, either `"dark"` (default) or `"light"`.
+  Character. Colour mode, either `"dark"` (default) or `"light"`.
 
 - bg:
 
-  Character or `NULL`. Override the background color (hex string, e.g.
+  Character or `NULL`. Override the background colour (hex string, e.g.
   `"#1B2838"`).
 
 - accent:
 
-  Character or `NULL`. Override the accent color.
+  Character or `NULL`. Override the accent colour.
 
 - text_color:
 
-  Character or `NULL`. Override the text color.
+  Character or `NULL`. Override the text colour.
 
 - border_color:
 
-  Character or `NULL`. Override the border color.
+  Character or `NULL`. Override the border colour.
 
 - sub_color:
 
-  Character or `NULL`. Override the subtitle/URL color.
+  Character or `NULL`. Override the subtitle/URL colour.
 
 - font_family:
 
@@ -163,7 +163,6 @@ Other stickers:
 ## Examples
 
 ``` r
-# \donttest{
 # Minimal sticker
 hex_sticker("mypackage")
 
@@ -182,5 +181,4 @@ tmp <- tempfile(fileext = ".png")
 hex_sticker("mypackage", icon = "atom", theme = "stats", filename = tmp)
 file.exists(tmp)
 #> [1] TRUE
-# }
 ```

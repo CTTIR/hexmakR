@@ -34,6 +34,8 @@ The destination path, invisibly.
 ## Examples
 
 ``` r
-f <- tempfile(fileext = ".svg")
-hex_export(hex_design("phenoscapR"), f)
+if (capabilities("cairo")) {
+  f <- tempfile(fileext = ".svg")
+  hex_export(hex_design("phenoscapR"), f)
+}
 ```
