@@ -179,42 +179,54 @@ mod_theme_server <- function(id) {
 
 # ---- Colors module ---------------------------------------------------------
 
+# Theme colour behind each override input.
+.colour_roles <- c(bg = "bg", accent = "accent", text_color = "text",
+                   border_color = "border", sub_color = "sub")
+
+#' @noRd
+.has_colourpicker <- function() requireNamespace("colourpicker", quietly = TRUE)
+
+# A colour field with a Shiny input binding: a 'colourpicker' input when that
+# package is installed, otherwise a text field for hex colours.
+#' @noRd
+.colour_input <- function(inputId, label, value) {
+  if (.has_colourpicker()) {
+    colourpicker::colourInput(inputId, label, value, width = "100%")
+  } else {
+    shiny::textInput(inputId, label, value, width = "100%")
+  }
+}
+
+#' @noRd
+.update_colour_input <- function(session, inputId, value) {
+  if (.has_colourpicker()) {
+    colourpicker::updateColourInput(session, inputId, value = value)
+  } else {
+    shiny::updateTextInput(session, inputId, value = value)
+  }
+}
+
 #' @noRd
 mod_colors_ui <- function(id) {
   ns <- shiny::NS(id)
+  # Start from the default theme ("stats", dark) of the classic app.
+  defaults <- hexmakr_themes()$stats$dark
+  field <- function(input, label) {
+    .colour_input(ns(input), label, defaults[[.colour_roles[[input]]]])
+  }
   shiny::wellPanel(
     style = "background:#1E293B; border:1px solid #334155; color:#E2E8F0;",
     shiny::h4("Custom Colors (override theme)", style = "color:#94A3B8; margin-top:0;"),
     shiny::fluidRow(
-      shiny::column(6,
-        shiny::tags$label("Background", style = "color:#94A3B8;"),
-        shiny::tags$input(id = ns("bg"), type = "color", value = "#1B2838",
-                          style = "width:100%; height:36px;")
-      ),
-      shiny::column(6,
-        shiny::tags$label("Accent", style = "color:#94A3B8;"),
-        shiny::tags$input(id = ns("accent"), type = "color", value = "#00D4AA",
-                          style = "width:100%; height:36px;")
-      )
+      shiny::column(6, field("bg", "Background")),
+      shiny::column(6, field("accent", "Accent"))
     ),
     shiny::fluidRow(
-      shiny::column(6,
-        shiny::tags$label("Text", style = "color:#94A3B8;"),
-        shiny::tags$input(id = ns("text_color"), type = "color", value = "#FFFFFF",
-                          style = "width:100%; height:36px;")
-      ),
-      shiny::column(6,
-        shiny::tags$label("Border", style = "color:#94A3B8;"),
-        shiny::tags$input(id = ns("border_color"), type = "color", value = "#00D4AA",
-                          style = "width:100%; height:36px;")
-      )
+      shiny::column(6, field("text_color", "Text")),
+      shiny::column(6, field("border_color", "Border"))
     ),
     shiny::fluidRow(
-      shiny::column(6,
-        shiny::tags$label("Subtitle", style = "color:#94A3B8;"),
-        shiny::tags$input(id = ns("sub_color"), type = "color", value = "#8EC8B8",
-                          style = "width:100%; height:36px;")
-      )
+      shiny::column(6, field("sub_color", "Subtitle"))
     ),
     shiny::tags$small(
       style = "color:#64748B;",
@@ -224,15 +236,29 @@ mod_colors_ui <- function(id) {
 }
 
 #' @noRd
-mod_colors_server <- function(id) {
+mod_colors_server <- function(id, theme = NULL) {
   shiny::moduleServer(id, function(input, output, session) {
-    shiny::reactive(list(
-      bg           = input$bg,
-      accent       = input$accent,
-      text_color   = input$text_color,
-      border_color = input$border_color,
-      sub_color    = input$sub_color
-    ))
+    defaults <- shiny::reactive({
+      th <- if (is.null(theme)) list(theme = "stats", mode = "dark") else theme()
+      shiny::req(th$theme, th$mode)
+      hexmakr_themes()[[th$theme]][[th$mode]]
+    })
+    # Show the selected theme's colours, so a field only overrides once edited.
+    shiny::observeEvent(defaults(), {
+      for (field in names(.colour_roles)) {
+        .update_colour_input(session, field, defaults()[[.colour_roles[[field]]]])
+      }
+    })
+    shiny::reactive({
+      d <- defaults()
+      out <- lapply(names(.colour_roles), function(field) {
+        value <- input[[field]]
+        if (is.null(value) || !.is_hex_color(value) ||
+            identical(toupper(value), toupper(d[[.colour_roles[[field]]]]))) NULL else value
+      })
+      names(out) <- names(.colour_roles)
+      out
+    })
   })
 }
 

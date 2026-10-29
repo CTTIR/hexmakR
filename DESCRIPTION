@@ -50,6 +50,7 @@ Suggests:
     rmarkdown,
     svglite,
     rsvg,
+    colourpicker,
     withr
 Config/testthat/edition: 3
 Config/Needs/website: CTTIR/themakR, pkgdown

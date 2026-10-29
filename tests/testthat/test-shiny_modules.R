@@ -48,16 +48,66 @@ test_that("mod_theme_server() returns theme and mode", {
   })
 })
 
-test_that("mod_colors_server() passes through all five colors", {
-  shiny::testServer(hexmakR:::mod_colors_server, {
-    session$setInputs(bg = "#000000", accent = "#111111",
-                      text_color = "#222222", border_color = "#333333",
+test_that("the colour fields are bound Shiny inputs", {
+  colour_fields <- c("bg", "accent", "text_color", "border_color", "sub_color")
+  bound <- function(html, class) {
+    for (field in colour_fields) {
+      input <- regmatches(html, regexpr(
+        sprintf('<input id="colors-%s"[^>]*>', field), html))
+      expect_length(input, 1)
+      expect_match(input, class, fixed = TRUE)
+    }
+    expect_false(grepl('type="color"', html, fixed = TRUE))
+  }
+  if (requireNamespace("colourpicker", quietly = TRUE)) {
+    bound(as.character(hexmakR:::mod_colors_ui("colors")), "shiny-colour-input")
+  }
+  local_mocked_bindings(.has_colourpicker = function() FALSE)
+  html <- as.character(hexmakR:::mod_colors_ui("colors"))
+  bound(html, "shiny-input-text")
+  bg <- regmatches(html, regexpr('<input id="colors-bg"[^>]*>', html))
+  expect_match(bg, 'value="#1B2838"', fixed = TRUE)
+})
+
+test_that("mod_colors_server() passes only colours that differ from the theme", {
+  theme <- shiny::reactiveVal(list(theme = "stats", mode = "dark"))
+  shiny::testServer(hexmakR:::mod_colors_server, args = list(theme = theme), {
+    session$setInputs(bg = "#1b2838", accent = "#111111",
+                      text_color = "#FFFFFF", border_color = "#00D4AA",
                       sub_color = "#444444")
     out <- session$getReturned()()
-    expect_identical(out$bg, "#000000")
+    expect_null(out$bg)
     expect_identical(out$accent, "#111111")
+    expect_null(out$text_color)
+    expect_null(out$border_color)
     expect_identical(out$sub_color, "#444444")
+    session$setInputs(accent = "#12")
+    expect_null(session$getReturned()()$accent)
+    # Once the fields show the genomics colours, nothing is overridden.
+    theme(list(theme = "genomics", mode = "dark"))
+    genomics <- hexmakr_themes()$genomics$dark
+    session$setInputs(bg = genomics$bg, accent = genomics$accent,
+                      text_color = genomics$text, border_color = genomics$border,
+                      sub_color = genomics$sub)
+    expect_true(all(vapply(session$getReturned()(), is.null, logical(1))))
   })
+})
+
+test_that("a theme change shows that theme's colours in the fields", {
+  updates <- list()
+  local_mocked_bindings(.update_colour_input = function(session, inputId, value) {
+    updates[[inputId]] <<- value
+  })
+  theme <- shiny::reactiveVal(list(theme = "stats", mode = "dark"))
+  shiny::testServer(hexmakR:::mod_colors_server, args = list(theme = theme), {
+    session$flushReact()
+    theme(list(theme = "genomics", mode = "light"))
+    session$flushReact()
+  })
+  expected <- hexmakr_themes()$genomics$light
+  expect_identical(updates, list(bg = expected$bg, accent = expected$accent,
+    text_color = expected$text, border_color = expected$border,
+    sub_color = expected$sub))
 })
 
 test_that("mod_border_server() returns width and inner_border flag", {

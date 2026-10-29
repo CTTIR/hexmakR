@@ -168,7 +168,7 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
     text_vals   <- mod_text_server("text")
     icon_vals   <- mod_icon_server("icon")
     theme_vals  <- mod_theme_server("theme")
-    color_vals  <- mod_colors_server("colors")
+    color_vals  <- mod_colors_server("colors", theme = theme_vals)
     border_vals <- mod_border_server("border")
 
     # Reactive sticker
@@ -179,8 +179,7 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
       cv <- color_vals()
       bv <- border_vals()
 
-      # Use custom colors only if they differ from defaults
-      # (always pass them through; hex_sticker() overrides theme when provided)
+      # The colours module passes only colours that differ from the theme.
       tryCatch(
         hex_sticker(
           name         = tv$name,

@@ -5,6 +5,11 @@
   master on demand (this needs the 'rsvg' package) and draws icons with the
   package renderer, under the same file names as before. Rendered files go to
   a folder in `tempdir()` unless the new `dir` argument names another one.
+* The colour fields of the classic designer now work. They were plain HTML
+  colour pickers that Shiny never read, so the override panel did nothing.
+  They are now 'colourpicker' inputs (a text field when 'colourpicker' is not
+  installed), show the selected theme's colours, and override the theme only
+  where you change a colour.
 * The citation no longer carries a Zenodo DOI, which was never registered;
   the DOI will be added once the record is published. `citation("hexmakR")`
   reports the installed version.
