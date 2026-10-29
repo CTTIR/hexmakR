@@ -24,8 +24,8 @@ Description: Create publication-ready hexagon stickers for R packages
     square frames.
 License: MIT + file LICENSE
 Copyright: see file inst/COPYRIGHTS
-URL: https://cttir.github.io/hexmakR/,
-    https://github.com/CTTIR/hexmakR
+URL: https://github.com/CTTIR/hexmakR,
+    https://cttir.github.io/hexmakR/
 BugReports: https://github.com/CTTIR/hexmakR/issues
 Encoding: UTF-8
 Language: en-GB
