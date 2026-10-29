@@ -9,7 +9,8 @@ hex_asset(
   mode = c("dark", "light", "mono"),
   layout = c("lockup", "hex", "icon"),
   format = c("svg", "png", "pdf"),
-  size = 128L
+  size = 128L,
+  dir = NULL
 )
 }
 \arguments{
@@ -22,14 +23,33 @@ hex_asset(
 \item{format}{File format: \code{svg}, \code{png}, or \code{pdf}.}
 
 \item{size}{Icon width, one of 32, 48, 64, 128, 256. Icons use dark mode.}
+
+\item{dir}{Directory for rendered PNG, PDF and icon files. The default is a
+folder in \code{\link[=tempdir]{tempdir()}}, so nothing is kept after the session. To keep
+renders between sessions, pass a directory of your choice, for example
+\code{tools::R_user_dir("hexmakR", "cache")}. Not used for SVG masters.}
 }
 \value{
 An absolute file path.
 }
 \description{
-These files are the unchanged supplied masters. Use \code{\link[=hex_export]{hex_export()}} to
-regenerate artwork or export an edited design.
+SVG files are the unchanged supplied masters, installed with the package.
+PNG and PDF versions are rendered from the SVG master on demand with the
+'rsvg' package, at the size of the supplied masters (1600 x 1848 pixels
+and 432 x 498 points). Icons are drawn by the package renderer, which
+needs R with Cairo support. Rendered files keep the master's file name and
+are written to \verb{dir/<asset_dir>/}, where \code{asset_dir} comes from
+\code{\link[=hex_catalog]{hex_catalog()}}; they are reused until the package is reinstalled. Use
+\code{\link[=hex_export]{hex_export()}} to regenerate artwork or export an edited design.
 }
 \examples{
 hex_asset("phenoscapR")
+if (requireNamespace("rsvg", quietly = TRUE)) {
+  png <- hex_asset("phenoscapR", format = "png", dir = tempfile())
+  dim(png::readPNG(png))
+}
+if (capabilities("cairo")) {
+  hex_asset("phenoscapR", layout = "icon", format = "png", size = 64,
+            dir = tempfile())
+}
 }

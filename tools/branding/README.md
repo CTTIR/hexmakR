@@ -5,9 +5,11 @@ and `design_tokens.csv` define the artwork, topic colours and typography.
 Every identity has an artwork-only hex and a named composition with the exact
 package name inside the hex, each in light, dark and grayscale modes.
 
-Both master compositions are 1600 by 1848 pixels. Published standard exports
-are copied byte-for-byte from the approved v5 library in hexmakR. Their font
-outlines are preserved regardless of the fonts installed on the machine.
+Both master compositions are 1600 by 1848 pixels. Published SVG exports are
+copied byte-for-byte from the approved v5 library in hexmakR; PNG and PDF
+exports are rendered from those SVG masters at the master size, which needs
+the rsvg package. Their font outlines are preserved regardless of the fonts
+installed on the machine.
 
 Render into a separate review directory from the repository root:
 

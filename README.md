@@ -22,10 +22,11 @@ Designer starts a **new logo with your name and a blank frame**. Choose a
 hexagon, pentagon or square, then add shapes, uploaded artwork or a generic icon and edit each
 part. Names stay **inside the frame** and the exterior is transparent.
 
-The secondary **CTTIR Gallery** contains 45 identities and 1,035 original
-SVG/PNG/PDF assets. Browse for inspiration, import one selected part or an
-entire motif into your current logo, or explicitly start from a whole archived
-design. Browsing the archive does not replace your work.
+The secondary **CTTIR Gallery** contains 45 identities with their original
+SVG masters; `hex_asset()` renders PNG, PDF and icon versions on demand.
+Browse for inspiration, import one selected part or an entire motif into your
+current logo, or explicitly start from a whole archived design. Browsing the
+archive does not replace your work.
 
 Click a visible part to select it, then drag it to a new position. Short item
 names and Frame/Icon/Name groups help organise the composition; custom groups

@@ -44,6 +44,7 @@ Suggests:
     rmarkdown,
     pkgdown,
     svglite,
+    rsvg,
     covr,
     withr
 Config/testthat/edition: 3

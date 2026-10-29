@@ -1,5 +1,11 @@
 # hexmakR (development version)
 
+* The package now ships only the 270 SVG masters of the CTTIR v5 library,
+  which keeps it small. `hex_asset()` renders PNG and PDF masters from the SVG
+  master on demand (this needs the 'rsvg' package) and draws icons with the
+  package renderer, under the same file names as before. Rendered files go to
+  a folder in `tempdir()` unless the new `dir` argument names another one.
+
 * `save_hex()` writes PNG files with the cairo device where available, so
   stickers have the same pixel values on macOS as on Linux and Windows.
 

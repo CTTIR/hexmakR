@@ -6,23 +6,87 @@ test_that("offscreen rendering preserves the user's graphics devices", {
   expect_identical(grDevices::dev.cur(), current)
 })
 
-test_that("all 45 identities have all 1035 unchanged original asset locations", {
+master_stem <- function(mode, layout) paste0(layout, if (mode == "light") "" else paste0("-", mode))
+
+test_that("all 45 identities have their 270 unchanged SVG masters", {
   registry <- hex_catalog()
   expect_equal(nrow(registry), 45)
   expect_equal(anyDuplicated(registry$name), 0)
   expect_setequal(hex_catalog("spectral")$family, "spectral")
   files <- character()
-  for (name in registry$name) {
-    for (mode in c("dark", "light", "mono")) for (layout in c("lockup", "hex"))
-      for (format in c("png", "svg", "pdf")) files <- c(files, hex_asset(name, mode, layout, format))
-    for (size in c(32, 48, 64, 128, 256)) files <- c(files, hex_asset(name, layout = "icon", format = "png", size = size))
+  for (name in registry$name) for (mode in c("dark", "light", "mono")) for (layout in c("lockup", "hex")) {
+    f <- hex_asset(name, mode, layout, "svg")
+    expect_identical(basename(f), paste0(master_stem(mode, layout), ".svg"))
+    files <- c(files, f)
   }
-  expect_length(files, 1035)
-  expect_equal(length(unique(tolower(files))), 1035)
+  expect_length(files, 270)
+  expect_equal(length(unique(tolower(files))), 270)
   expect_false(identical(readBin(hex_asset("CTTIR"), "raw", 1e6), readBin(hex_asset("cttiR"), "raw", 1e6)))
   expect_true(all(file.exists(files)))
   expect_error(hex_asset("../escape"), "Unknown")
   expect_error(hex_asset("phenoscapR", layout = "icon"), "Original icons")
+  expect_error(hex_asset("phenoscapR", format = "png", dir = NA_character_), "dir")
+})
+
+test_that("PNG and PDF masters are rendered on demand under the master file names", {
+  skip_if_not_installed("rsvg")
+  dir <- withr::local_tempdir()
+  for (name in c("phenoscapR", "CTTIR")) for (mode in c("dark", "light", "mono"))
+    for (layout in c("lockup", "hex")) {
+      asset_dir <- hex_catalog()$asset_dir[hex_catalog()$name == name]
+      stem <- master_stem(mode, layout)
+      pdf <- hex_asset(name, mode, layout, "pdf", dir = dir)
+      expect_identical(pdf, normalizePath(file.path(dir, asset_dir, paste0(stem, ".pdf")), winslash = "/"))
+      expect_identical(readBin(pdf, "raw", 5), charToRaw("%PDF-"))
+      if (name != "phenoscapR") next
+      png <- hex_asset(name, mode, layout, "png", dir = dir)
+      expect_identical(png, normalizePath(file.path(dir, asset_dir, paste0(stem, ".png")), winslash = "/"))
+      expect_equal(dim(png::readPNG(png)), c(1848, 1600, 4))
+    }
+  expect_length(list.files(dir, recursive = TRUE), 18)
+  # Renders are reused, and a render older than the installed master is redone.
+  png <- hex_asset("phenoscapR", format = "png", dir = dir)
+  first <- file.mtime(png)
+  expect_identical(hex_asset("phenoscapR", format = "png", dir = dir), png)
+  expect_equal(file.mtime(png), first)
+  Sys.setFileTime(png, as.POSIXct("2000-01-01", tz = "UTC"))
+  hex_asset("phenoscapR", format = "png", dir = dir)
+  expect_gt(file.mtime(png), as.POSIXct("2000-01-02", tz = "UTC"))
+  expect_equal(dim(png::readPNG(png)), c(1848, 1600, 4))
+  default <- hex_asset("hexmakR", "light", "hex", "pdf")
+  expect_true(startsWith(default, normalizePath(tempdir(), winslash = "/")))
+})
+
+test_that("icons are drawn on demand under the master file names", {
+  skip_if_not(capabilities("cairo"))
+  dir <- withr::local_tempdir()
+  for (size in c(32, 48, 64, 128, 256)) {
+    f <- hex_asset("CTTIR", layout = "icon", format = "png", size = size, dir = dir)
+    expect_identical(f, normalizePath(file.path(dir, "CTTIR-brand", paste0("icon-", size, ".png")), winslash = "/"))
+    expect_equal(dim(png::readPNG(f)), c(size, size, 4))
+  }
+})
+
+test_that("both branding-script forms return a file for every identity", {
+  skip_on_cran()
+  skip_if_not_installed("rsvg")
+  skip_if_not(capabilities("cairo"))
+  dir <- withr::local_tempdir()
+  for (name in hex_catalog()$name) {
+    for (mode in c("light", "dark", "mono")) for (layout in c("hex", "lockup")) {
+      formats <- if (mode == "dark" && layout == "lockup") c("svg", "png", "pdf") else c("svg", "pdf")
+      for (format in formats) {
+        f <- hex_asset(name, mode, layout, format, dir = dir)
+        expect_true(file.exists(f))
+        expect_identical(basename(f), paste0(master_stem(mode, layout), ".", format))
+      }
+    }
+    for (size in c(32L, 48L, 64L, 128L, 256L)) {
+      f <- hex_asset(name, layout = "icon", format = "png", size = size, dir = dir)
+      expect_true(file.exists(f))
+      expect_identical(basename(f), paste0("icon-", size, ".png"))
+    }
+  }
 })
 
 test_that("all identities and modes produce distinct native vector layers", {

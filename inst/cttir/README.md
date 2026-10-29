@@ -2,7 +2,9 @@
 
 45 identities, 1,035 original masters and icons. `logos/` is an unchanged
 import from the supplied v5 starter and seven PNG archives. Archive hashes
-are recorded in `archive-inventory.json`; file hashes in `SHA256.json`.
+are recorded in `archive-inventory.json`; file hashes in `SHA256.json`. The
+built package ships the 270 SVG masters only; `hex_asset()` renders the PNG,
+PDF and icon files from them on demand.
 
 `source/` preserves the supplied native R renderer, 45 drawing entry points,
 fonts and their OFL licences. The package carries the motif renderer in its
