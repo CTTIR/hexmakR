@@ -28,6 +28,29 @@ test_that("all 45 identities have their 270 unchanged SVG masters", {
   expect_error(hex_asset("phenoscapR", format = "png", dir = NA_character_), "dir")
 })
 
+read_bytes <- function(f) readBin(f, "raw", file.size(f))
+
+test_that("the SVG archive holds exactly the masters of the source tree", {
+  # The folder is only in the source repository; tools/logos-archive.R
+  # rebuilds the archive from it.
+  folder <- test_path("..", "..", "inst", "cttir", "logos")
+  skip_if_not(dir.exists(folder), "SVG master folder not available")
+  out <- withr::local_tempdir()
+  utils::untar(test_path("..", "..", "inst", "cttir", "logos.tar.xz"), exdir = out, tar = "internal")
+  files <- sort(list.files(folder, pattern = "[.]svg$", recursive = TRUE), method = "radix")
+  expect_length(files, 270)
+  expect_identical(sort(list.files(out, recursive = TRUE, all.files = TRUE), method = "radix"), files)
+  for (f in files) expect_identical(read_bytes(file.path(out, f)), read_bytes(file.path(folder, f)), info = f)
+  dir <- withr::local_tempdir()
+  registry <- hex_catalog()
+  for (i in seq_len(nrow(registry))) for (mode in c("dark", "light", "mono"))
+    for (layout in c("lockup", "hex")) {
+      file <- file.path(registry$asset_dir[i], paste0(master_stem(mode, layout), ".svg"))
+      expect_identical(read_bytes(hex_asset(registry$name[i], mode, layout, "svg", dir = dir)),
+                       read_bytes(file.path(folder, file)), info = file)
+    }
+})
+
 test_that("PNG and PDF masters are rendered on demand under the master file names", {
   skip_if_not_installed("rsvg")
   dir <- withr::local_tempdir()

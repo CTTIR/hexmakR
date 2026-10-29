@@ -18,6 +18,7 @@
 ^_coverage$
 ^site$
 ^tools/branding$
+^tools/logos-archive\.R$
 
 ^plans$
 ^validation$
