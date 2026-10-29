@@ -1,10 +1,13 @@
 # hexmakR (development version)
 
-* The package now ships only the 270 SVG masters of the CTTIR v5 library,
-  which keeps it small. `hex_asset()` renders PNG and PDF masters from the SVG
-  master on demand (this needs the 'rsvg' package) and draws icons with the
-  package renderer, under the same file names as before. Rendered files go to
-  a folder in `tempdir()` unless the new `dir` argument names another one.
+* The package now ships only the 270 SVG masters of the CTTIR v5 library, in
+  one compressed archive, which keeps it small. `hex_asset()` unpacks the
+  archive once per session and returns an SVG master as a copy with
+  identical bytes, rather than a path inside the installed package. It
+  renders PNG and PDF masters from the SVG master on demand (this needs the
+  'rsvg' package) and draws icons with the package renderer, under the same
+  file names as before. All files go to a folder in `tempdir()` unless the
+  new `dir` argument names another one.
 * The colour fields of the classic designer now work. They were plain HTML
   colour pickers that Shiny never read, so the override panel did nothing.
   They are now 'colourpicker' inputs (a text field when 'colourpicker' is not

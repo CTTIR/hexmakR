@@ -25,7 +25,7 @@
 ^\.zenodo\.json$
 ^CITATION\.cff$
 ^tests/testthat/Rplots[.]pdf$
-^inst/cttir/logos/.*\.(png|pdf)$
+^inst/cttir/logos$
 ^inst/cttir/source/[^/]+\.(R|txt|csv)$
 ^inst/cttir/source/(R|scripts|provenance)$
 ^inst/cttir/source/fonts/(Inter.*\.ttf|OFL\.txt|fontconfig-linux\.conf)$

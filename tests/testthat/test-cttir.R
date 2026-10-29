@@ -30,6 +30,31 @@ test_that("all 45 identities have their 270 unchanged SVG masters", {
 
 read_bytes <- function(f) readBin(f, "raw", file.size(f))
 
+test_that("SVG masters are copied byte for byte into the on-demand folder", {
+  dir <- withr::local_tempdir()
+  archive <- withr::local_tempdir()
+  utils::untar(system.file("cttir", "logos.tar.xz", package = "hexmakR"),
+               exdir = archive, tar = "internal")
+  masters <- hexmakR:::.cttir_masters()
+  registry <- hex_catalog()
+  for (i in seq_len(nrow(registry))) for (mode in c("dark", "light", "mono"))
+    for (layout in c("lockup", "hex")) {
+      file <- file.path(registry$asset_dir[i], paste0(master_stem(mode, layout), ".svg"))
+      f <- hex_asset(registry$name[i], mode, layout, "svg", dir = dir)
+      expect_identical(f, normalizePath(file.path(dir, file), winslash = "/"))
+      expect_identical(read_bytes(f), read_bytes(file.path(archive, file)), info = file)
+    }
+  expect_length(list.files(dir, recursive = TRUE), 270)
+  # The archive is unpacked once per session, not per call.
+  expect_identical(hexmakR:::.cttir_masters(), masters)
+  expect_identical(hex_asset("hexmakR"), normalizePath(
+    file.path(tempdir(), "hexmakR-assets", "hexmakR", "lockup-dark.svg"), winslash = "/"))
+  # A master removed from the session folder is unpacked again.
+  unlink(file.path(masters, "hexmakR", "hex.svg"))
+  f <- hex_asset("hexmakR", "light", "hex", "svg", dir = withr::local_tempdir())
+  expect_identical(read_bytes(f), read_bytes(file.path(archive, "hexmakR", "hex.svg")))
+})
+
 test_that("the SVG archive holds exactly the masters of the source tree", {
   # The folder is only in the source repository; tools/logos-archive.R
   # rebuilds the archive from it.

@@ -523,7 +523,7 @@
 
 .build_shiny_app <- function(package = "hexmakR") {
   .identity_row(package)
-  shiny::addResourcePath("hexmakr-v5", .cttir_path("logos"))
+  shiny::addResourcePath("hexmakr-v5", .cttir_masters())
   registry <- hex_catalog()
   cards <- lapply(seq_len(nrow(registry)), function(i) {
     row <- registry[i, ]

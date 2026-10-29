@@ -24,23 +24,26 @@ hex_asset(
 
 \item{size}{Icon width, one of 32, 48, 64, 128, 256. Icons use dark mode.}
 
-\item{dir}{Directory for rendered PNG, PDF and icon files. The default is a
-folder in \code{\link[=tempdir]{tempdir()}}, so nothing is kept after the session. To keep
-renders between sessions, pass a directory of your choice, for example
-\code{tools::R_user_dir("hexmakR", "cache")}. Not used for SVG masters.}
+\item{dir}{Directory for the SVG copies and the rendered PNG, PDF and icon
+files. The default is a folder in \code{\link[=tempdir]{tempdir()}}, so nothing is kept after
+the session. To keep files between sessions, pass a directory of your
+choice, for example \code{tools::R_user_dir("hexmakR", "cache")}.}
 }
 \value{
-An absolute file path.
+An absolute file path in \code{dir}: the copy of the SVG master, or the
+rendered PNG, PDF or icon.
 }
 \description{
-SVG files are the unchanged supplied masters, installed with the package.
-PNG and PDF versions are rendered from the SVG master on demand with the
-'rsvg' package, at the size of the supplied masters (1600 x 1848 pixels
-and 432 x 498 points). Icons are drawn by the package renderer, which
-needs R with Cairo support. Rendered files keep the master's file name and
-are written to \verb{dir/<asset_dir>/}, where \code{asset_dir} comes from
-\code{\link[=hex_catalog]{hex_catalog()}}; they are reused until the package is reinstalled. Use
-\code{\link[=hex_export]{hex_export()}} to regenerate artwork or export an edited design.
+The 270 SVG files are the unchanged supplied masters. They are installed
+in one compressed archive, which is unpacked once per session, and an SVG
+request returns a copy with the master's exact bytes. PNG and PDF versions
+are rendered from the SVG master on demand with the 'rsvg' package, at the
+size of the supplied masters (1600 x 1848 pixels and 432 x 498 points).
+Icons are drawn by the package renderer, which needs R with Cairo support.
+All files keep the master's file name and are written to
+\verb{dir/<asset_dir>/}, where \code{asset_dir} comes from \code{\link[=hex_catalog]{hex_catalog()}}; they are
+reused until the package is reinstalled. Use \code{\link[=hex_export]{hex_export()}} to regenerate
+artwork or export an edited design.
 }
 \examples{
 hex_asset("phenoscapR")
