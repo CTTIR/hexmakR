@@ -2,8 +2,6 @@
 
 # hexmakR
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21889938.svg)](https://doi.org/10.5281/zenodo.21889938)
-
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CTTIR/hexmakR/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/CTTIR/hexmakR/actions/workflows/pkgdown.yaml/badge.svg)](https://cttir.github.io/hexmakR/)
@@ -265,9 +263,10 @@ as a staple of R package identity.
 
 If you use this software, please cite it as:
 
-> Heller, R. (2026). *hexmakR: Interactive hex sticker generator for R packages* (Version 0.1.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21889938
+> Heller, R. (2026). *hexmakR: Interactive hex sticker generator for R packages* (Version 0.3.0.9000) [Computer software]. https://github.com/CTTIR/hexmakR
 
-DOI: [10.5281/zenodo.21889938](https://doi.org/10.5281/zenodo.21889938)
+`citation("hexmakR")` gives the entry for the installed version. A DOI will
+be added once the archived release is published.
 
 ## Use of LLM tools
 

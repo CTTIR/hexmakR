@@ -1,9 +1,8 @@
 bibentry(
   bibtype  = "Manual",
-  doi      = "10.5281/zenodo.21889938",
   title    = "hexmakR: Interactive Hex Sticker Generator for R Packages",
   author   = person("R.", "Heller", email = "raban.heller@uni-ulm.de"),
   year     = "2026",
-  note     = "R package version 0.3.0",
+  note     = paste("R package version", meta$Version),
   url      = "https://github.com/cttir/hexmakR"
 )

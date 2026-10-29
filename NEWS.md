@@ -5,6 +5,9 @@
   master on demand (this needs the 'rsvg' package) and draws icons with the
   package renderer, under the same file names as before. Rendered files go to
   a folder in `tempdir()` unless the new `dir` argument names another one.
+* The citation no longer carries a Zenodo DOI, which was never registered;
+  the DOI will be added once the record is published. `citation("hexmakR")`
+  reports the installed version.
 
 * `save_hex()` writes PNG files with the cairo device where available, so
   stickers have the same pixel values on macOS as on Linux and Windows.
