@@ -152,8 +152,8 @@ drawDetails.hex_svg_path <- function(x, recording = FALSE) {
   for (id in unique(x$id)) {
     indexes <- which(x$id == id)
     if (length(indexes) < 2L) next
-    if (x$closed[id] == 1) indexes <- c(indexes, indexes[1L])
-    grid::grid.lines(x$x[indexes], x$y[indexes], gp = stroke_gp)
+    if (x$closed[id] == 1) grid::grid.polygon(x$x[indexes], x$y[indexes], gp = stroke_gp)
+    else grid::grid.lines(x$x[indexes], x$y[indexes], gp = stroke_gp)
   }
 }
 
@@ -194,6 +194,56 @@ drawDetails.hex_art_raster <- function(x, recording = FALSE) {
   out <- .svg_numbers(value)
   if (length(out) != 1L) .art_error("Expected one SVG numeric value (unitless or px).")
   out
+}
+
+.svg_viewport <- function(attrs) {
+  length_value <- function(value) {
+    if (is.null(value)) return(NULL)
+    value <- trimws(value)
+    number <- "[-+]?(?:[0-9]+\\.?[0-9]*|\\.[0-9]+)(?:[eE][-+]?[0-9]+)?"
+    if (!grepl(paste0("^", number, "(?:px|pt|pc|in|cm|mm|Q)?$"), value, perl = TRUE))
+      .art_error("SVG viewport dimensions must use numbers or absolute units, not percentages or font units.")
+    unit <- sub(paste0("^", number), "", value, perl = TRUE)
+    factor <- switch(unit, px = 1, pt = 96 / 72, pc = 16, `in` = 96,
+      cm = 96 / 2.54, mm = 96 / 25.4, Q = 96 / 101.6, 1)
+    result <- as.numeric(sub(paste0("(", number, ").*$"), "\\1", value, perl = TRUE)) * factor
+    if (!is.finite(result) || result <= 0 || result > 1e7)
+      .art_error("SVG viewport dimensions must be positive and within bounds.")
+    result
+  }
+  width <- length_value(attrs$width); height <- length_value(attrs$height)
+  if (is.null(attrs$viewBox)) {
+    if (is.null(width) || is.null(height))
+      .art_error("SVG needs a positive viewBox or numeric width and height.")
+    return(list(width = width, height = height, transform = diag(3)))
+  }
+  view <- .svg_numbers(attrs$viewBox)
+  if (length(view) != 4L || any(view[3:4] <= 0))
+    .art_error("SVG needs a positive viewBox or numeric width and height.")
+  # With no external viewport, infer an omitted dimension from the viewBox ratio.
+  if (is.null(width) && is.null(height)) { width <- view[3L]; height <- view[4L] }
+  else if (is.null(width)) width <- height * view[3L] / view[4L]
+  else if (is.null(height)) height <- width * view[4L] / view[3L]
+  if (any(!is.finite(c(width, height))) || any(c(width, height) <= 0))
+    .art_error("SVG viewport dimensions exceed bounds.")
+  aspect <- strsplit(trimws(attrs$preserveAspectRatio %||% "xMidYMid"), "[[:space:]]+")[[1L]]
+  if (!length(aspect) || length(aspect) > 2L ||
+      !grepl("^(none|x(Min|Mid|Max)Y(Min|Mid|Max))$", aspect[1L]) ||
+      length(aspect) == 2L && !aspect[2L] %in% c("meet", "slice"))
+    .art_error("Unsupported SVG preserveAspectRatio value.")
+  scale <- c(width, height) / view[3:4]
+  offset <- c(0, 0)
+  if (aspect[1L] != "none") {
+    scale[] <- if (length(aspect) == 2L && aspect[2L] == "slice") max(scale) else min(scale)
+    alignment <- c(substr(aspect[1L], 2L, 4L), substr(aspect[1L], 6L, 8L))
+    offset <- (c(width, height) - view[3:4] * scale) *
+      (match(alignment, c("Min", "Mid", "Max")) - 1) / 2
+  }
+  transform <- diag(3)
+  diag(transform)[1:2] <- scale
+  transform[1:2, 3L] <- offset - view[1:2] * scale
+  if (any(!is.finite(transform))) .art_error("SVG viewport transform exceeds bounds.")
+  list(width = width, height = height, transform = transform)
 }
 
 .svg_transform <- function(value) {
@@ -256,6 +306,13 @@ drawDetails.hex_art_raster <- function(x, recording = FALSE) {
   if (!length(tokens) || length(tokens) > 20000L) .art_error("Empty or excessively complex SVG path.")
   paths <- list(); closed <- numeric(); current <- c(0, 0); begin <- current
   previous <- ""; control <- current; command <- NULL; i <- 1L; count <- 0L
+  start <- function(point) {
+    if (length(paths) >= 512L) .art_error("Too many SVG subpaths.")
+    count <<- count + 1L
+    if (count > 5000L) .art_error("An SVG component may contain at most 5000 vector points.")
+    paths[[length(paths) + 1L]] <<- matrix(point, nrow = 1)
+    closed <<- c(closed, 0)
+  }
   append <- function(points) {
     if (!length(paths)) .art_error("SVG paths must begin with a move command.")
     if (!length(points)) return(invisible(NULL))
@@ -277,12 +334,12 @@ drawDetails.hex_art_raster <- function(x, recording = FALSE) {
         any(grepl("^[A-Za-z]$", tokens[i:(i + size - 1L)]))) .art_error("Incomplete SVG path command.")
     v <- as.numeric(tokens[i:(i + size - 1L)]); i <- i + size
     if (any(!is.finite(v)) || any(abs(v) > 1e7)) .art_error("SVG path numbers exceed bounds.")
+    # A drawing command after closepath starts a new subpath at the closed start.
+    if (previous == "Z" && type != "M") start(current)
     point <- function(pair) pair + if (relative) current else c(0, 0)
     if (type == "M") {
       current <- point(v); begin <- current
-      if (length(paths) >= 512L) .art_error("Too many SVG subpaths.")
-      paths[[length(paths) + 1L]] <- matrix(current, nrow = 1); closed <- c(closed, 0)
-      count <- count + 1L; command <- if (relative) "l" else "L"
+      start(current); command <- if (relative) "l" else "L"
     } else if (type %in% c("L", "H", "V")) {
       end <- if (type == "L") point(v) else if (type == "H")
         c(v + if (relative) current[1L] else 0, current[2L]) else
@@ -391,10 +448,8 @@ drawDetails.hex_art_raster <- function(x, recording = FALSE) {
       .art_error("SVG active content and external references are not allowed.")
   }
   attrs <- as.list(xml2::xml_attrs(root))
-  view <- if (!is.null(attrs$viewBox)) .svg_numbers(attrs$viewBox) else
-    c(0, 0, .svg_scalar(attrs$width), .svg_scalar(attrs$height))
-  if (length(view) != 4L || any(!is.finite(view)) || any(view[3:4] <= 0))
-    .art_error("SVG needs a positive viewBox or numeric width and height.")
+  viewport <- .svg_viewport(attrs)
+  view <- c(0, 0, viewport$width, viewport$height)
   ratio <- .design_ratio(design)
   width <- min(.68, .58 * view[3] / view[4] / ratio)
   height <- width * view[4] / view[3] * ratio
@@ -478,6 +533,8 @@ drawDetails.hex_art_raster <- function(x, recording = FALSE) {
     style$opacity <- attrs$opacity %||% "1"
     opacity <- .svg_scalar(style$opacity); .scalar_number(opacity, "SVG opacity", 0, 1)
     transform <- transform %*% .svg_transform(attrs$transform)
+    if (type == "svg" && depth == 0L) transform <- transform %*% viewport$transform
+    if (any(!is.finite(transform))) .art_error("SVG transform exceeds bounds.")
     if (!is.null(attrs[["clip-path"]])) {
       ref <- sub("^url\\(#([^)]*)\\)$", "\\1", attrs[["clip-path"]])
       clips <- c(clips, list(clip_polygon(ref, transform)))
@@ -513,6 +570,9 @@ drawDetails.hex_art_raster <- function(x, recording = FALSE) {
     stroke_extent <- max(if (style[["stroke-linejoin"]] == "miter") mitre else 1,
       if (style[["stroke-linecap"]] == "square") sqrt(2) else 1)
     margin <- if (style$stroke == "none") 0 else .svg_scalar(style[["stroke-width"]]) * scale / 2 * stroke_extent
+    if (any(points[, 1L] < margin - 1e-7 | points[, 1L] > viewport$width - margin + 1e-7 |
+            points[, 2L] < margin - 1e-7 | points[, 2L] > viewport$height - margin + 1e-7))
+      .art_error("SVG viewport clipping intersects artwork. Flatten the clipped paths before importing editable components.")
     if (length(clips) && any(!vapply(clips, function(clip) contained(points, clip, margin), logical(1))))
       .art_error("SVG clipping intersects artwork. Flatten the clipped paths before importing editable components.")
     if (!style[["fill-rule"]] %in% c("nonzero", "evenodd")) .art_error("Unsupported SVG fill rule.")
@@ -551,6 +611,11 @@ drawDetails.hex_art_raster <- function(x, recording = FALSE) {
 #' and individual opacity. Local `defs`/`use` references are expanded with cycle
 #' checks. Simple convex clip paths are accepted only when they provably do not
 #' cut the component; intersecting clips must first be flattened to paths.
+#' Root viewport dimensions, `viewBox` and `preserveAspectRatio` are respected;
+#' the viewport must provably contain each component, otherwise cropping must
+#' first be flattened. Dimensions may use absolute
+#' units (including px and pt), but not percentages or font-relative units.
+#' An omitted viewport dimension is inferred from the `viewBox` aspect ratio.
 #' Text must be outlined. Gradients, masks, filters, nested SVG viewports,
 #' CSS stylesheets and group opacity are rejected with an explanation rather
 #' than silently rasterised. Non-uniform
