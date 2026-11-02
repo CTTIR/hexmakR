@@ -1,0 +1,71 @@
+{
+  "version": "0.4.1",
+  "date": "2026-11-02",
+  "base": "0bbc7ed9c4149fe0213a95bef747ec9e7af58c16",
+  "source_tests": {
+    "failed": 0,
+    "error": 0,
+    "warning": 0,
+    "skipped": 0,
+    "passed": 6418
+  },
+  "checks": {
+    "full_as_cran": {
+      "errors": [],
+      "warnings": [],
+      "notes": "checking CRAN incoming feasibility ... [3s/47s] NOTE\nMaintainer: \u2018R. Heller <raban.heller@uni-ulm.de>\u2019\n\nNew submission"
+    },
+    "depends_only_as_cran": {
+      "errors": [],
+      "warnings": [],
+      "notes": "checking CRAN incoming feasibility ... [3s/44s] NOTE\nMaintainer: \u2018R. Heller <raban.heller@uni-ulm.de>\u2019\n\nNew submission"
+    }
+  },
+  "coverage": {
+    "percent": 94.35013263,
+    "required": 90,
+    "passed": true
+  },
+  "site_links": {
+    "html_pages": 45,
+    "local_links_checked": 1931,
+    "problems": [],
+    "external_links": "not checked"
+  },
+  "package": {
+    "sha256": "8948b99860b1ee232b0666f66aae6eccf242d2b9eeb7387ddc1ccac356e406f4",
+    "bytes": 2198125,
+    "regular_files": 117,
+    "members": 132,
+    "changed_from_candidate1": [
+      "hexmakR/DESCRIPTION",
+      "hexmakR/man/hex_asset.Rd",
+      "hexmakR/R/cttir-library.R"
+    ],
+    "paths_equal": true,
+    "forbidden_paths": []
+  },
+  "protected_files": 1191,
+  "protected_files_unchanged": 1191,
+  "master_svg_pdf_files": 540,
+  "new_release_hosted_ci_observed": false,
+  "pushed": false,
+  "submitted": false,
+  "deployed": false,
+  "manual": {
+    "pages": 25,
+    "bytes": 145699,
+    "sha256": "ba49f34e46ed1ecb4572e5552dcfcfcdaa364cc4f79552488ffde02e051b90c3",
+    "source": "exact checked source package",
+    "reviewed_separate_derivative": true,
+    "all_contents_references_match": 27,
+    "extra_index_latex_passes": 2,
+    "check_produced_pdf_has_stale_printed_references": true
+  },
+  "site_browser": {
+    "finished": true,
+    "desktop_mobile_reviewed": true,
+    "duplicate_logo_fixed": true,
+    "first_focus_immediate_paste_race": "confirmed upstream issue; deferred"
+  }
+}

@@ -1,6 +1,6 @@
 Package: hexmakR
 Title: Editable Hex Stickers and Project Logos
-Version: 0.4.0
+Version: 0.4.1
 Authors@R: c(
     person("R.", "Heller", , "raban.heller@uni-ulm.de",
            role = c("aut", "cre", "cph"),
@@ -46,7 +46,7 @@ Imports:
     jsonlite,
     systemfonts (>= 1.3.0)
 Suggests:
-    testthat (>= 3.0.0),
+    testthat (>= 3.3.2),
     knitr,
     rmarkdown,
     svglite,

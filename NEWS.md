@@ -1,3 +1,27 @@
+# hexmakR 0.4.1
+
+* Exports, saved projects, R recipes and cached gallery assets are completed
+  beside their destination before replacement. A drawing or final rename
+  failure preserves the previous file. Graphics exports close their own device
+  and restore the previously selected user device.
+* Classic PNG/JPEG uploads retain their proportions. Missing, corrupt and
+  unsupported images now report an error instead of silently omitting artwork.
+  Size and pixel limits are checked before decoding, as in the modern editor.
+  The classic editor retains the last valid preview, download and filename
+  after an invalid edit, and explains how to recover.
+* SVG imports honour root viewport dimensions, absolute units, viewBox and
+  preserveAspectRatio. Drawing commands after a closepath start a new subpath.
+  Closed outlines retain their corner joins instead of drawing end caps.
+  Viewport cropping and unsupported non-uniform strokes produce an explicit
+  error rather than altered geometry.
+* Names drawn with the bundled JetBrains Mono font report unsupported Unicode
+  characters instead of substituting missing-glyph boxes. Generated v5 names
+  shrink to fit their frame down to six points; an impossible fit reports an
+  error. Subsequent manual layer transformations remain freely editable.
+* Font documentation distinguishes system-family aliases from the bundled
+  font. The optional test dependency now requires the verified testthat 3.3.2
+  runtime; package runtime dependencies are unchanged.
+
 # hexmakR 0.4.0
 
 * The package now ships the 270 SVG and 270 PDF masters of the CTTIR v5

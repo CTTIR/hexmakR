@@ -15,7 +15,10 @@
 hexmakR creates editable logos for R packages and projects. The default
 Designer starts a **new logo with your name and a blank frame**. Choose a
 hexagon, pentagon or square, then add shapes, uploaded artwork or a generic icon and edit each
-part. Names stay **inside the frame** and the exterior is transparent.
+part. Generated names fit **inside the frame** and the exterior is transparent.
+Names use the bundled JetBrains Mono font: unsupported characters and names
+that cannot fit at six points produce an explanatory error. Later manual
+layer edits can move or enlarge the name beyond the frame.
 
 The secondary **CTTIR Gallery** contains 45 identities with their original
 SVG and PDF masters; `hex_asset()` renders PNG and icon versions on demand.
@@ -81,7 +84,7 @@ reproducible sticker generation with full control over subplot positioning.
   dark/light switching
 - **A built-in icon library** — 46 hand-drawn scientific and technical
   icons across 7 categories, so you don't need external image files
-- **Font selection** — choose from 14 fonts, including the bundled
+- **Font selection** — choose system font families or the bundled
   JetBrains Mono used for v5 names, with bold/italic toggles directly in
   the UI
 - **Zero-to-sticker speed** — designed for the case where you want a
@@ -99,6 +102,12 @@ hexmakR is not on CRAN yet. Install it from GitHub:
 # install.packages("pak")
 pak::pak("CTTIR/hexmakR")
 ```
+
+Use R 4.1 or newer with Cairo graphics support (`capabilities("cairo")`).
+On macOS, R's Cairo devices may require XQuartz. The optional `rsvg` package
+renders PNG copies of gallery masters; `svglite` enables classic SVG export;
+`colourpicker` provides colour pickers in the classic editor. Without
+`colourpicker`, that editor accepts typed colour values.
 
 ## Quick Start
 
@@ -149,10 +158,17 @@ hex_groups(project)
 
 Uploads are limited to 10 MiB; projects to 20 MiB. SVG supports solid-colour
 paths/shapes, transforms and local references. Curves become bounded vector
-polylines, and SVG/PDF exports keep that vector geometry. Outline text and
+polylines, and SVG/PDF exports keep that vector geometry. Root `viewBox`,
+`preserveAspectRatio` and absolute viewport units are respected. Percentage
+dimensions and viewport cropping are unsupported. Outline text and
 flatten gradients, masks, filters or intersecting clips before uploading;
 unsupported features produce an explanatory error. Raster content stays raster
 inside SVG/PDF exports. The application title is the text **hexmakR**.
+
+Exports, project files and recipes replace an existing file only after writing
+the new output succeeds. In the classic editor, an invalid edit or upload shows
+an error and retains the last valid preview, download and filename. Correct
+the settings or upload a valid image to apply a new design.
 
 ## Classic designer comparison
 
