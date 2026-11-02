@@ -182,6 +182,7 @@ utils::globalVariables(c("x", "y", "label"))
   if (!nzchar(label)) return(grid::nullGrob())
   shape <- systemfonts::shape_string(label, path = font, size = size,
                                      align = "center")
+  .check_bundled_glyphs(shape)
   o <- systemfonts::glyph_outline(shape$shape$index, font, size = size,
                                   tolerance = .04)
   if (!nrow(o)) return(grid::nullGrob())
@@ -266,44 +267,46 @@ drawDetails.hexmakr_icon_grob <- function(x, recording = FALSE) {
 
 #' @noRd
 .make_image_grob <- function(path, cx, cy, size, H_data) {
+  .check_string(path, "icon_image")
   if (!file.exists(path)) {
-    warning(sprintf("icon_image file not found: %s", path))
-    return(NULL)
+    stop(sprintf("icon_image file not found: %s", path), call. = FALSE)
   }
   # Extract extension without depending on tools package
   ext <- tolower(sub(".*\\.([^.]+)$", "\\1", path))
   img <- tryCatch({
-    if (ext == "png") {
-      png::readPNG(path)
-    } else if (ext %in% c("jpg", "jpeg")) {
-      if (requireNamespace("jpeg", quietly = TRUE)) {
-        jpeg::readJPEG(path)
-      } else {
-        warning("Package 'jpeg' needed to load JPG images. ",
-                "Install with: install.packages('jpeg')")
-        return(NULL)
-      }
-    } else {
-      warning(sprintf("Unsupported image format: .%s. Use PNG or JPEG.", ext))
-      return(NULL)
+    if (!ext %in% c("png", "jpg", "jpeg")) {
+      stop(sprintf("Unsupported image format: .%s. Use PNG or JPEG.", ext), call. = FALSE)
     }
+    info <- file.info(path)
+    if (isTRUE(info$isdir) || is.na(info$size) || info$size < 1 || info$size > .art_input_limit)
+      stop("Provide a PNG or JPEG file of at most 10 MiB.", call. = FALSE)
+    bytes <- readBin(path, "raw", n = .art_input_limit + 1L)
+    if (length(bytes) > .art_input_limit) stop("Artwork exceeds the 10 MiB limit.", call. = FALSE)
+    mime <- if (ext == "png") "image/png" else "image/jpeg"
+    # Apply the same byte and dimension limits as the modern editor before
+    # invoking a decoder. Native rasters avoid a large double-channel array.
+    .raster_header(bytes, mime)
+    .decode_art_raster(bytes, mime)
   }, error = function(e) {
-    warning(sprintf("Could not read image '%s': %s", path,
-                    conditionMessage(e)))
-    NULL
+    stop(sprintf("Could not read image '%s': %s", path,
+                 conditionMessage(e)), call. = FALSE)
   })
-  if (is.null(img)) return(NULL)
 
   cx_npc <- cx
   cy_npc <- cy / H_data
   s_npc  <- size / H_data
+  # Fit inside the existing icon area. Its NPC axes have different physical
+  # lengths, because the annotation spans 1 by H_data in equal plot units.
+  aspect <- ncol(img) / nrow(img)
+  image_width <- min(2 * s_npc, 2 * size * aspect)
+  image_height <- image_width / (aspect * H_data)
 
   grid::rasterGrob(
     img,
     x          = grid::unit(cx_npc, "npc"),
     y          = grid::unit(cy_npc, "npc"),
-    width      = grid::unit(s_npc * 2, "npc"),
-    height     = grid::unit(s_npc * 2, "npc"),
+    width      = grid::unit(image_width, "npc"),
+    height     = grid::unit(image_height, "npc"),
     just       = c("center", "center"),
     interpolate = TRUE
   )

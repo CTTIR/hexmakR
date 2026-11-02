@@ -51,23 +51,21 @@ test_that("hex_sticker with a custom PNG image renders", {
   expect_no_error(hex_sticker("pkg", icon_image = png_path))
 })
 
-test_that(".make_image_grob() warns and returns NULL for a missing file", {
-  expect_warning(
-    res <- hexmakR:::.make_image_grob("does_not_exist.png", 0.5, 0.5,
+test_that(".make_image_grob() rejects a missing file", {
+  expect_error(
+    hexmakR:::.make_image_grob("does_not_exist.png", 0.5, 0.5,
                                       0.3, 2 / sqrt(3)),
     "not found"
   )
-  expect_null(res)
 })
 
-test_that(".make_image_grob() warns on an unsupported format", {
+test_that(".make_image_grob() rejects an unsupported format", {
   bad <- withr::local_tempfile(fileext = ".gif")
   writeLines("x", bad)
-  expect_warning(
-    res <- hexmakR:::.make_image_grob(bad, 0.5, 0.5, 0.3, 2 / sqrt(3)),
+  expect_error(
+    hexmakR:::.make_image_grob(bad, 0.5, 0.5, 0.3, 2 / sqrt(3)),
     "Unsupported image format"
   )
-  expect_null(res)
 })
 
 test_that(".make_image_grob() reads a PNG into a rasterGrob", {

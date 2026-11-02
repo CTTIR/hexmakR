@@ -3,6 +3,9 @@
 #' The same native grid geometry powers previews and all three export formats.
 #' SVG and PDF retain vector paths, including outlined package-name glyphs;
 #' uploaded PNG/JPEG figures remain embedded raster images.
+#' Rendering finishes in a temporary file beside the destination before
+#' replacing it, so a failed export preserves any previous file. Export
+#' restores the previously selected graphics device.
 #' @param design A [hex_design()] object.
 #' @param filename Destination ending in `.png`, `.svg` or `.pdf`.
 #' @param width PNG width in pixels; vector masters use a six-inch canvas.
@@ -23,14 +26,17 @@ hex_export <- function(design, filename, width = 1600L) {
   if (!capabilities("cairo")) stop("R with Cairo support is required for v5 exports.", call. = FALSE)
   grob <- hex_grob(design)
   ratio <- .design_ratio(design)
-  dir.create(dirname(filename), recursive = TRUE, showWarnings = FALSE)
-  switch(ext,
-    png = grDevices::png(filename, width = round(width), height = round(width / ratio),
-      res = width / 6, bg = "transparent", type = "cairo", antialias = "gray"),
-    svg = grDevices::svg(filename, width = 6, height = 6 / ratio, bg = "transparent"),
-    pdf = grDevices::cairo_pdf(filename, width = 6, height = 6 / ratio, bg = "transparent"))
-  on.exit(grDevices::dev.off(), add = TRUE)
-  grid::grid.newpage(); grid::grid.draw(grob)
+  .write_output(filename, function(path) {
+    previous <- grDevices::dev.cur()
+    switch(ext,
+      png = grDevices::png(path, width = round(width), height = round(width / ratio),
+        res = width / 6, bg = "transparent", type = "cairo", antialias = "gray"),
+      svg = grDevices::svg(path, width = 6, height = 6 / ratio, bg = "transparent"),
+      pdf = grDevices::cairo_pdf(path, width = 6, height = 6 / ratio, bg = "transparent"))
+    device <- grDevices::dev.cur()
+    on.exit(.close_output_device(device, previous), add = TRUE)
+    grid::grid.newpage(); grid::grid.draw(grob)
+  })
   invisible(filename)
 }
 
@@ -56,7 +62,7 @@ hex_save_design <- function(design, path) {
   if (is.null(payload$groups)) payload$groups <- NULL
   json <- jsonlite::toJSON(payload, pretty = TRUE, auto_unbox = TRUE, digits = 15)
   if (nchar(json, type = "bytes") + 1L > .design_json_limit()) stop("Project exceeds the JSON size limit (20 MiB).", call. = FALSE)
-  writeLines(json, path, useBytes = TRUE)
+  .write_output(path, function(file) writeLines(json, file, useBytes = TRUE))
   invisible(path)
 }
 
@@ -90,7 +96,7 @@ hex_recipe <- function(design, path) {
     utils::capture.output(dput(unclass(design))),
     "class(design) <- 'hex_design'", "", "print(design)",
     "hex_export(design, 'sticker.svg')", "hex_export(design, 'sticker.png')")
-  writeLines(code, path)
+  .write_output(path, function(file) writeLines(code, file))
   invisible(path)
 }
 
@@ -182,14 +188,18 @@ hex_render_catalog <- function(directory, packages = hex_catalog()$name,
 
 .export_cttir_icon <- function(package, path, size) {
   s <- cttir_style(.identity_row(package)$family, "dark")
-  grDevices::png(path, width = size, height = size, res = size / 6,
-    bg = "transparent", type = "cairo", antialias = "gray")
-  on.exit(grDevices::dev.off(), add = TRUE)
-  grid::grid.newpage()
-  grid::pushViewport(grid::viewport(width = .hex_ratio(), gp = grid::gpar(lex = .hex_ratio())))
-  grid::grid.polygon(.5+c(0,.48,.48,0,-.48,-.48), .5+c(.48,.24,-.24,-.48,-.24,.24),
-    gp = grid::gpar(fill = s$face, col = s$rim, lwd = 5.5, linejoin = "round"))
-  grid::pushViewport(grid::viewport(width = .88, height = .88 * .hex_ratio()))
-  cttir_motif(package, s, small = TRUE)
-  grid::popViewport(2)
+  .write_output(path, function(file) {
+    previous <- grDevices::dev.cur()
+    grDevices::png(file, width = size, height = size, res = size / 6,
+      bg = "transparent", type = "cairo", antialias = "gray")
+    device <- grDevices::dev.cur()
+    on.exit(.close_output_device(device, previous), add = TRUE)
+    grid::grid.newpage()
+    grid::pushViewport(grid::viewport(width = .hex_ratio(), gp = grid::gpar(lex = .hex_ratio())))
+    grid::grid.polygon(.5+c(0,.48,.48,0,-.48,-.48), .5+c(.48,.24,-.24,-.48,-.24,.24),
+      gp = grid::gpar(fill = s$face, col = s$rim, lwd = 5.5, linejoin = "round"))
+    grid::pushViewport(grid::viewport(width = .88, height = .88 * .hex_ratio()))
+    cttir_motif(package, s, small = TRUE)
+    grid::popViewport(2)
+  })
 }

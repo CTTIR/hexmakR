@@ -33,3 +33,14 @@
   "JetBrains Mono" = c(plain = "JetBrainsMono-Regular.ttf",
                        bold  = "JetBrainsMono-SemiBold.ttf")
 )
+
+# A glyph index of zero is the font's missing-character placeholder.
+.check_bundled_glyphs <- function(shape) {
+  missing <- unique(shape$shape$glyph[shape$shape$index == 0L])
+  if (length(missing)) {
+    codes <- sprintf("U+%04X", utf8ToInt(paste(missing, collapse = "")))
+    stop("The bundled JetBrains Mono font cannot render: ",
+         paste(codes, collapse = ", "), ". Use supported characters.", call. = FALSE)
+  }
+  invisible(shape)
+}

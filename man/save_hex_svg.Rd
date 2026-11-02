@@ -18,7 +18,9 @@ The \code{filename} path, invisibly.
 }
 \description{
 Renders and saves a hex sticker to SVG. Requires the
-\pkg{svglite} package.
+\pkg{svglite} package. Rendering finishes in a temporary file beside the
+destination before replacing it, so a failed export preserves any
+previous file. The previously selected graphics device is restored.
 }
 \details{
 Save a hex sticker to an SVG file

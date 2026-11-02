@@ -27,7 +27,7 @@ hex_asset(
 \item{dir}{Directory for the SVG and PDF copies and the rendered PNG and
 icon files. The default is a folder in \code{\link[=tempdir]{tempdir()}}, so nothing is kept
 after the session. To keep files between sessions, pass a directory of
-your choice, for example \code{tools::R_user_dir("hexmakR", "cache")}.}
+your choice, such as a cache directory returned by \code{\link[tools:R_user_dir]{tools::R_user_dir()}}.}
 }
 \value{
 An absolute file path in \code{dir}: the copy of the SVG or PDF master,
@@ -50,6 +50,7 @@ design.
 }
 \examples{
 hex_asset("phenoscapR")
+# For a persistent cache, set dir = tools::R_user_dir("hexmakR", "cache").
 if (requireNamespace("rsvg", quietly = TRUE)) {
   png <- hex_asset("phenoscapR", format = "png", dir = tempfile())
   dim(png::readPNG(png))

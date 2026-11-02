@@ -13,7 +13,9 @@
 #' @param icon Character or `NULL`. Name of a built-in icon. See
 #'   [hexmakr_icons()] for valid values. Ignored if `icon_image` is provided.
 #' @param icon_image Character or `NULL`. Path to a custom image file (PNG or
-#'   JPEG). If provided, overrides `icon`.
+#'   JPEG). If provided, overrides `icon` and retains the image proportions.
+#'   Images must be at most 10 MiB, 8192 pixels per side and 16 million pixels
+#'   in total. Invalid or oversized images report an error before rendering.
 #' @param icon_size Numeric. Size multiplier for the icon (default `1.0`).
 #' @param theme Character. Theme name. One of `names(hexmakr_themes())`.
 #'   The nine CTTIR v5 families (for example `"spatial"` or `"clinical"`)
@@ -30,7 +32,7 @@
 #'   `"sans"`) or a system font name. Default `"mono"`. `"jetbrains_mono"`
 #'   uses the JetBrains Mono font bundled for CTTIR v5 names, drawn as glyph
 #'   outlines so it needs no installed font (bold uses the semibold cut;
-#'   italic is slanted).
+#'   italic is slanted). Unsupported bundled-font characters report an error.
 #' @param font_bold Logical. Use bold weight. Default `TRUE`.
 #' @param font_italic Logical. Use italic style. Default `FALSE`.
 #' @param font_size Numeric. Base font size in pt for the package name.

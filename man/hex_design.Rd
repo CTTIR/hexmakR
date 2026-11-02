@@ -28,7 +28,10 @@ hex_design(
 
 \item{layout}{\code{lockup} (name inside), \code{hex} (unnamed), or \code{motif} (standalone).}
 
-\item{label}{Displayed name, defaulting to the exact identity.}
+\item{label}{Displayed name, defaulting to the exact identity. Names must
+use characters supported by the bundled JetBrains Mono font and fit
+inside the frame at a minimum size of six points; otherwise rendering
+reports an error instead of clipping or substituting characters.}
 
 \item{colors}{Named list of colour-role overrides, for example
 \code{list(face = "#193E36", rim = "#009E73", ink = "white")}.

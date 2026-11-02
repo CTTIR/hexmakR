@@ -7,7 +7,10 @@
 #' @param package Exact identity from [hex_catalog()].
 #' @param mode `dark`, `light`, or `mono`.
 #' @param layout `lockup` (name inside), `hex` (unnamed), or `motif` (standalone).
-#' @param label Displayed name, defaulting to the exact identity.
+#' @param label Displayed name, defaulting to the exact identity. Names must
+#'   use characters supported by the bundled JetBrains Mono font and fit
+#'   inside the frame at a minimum size of six points; otherwise rendering
+#'   reports an error instead of clipping or substituting characters.
 #' @param colors Named list of colour-role overrides, for example
 #'   `list(face = "#193E36", rim = "#009E73", ink = "white")`.
 #'   Use [hex_palette()] to see available roles.
@@ -121,22 +124,40 @@ print.hex_design <- function(x, ...) {
 }
 
 # Draw glyph outlines from the supplied font; no font installation or fallback.
-.cttir_name_path <- function(label, y, size, colour, ratio) {
+.cttir_name_path <- function(label, y, size, colour, ratio, frame) {
   if (!nzchar(label)) return(invisible(NULL))
   font <- .cttir_path("source", "fonts", "JetBrainsMono-SemiBold.ttf")
-  shape <- systemfonts::shape_string(label, path = font, size = size)
-  while (shape$metrics$width > .62 * 432 && size > 6) {
-    size <- size - .25
+  repeat {
     shape <- systemfonts::shape_string(label, path = font, size = size)
+    .check_bundled_glyphs(shape)
+    if (shape$metrics$width <= .62 * 432) {
+      o <- systemfonts::glyph_outline(shape$shape$index, font, size = size, tolerance = .04)
+      if (!nrow(o)) return(invisible(NULL))
+      o$x <- o$x + shape$shape$x_offset[o$glyph]
+      o$y <- o$y + shape$shape$y_offset[o$glyph]
+      x <- .5 + (o$x - shape$metrics$width / 2) / 432
+      name_y <- y + (o$y - mean(range(o$y))) / (432 / ratio)
+      if (.name_inside_frame(x, name_y, frame)) break
+    }
+    if (size <= 6) stop("Name does not fit inside the frame at the minimum size (6 pt). ",
+                         "Shorten it or move it away from the edge.", call. = FALSE)
+    size <- max(6, size - .25)
   }
-  o <- systemfonts::glyph_outline(shape$shape$index, font, size = size, tolerance = .04)
-  if (!nrow(o)) return(invisible(NULL))
-  o$x <- o$x + shape$shape$x_offset[o$glyph]
-  o$y <- o$y + shape$shape$y_offset[o$glyph]
   ids <- as.integer(factor(paste(o$glyph, o$contour), levels = unique(paste(o$glyph, o$contour))))
-  grid::grid.path(x = .5 + (o$x - shape$metrics$width / 2) / 432,
-    y = y + (o$y - mean(range(o$y))) / (432 / ratio),
+  grid::grid.path(x = x, y = name_y,
     id = ids, rule = "winding", gp = grid::gpar(fill = colour, col = NA), name = "package-name")
+}
+
+# The supported frames are convex. Every outline point must lie on the
+# interior side of every frame edge, so the frame clip cannot cut a glyph.
+.name_inside_frame <- function(x, y, frame) {
+  next_vertex <- c(seq_along(frame$x)[-1L], 1L)
+  cross <- vapply(seq_along(frame$x), function(i) {
+    j <- next_vertex[i]
+    (frame$x[j] - frame$x[i]) * (y - frame$y[i]) -
+      (frame$y[j] - frame$y[i]) * (x - frame$x[i])
+  }, numeric(length(x)))
+  all(cross >= -1e-10) || all(cross <= 1e-10)
 }
 
 .draw_cttir <- function(design) {
@@ -156,7 +177,8 @@ print.hex_design <- function(x, ...) {
   if (nzchar(design$icon)) .lookup_icon(design$icon)(.5, .5, .85, s$mid)
   else if (is.null(design$archive) || isTRUE(design$archive)) cttir_motif(design$package, s, small = FALSE)
   grid::popViewport()
-  if (design$layout == "lockup") .cttir_name_path(design$label, design$label_y, design$label_size, s$ink, .design_ratio(design))
+  if (design$layout == "lockup") .cttir_name_path(design$label, design$label_y,
+    design$label_size, s$ink, .design_ratio(design), xy)
 }
 
 #' Render a design to native grid geometry
@@ -311,10 +333,7 @@ logo_design <- function(name, motif = NULL, shape = c("hex", "pentagon", "square
   previous <- grDevices::dev.cur()
   grDevices::pdf(NULL, width = 6, height = 6 / .design_ratio(design))
   capture <- grDevices::dev.cur()
-  on.exit({
-    grDevices::dev.off(capture)
-    if (previous > 1L && previous %in% grDevices::dev.list()) grDevices::dev.set(previous)
-  }, add = TRUE)
+  on.exit(.close_output_device(capture, previous), add = TRUE)
   .draw_cttir(design)
   grid::grid.grab(wrap = FALSE)
 }

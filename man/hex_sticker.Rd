@@ -42,7 +42,9 @@ sticker.}
 \code{\link[=hexmakr_icons]{hexmakr_icons()}} for valid values. Ignored if \code{icon_image} is provided.}
 
 \item{icon_image}{Character or \code{NULL}. Path to a custom image file (PNG or
-JPEG). If provided, overrides \code{icon}.}
+JPEG). If provided, overrides \code{icon} and retains the image proportions.
+Images must be at most 10 MiB, 8192 pixels per side and 16 million pixels
+in total. Invalid or oversized images report an error before rendering.}
 
 \item{icon_size}{Numeric. Size multiplier for the icon (default \code{1.0}).}
 
@@ -68,7 +70,7 @@ e.g. \code{"#1B2838"}).}
 \code{"sans"}) or a system font name. Default \code{"mono"}. \code{"jetbrains_mono"}
 uses the JetBrains Mono font bundled for CTTIR v5 names, drawn as glyph
 outlines so it needs no installed font (bold uses the semibold cut;
-italic is slanted).}
+italic is slanted). Unsupported bundled-font characters report an error.}
 
 \item{font_bold}{Logical. Use bold weight. Default \code{TRUE}.}
 

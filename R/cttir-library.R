@@ -77,12 +77,13 @@ hex_catalog <- function(family = NULL) {
 #' @param dir Directory for the SVG and PDF copies and the rendered PNG and
 #'   icon files. The default is a folder in [tempdir()], so nothing is kept
 #'   after the session. To keep files between sessions, pass a directory of
-#'   your choice, for example `tools::R_user_dir("hexmakR", "cache")`.
+#'   your choice, such as a cache directory returned by [tools::R_user_dir()].
 #' @return An absolute file path in `dir`: the copy of the SVG or PDF master,
 #'   or the rendered PNG or icon.
 #' @export
 #' @examples
 #' hex_asset("phenoscapR")
+#' # For a persistent cache, set dir = tools::R_user_dir("hexmakR", "cache").
 #' if (requireNamespace("rsvg", quietly = TRUE)) {
 #'   png <- hex_asset("phenoscapR", format = "png", dir = tempfile())
 #'   dim(png::readPNG(png))
@@ -131,12 +132,7 @@ hex_asset <- function(package, mode = c("dark", "light", "mono"),
   stamp <- file.path(dir, ".hexmakR-version")
   current <- if (file.exists(stamp)) readLines(stamp, warn = FALSE)
   if (!identical(current, .cttir_cache$build)) {
-    dir.create(dir, recursive = TRUE, showWarnings = FALSE)
-    temp <- tempfile("stamp-", tmpdir = dir)
-    on.exit(unlink(temp), add = TRUE)
-    writeLines(.cttir_cache$build, temp)
-    if (file.exists(stamp)) unlink(stamp)
-    if (!file.rename(temp, stamp)) stop("Could not write ", stamp, call. = FALSE)
+    .write_output(stamp, function(file) writeLines(.cttir_cache$build, file))
   }
   file.mtime(stamp)
 }
@@ -148,19 +144,16 @@ hex_asset <- function(package, mode = c("dark", "light", "mono"),
   } else if (format == "png" && !requireNamespace("rsvg", quietly = TRUE)) {
     stop("Package 'rsvg' is required to render PNG masters.", call. = FALSE)
   }
-  dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
-  temp <- tempfile("asset-", tmpdir = dirname(target), fileext = paste0(".", format))
-  on.exit(unlink(temp), add = TRUE)
-  if (layout == "icon") .export_cttir_icon(package, temp, as.integer(size))
-  else if (format == "png") {
-    # The supplied PNG masters fill 1600 x 1848 pixels with the 432 x 498 point
-    # drawing, a slightly different aspect ratio, so scale the axes separately.
-    svg <- readChar(master, file.size(master), useBytes = TRUE)
-    svg <- sub("<svg ", "<svg preserveAspectRatio=\"none\" ", svg, fixed = TRUE)
-    rsvg::rsvg_png(charToRaw(svg), temp, width = 1600L, height = 1848L)
-  } else if (!file.copy(master, temp)) stop("Could not write ", target, call. = FALSE)
-  if (file.exists(target)) unlink(target)
-  if (!file.rename(temp, target)) stop("Could not write ", target, call. = FALSE)
+  .write_output(target, function(temp) {
+    if (layout == "icon") .export_cttir_icon(package, temp, as.integer(size))
+    else if (format == "png") {
+      # The supplied PNG masters fill 1600 x 1848 pixels with the 432 x 498 point
+      # drawing, a slightly different aspect ratio, so scale the axes separately.
+      svg <- readChar(master, file.size(master), useBytes = TRUE)
+      svg <- sub("<svg ", "<svg preserveAspectRatio=\"none\" ", svg, fixed = TRUE)
+      rsvg::rsvg_png(charToRaw(svg), temp, width = 1600L, height = 1848L)
+    } else if (!file.copy(master, temp)) stop("Could not write ", target, call. = FALSE)
+  })
   invisible(target)
 }
 

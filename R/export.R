@@ -4,6 +4,9 @@
 #' @description Renders and saves a hex sticker ggplot object to a PNG file
 #'   with a transparent background and the correct hexb.in aspect ratio
 #'   (width / height = sqrt(3) / 2).
+#'   Rendering finishes in a temporary file beside the destination before
+#'   replacing it, so a failed export preserves any previous file. The
+#'   previously selected graphics device is restored after export.
 #'
 #' @param sticker A ggplot object returned by [hex_sticker()].
 #' @param filename Character. Output file path. Must end in `.png`.
@@ -28,26 +31,27 @@ save_hex <- function(sticker, filename, width = 600, dpi = 300) {
   if (!grepl("\\.png$", tolower(filename))) {
     stop("'filename' must end in '.png'.")
   }
+  .scalar_number(width, "width", 1, Inf)
+  .scalar_number(dpi, "dpi", .Machine$double.eps, Inf)
   ratio  <- .hex_ratio()
   height <- round(width / ratio)
-  dir_path <- dirname(filename)
-  if (!dir.exists(dir_path)) {
-    dir.create(dir_path, recursive = TRUE)
-  }
   # Cairo where available: the default device on macOS (quartz) applies colour
   # management and gives other pixel values than on Linux and Windows.
-  grDevices::png(
-    filename  = filename,
-    width     = width,
-    height    = height,
-    units     = "px",
-    res       = dpi,
-    bg        = "transparent",
-    type      = if (capabilities("cairo")) "cairo" else getOption("bitmapType")
-  )
-  device <- grDevices::dev.cur()
-  on.exit(grDevices::dev.off(device), add = TRUE)
-  print(sticker)
+  .write_output(filename, function(path) {
+    previous <- grDevices::dev.cur()
+    grDevices::png(
+      filename  = path,
+      width     = width,
+      height    = height,
+      units     = "px",
+      res       = dpi,
+      bg        = "transparent",
+      type      = if (capabilities("cairo")) "cairo" else getOption("bitmapType")
+    )
+    device <- grDevices::dev.cur()
+    on.exit(.close_output_device(device, previous), add = TRUE)
+    print(sticker)
+  })
   invisible(filename)
 }
 
@@ -55,7 +59,9 @@ save_hex <- function(sticker, filename, width = 600, dpi = 300) {
 #'
 #' @title Save a Hex Sticker as SVG
 #' @description Renders and saves a hex sticker to SVG. Requires the
-#'   \pkg{svglite} package.
+#'   \pkg{svglite} package. Rendering finishes in a temporary file beside the
+#'   destination before replacing it, so a failed export preserves any
+#'   previous file. The previously selected graphics device is restored.
 #'
 #' @param sticker A ggplot object returned by [hex_sticker()].
 #' @param filename Character. Output file path. Must end in `.svg`.
@@ -84,15 +90,15 @@ save_hex_svg <- function(sticker, filename, width = 2) {
   if (!grepl("\\.svg$", tolower(filename))) {
     stop("'filename' must end in '.svg'.")
   }
+  .scalar_number(width, "width", .Machine$double.eps, Inf)
   height <- width / .hex_ratio()
-  dir_path <- dirname(filename)
-  if (!dir.exists(dir_path)) {
-    dir.create(dir_path, recursive = TRUE)
-  }
-  svglite::svglite(filename = filename, width = width, height = height,
+  .write_output(filename, function(path) {
+    previous <- grDevices::dev.cur()
+    svglite::svglite(filename = path, width = width, height = height,
                    bg = "transparent")
-  device <- grDevices::dev.cur()
-  on.exit(grDevices::dev.off(device), add = TRUE)
-  print(sticker)
+    device <- grDevices::dev.cur()
+    on.exit(.close_output_device(device, previous), add = TRUE)
+    print(sticker)
+  })
   invisible(filename)
 }
