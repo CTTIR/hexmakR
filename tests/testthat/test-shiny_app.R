@@ -101,3 +101,93 @@ test_that("a theme switch redraws the classic sticker once, without the old colo
   expect_identical(drawn[[2]]$theme, "genomics")
   expect_length(drawn[[2]]$overrides, 0)
 })
+
+test_that("the classic editor retains its applied artwork after an invalid upload", {
+  skip_without_cairo()
+  valid <- tempfile(fileext = ".png")
+  invalid <- tempfile(fileext = ".png")
+  withr::defer(unlink(c(valid, invalid)))
+  png::writePNG(array(rep(c(0, 0.4, 0.8), each = 16), c(4, 4, 3)), valid)
+  writeLines("This is not a PNG image.", invalid)
+  upload <- function(path) data.frame(name = basename(path), size = file.info(path)$size,
+    type = "image/png", datapath = path)
+  shiny::testServer(hexmakR:::.build_classic_app(), {
+    stats <- hexmakr_themes()$stats$dark
+    session$setInputs(`text-name` = "Applied name", `text-subtitle` = "", `text-url` = "",
+      `text-font_family` = "mono", `text-font_bold` = TRUE, `text-font_italic` = FALSE,
+      `text-font_size` = 12, `icon-icon` = "", `icon-icon_size` = 1,
+      `icon-icon_image` = upload(valid), `theme-theme` = "stats", `theme-mode` = "dark",
+      `colors-bg` = stats$bg, `colors-accent` = stats$accent,
+      `colors-text_color` = stats$text, `colors-border_color` = stats$border,
+      `colors-sub_color` = stats$sub, `border-border_width` = 2,
+      `border-inner_border` = TRUE)
+    before <- current_sticker()
+    before_png <- png::readPNG(output$download_png)
+    expect_null(design_error())
+
+    session$setInputs(`icon-icon_image` = upload(invalid), `text-name` = "Unapplied name")
+    expect_match(design_error(), "Could not read image")
+    expect_match(design_error(), basename(invalid), fixed = TRUE)
+    expect_false(grepl(invalid, design_error(), fixed = TRUE))
+    expect_identical(current_sticker(), before)
+    expect_identical(applied_design()$name, "Applied name")
+    expect_identical(png::readPNG(output$download_png), before_png)
+    expect_match(output$classic_error$html, 'role="alert"', fixed = TRUE)
+    expect_match(output$classic_error$html, "last valid design", fixed = TRUE)
+
+    session$setInputs(`icon-icon_image` = upload(valid))
+    expect_null(design_error())
+    expect_identical(applied_design()$name, "Unapplied name")
+    expect_false(identical(current_sticker(), before))
+  })
+})
+
+test_that("the classic editor reports construction failures without substitute artwork", {
+  skip_without_cairo()
+  real <- hex_sticker
+  real_save <- save_hex
+  render_state <- new.env()
+  render_state$fails <- FALSE
+  render_state$paths <- character()
+  devices <- grDevices::dev.list()
+  local_mocked_bindings(hex_sticker = function(...) {
+    args <- list(...)
+    if (identical(args$name, "Rejected name")) stop("Synthetic construction failure")
+    real(...)
+  }, save_hex = function(...) {
+    path <- list(...)$filename
+    render_state$paths <- c(render_state$paths, path)
+    if (render_state$fails) {
+      writeLines("partial output", path)
+      stop("Synthetic drawing failure")
+    }
+    real_save(...)
+  })
+  shiny::testServer(hexmakR:::.build_classic_app(), {
+    stats <- hexmakr_themes()$stats$dark
+    session$setInputs(`text-name` = "Applied name", `text-subtitle` = "Subtitle", `text-url` = "",
+      `text-font_family` = "mono", `text-font_bold` = TRUE, `text-font_italic` = FALSE,
+      `text-font_size` = 12, `icon-icon` = "atom", `icon-icon_size` = 1,
+      `theme-theme` = "stats", `theme-mode` = "dark",
+      `colors-bg` = stats$bg, `colors-accent` = stats$accent,
+      `colors-text_color` = stats$text, `colors-border_color` = stats$border,
+      `colors-sub_color` = stats$sub, `border-border_width` = 2,
+      `border-inner_border` = TRUE)
+    before <- current_sticker()
+    session$setInputs(`text-name` = "Rejected name")
+    expect_identical(design_error(), "Synthetic construction failure")
+    expect_identical(current_sticker(), before)
+    expect_identical(applied_design()$name, "Applied name")
+    session$setInputs(`text-name` = "Recovered name")
+    expect_null(design_error())
+    expect_identical(applied_design()$name, "Recovered name")
+    recovered <- current_sticker()
+    render_state$fails <- TRUE
+    session$setInputs(`text-name` = "Drawing failed")
+    expect_identical(design_error(), "Synthetic drawing failure")
+    expect_identical(current_sticker(), recovered)
+    expect_identical(applied_design()$name, "Recovered name")
+  })
+  expect_false(any(file.exists(render_state$paths)))
+  expect_identical(grDevices::dev.list(), devices)
+})

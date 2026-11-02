@@ -105,6 +105,7 @@ mod_icon_server <- function(id) {
     shiny::reactive(list(
       icon       = if (nzchar(input$icon)) input$icon else NULL,
       icon_image = input$icon_image$datapath,
+      image_name = input$icon_image$name,
       icon_size  = input$icon_size
     ))
   })

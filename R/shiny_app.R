@@ -90,6 +90,7 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
           shiny::tags$p("Interactive Hex Sticker Designer",
                         style = "color:#94A3B8; font-size:13px; margin-top:8px; margin-bottom:16px;"),
           shiny::plotOutput("hex_preview", width = "100%", height = "340px"),
+          shiny::uiOutput("classic_error"),
           shiny::tags$hr(style = "border-color:#334155;"),
           shiny::downloadButton("download_png", "Export PNG",
                                 class = "btn-success",
@@ -107,7 +108,7 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
               "Design publication-ready hexagon stickers for R packages. ",
               "Choose from 28 curated color themes (dark + light), led by the ",
               "nine CTTIR v5 families, 46 built-in scientific and technical ",
-              "icons, 14 fonts, and export to transparent PNG."
+              "icons, system fonts and bundled JetBrains Mono, and export to transparent PNG."
             ),
             shiny::tags$p(
               style = "margin-bottom:6px;",
@@ -175,8 +176,16 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
     color_vals  <- mod_colors_server("colors", theme = theme_vals)
     border_vals <- mod_border_server("border")
 
-    # Reactive sticker
-    current_sticker <- shiny::reactive({
+    # A failed edit must not replace the preview or exported design.
+    applied_design <- shiny::reactiveVal(NULL)
+    design_error <- shiny::reactiveVal(NULL)
+    check_render <- function(sticker) {
+      path <- tempfile(fileext = ".png")
+      on.exit(unlink(path), add = TRUE)
+      save_hex(sticker, filename = path, width = 600, dpi = 300)
+      invisible(NULL)
+    }
+    shiny::observe({
       tv <- text_vals()
       iv <- icon_vals()
       thv <- theme_vals()
@@ -184,8 +193,8 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
       bv <- border_vals()
 
       # The colours module passes only colours that differ from the theme.
-      tryCatch(
-        hex_sticker(
+      candidate <- tryCatch({
+        sticker <- hex_sticker(
           name         = tv$name,
           subtitle     = tv$subtitle,
           url          = tv$url,
@@ -205,12 +214,41 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
           font_size    = tv$font_size,
           border_width = bv$border_width,
           inner_border = bv$inner_border
-        ),
+        )
+        # Exercise the export device before accepting deferred drawing errors.
+        check_render(sticker)
+        list(sticker = sticker, name = tv$name)
+      },
         error = function(e) {
-          # Return a minimal sticker on error
-          hex_sticker(name = tv$name %||% "package",
-                      theme = "stats", mode = "dark")
+          message <- conditionMessage(e)
+          if (!is.null(iv$icon_image) && !is.null(iv$image_name)) {
+            message <- gsub(iv$icon_image, iv$image_name, message, fixed = TRUE)
+          }
+          design_error(message)
+          NULL
         }
+      )
+      if (!is.null(candidate)) {
+        applied_design(candidate)
+        design_error(NULL)
+      }
+    })
+
+    current_sticker <- shiny::reactive({
+      shiny::req(applied_design())
+      applied_design()$sticker
+    })
+
+    output$classic_error <- shiny::renderUI({
+      error <- design_error()
+      if (is.null(error)) return(NULL)
+      shiny::tags$div(
+        role = "alert", style = "color:#FECACA; margin-top:12px; overflow-wrap:anywhere;",
+        shiny::tags$p(paste("Changes could not be applied:", error)),
+        shiny::tags$p(if (is.null(applied_design()))
+          "Correct the settings or upload a valid image before exporting."
+        else
+          "The preview and download still use the last valid design. Correct the settings or upload a valid image to continue.")
       )
     })
 
@@ -220,7 +258,8 @@ hexmakr_app <- function(workspace = c("v5", "classic"), package = "hexmakR", ...
 
     output$download_png <- shiny::downloadHandler(
       filename = function() {
-        paste0(text_vals()$name %||% "hexsticker", ".png")
+        shiny::req(applied_design())
+        paste0(applied_design()$name, ".png")
       },
       content = function(file) {
         save_hex(current_sticker(), filename = file, width = 600, dpi = 300)
