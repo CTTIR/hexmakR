@@ -1,0 +1,4 @@
+/* The site header already supplies the package logo. */
+.template-home picture.cttir-readme-logo {
+  display: none;
+}

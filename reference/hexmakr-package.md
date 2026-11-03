@@ -5,9 +5,8 @@ via a Shiny app or programmatically via R functions.
 
 Comes with **28 curated colour themes** (dark + light variants), led by
 the nine CTTIR v5 families, **46 built-in scientific and technical
-icons** across 7 categories, custom image upload support, 14 font
-options including the bundled JetBrains Mono, and transparent PNG
-export.
+icons** across 7 categories, custom image upload support, system font
+families and the bundled JetBrains Mono, and transparent PNG export.
 
 The default Designer starts a fresh logo. Add, duplicate, remove and
 edit individual parts; optionally reuse components from 45 archived
@@ -70,9 +69,9 @@ items, rotate individual parts, and organise named groups.
 
 Useful links:
 
-- <https://cttir.github.io/hexmakR/>
-
 - <https://github.com/CTTIR/hexmakR>
+
+- <https://cttir.github.io/hexmakR/>
 
 - Report bugs at <https://github.com/CTTIR/hexmakR/issues>
 

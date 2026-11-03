@@ -58,8 +58,8 @@ hex_asset(
   files. The default is a folder in
   [`tempdir()`](https://rdrr.io/r/base/tempfile.html), so nothing is
   kept after the session. To keep files between sessions, pass a
-  directory of your choice, for example
-  `tools::R_user_dir("hexmakR", "cache")`.
+  directory of your choice, such as a cache directory returned by
+  [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html).
 
 ## Value
 
@@ -70,7 +70,8 @@ the rendered PNG or icon.
 
 ``` r
 hex_asset("phenoscapR")
-#> [1] "/tmp/RtmpqLWhlj/hexmakR-assets/phenoscapR/lockup-dark.svg"
+#> [1] "/tmp/RtmpBCWm0G/hexmakR-assets/phenoscapR/lockup-dark.svg"
+# For a persistent cache, set dir = tools::R_user_dir("hexmakR", "cache").
 if (requireNamespace("rsvg", quietly = TRUE)) {
   png <- hex_asset("phenoscapR", format = "png", dir = tempfile())
   dim(png::readPNG(png))
@@ -80,5 +81,5 @@ if (capabilities("cairo")) {
   hex_asset("phenoscapR", layout = "icon", format = "png", size = 64,
             dir = tempfile())
 }
-#> [1] "/tmp/RtmpqLWhlj/file1a4c7e4d9088/phenoscapR/icon-64.png"
+#> [1] "/tmp/RtmpBCWm0G/file1a0d183edb10/phenoscapR/icon-64.png"
 ```

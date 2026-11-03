@@ -2,7 +2,10 @@
 
 Renders and saves a hex sticker ggplot object to a PNG file with a
 transparent background and the correct hexb.in aspect ratio (width /
-height = sqrt(3) / 2).
+height = sqrt(3) / 2). Rendering finishes in a temporary file beside the
+destination before replacing it, so a failed export preserves any
+previous file. The previously selected graphics device is restored after
+export.
 
 ## Usage
 

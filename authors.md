@@ -14,12 +14,12 @@ Source:
 [`inst/CITATION`](https://github.com/CTTIR/hexmakR/blob/main/inst/CITATION)
 
 Heller R (2026). *hexmakR: Editable Hex Stickers and Project Logos*. R
-package version 0.4.0, <https://github.com/CTTIR/hexmakR>.
+package version 0.4.1, <https://github.com/CTTIR/hexmakR>.
 
     @Manual{,
       title = {hexmakR: Editable Hex Stickers and Project Logos},
       author = {R. Heller},
       year = {2026},
-      note = {R package version 0.4.0},
+      note = {R package version 0.4.1},
       url = {https://github.com/CTTIR/hexmakR},
     }

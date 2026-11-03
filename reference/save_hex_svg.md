@@ -1,6 +1,9 @@
 # Save a Hex Sticker as SVG
 
 Renders and saves a hex sticker to SVG. Requires the svglite package.
+Rendering finishes in a temporary file beside the destination before
+replacing it, so a failed export preserves any previous file. The
+previously selected graphics device is restored.
 
 ## Usage
 

@@ -58,7 +58,9 @@ hex_sticker(
 - icon_image:
 
   Character or `NULL`. Path to a custom image file (PNG or JPEG). If
-  provided, overrides `icon`.
+  provided, overrides `icon` and retains the image proportions. Images
+  must be at most 10 MiB, 8192 pixels per side and 16 million pixels in
+  total. Invalid or oversized images report an error before rendering.
 
 - icon_size:
 
@@ -103,7 +105,8 @@ hex_sticker(
   system font name. Default `"mono"`. `"jetbrains_mono"` uses the
   JetBrains Mono font bundled for CTTIR v5 names, drawn as glyph
   outlines so it needs no installed font (bold uses the semibold cut;
-  italic is slanted).
+  italic is slanted). Unsupported bundled-font characters report an
+  error.
 
 - font_bold:
 

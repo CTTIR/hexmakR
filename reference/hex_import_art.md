@@ -39,7 +39,12 @@ groups. Paths support M/L/H/V/C/S/Q/T/A/Z commands, fill rules, solid
 fills/strokes, and individual opacity. Local `defs`/`use` references are
 expanded with cycle checks. Simple convex clip paths are accepted only
 when they provably do not cut the component; intersecting clips must
-first be flattened to paths. Text must be outlined. Gradients, masks,
+first be flattened to paths. Root viewport dimensions, `viewBox` and
+`preserveAspectRatio` are respected; the viewport must provably contain
+each component, otherwise cropping must first be flattened. Dimensions
+may use absolute units (including px and pt), but not percentages or
+font-relative units. An omitted viewport dimension is inferred from the
+`viewBox` aspect ratio. Text must be outlined. Gradients, masks,
 filters, nested SVG viewports, CSS stylesheets and group opacity are
 rejected with an explanation rather than silently rasterised.
 Non-uniform transforms on strokes require outlined strokes. Scripts,

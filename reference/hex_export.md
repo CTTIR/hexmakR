@@ -3,7 +3,9 @@
 The same native grid geometry powers previews and all three export
 formats. SVG and PDF retain vector paths, including outlined
 package-name glyphs; uploaded PNG/JPEG figures remain embedded raster
-images.
+images. Rendering finishes in a temporary file beside the destination
+before replacing it, so a failed export preserves any previous file.
+Export restores the previously selected graphics device.
 
 ## Usage
 

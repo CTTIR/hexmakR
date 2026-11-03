@@ -45,7 +45,10 @@ hex_design(
 
 - label:
 
-  Displayed name, defaulting to the exact identity.
+  Displayed name, defaulting to the exact identity. Names must use
+  characters supported by the bundled JetBrains Mono font and fit inside
+  the frame at a minimum size of six points; otherwise rendering reports
+  an error instead of clipping or substituting characters.
 
 - colors:
 
