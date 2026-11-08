@@ -70,7 +70,7 @@ the rendered PNG or icon.
 
 ``` r
 hex_asset("phenoscapR")
-#> [1] "/tmp/RtmpBCWm0G/hexmakR-assets/phenoscapR/lockup-dark.svg"
+#> [1] "/tmp/RtmpGepimj/hexmakR-assets/phenoscapR/lockup-dark.svg"
 # For a persistent cache, set dir = tools::R_user_dir("hexmakR", "cache").
 if (requireNamespace("rsvg", quietly = TRUE)) {
   png <- hex_asset("phenoscapR", format = "png", dir = tempfile())
@@ -81,5 +81,5 @@ if (capabilities("cairo")) {
   hex_asset("phenoscapR", layout = "icon", format = "png", size = 64,
             dir = tempfile())
 }
-#> [1] "/tmp/RtmpBCWm0G/file1a0d183edb10/phenoscapR/icon-64.png"
+#> [1] "/tmp/RtmpGepimj/file19d651f09dd0/phenoscapR/icon-64.png"
 ```
