@@ -8,7 +8,7 @@
     <!-- Standard logo aliases contain the named v5 light and dark hexes. -->
     <a class="navbar-brand me-2" href="../index.html"><img src="../logo.svg" alt="" class="themakr-navbar-logo" data-cttir-dark-src="../reference/figures/logo-dark.svg">hexmakR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,13 +46,21 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.4.1" id="hexmakr-041">hexmakR 0.4.1<a class="anchor" aria-label="anchor" href="#hexmakr-041"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.5.0" id="hexmakr-050">hexmakR 0.5.0<a class="anchor" aria-label="anchor" href="#hexmakr-050"></a></h2>
+<p>This version collects the maintenance work prepared as 0.4.1, which was never released, and prepares the package for its first CRAN submission.</p>
+<div class="section level3">
+<h3 id="cran-preparation-0-5-0">CRAN preparation<a class="anchor" aria-label="anchor" href="#cran-preparation-0-5-0"></a></h3>
+<ul><li>Update <code>cran-comments.md</code> with the current local and GitHub Actions check results.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="changes-since-0-5-0">Changes since 0.4.0<a class="anchor" aria-label="anchor" href="#changes-since-0-5-0"></a></h3>
 <ul><li>Exports, saved projects, R recipes and cached gallery assets are completed beside their destination before replacement. A drawing or final rename failure preserves the previous file. Graphics exports close their own device and restore the previously selected user device.</li>
 <li>Classic PNG/JPEG uploads retain their proportions. Missing, corrupt and unsupported images now report an error instead of silently omitting artwork. Size and pixel limits are checked before decoding, as in the modern editor. The classic editor retains the last valid preview, download and filename after an invalid edit, and explains how to recover.</li>
 <li>SVG imports honour root viewport dimensions, absolute units, viewBox and preserveAspectRatio. Drawing commands after a closepath start a new subpath. Closed outlines retain their corner joins instead of drawing end caps. Viewport cropping and unsupported non-uniform strokes produce an explicit error rather than altered geometry.</li>
 <li>Names drawn with the bundled JetBrains Mono font report unsupported Unicode characters instead of substituting missing-glyph boxes. Generated v5 names shrink to fit their frame down to six points; an impossible fit reports an error. Subsequent manual layer transformations remain freely editable.</li>
 <li>Font documentation distinguishes system-family aliases from the bundled font. The optional test dependency now requires the verified testthat 3.3.2 runtime; package runtime dependencies are unchanged.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="hexmakr-040">hexmakR 0.4.0<a class="anchor" aria-label="anchor" href="#hexmakr-040"></a></h2>
 <ul><li><p>The package now ships the 270 SVG and 270 PDF masters of the CTTIR v5 library in one compressed archive, which keeps it small. <code><a href="../reference/hex_asset.html">hex_asset()</a></code> unpacks the archive once per session and returns an SVG or PDF master as a copy with identical bytes, rather than a path inside the installed package. It renders PNG masters from the SVG master on demand (this needs the ‘rsvg’ package) and draws icons with the package renderer, under the same file names as before. All files go to a folder in <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> unless the new <code>dir</code> argument names another one. A stamp file in that folder names the hexmakR version and build that wrote the files, so a folder kept between sessions is refreshed after an upgrade or a reinstall.</p></li>

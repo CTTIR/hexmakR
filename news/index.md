@@ -1,6 +1,16 @@
 # Changelog
 
-## hexmakR 0.4.1
+## hexmakR 0.5.0
+
+This version collects the maintenance work prepared as 0.4.1, which was
+never released, and prepares the package for its first CRAN submission.
+
+### CRAN preparation
+
+- Update `cran-comments.md` with the current local and GitHub Actions
+  check results.
+
+### Changes since 0.4.0
 
 - Exports, saved projects, R recipes and cached gallery assets are
   completed beside their destination before replacement. A drawing or
