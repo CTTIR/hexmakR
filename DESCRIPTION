@@ -1,6 +1,6 @@
 Package: hexmakR
 Title: Editable Hex Stickers and Project Logos
-Version: 0.4.1
+Version: 0.5.0
 Authors@R: c(
     person("R.", "Heller", , "raban.heller@uni-ulm.de",
            role = c("aut", "cre", "cph"),
@@ -56,4 +56,4 @@ Suggests:
 Config/testthat/edition: 3
 Config/Needs/website: CTTIR/themakR, pkgdown
 VignetteBuilder: knitr
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.1

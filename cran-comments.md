@@ -1,33 +1,38 @@
-## Local R CMD check results for 0.4.1
+## Submission
+
+This is a new submission of hexmakR 0.5.0.
+
+## Test environments
+
+* local: macOS (aarch64-apple-darwin), R 4.6.1, `R CMD check --as-cran
+  --no-manual` on the built tarball (no LaTeX installation is available
+  locally, so the PDF manual was not built; it should be checked on
+  win-builder before submission).
+* GitHub Actions (r-lib/actions v2, `--as-cran`):
+  macOS-latest (release), windows-latest (release),
+  ubuntu-latest (devel, release, oldrel-1) and an informational
+  ubuntu-latest (oldrel-3) row.
+
+## R CMD check results
 
 0 errors | 0 warnings | 1 note
 
-* This is a new submission.
+* checking CRAN incoming feasibility ... NOTE
+  Maintainer: 'R. Heller <raban.heller@uni-ulm.de>'
+  New submission
 
-Checked on macOS 27.0.1 ARM64 with R 4.6.1 on 2 November 2026, including
-manual, examples and vignette rebuilds. The source suite passes 6,418 assertions
-with no failures, warnings or skips; the built-package CRAN suite passes
-3,695 assertions with three expected skips (two CRAN-only skips and one
-source-master-folder check whose inputs are deliberately outside the package).
+  This is the first submission of the package.
 
-The installed package occupies approximately 3.1 MiB of file contents. The
-270 SVG and 270 PDF logo masters are shipped as a compressed archive, unpacked
-into the session temporary directory when first used. SVG and PDF copies retain
-the supplied master bytes; PNG versions and icons are rendered on demand.
+## Notes for the CRAN team
 
-## Other environments
-
-Hosted Ubuntu, Windows and macOS jobs passed for published 0.4.0 commit
-0bbc7ed9c4149fe0213a95bef747ec9e7af58c16. Those runs do not validate this
-0.4.1 candidate. The configured hosted R release, devel and oldrel matrix
-must run on the candidate before submission. No submission has been made.
-
-## Changes and downstream dependencies
-
-This candidate repairs export preservation, image decoding/proportions, SVG
-geometry, label handling and editor error recovery. Public function signatures
-and project schema are unchanged. Invalid images, unsupported bundled glyphs
-and names that cannot fit now report errors instead of silently altered output.
-
-This is a proposed first CRAN submission. Downstream checks against the final
-release and maintainer approval remain part of the submission review.
+* The source tarball is about 2.2 MB. The 270 SVG and 270 PDF logo masters
+  are shipped as one compressed archive (`inst/cttir/logos.tar.xz`) and
+  unpacked into the session temporary directory when first used; PNG versions
+  are rendered on demand and never written outside `tempdir()` unless the
+  user names an output path.
+* Two JetBrains Mono font files are bundled under the SIL Open Font License
+  1.1. The copyright holder is listed in `Authors@R` (role `cph`), the notice
+  is in `inst/COPYRIGHTS` (referenced by the `Copyright` field), and the
+  licence text is shipped next to the fonts.
+* `hexmakr_app()` starts a 'shiny' application and is only run in examples
+  when `interactive()` is `TRUE`.
