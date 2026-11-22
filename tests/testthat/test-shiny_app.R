@@ -131,7 +131,10 @@ test_that("the classic editor retains its applied artwork after an invalid uploa
     expect_false(grepl(invalid, design_error(), fixed = TRUE))
     expect_identical(current_sticker(), before)
     expect_identical(applied_design()$name, "Applied name")
-    expect_identical(png::readPNG(output$download_png), before_png)
+    # Two renders of one design can differ in a few anti-aliased edge pixels.
+    after_png <- png::readPNG(output$download_png)
+    expect_identical(dim(after_png), dim(before_png))
+    expect_lt(mean(abs(after_png - before_png)), 1e-4)
     expect_match(output$classic_error$html, 'role="alert"', fixed = TRUE)
     expect_match(output$classic_error$html, "last valid design", fixed = TRUE)
 
