@@ -9,3 +9,8 @@ authors:
 repository-code: https://github.com/CTTIR/hexmakR
 url: https://cttir.github.io/hexmakR/
 license: MIT
+doi: 10.5281/zenodo.21889938
+identifiers:
+- type: doi
+  value: 10.5281/zenodo.21889938
+  description: Zenodo DOI (reserved; resolves once the record is published)
