@@ -642,7 +642,7 @@ icon_rocket <- function(x, y, size, color) {
   # Body
   t <- seq(0, pi, length.out = 30)
   rx <- x + size*0.10 * cos(t)
-  ry <- y + size*0.10 * sin(t) + y + size*0.04
+  ry <- y + size*0.10 * sin(t) + size*0.04
   grid::grid.lines(x = rx, y = ry, gp = grid::gpar(col = color, lwd = size*4))
   # Main body rect
   grid::grid.rect(x = x, y = y, width = size*0.20, height = size*0.30,
@@ -675,11 +675,10 @@ icon_lightning <- function(x, y, size, color) {
 
 #' @noRd
 icon_fire <- function(x, y, size, color) {
-  # Main flame
-  t <- seq(0, 2*pi, length.out = 60)
-  fx <- x + size*0.18 * cos(t) * (1 + 0.3 * sin(3*t))
-  fy <- y - size*0.10 + size*0.28 * (0.5 + 0.5*sin(t - pi/2)) *
-        (1 + 0.2 * sin(5*t))
+  # Main flame: a teardrop with its tip at the top (t = 0), leaning slightly
+  t <- seq(0, 2*pi, length.out = 80)
+  fx <- x + size*0.26 * sin(t) * sin(t/2)^1.5 + size*0.04 * cos(t/2)^6
+  fy <- y + size*0.02 + size*0.27 * cos(t)
   grid::grid.polygon(x = fx, y = fy,
                      gp = grid::gpar(fill = color, col = color))
 }
