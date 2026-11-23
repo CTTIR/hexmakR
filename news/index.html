@@ -21,8 +21,8 @@
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/cttir-library.html">CTTIR v5 and project logos</a></li>
-    <li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started with hexmakR</a></li>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started with hexmakR</a></li>
+    <li><a class="dropdown-item" href="../articles/cttir-library.html">CTTIR v5 and project logos</a></li>
     <li><a class="dropdown-item" href="../articles/programmatic-usage.html">Programmatic Usage</a></li>
     <li><a class="dropdown-item" href="../articles/shiny-app.html">Interactive Shiny App</a></li>
   </ul></li>
@@ -59,6 +59,25 @@
 <li>SVG imports honour root viewport dimensions, absolute units, viewBox and preserveAspectRatio. Drawing commands after a closepath start a new subpath. Closed outlines retain their corner joins instead of drawing end caps. Viewport cropping and unsupported non-uniform strokes produce an explicit error rather than altered geometry.</li>
 <li>Names drawn with the bundled JetBrains Mono font report unsupported Unicode characters instead of substituting missing-glyph boxes. Generated v5 names shrink to fit their frame down to six points; an impossible fit reports an error. Subsequent manual layer transformations remain freely editable.</li>
 <li>Font documentation distinguishes system-family aliases from the bundled font. The optional test dependency now requires the verified testthat 3.3.2 runtime; package runtime dependencies are unchanged.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-0-5-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-5-0"></a></h3>
+<ul><li>Printing a design (<code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> of a <code>hex_design</code>, also at the console and in knitted documents) keeps the design’s proportions on a graphics device of any shape. It used to stretch the drawing to the device, so a hexagon was only regular on a device with the sticker ratio. Line widths now scale with the drawing, as in the files written by <code><a href="../reference/hex_export.html">hex_export()</a></code>. The method is documented (<code><a href="../reference/print.hex_design.html">?print.hex_design</a></code>).</li>
+<li>
+<code><a href="../reference/hex_sticker.html">hex_sticker()</a></code> checks <code>subtitle</code>, <code>url</code>, <code>icon</code>, <code>icon_image</code>, <code>icon_size</code>, <code>font_size</code>, <code>border_width</code>, <code>font_bold</code>, <code>font_italic</code>, <code>inner_border</code> and the colour overrides before drawing and names the offending argument. Vectors, missing values, negative sizes and non-logical flags used to fail with unrelated R errors or drew a sticker without the text.</li>
+<li>
+<code><a href="../reference/save_hex.html">save_hex()</a></code> and <code><a href="../reference/save_hex_svg.html">save_hex_svg()</a></code> report a <code>filename</code> that is not a single string.</li>
+<li>
+<code><a href="../reference/hex_render_catalog.html">hex_render_catalog()</a></code> rejects a <code>directory</code> that is not a single path. A missing value used to write the files into a folder named <code>NA</code> in the working directory. It also rejects an <code>icons</code> value other than <code>TRUE</code> or <code>FALSE</code>; a missing value used to skip the icons silently.</li>
+<li>Size checks without an upper limit state their range plainly (for example “dpi must be a finite number greater than 0”) instead of printing machine epsilon and <code>Inf</code>.</li>
+<li>The <code>rocket</code> icon no longer draws a stray arc above the icon, and the <code>fire</code> icon is a flame with a curled tip and a hollow inner tongue instead of a thin sliver.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-and-packaging-0-5-0">Documentation and packaging<a class="anchor" aria-label="anchor" href="#documentation-and-packaging-0-5-0"></a></h3>
+<ul><li>The colour-vision simulation used for palette screening cites its source (Machado, Oliveira and Fernandes 2009, <a href="https://doi.org/10.1109/TVCG.2009.113" class="external-link uri">https://doi.org/10.1109/TVCG.2009.113</a>) next to the matrices and is covered by tests.</li>
+<li>Vignette figures carry alternative text. The version label added in the “Programmatic usage” example sits inside the hexagon in a readable colour instead of on the bottom border. The reference index of the website describes each group and lists the “Getting started” article first.</li>
+<li>
+<code>CITATION.cff</code> states the package version. A second, outdated pkgdown configuration file (<code>pkgdown/_pkgdown.yml</code>) was removed; the website is built from <code>_pkgdown.yml</code> as before.</li>
 </ul></div>
 </div>
     <div class="section level2">

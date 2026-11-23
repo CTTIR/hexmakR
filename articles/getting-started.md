@@ -49,7 +49,9 @@ hex_layers(design)
 print(design)
 ```
 
-![](getting-started_files/figure-html/first-parts-1.png)
+![Dark hexagonal logo named My package with a green circle crossed by a
+white horizontal line above the
+name.](getting-started_files/figure-html/first-parts-1.png)
 
 Parts have stable IDs such as `part_0001`. The native frame and name
 have `layer_` IDs. Obtain the current IDs from
@@ -72,7 +74,8 @@ All 46 generic icons remain available:
 logo_design("Study", shape = "square", icon = "microscope")
 ```
 
-![](getting-started_files/figure-html/icon-logo-1.png)
+![Dark square logo named Study with a pale microscope icon above the
+name.](getting-started_files/figure-html/icon-logo-1.png)
 
 Archive reuse is optional. Add selected artwork to the design you are
 making:

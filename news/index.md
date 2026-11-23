@@ -37,6 +37,55 @@ never released, and prepares the package for its first CRAN submission.
   bundled font. The optional test dependency now requires the verified
   testthat 3.3.2 runtime; package runtime dependencies are unchanged.
 
+### Bug fixes
+
+- Printing a design ([`print()`](https://rdrr.io/r/base/print.html) of a
+  `hex_design`, also at the console and in knitted documents) keeps the
+  design’s proportions on a graphics device of any shape. It used to
+  stretch the drawing to the device, so a hexagon was only regular on a
+  device with the sticker ratio. Line widths now scale with the drawing,
+  as in the files written by
+  [`hex_export()`](https://cttir.github.io/hexmakR/reference/hex_export.md).
+  The method is documented
+  ([`?print.hex_design`](https://cttir.github.io/hexmakR/reference/print.hex_design.md)).
+- [`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
+  checks `subtitle`, `url`, `icon`, `icon_image`, `icon_size`,
+  `font_size`, `border_width`, `font_bold`, `font_italic`,
+  `inner_border` and the colour overrides before drawing and names the
+  offending argument. Vectors, missing values, negative sizes and
+  non-logical flags used to fail with unrelated R errors or drew a
+  sticker without the text.
+- [`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md)
+  and
+  [`save_hex_svg()`](https://cttir.github.io/hexmakR/reference/save_hex_svg.md)
+  report a `filename` that is not a single string.
+- [`hex_render_catalog()`](https://cttir.github.io/hexmakR/reference/hex_render_catalog.md)
+  rejects a `directory` that is not a single path. A missing value used
+  to write the files into a folder named `NA` in the working directory.
+  It also rejects an `icons` value other than `TRUE` or `FALSE`; a
+  missing value used to skip the icons silently.
+- Size checks without an upper limit state their range plainly (for
+  example “dpi must be a finite number greater than 0”) instead of
+  printing machine epsilon and `Inf`.
+- The `rocket` icon no longer draws a stray arc above the icon, and the
+  `fire` icon is a flame with a curled tip and a hollow inner tongue
+  instead of a thin sliver.
+
+### Documentation and packaging
+
+- The colour-vision simulation used for palette screening cites its
+  source (Machado, Oliveira and Fernandes 2009,
+  <https://doi.org/10.1109/TVCG.2009.113>) next to the matrices and is
+  covered by tests.
+- Vignette figures carry alternative text. The version label added in
+  the “Programmatic usage” example sits inside the hexagon in a readable
+  colour instead of on the bottom border. The reference index of the
+  website describes each group and lists the “Getting started” article
+  first.
+- `CITATION.cff` states the package version. A second, outdated pkgdown
+  configuration file (`pkgdown/_pkgdown.yml`) was removed; the website
+  is built from `_pkgdown.yml` as before.
+
 ## hexmakR 0.4.0
 
 - The package now ships the 270 SVG and 270 PDF masters of the CTTIR v5

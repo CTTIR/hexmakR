@@ -87,7 +87,9 @@ hex_sticker(
 )
 ```
 
-![](programmatic-usage_files/figure-html/all-params-1.png)
+![Dark hexagon sticker with a teal border, an atom icon, the name
+mypackage, a subtitle and a
+URL.](programmatic-usage_files/figure-html/all-params-1.png)
 
 The function returns a **ggplot object**, so you can chain additional
 ggplot2 layers:
@@ -97,11 +99,13 @@ ggplot2 layers:
 library(ggplot2)
 
 hex_sticker("mypackage") +
-  annotate("text", x = 0.5, y = 0.05,
-           label = "v0.1.0", color = "#64748B", size = 2.5)
+  annotate("text", x = 0.5, y = 0.3,
+           label = "v0.1.0", color = "#CBD5E1", size = 3)
 ```
 
-![](programmatic-usage_files/figure-html/ggplot-chain-1.png)
+![Dark hexagon sticker named mypackage with the added light grey version
+label v0.1.0 below the
+name.](programmatic-usage_files/figure-html/ggplot-chain-1.png)
 
 ## Batch generation
 
@@ -195,7 +199,9 @@ hex_sticker("mypackage", icon = "microscope", theme = "spatial",
             font_family = "jetbrains_mono")
 ```
 
-![](programmatic-usage_files/figure-html/v5-theme-1.png)
+![Dark green hexagon sticker in the CTTIR v5 spatial theme with a
+microscope icon and the name mypackage in JetBrains
+Mono.](programmatic-usage_files/figure-html/v5-theme-1.png)
 
 ``` r
 

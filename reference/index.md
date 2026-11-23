@@ -2,6 +2,9 @@
 
 ## CTTIR library and project logos
 
+Start a logo, edit its parts, reuse artwork from the CTTIR v5 library,
+and save or export the result.
+
 - [`hex_catalog()`](https://cttir.github.io/hexmakR/reference/hex_catalog.md)
   : Browse the CTTIR v5 identities
 - [`hex_asset()`](https://cttir.github.io/hexmakR/reference/hex_asset.md)
@@ -14,6 +17,8 @@
   : Inspect a design's palette roles
 - [`hex_grob()`](https://cttir.github.io/hexmakR/reference/hex_grob.md)
   : Render a design to native grid geometry
+- [`print(`*`<hex_design>`*`)`](https://cttir.github.io/hexmakR/reference/print.hex_design.md)
+  : Draw a design on the current graphics device
 - [`hex_layers()`](https://cttir.github.io/hexmakR/reference/hex_layers.md)
   : Inspect editable vector layers
 - [`hex_edit_layer()`](https://cttir.github.io/hexmakR/reference/hex_edit_layer.md)
@@ -48,6 +53,8 @@
 
 ## Create and export
 
+Classic ggplot2 stickers and their PNG and SVG export.
+
 - [`hex_sticker()`](https://cttir.github.io/hexmakR/reference/hex_sticker.md)
   : Create a Hex Sticker
 - [`save_hex()`](https://cttir.github.io/hexmakR/reference/save_hex.md)
@@ -57,6 +64,8 @@
 
 ## Themes and icons
 
+Built-in colour themes and icons for classic stickers and logos.
+
 - [`hexmakr_icons()`](https://cttir.github.io/hexmakR/reference/hexmakr_icons.md)
   : List Available Icons
 - [`hexmakr_themes()`](https://cttir.github.io/hexmakR/reference/hexmakr_themes.md)
@@ -65,6 +74,8 @@
   : Preview a Colour Theme
 
 ## Interactive application
+
+The Shiny designer for new logos and the classic sticker editor.
 
 - [`hexmakr_app()`](https://cttir.github.io/hexmakR/reference/hexmakr_app.md)
   : Launch Interactive Hex Sticker Designer
