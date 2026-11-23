@@ -61,3 +61,21 @@ test_that("save_hex() and save_hex_svg() close their device when drawing fails",
   expect_error(save_hex_svg(bad, tempfile(fileext = ".svg")), "missing_column")
   expect_identical(grDevices::dev.list(), devices)
 })
+
+test_that("save_hex and save_hex_svg report a malformed filename", {
+  s <- hex_sticker("a")
+  expect_error(save_hex(s, NULL), "'filename' must be a single string")
+  expect_error(save_hex(s, c("a.png", "b.png")), "'filename' must be a single string")
+  expect_error(save_hex(s, NA_character_), "'filename' must be a single string")
+  skip_if_not_installed("svglite")
+  expect_error(save_hex_svg(s, NULL), "'filename' must be a single string")
+  expect_error(save_hex_svg(s, c("a.svg", "b.svg")), "'filename' must be a single string")
+})
+
+test_that("batch generation rejects a malformed output directory", {
+  for (directory in list(NA, NA_character_, NULL, "", c("a", "b"), 1)) {
+    expect_error(hex_render_catalog(directory, packages = "hexmakR", formats = "svg",
+                                    icons = FALSE), "directory must be a single directory path")
+  }
+  expect_false(dir.exists("NA"))
+})

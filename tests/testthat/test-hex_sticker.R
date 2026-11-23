@@ -129,3 +129,26 @@ test_that("scalar arguments give clear errors", {
                "'category' must be a single string")
   expect_error(hexmakr_icons(NA_character_), "'category' must be a single string")
 })
+
+test_that("hex_sticker reports malformed scalar arguments by name", {
+  expect_error(hex_sticker("a", icon = c("dna", "atom")), "'icon' must be a single string")
+  expect_error(hex_sticker("a", subtitle = c("a", "b")), "'subtitle' must be a single string")
+  expect_error(hex_sticker("a", subtitle = NA), "'subtitle' must be a single string")
+  expect_error(hex_sticker("a", url = c("a", "b")), "'url' must be a single string")
+  expect_error(hex_sticker("a", icon_size = "big"), "'icon_size' must be a single non-negative number")
+  expect_error(hex_sticker("a", icon_size = NA_real_), "'icon_size'")
+  expect_error(hex_sticker("a", font_size = -3), "'font_size' must be a single non-negative number")
+  expect_error(hex_sticker("a", border_width = -2), "'border_width'")
+  expect_error(hex_sticker("a", border_width = "2"), "'border_width'")
+  expect_error(hex_sticker("a", font_bold = NA), "'font_bold' must be TRUE or FALSE")
+  expect_error(hex_sticker("a", font_italic = "yes"), "'font_italic' must be TRUE or FALSE")
+  expect_error(hex_sticker("a", inner_border = NA), "'inner_border' must be TRUE or FALSE")
+  expect_error(hex_sticker("a", bg = c("#000000", "#FFFFFF")), "'bg' must be a valid hex color")
+  expect_error(hex_sticker("a", accent = 1), "'accent' must be a valid hex color")
+})
+
+test_that("hex_sticker still accepts numeric labels and zero sizes", {
+  expect_s3_class(hex_sticker("a", subtitle = 5, url = 2026), "gg")
+  expect_s3_class(hex_sticker("a", icon = "dna", icon_size = 0, font_size = 0,
+                              border_width = 0), "gg")
+})

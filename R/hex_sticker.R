@@ -112,6 +112,16 @@ hex_sticker <- function(
                        list(sub_color, "sub_color"))) {
     if (!is.null(col_arg[[1]])) .check_color(col_arg[[1]], col_arg[[2]])
   }
+  if (!is.null(subtitle)) .check_label(subtitle, "subtitle")
+  if (!is.null(url)) .check_label(url, "url")
+  if (!is.null(icon)) .check_string(icon, "icon")
+  if (!is.null(icon_image)) .check_string(icon_image, "icon_image")
+  .check_size(icon_size, "icon_size")
+  .check_size(font_size, "font_size")
+  .check_size(border_width, "border_width")
+  .check_flag(font_bold, "font_bold")
+  .check_flag(font_italic, "font_italic")
+  .check_flag(inner_border, "inner_border")
   if (!is.null(icon) && !is.null(icon_image)) {
     message("Both 'icon' and 'icon_image' provided; 'icon_image' will be used.")
     icon <- NULL

@@ -28,6 +28,7 @@ save_hex <- function(sticker, filename, width = 600, dpi = 300) {
   if (!inherits(sticker, "gg")) {
     stop("'sticker' must be a ggplot object returned by hex_sticker().")
   }
+  .check_string(filename, "filename")
   if (!grepl("\\.png$", tolower(filename))) {
     stop("'filename' must end in '.png'.")
   }
@@ -87,6 +88,7 @@ save_hex_svg <- function(sticker, filename, width = 2) {
   if (!inherits(sticker, "gg")) {
     stop("'sticker' must be a ggplot object returned by hex_sticker().")
   }
+  .check_string(filename, "filename")
   if (!grepl("\\.svg$", tolower(filename))) {
     stop("'filename' must end in '.svg'.")
   }

@@ -15,9 +15,9 @@
 #' Ensure value is a valid hex color; stop with message if not
 #' @noRd
 .check_color <- function(x, arg) {
-  if (!.is_hex_color(x)) {
+  if (!is.character(x) || length(x) != 1L || is.na(x) || !.is_hex_color(x)) {
     stop(sprintf("'%s' must be a valid hex color string (e.g. '#FF0000'), got: %s",
-                 arg, x))
+                 arg, paste(format(x), collapse = ", ")))
   }
   x
 }
@@ -27,6 +27,34 @@
 .check_string <- function(x, arg) {
   if (!is.character(x) || length(x) != 1L || is.na(x)) {
     stop(sprintf("'%s' must be a single string.", arg))
+  }
+  x
+}
+
+#' Ensure value is a single label: a non-missing string or number
+#' @noRd
+.check_label <- function(x, arg) {
+  if (!(is.character(x) || is.numeric(x)) || length(x) != 1L || is.na(x)) {
+    stop(sprintf("'%s' must be a single string or NULL.", arg), call. = FALSE)
+  }
+  x
+}
+
+#' Ensure value is a single finite, non-negative number
+#' @noRd
+.check_size <- function(x, arg) {
+  if (!is.numeric(x) || length(x) != 1L || !is.finite(x) || x < 0) {
+    stop(sprintf("'%s' must be a single non-negative number.", arg),
+         call. = FALSE)
+  }
+  x
+}
+
+#' Ensure value is a single TRUE or FALSE
+#' @noRd
+.check_flag <- function(x, arg) {
+  if (!is.logical(x) || length(x) != 1L || is.na(x)) {
+    stop(sprintf("'%s' must be TRUE or FALSE.", arg), call. = FALSE)
   }
   x
 }
