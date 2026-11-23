@@ -49,7 +49,11 @@ released, and prepares the package for its first CRAN submission.
   string.
 * `hex_render_catalog()` rejects a `directory` that is not a single path. A
   missing value used to write the files into a folder named `NA` in the
-  working directory.
+  working directory. It also rejects an `icons` value other than `TRUE` or
+  `FALSE`; a missing value used to skip the icons silently.
+* Size checks without an upper limit state their range plainly (for example
+  "dpi must be a finite number greater than 0") instead of printing machine
+  epsilon and `Inf`.
 * The `rocket` icon no longer draws a stray arc above the icon, and the `fire`
   icon is a filled flame instead of a thin sliver.
 

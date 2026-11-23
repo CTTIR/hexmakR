@@ -169,6 +169,8 @@ hex_render_catalog <- function(directory, packages = hex_catalog()$name,
       !length(formats) || any(!formats %in% c("png", "svg", "pdf")))
     stop("Invalid export modes, layouts or formats.", call. = FALSE)
   .scalar_number(width, "width", 32, 8192)
+  if (!is.logical(icons) || length(icons) != 1L || is.na(icons))
+    stop("icons must be TRUE or FALSE.", call. = FALSE)
   files <- list()
   for (package in packages) {
     out <- file.path(directory, .identity_row(package)$asset_dir)

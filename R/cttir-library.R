@@ -166,7 +166,9 @@ hex_asset <- function(package, mode = c("dark", "light", "mono"),
 }
 .scalar_number <- function(x, name, low, high) {
   if (!is.numeric(x) || length(x) != 1L || !is.finite(x) || x < low || x > high) {
-    stop(name, " must be a finite number between ", low, " and ", high, ".", call. = FALSE)
+    range <- if (is.infinite(high) && low > 0 && low <= .Machine$double.eps) "greater than 0" else
+      if (is.infinite(high)) paste("of at least", low) else paste("between", low, "and", high)
+    stop(name, " must be a finite number ", range, ".", call. = FALSE)
   }
   invisible(x)
 }

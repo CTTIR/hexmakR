@@ -79,3 +79,20 @@ test_that("batch generation rejects a malformed output directory", {
   }
   expect_false(dir.exists("NA"))
 })
+
+test_that("open-ended size checks state their range plainly", {
+  s <- hex_sticker("a")
+  expect_error(save_hex(s, tempfile(fileext = ".png"), dpi = 0),
+               "dpi must be a finite number greater than 0\\.")
+  expect_error(save_hex(s, tempfile(fileext = ".png"), width = 0),
+               "width must be a finite number of at least 1\\.")
+  expect_error(hex_design("hexmakR", motif_scale = 5),
+               "motif_scale must be a finite number between 0.1 and 2\\.")
+})
+
+test_that("batch generation rejects a missing icons flag", {
+  for (icons in list(NA, "yes", c(TRUE, FALSE), NULL)) {
+    expect_error(hex_render_catalog(tempfile(), packages = "hexmakR", formats = "svg",
+                                    icons = icons), "icons must be TRUE or FALSE")
+  }
+})
