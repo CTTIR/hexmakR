@@ -1,5 +1,23 @@
-# Physiologically based CVD simulation after Machado et al. (2009), severity 100.
-# Matrices transcribed from the colorspacious reference implementation.
+# Physiologically based simulation of colour vision deficiency (CVD), applied
+# to linear sRGB at severity 1.0.
+#
+# Source: Machado GM, Oliveira MM, Fernandes LAF (2009). A physiologically-based
+# model for simulation of color vision deficiency. IEEE Transactions on
+# Visualization and Computer Graphics 15(6), 1291-1298.
+# https://doi.org/10.1109/TVCG.2009.113
+# The three matrices are the severity 1.0 rows (protanomaly, deuteranomaly,
+# tritanomaly) of the authors' supplementary table of precomputed matrices,
+# https://www.inf.ufrgs.br/~oliveira/pubs_files/CVD_Simulation/CVD_Simulation.html,
+# as also carried by the colorspacious reference implementation
+# (colorspacious/cvd.py). The values were compared with that table on
+# 23 Nov 2026; the six-decimal values come from the supplementary table, so no
+# printed page of the article is cited for them. Each row sums to one, which
+# keeps achromatic colours unchanged (tested).
+#
+# The transfer function is the sRGB one (IEC 61966-2-1:1999) and the "gray"
+# weights are the relative-luminance coefficients for sRGB primaries, as in
+# the WCAG 2 definition (https://www.w3.org/TR/WCAG22/#dfn-relative-luminance).
+#
 # This transforms sRGB colours before drawing; it never edits a raster image.
 # Simulations are screening aids, not proof of universal colour discrimination.
 cttir_simulate_cvd <- function(colour, type = "deutan") {
