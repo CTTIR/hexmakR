@@ -84,7 +84,7 @@ PNG/JPEG images, theme presets and font selection.
 
 ## Classic sticker parameters
 
-```{r all-params}
+```{r all-params, fig.alt = "Dark hexagon sticker with a teal border, an atom icon, the name mypackage, a subtitle and a URL."}
 library(hexmakR)
 
 hex_sticker(
@@ -116,7 +116,7 @@ hex_sticker(
 The function returns a **ggplot object**, so you can chain additional ggplot2
 layers:
 
-```{r ggplot-chain}
+```{r ggplot-chain, fig.alt = "Dark hexagon sticker named mypackage with the added version label v0.1.0 near the bottom."}
 library(ggplot2)
 
 hex_sticker("mypackage") +
@@ -203,7 +203,7 @@ colours come from the v5 design tokens through the same engine as
 the v5 ink and muted text colours. The 19 generic themes follow. For
 complete v5 artwork with motifs and outlined names, use `hex_design()`.
 
-```{r v5-theme}
+```{r v5-theme, fig.alt = "Dark green hexagon sticker in the CTTIR v5 spatial theme with a microscope icon and the name mypackage in JetBrains Mono."}
 hex_sticker("mypackage", icon = "microscope", theme = "spatial",
             font_family = "jetbrains_mono")
 ```

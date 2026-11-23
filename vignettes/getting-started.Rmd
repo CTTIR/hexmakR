@@ -72,7 +72,7 @@ available with `shape = "pentagon"` or `shape = "square"`.
 
 Add your own artwork as individually editable parts:
 
-```{r first-parts}
+```{r first-parts, fig.alt = "Dark hexagonal logo named My package with a green circle crossed by a white horizontal line above the name."}
 design <- hex_add_part(design, "circle", x = .5, y = .6, r = .15)
 design <- hex_add_part(design, "line",
                        x = c(.3, .7), y = c(.6, .6), col = "white", lwd = 3)
@@ -93,7 +93,7 @@ design <- hex_edit_layer(design, "part_0003", dx = -.2, scale = .7)
 
 All 46 generic icons remain available:
 
-```{r icon-logo}
+```{r icon-logo, fig.alt = "Dark square logo named Study with a pale microscope icon above the name."}
 logo_design("Study", shape = "square", icon = "microscope")
 ```
 
