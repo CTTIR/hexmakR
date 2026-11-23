@@ -161,7 +161,9 @@ hex_render_catalog <- function(directory, packages = hex_catalog()$name,
                                formats = c("svg", "png", "pdf"),
                                width = 1600L, icons = TRUE) {
   if (!is.character(directory) || length(directory) != 1L || is.na(directory) ||
-      !nzchar(directory)) stop("directory must be a single directory path.", call. = FALSE)
+        !nzchar(directory)) {
+    stop("directory must be a single directory path.", call. = FALSE)
+  }
   if (!length(packages) || anyDuplicated(packages)) stop("Select unique identities.", call. = FALSE)
   lapply(packages, .identity_row)
   if (!length(modes) || any(!modes %in% c("light", "dark", "mono")) ||

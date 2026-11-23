@@ -134,9 +134,9 @@ print.hex_design <- function(x, ...) {
   grob <- hex_grob(x)
   grid::grid.newpage()
   # A respected one-cell layout gives the largest centred area of this ratio.
-  grid::pushViewport(grid::viewport(layout = grid::grid.layout(1, 1,
-    widths = grid::unit(.design_ratio(x), "null"),
-    heights = grid::unit(1, "null"), respect = TRUE)))
+  cell <- grid::grid.layout(1, 1, widths = grid::unit(.design_ratio(x), "null"),
+                            heights = grid::unit(1, "null"), respect = TRUE)
+  grid::pushViewport(grid::viewport(layout = cell))
   grid::pushViewport(grid::viewport(layout.pos.row = 1, layout.pos.col = 1))
   width <- grid::convertWidth(grid::unit(1, "npc"), "inches", valueOnly = TRUE)
   grid::pushViewport(grid::viewport(gp = grid::gpar(lex = width / 6),

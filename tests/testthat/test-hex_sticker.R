@@ -135,7 +135,8 @@ test_that("hex_sticker reports malformed scalar arguments by name", {
   expect_error(hex_sticker("a", subtitle = c("a", "b")), "'subtitle' must be a single string")
   expect_error(hex_sticker("a", subtitle = NA), "'subtitle' must be a single string")
   expect_error(hex_sticker("a", url = c("a", "b")), "'url' must be a single string")
-  expect_error(hex_sticker("a", icon_size = "big"), "'icon_size' must be a single non-negative number")
+  expect_error(hex_sticker("a", icon_size = "big"),
+               "'icon_size' must be a single non-negative number")
   expect_error(hex_sticker("a", icon_size = NA_real_), "'icon_size'")
   expect_error(hex_sticker("a", font_size = -3), "'font_size' must be a single non-negative number")
   expect_error(hex_sticker("a", border_width = -2), "'border_width'")
