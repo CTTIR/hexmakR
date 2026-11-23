@@ -642,7 +642,7 @@ icon_rocket <- function(x, y, size, color) {
   # Body
   t <- seq(0, pi, length.out = 30)
   rx <- x + size*0.10 * cos(t)
-  ry <- y + size*0.10 * sin(t) + size*0.04
+  ry <- y + size * 0.10 * sin(t) + size * 0.04
   grid::grid.lines(x = rx, y = ry, gp = grid::gpar(col = color, lwd = size*4))
   # Main body rect
   grid::grid.rect(x = x, y = y, width = size*0.20, height = size*0.30,
@@ -675,12 +675,18 @@ icon_lightning <- function(x, y, size, color) {
 
 #' @noRd
 icon_fire <- function(x, y, size, color) {
-  # Main flame: a teardrop with its tip at the top (t = 0), leaning slightly
-  t <- seq(0, 2*pi, length.out = 80)
-  fx <- x + size*0.26 * sin(t) * sin(t/2)^1.5 + size*0.04 * cos(t/2)^6
-  fy <- y + size*0.02 + size*0.27 * cos(t)
-  grid::grid.polygon(x = fx, y = fy,
-                     gp = grid::gpar(fill = color, col = color))
+  # A flame with a curled tip (t = 0 is the tip) and a hollow inner tongue,
+  # drawn as one even-odd path so the hole stays transparent.
+  t <- seq(0, 2 * pi, length.out = 120)
+  tongue <- function(width, height, lean, centre) {
+    list(x = x + size * (width * sin(t) * sin(t / 2)^1.5 + lean * cos(t / 2)^8),
+         y = y + size * (centre + height * cos(t)))
+  }
+  outer <- tongue(0.26, 0.28, 0.10, 0.02)
+  inner <- tongue(0.12, 0.14, -0.04, -0.05)
+  grid::grid.path(x = c(outer$x, inner$x), y = c(outer$y, inner$y),
+                  id = rep(1:2, each = length(t)), rule = "evenodd",
+                  gp = grid::gpar(fill = color, col = color))
 }
 
 #' @noRd

@@ -55,7 +55,8 @@ released, and prepares the package for its first CRAN submission.
   "dpi must be a finite number greater than 0") instead of printing machine
   epsilon and `Inf`.
 * The `rocket` icon no longer draws a stray arc above the icon, and the `fire`
-  icon is a filled flame instead of a thin sliver.
+  icon is a flame with a curled tip and a hollow inner tongue instead of a
+  thin sliver.
 
 ## Documentation and packaging
 

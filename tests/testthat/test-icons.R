@@ -100,13 +100,15 @@ icon_extent <- function(name, size = 0.42) {
   grid::grid.newpage()
   hexmakR:::.lookup_icon(name)(0.5, 0.5, size, "#FF0000")
   grobs <- grid::grid.grab(wrap = FALSE)$children
-  values <- function(key) unlist(lapply(grobs, function(g) {
-    v <- as.numeric(g[[key]])
-    r <- if (is.null(g$r)) 0 else as.numeric(g$r)
-    half <- g[[if (key == "y") "height" else "width"]]
-    half <- if (is.null(half)) 0 else as.numeric(half) / 2
-    c(v - r - half, v + r + half)
-  }))
+  values <- function(key) {
+    unlist(lapply(grobs, function(g) {
+      v <- as.numeric(g[[key]])
+      r <- if (is.null(g[["r"]])) 0 else as.numeric(g[["r"]])
+      half <- g[[if (key == "y") "height" else "width"]]
+      half <- if (is.null(half)) 0 else as.numeric(half) / 2
+      c(v - r - half, v + r + half)
+    }))
+  }
   list(x = range(values("x")), y = range(values("y")), grobs = grobs)
 }
 
@@ -122,10 +124,23 @@ test_that("every icon stays inside its own drawing area", {
 
 test_that("the fire icon is a filled flame rather than a sliver", {
   flame <- icon_extent("fire")$grobs[[1]]
-  x <- as.numeric(flame$x); y <- as.numeric(flame$y)
-  next_point <- c(seq_along(x)[-1], 1L)
-  area <- abs(sum(x * y[next_point] - x[next_point] * y)) / 2
-  box <- diff(range(x)) * diff(range(y))
-  expect_gt(area / box, 0.4)
-  expect_gt(diff(range(y)), diff(range(x)))
+  expect_s3_class(flame, "pathgrob")
+  expect_identical(flame$rule, "evenodd")
+  x <- as.numeric(flame$x)
+  y <- as.numeric(flame$y)
+  area <- function(keep) {
+    px <- x[keep]
+    py <- y[keep]
+    following <- c(seq_along(px)[-1], 1L)
+    abs(sum(px * py[following] - px[following] * py)) / 2
+  }
+  outer <- flame$id == 1L
+  inner <- flame$id == 2L
+  box <- diff(range(x[outer])) * diff(range(y[outer]))
+  expect_gt(area(outer) / box, 0.4)
+  expect_gt(diff(range(y[outer])), diff(range(x[outer])))
+  # The hollow tongue lies inside the flame and leaves most of it filled.
+  expect_true(all(range(x[inner]) > min(x[outer]) & range(x[inner]) < max(x[outer])))
+  expect_true(all(range(y[inner]) > min(y[outer]) & range(y[inner]) < max(y[outer])))
+  expect_lt(area(inner) / area(outer), 0.4)
 })
