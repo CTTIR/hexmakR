@@ -32,6 +32,38 @@ released, and prepares the package for its first CRAN submission.
   font. The optional test dependency now requires the verified testthat 3.3.2
   runtime; package runtime dependencies are unchanged.
 
+## Bug fixes
+
+* Printing a design (`print()` of a `hex_design`, also at the console and in
+  knitted documents) keeps the design's proportions on a graphics device of
+  any shape. It used to stretch the drawing to the device, so a hexagon was
+  only regular on a device with the sticker ratio. Line widths now scale with
+  the drawing, as in the files written by `hex_export()`. The method is
+  documented (`?print.hex_design`).
+* `hex_sticker()` checks `subtitle`, `url`, `icon`, `icon_image`, `icon_size`,
+  `font_size`, `border_width`, `font_bold`, `font_italic`, `inner_border` and
+  the colour overrides before drawing and names the offending argument.
+  Vectors, missing values, negative sizes and non-logical flags used to fail
+  with unrelated R errors or drew a sticker without the text.
+* `save_hex()` and `save_hex_svg()` report a `filename` that is not a single
+  string.
+* `hex_render_catalog()` rejects a `directory` that is not a single path. A
+  missing value used to write the files into a folder named `NA` in the
+  working directory.
+* The `rocket` icon no longer draws a stray arc above the icon, and the `fire`
+  icon is a filled flame instead of a thin sliver.
+
+## Documentation and packaging
+
+* The colour-vision simulation used for palette screening cites its source
+  (Machado, Oliveira and Fernandes 2009, <https://doi.org/10.1109/TVCG.2009.113>)
+  next to the matrices and is covered by tests.
+* Vignette figures carry alternative text. The reference index of the website
+  describes each group and lists the "Getting started" article first.
+* `CITATION.cff` states the package version. A second, outdated pkgdown
+  configuration file (`pkgdown/_pkgdown.yml`) was removed; the website is built
+  from `_pkgdown.yml` as before.
+
 # hexmakR 0.4.0
 
 * The package now ships the 270 SVG and 270 PDF masters of the CTTIR v5

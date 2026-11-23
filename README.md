@@ -110,7 +110,7 @@ renders PNG copies of gallery masters; `svglite` enables classic SVG export;
 `colourpicker` provides colour pickers in the classic editor. Without
 `colourpicker`, that editor accepts typed colour values.
 
-## Quick Start
+## Quick start
 
 ```r
 library(hexmakR)
