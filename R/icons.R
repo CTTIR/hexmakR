@@ -871,7 +871,7 @@ icon_gamepad <- function(x, y, size, color) {
 #'
 #' @title List Available Icons
 #' @description Returns the built-in icon library as a named list. Icons are
-#'   organized by category. Each icon entry contains a `label` and `draw`
+#'   organised by category. Each icon entry contains a `label` and `draw`
 #'   function.
 #'
 #' @param category Character or `NULL`. If `NULL` (default), returns all

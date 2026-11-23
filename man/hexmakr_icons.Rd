@@ -17,7 +17,7 @@ a named list of categories if \code{category = NULL}.
 }
 \description{
 Returns the built-in icon library as a named list. Icons are
-organized by category. Each icon entry contains a \code{label} and \code{draw}
+organised by category. Each icon entry contains a \code{label} and \code{draw}
 function.
 }
 \details{

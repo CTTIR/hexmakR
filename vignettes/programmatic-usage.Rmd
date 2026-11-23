@@ -97,10 +97,10 @@ hex_sticker(
   theme        = "stats",       # Theme name
   mode         = "dark",        # "dark" or "light"
   bg           = NULL,          # Override background (#RRGGBB)
-  accent       = NULL,          # Override accent color
-  text_color   = NULL,          # Override text color
-  border_color = NULL,          # Override border color
-  sub_color    = NULL,          # Override subtitle/URL color
+  accent       = NULL,          # Override accent colour
+  text_color   = NULL,          # Override text colour
+  border_color = NULL,          # Override border colour
+  sub_color    = NULL,          # Override subtitle/URL colour
   font_family  = "mono",        # Font shorthand or system font name
   font_bold    = TRUE,
   font_italic  = FALSE,

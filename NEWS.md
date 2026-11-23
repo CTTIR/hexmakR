@@ -67,6 +67,7 @@ released, and prepares the package for its first CRAN submission.
   "Programmatic usage" example sits inside the hexagon in a readable colour
   instead of on the bottom border. The reference index of the website
   describes each group and lists the "Getting started" article first.
+* The documentation uses British English spelling throughout.
 * `CITATION.cff` states the package version. A second, outdated pkgdown
   configuration file (`pkgdown/_pkgdown.yml`) was removed; the website is built
   from `_pkgdown.yml` as before.
