@@ -111,6 +111,14 @@ test_that("the classic editor retains its applied artwork after an invalid uploa
   writeLines("This is not a PNG image.", invalid)
   upload <- function(path) data.frame(name = basename(path), size = file.info(path)$size,
     type = "image/png", datapath = path)
+  # Two draws of one design are not pixel-identical on every system (the name
+  # is device text), so record what each export draws and compare that.
+  real_save <- save_hex
+  saved <- list()
+  local_mocked_bindings(save_hex = function(sticker, ...) {
+    saved[[length(saved) + 1L]] <<- sticker
+    real_save(sticker, ...)
+  })
   shiny::testServer(hexmakR:::.build_classic_app(), {
     stats <- hexmakr_themes()$stats$dark
     session$setInputs(`text-name` = "Applied name", `text-subtitle` = "", `text-url` = "",
@@ -122,7 +130,9 @@ test_that("the classic editor retains its applied artwork after an invalid uploa
       `colors-sub_color` = stats$sub, `border-border_width` = 2,
       `border-inner_border` = TRUE)
     before <- current_sticker()
-    before_png <- png::readPNG(output$download_png)
+    before_file <- output$download_png
+    expect_identical(saved[[length(saved)]], before)
+    before_png <- png::readPNG(before_file)
     expect_null(design_error())
 
     session$setInputs(`icon-icon_image` = upload(invalid), `text-name` = "Unapplied name")
@@ -131,10 +141,13 @@ test_that("the classic editor retains its applied artwork after an invalid uploa
     expect_false(grepl(invalid, design_error(), fixed = TRUE))
     expect_identical(current_sticker(), before)
     expect_identical(applied_design()$name, "Applied name")
-    # Two renders of one design can differ in a few anti-aliased edge pixels.
-    after_png <- png::readPNG(output$download_png)
-    expect_identical(dim(after_png), dim(before_png))
-    expect_lt(mean(abs(after_png - before_png)), 1e-4)
+    # The export still draws the applied design, under its name.
+    drawn <- length(saved)
+    after_file <- output$download_png
+    expect_length(saved, drawn + 1L)
+    expect_identical(saved[[length(saved)]], before)
+    expect_identical(basename(after_file), "Applied name.png")
+    expect_identical(dim(png::readPNG(after_file)), dim(before_png))
     expect_match(output$classic_error$html, 'role="alert"', fixed = TRUE)
     expect_match(output$classic_error$html, "last valid design", fixed = TRUE)
 
