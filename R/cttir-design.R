@@ -116,10 +116,33 @@ hex_palette <- function(design) {
   s[setdiff(names(s), "mode")]
 }
 
+#' Draw a design on the current graphics device
+#'
+#' The design is centred on a new page and keeps its own proportions on a
+#' device of any shape: a hexagonal design is drawn at the standard sticker
+#' ratio (width / height = sqrt(3) / 2), pentagonal, square and frameless
+#' designs in a square. Line widths are scaled with the drawing, so the
+#' picture matches the files written by [hex_export()], which use a six-inch
+#' master canvas.
+#' @param x A [hex_design()] object.
+#' @param ... Ignored.
+#' @return `x`, invisibly.
 #' @export
+#' @examples
+#' print(logo_design("My project", shape = "pentagon"))
 print.hex_design <- function(x, ...) {
+  grob <- hex_grob(x)
   grid::grid.newpage()
-  grid::grid.draw(hex_grob(x))
+  # A respected one-cell layout gives the largest centred area of this ratio.
+  grid::pushViewport(grid::viewport(layout = grid::grid.layout(1, 1,
+    widths = grid::unit(.design_ratio(x), "null"),
+    heights = grid::unit(1, "null"), respect = TRUE)))
+  grid::pushViewport(grid::viewport(layout.pos.row = 1, layout.pos.col = 1))
+  width <- grid::convertWidth(grid::unit(1, "npc"), "inches", valueOnly = TRUE)
+  grid::pushViewport(grid::viewport(gp = grid::gpar(lex = width / 6),
+                                    name = "hex-design"))
+  on.exit(grid::upViewport(3), add = TRUE)
+  grid::grid.draw(grob)
   invisible(x)
 }
 

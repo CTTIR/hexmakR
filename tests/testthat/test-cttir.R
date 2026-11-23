@@ -332,3 +332,29 @@ test_that("all generic icons are reusable and editable in project logos", {
     expect_gt(length(g$children), 2)
   }
 })
+
+test_that("printing a design keeps its proportions on any device", {
+  drawn <- function(design, width, height) {
+    grDevices::pdf(NULL, width = width, height = height)
+    on.exit(grDevices::dev.off(), add = TRUE)
+    expect_invisible(print(design))
+    grid::seekViewport("hex-design")
+    size <- c(grid::convertWidth(grid::unit(1, "npc"), "inches", valueOnly = TRUE),
+              grid::convertHeight(grid::unit(1, "npc"), "inches", valueOnly = TRUE))
+    c(size, grid::get.gpar("lex")$lex)
+  }
+  hex <- hex_design("phenoscapR")
+  for (device in list(c(7, 7), c(8, 4), c(3, 9))) {
+    size <- drawn(hex, device[1], device[2])
+    expect_equal(size[1] / size[2], sqrt(3) / 2, tolerance = 1e-6)
+    expect_true(size[1] <= device[1] + 1e-6 && size[2] <= device[2] + 1e-6)
+    # Line widths follow the six-inch export master.
+    expect_equal(size[3], size[1] / 6, tolerance = 1e-6)
+  }
+  for (design in list(logo_design("P", shape = "square"),
+                      logo_design("P", shape = "pentagon"),
+                      hex_design("phenoscapR", layout = "motif"))) {
+    size <- drawn(design, 8, 4)
+    expect_equal(size[1:2], c(4, 4), tolerance = 1e-6)
+  }
+})

@@ -17,6 +17,7 @@ reference:
       - logo_design
       - hex_palette
       - hex_grob
+      - print.hex_design
       - hex_layers
       - hex_edit_layer
       - hex_move_layer
