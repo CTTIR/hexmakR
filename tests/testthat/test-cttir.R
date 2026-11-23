@@ -142,6 +142,29 @@ test_that("files in a kept directory are refreshed when the hexmakR version chan
   expect_setequal(list.files(dir, all.files = TRUE, no.. = TRUE), c(".hexmakR-version", "phenoscapR"))
 })
 
+test_that("assets tied with a renewed version stamp are refreshed", {
+  # Windows file times advance in steps of milliseconds, so a file written just
+  # before the stamp was renewed could carry the stamp's own time, and it was
+  # kept. A file time ahead of the clock stands for that tie on any system.
+  dir <- withr::local_tempdir()
+  svg <- hex_asset("phenoscapR", dir = dir)
+  master <- read_bytes(svg)
+  stamp <- file.path(dir, ".hexmakR-version")
+  notes <- file.path(dir, "phenoscapR", "notes.txt")
+  writeLines("not an asset", notes)
+  writeBin(charToRaw("stale"), svg)
+  writeLines("hexmakR 0.3.0", stamp)
+  ahead <- Sys.time() + 3600
+  Sys.setFileTime(c(svg, notes), ahead)
+  expect_identical(read_bytes(hex_asset("phenoscapR", dir = dir)), master)
+  # The new copy is reused, and files hexmakR does not write keep their time.
+  copied <- file.mtime(svg)
+  expect_identical(read_bytes(hex_asset("phenoscapR", dir = dir)), master)
+  expect_equal(file.mtime(svg), copied)
+  expect_lt(abs(as.numeric(difftime(file.mtime(notes), ahead, units = "secs"))),
+            1)
+})
+
 test_that("icons are drawn on demand under the master file names", {
   skip_without_cairo()
   dir <- withr::local_tempdir()

@@ -133,8 +133,27 @@ hex_asset <- function(package, mode = c("dark", "light", "mono"),
   current <- if (file.exists(stamp)) readLines(stamp, warn = FALSE)
   if (!identical(current, .cttir_cache$build)) {
     .write_output(stamp, function(file) writeLines(.cttir_cache$build, file))
+    .predate_assets(dir, file.mtime(stamp))
   }
   file.mtime(stamp)
+}
+
+# Files that are already there when the stamp is renewed were written by
+# another version, so they must count as older than the stamp. File times can
+# be too coarse to show it: Windows takes them from a clock that advances in
+# steps of several milliseconds, and FAT drives keep them to two seconds. A file
+# written just before the renewal then carries the stamp's own time and would be
+# reused. Such asset files are dated back to one second before the stamp. Only
+# the file names hex_asset() writes, in the identity folders, are touched.
+.predate_assets <- function(dir, time) {
+  folders <- file.path(dir, unique(hex_catalog()$asset_dir))
+  folders <- folders[dir.exists(folders)]
+  if (!length(folders) || is.na(time)) return(invisible(character()))
+  written <- "^((lockup|hex)(-dark|-mono)?[.](svg|png|pdf)|icon-[0-9]+[.]png)$"
+  files <- list.files(folders, pattern = written, full.names = TRUE)
+  files <- files[!is.na(file.mtime(files)) & file.mtime(files) >= time]
+  if (length(files)) Sys.setFileTime(files, time - 1)
+  invisible(files)
 }
 
 # Write to a temporary file first so an interrupted render leaves no partial asset.
