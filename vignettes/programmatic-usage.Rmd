@@ -116,12 +116,12 @@ hex_sticker(
 The function returns a **ggplot object**, so you can chain additional ggplot2
 layers:
 
-```{r ggplot-chain, fig.alt = "Dark hexagon sticker named mypackage with the added version label v0.1.0 near the bottom."}
+```{r ggplot-chain, fig.alt = "Dark hexagon sticker named mypackage with the added light grey version label v0.1.0 below the name."}
 library(ggplot2)
 
 hex_sticker("mypackage") +
-  annotate("text", x = 0.5, y = 0.05,
-           label = "v0.1.0", color = "#64748B", size = 2.5)
+  annotate("text", x = 0.5, y = 0.3,
+           label = "v0.1.0", color = "#CBD5E1", size = 3)
 ```
 
 ## Batch generation

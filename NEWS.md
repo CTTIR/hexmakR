@@ -63,7 +63,9 @@ released, and prepares the package for its first CRAN submission.
 * The colour-vision simulation used for palette screening cites its source
   (Machado, Oliveira and Fernandes 2009, <https://doi.org/10.1109/TVCG.2009.113>)
   next to the matrices and is covered by tests.
-* Vignette figures carry alternative text. The reference index of the website
+* Vignette figures carry alternative text. The version label added in the
+  "Programmatic usage" example sits inside the hexagon in a readable colour
+  instead of on the bottom border. The reference index of the website
   describes each group and lists the "Getting started" article first.
 * `CITATION.cff` states the package version. A second, outdated pkgdown
   configuration file (`pkgdown/_pkgdown.yml`) was removed; the website is built
