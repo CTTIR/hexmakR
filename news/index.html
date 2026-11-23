@@ -71,6 +71,8 @@
 <code><a href="../reference/hex_render_catalog.html">hex_render_catalog()</a></code> rejects a <code>directory</code> that is not a single path. A missing value used to write the files into a folder named <code>NA</code> in the working directory. It also rejects an <code>icons</code> value other than <code>TRUE</code> or <code>FALSE</code>; a missing value used to skip the icons silently.</li>
 <li>Size checks without an upper limit state their range plainly (for example “dpi must be a finite number greater than 0”) instead of printing machine epsilon and <code>Inf</code>.</li>
 <li>The <code>rocket</code> icon no longer draws a stray arc above the icon, and the <code>fire</code> icon is a flame with a curled tip and a hollow inner tongue instead of a thin sliver.</li>
+<li>
+<code><a href="../reference/hex_asset.html">hex_asset()</a></code> refreshes a file in a kept <code>dir</code> after a version change even when the file carries the same time as the renewed version stamp. On Windows, whose file times advance in steps of milliseconds, and on drives that keep file times to the second, a file written just before the change was reused.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-and-packaging-0-5-0">Documentation and packaging<a class="anchor" aria-label="anchor" href="#documentation-and-packaging-0-5-0"></a></h3>

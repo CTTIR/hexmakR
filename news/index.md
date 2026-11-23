@@ -70,6 +70,12 @@ never released, and prepares the package for its first CRAN submission.
 - The `rocket` icon no longer draws a stray arc above the icon, and the
   `fire` icon is a flame with a curled tip and a hollow inner tongue
   instead of a thin sliver.
+- [`hex_asset()`](https://cttir.github.io/hexmakR/reference/hex_asset.md)
+  refreshes a file in a kept `dir` after a version change even when the
+  file carries the same time as the renewed version stamp. On Windows,
+  whose file times advance in steps of milliseconds, and on drives that
+  keep file times to the second, a file written just before the change
+  was reused.
 
 ### Documentation and packaging
 
