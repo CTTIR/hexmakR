@@ -10,6 +10,9 @@ development:
 destination: site
 reference:
   - title: CTTIR library and project logos
+    desc: >
+      Start a logo, edit its parts, reuse artwork from the CTTIR v5 library,
+      and save or export the result.
     contents:
       - hex_catalog
       - hex_asset
@@ -32,23 +35,26 @@ reference:
       - hex_recipe
       - hex_render_catalog
   - title: Create and export
+    desc: Classic ggplot2 stickers and their PNG and SVG export.
     contents:
       - hex_sticker
       - save_hex
       - save_hex_svg
   - title: Themes and icons
+    desc: Built-in colour themes and icons for classic stickers and logos.
     contents:
       - hexmakr_icons
       - hexmakr_themes
       - hexmakr_preview_theme
   - title: Interactive application
+    desc: The Shiny designer for new logos and the classic sticker editor.
     contents:
       - hexmakr_app
 articles:
   - title: Guides
     navbar: ~
     contents:
-      - cttir-library
       - getting-started
+      - cttir-library
       - programmatic-usage
       - shiny-app
