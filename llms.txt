@@ -2,6 +2,9 @@
 
 ![hexmakR logo](reference/figures/logo-with-name.png)
 
+Zenodo DOI reserved for the release: `10.5281/zenodo.21889938` (not yet
+published).
+
 ## Overview
 
 hexmakR creates editable logos for R packages and projects. The default
